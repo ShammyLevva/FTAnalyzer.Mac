@@ -769,6 +769,15 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="HighResLogo" id="bBN-bi-0LO"/>
                                         </imageView>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLc-Nj-405">
+                                            <rect key="frame" x="374" y="6" width="522" height="100"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Family Tree Analyzer" id="JJI-yb-XZn">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </box>
@@ -781,6 +790,7 @@
                         <outlet property="SourcesProgress" destination="b8B-WZ-CNI" id="vGE-qJ-eUQ"/>
                         <outlet property="StatusText" destination="Xy3-RS-ZNY" id="3gD-3k-BGz"/>
                         <outlet property="StatusTextView" destination="Xy3-RS-ZNY" id="5Hf-D1-0YL"/>
+                        <outlet property="TitleLabel" destination="tLc-Nj-405" id="gF6-n5-QdX"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

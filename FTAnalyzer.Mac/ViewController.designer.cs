@@ -26,6 +26,9 @@ namespace FTAnalyzer.Mac
 
 		[Outlet]
 		AppKit.NSTextView StatusTextView { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TitleLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -52,6 +55,11 @@ namespace FTAnalyzer.Mac
 			if (StatusTextView != null) {
 				StatusTextView.Dispose ();
 				StatusTextView = null;
+			}
+
+			if (TitleLabel != null) {
+				TitleLabel.Dispose ();
+				TitleLabel = null;
 			}
 		}
 	}
