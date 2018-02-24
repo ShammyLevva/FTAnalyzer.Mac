@@ -15,7 +15,10 @@ namespace FTAnalyzer.Mac
 
         public override bool ReadFromUrl(NSUrl url, string typeName, out NSError outError)
         {
-            var textProgress = new Progress<string>(m => { });
+            var window = NSApplication.SharedApplication.Windows[0];
+            var viewController = window.ContentViewController as ViewController;
+
+            var textProgress = new Progress<string>(m => { viewController.StatusText.Value += m; });
             var document = _familyTree.LoadTreeHeader(url.Path, textProgress);
             if (document ==  null) {
                 outError = null;
