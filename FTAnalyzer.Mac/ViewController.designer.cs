@@ -13,13 +13,45 @@ namespace FTAnalyzer.Mac
 	partial class ViewController
 	{
 		[Outlet]
-		public AppKit.NSTextView StatusText { get; set; }
+		AppKit.NSProgressIndicator FamiliesProgress { get; set; }
+
+		[Outlet]
+		AppKit.NSProgressIndicator IndividualsProgress { get; set; }
+
+		[Outlet]
+		AppKit.NSProgressIndicator RelationshipsProgress { get; set; }
+
+		[Outlet]
+		AppKit.NSProgressIndicator SourcesProgress { get; set; }
+
+		[Outlet]
+		AppKit.NSTextView StatusTextView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (StatusText != null) {
-				StatusText.Dispose ();
-				StatusText = null;
+			if (FamiliesProgress != null) {
+				FamiliesProgress.Dispose ();
+				FamiliesProgress = null;
+			}
+
+			if (IndividualsProgress != null) {
+				IndividualsProgress.Dispose ();
+				IndividualsProgress = null;
+			}
+
+			if (RelationshipsProgress != null) {
+				RelationshipsProgress.Dispose ();
+				RelationshipsProgress = null;
+			}
+
+			if (SourcesProgress != null) {
+				SourcesProgress.Dispose ();
+				SourcesProgress = null;
+			}
+
+			if (StatusTextView != null) {
+				StatusTextView.Dispose ();
+				StatusTextView = null;
 			}
 		}
 	}
