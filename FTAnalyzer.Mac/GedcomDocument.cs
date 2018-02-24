@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using AppKit;
 using Foundation;
 
@@ -7,7 +8,7 @@ namespace FTAnalyzer.Mac
     [Register("GedcomDocument")]
     public class GedcomDocument : NSDocument
     {
-        FamilyTree _familyTree = FamilyTree.Instance;
+        readonly FamilyTree _familyTree = FamilyTree.Instance;
 
         public GedcomDocument()
         {
@@ -15,23 +16,28 @@ namespace FTAnalyzer.Mac
 
         public override bool ReadFromUrl(NSUrl url, string typeName, out NSError outError)
         {
+            outError = null;
+
             var window = NSApplication.SharedApplication.Windows[0];
             var viewController = window.ContentViewController as ViewController;
 
             var textProgress = new Progress<string>(m => { viewController.StatusText.Value += m; });
-            var document = _familyTree.LoadTreeHeader(url.Path, textProgress);
-            if (document ==  null) {
-                outError = null;
-                return false;
-            }
 
-            var sourceProgress = new Progress<int>(s => { });
-            _familyTree.LoadTreeSources(document, sourceProgress, textProgress);
-            _familyTree.LoadTreeIndividuals(document, sourceProgress, textProgress);
-            _familyTree.LoadTreeFamilies(document, sourceProgress, textProgress);
-            _familyTree.LoadTreeRelationships(document, sourceProgress, textProgress);
+            Task.Run(async () =>
+            {
+                var document = await Task.Run(() => _familyTree.LoadTreeHeader(url.Path, textProgress));
+                if (document == null)
+                {
+                    return;
+                }
 
-            outError = null;
+                var sourceProgress = new Progress<int>(s => { });
+                await Task.Run(() => _familyTree.LoadTreeSources(document, sourceProgress, textProgress));
+                await Task.Run(() => _familyTree.LoadTreeIndividuals(document, sourceProgress, textProgress));
+                await Task.Run(() => _familyTree.LoadTreeFamilies(document, sourceProgress, textProgress));
+                await Task.Run(() => _familyTree.LoadTreeRelationships(document, sourceProgress, textProgress));
+            });
+
             return true;
         }
     }
