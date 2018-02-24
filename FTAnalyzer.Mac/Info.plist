@@ -43,5 +43,7 @@
 			<string>GedcomDocument</string>
 		</dict>
 	</array>
+	<key>ATSApplicationFontsPath</key>
+	<string>Fonts</string>
 </dict>
 </plist>

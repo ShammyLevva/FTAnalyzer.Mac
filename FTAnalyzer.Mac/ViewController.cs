@@ -16,6 +16,8 @@ namespace FTAnalyzer.Mac
             base.ViewDidLoad();
 
             // Do any additional setup after loading the view.
+            var font = NSFont.FromFontName("Kunstler Script", 52.0f);
+            TitleLabel.Font = font;
         }
 
         public override NSObject RepresentedObject
