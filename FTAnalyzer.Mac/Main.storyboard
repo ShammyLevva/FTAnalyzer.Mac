@@ -668,7 +668,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="134" y="289.5"/>
+            <point key="canvasLocation" x="126" y="-218"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -685,13 +685,16 @@
                                     <rect key="frame" x="1" y="1" width="983" height="454"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView identifier="StatusTextView" ambiguous="YES" editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" id="Xy3-RS-ZNY" userLabel="StatusTextView">
+                                        <textView identifier="StatusTextView" ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" fieldEditor="YES" findStyle="panel" allowsNonContiguousLayout="YES" id="Xy3-RS-ZNY" userLabel="StatusTextView">
                                             <rect key="frame" x="0.0" y="0.0" width="983" height="454"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="983" height="454"/>
-                                            <size key="maxSize" width="983" height="10000000"/>
+                                            <size key="maxSize" width="1000" height="10000000"/>
                                             <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <binding destination="XfG-lQ-9wD" name="attributedString" keyPath="self.Document.Messages" id="Lfq-0f-d6P"/>
+                                            </connections>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -715,18 +718,30 @@
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="b8B-WZ-CNI">
                                             <rect key="frame" x="190" y="78" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <connections>
+                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.Document.SourcesProgress" id="KcI-UG-f6L"/>
+                                            </connections>
                                         </progressIndicator>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="xBu-LQ-XyF">
                                             <rect key="frame" x="190" y="58" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <connections>
+                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.Document.IndividualsProgress" id="ZNj-8s-VnL"/>
+                                            </connections>
                                         </progressIndicator>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="0T4-Vy-e51">
                                             <rect key="frame" x="190" y="38" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <connections>
+                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.Document.FamiliesProgress" id="ao4-Tq-Cp0"/>
+                                            </connections>
                                         </progressIndicator>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="5oa-cb-FmJ">
                                             <rect key="frame" x="190" y="17" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <connections>
+                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.Document.RelationshipsProgress" id="MmS-GH-axy"/>
+                                            </connections>
                                         </progressIndicator>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrU-x0-ClD">
                                             <rect key="frame" x="18" y="79" width="116" height="17"/>
@@ -784,18 +799,13 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="FamiliesProgress" destination="0T4-Vy-e51" id="XI5-gR-6Hj"/>
-                        <outlet property="IndividualsProgress" destination="xBu-LQ-XyF" id="hY3-7s-fjJ"/>
-                        <outlet property="RelationshipsProgress" destination="5oa-cb-FmJ" id="b4E-RN-4gD"/>
-                        <outlet property="SourcesProgress" destination="b8B-WZ-CNI" id="vGE-qJ-eUQ"/>
-                        <outlet property="StatusText" destination="Xy3-RS-ZNY" id="3gD-3k-BGz"/>
-                        <outlet property="StatusTextView" destination="Xy3-RS-ZNY" id="5Hf-D1-0YL"/>
                         <outlet property="TitleLabel" destination="tLc-Nj-405" id="gF6-n5-QdX"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="QM4-Vn-YqU"/>
             </objects>
-            <point key="canvasLocation" x="276" y="694"/>
+            <point key="canvasLocation" x="126" y="673"/>
         </scene>
     </scenes>
     <resources>

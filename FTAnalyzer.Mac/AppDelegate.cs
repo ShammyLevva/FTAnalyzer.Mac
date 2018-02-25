@@ -13,6 +13,8 @@ namespace FTAnalyzer.Mac
         public override void DidFinishLaunching(NSNotification notification)
         {
             // Insert code here to initialize your application
+            var window = NSApplication.SharedApplication.MainWindow;
+            window.Title = "Family Tree Analyzer v" + Version;
         }
 
         public override void WillTerminate(NSNotification notification)
@@ -23,6 +25,16 @@ namespace FTAnalyzer.Mac
         public override bool ApplicationShouldTerminateAfterLastWindowClosed(NSApplication sender)
         {
             return true;
+        }
+
+        string Version
+        {
+            get
+            {
+                var version = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString();
+                var build = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleVersion").ToString();
+                return version + "." + build;
+            }
         }
     }
 }
