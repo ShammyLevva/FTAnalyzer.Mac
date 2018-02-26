@@ -15,19 +15,29 @@ namespace FTAnalyzer.Mac
         int _familiesProgress;
         int _relationshipsProgress;
         string _messages;
+        string _filename;
 
         public GedcomDocument()
         {
             _messages = string.Empty;
+            _filename = string.Empty;
         }
 
-        public override void MakeWindowControllers()
-        {
-            base.MakeWindowControllers();
+        //public override void MakeWindowControllers()
+        //{
+        //    base.MakeWindowControllers();
 
-            var window = NSApplication.SharedApplication.MainWindow;
-            var viewController = window.ContentViewController as ViewController;
-            viewController.Document = this;
+        //    var window = NSApplication.SharedApplication.MainWindow;
+        //    var viewController = window.ContentViewController as ViewController;
+        //    viewController.Document = this;
+        //}
+
+        public override string WindowNibName
+        {
+            get
+            {
+                return "MyGEDCOMDocument";
+            }
         }
 
         [Export("SourcesProgress")]
@@ -95,26 +105,27 @@ namespace FTAnalyzer.Mac
 
         public override bool ReadFromUrl(NSUrl url, string typeName, out NSError outError)
         {
-            outError = null;
+            _filename = url.Path;
+            outError = NSError.FromDomain(NSError.OsStatusErrorDomain, -4);
+            return true;
+        }
 
+        public override void WindowControllerDidLoadNib(NSWindowController windowController)
+        {
             var textProgress = new Progress<string>(m => { Messages += m; });
             var sourcesProgress = new Progress<int>(p => { SourcesProgress = p; });
             var individualsProgress = new Progress<int>(p => { IndividualsProgress = p; });
             var familiesProgress = new Progress<int>(p => { FamiliesProgress = p; });
             var relationshipsProgress = new Progress<int>(p => { RelationshipsProgress = p; });
 
-            var document = _familyTree.LoadTreeHeader(url.Path, textProgress);
-            if (document == null)
+            var document = _familyTree.LoadTreeHeader(_filename, textProgress);
+            if (document != null)
             {
-                return false;
+                _familyTree.LoadTreeSources(document, sourcesProgress, textProgress);
+                _familyTree.LoadTreeIndividuals(document, individualsProgress, textProgress);
+                _familyTree.LoadTreeFamilies(document, familiesProgress, textProgress);
+                _familyTree.LoadTreeRelationships(document, relationshipsProgress, textProgress);
             }
-
-            _familyTree.LoadTreeSources(document, sourcesProgress, textProgress);
-            _familyTree.LoadTreeIndividuals(document, individualsProgress, textProgress);
-            _familyTree.LoadTreeFamilies(document, familiesProgress, textProgress);
-            _familyTree.LoadTreeRelationships(document, relationshipsProgress, textProgress);
-
-            return true;
         }
     }
 }
