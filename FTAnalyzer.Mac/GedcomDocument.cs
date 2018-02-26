@@ -25,7 +25,7 @@ namespace FTAnalyzer.Mac
 
             InvokeOnMainThread(() =>
             {
-                var window = NSApplication.SharedApplication.MainWindow;
+                var window = NSApplication.SharedApplication.Windows[0];
                 viewController = window.ContentViewController as ViewController;
                 viewController.ClearAllProgress();
             });

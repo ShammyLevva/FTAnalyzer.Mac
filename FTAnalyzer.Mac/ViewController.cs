@@ -15,7 +15,7 @@ namespace FTAnalyzer.Mac
 
         public ViewController(IntPtr handle) : base(handle)
         {
-            _messages = new Progress<string>(message => AppendMessage(message));
+            _messages = new Progress<string>(AppendMessage);
             _sources = new Progress<int>(percent => SetProgress(_sourcesProgress, percent));
             _individuals = new Progress<int>(percent => SetProgress(_individualsProgress, percent));
             _families = new Progress<int>(percent => SetProgress(_familiesProgress, percent));
