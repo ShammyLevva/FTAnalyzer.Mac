@@ -15,7 +15,7 @@ namespace FTAnalyzer.Mac
 
         public ViewController(IntPtr handle) : base(handle)
         {
-            _messages = new Progress<string>(AppendMessage);
+            _messages = new Progress<string>(message => AppendMessage(message));
             _sources = new Progress<int>(percent => SetProgress(_sourcesProgress, percent));
             _individuals = new Progress<int>(percent => SetProgress(_individualsProgress, percent));
             _families = new Progress<int>(percent => SetProgress(_familiesProgress, percent));
@@ -28,7 +28,7 @@ namespace FTAnalyzer.Mac
 
             // Do any additional setup after loading the view.
 
-            var font = NSFont.FromFontName("Kunstler Script", 52.0f);
+            var font = NSFont.FromFontName("Kunstler Script", 72.0f);
             _titleLabel.Font = font;
         }
 

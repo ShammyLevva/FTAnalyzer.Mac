@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using AppKit;
+﻿using AppKit;
 using Foundation;
 
 namespace FTAnalyzer.Mac
@@ -10,22 +8,18 @@ namespace FTAnalyzer.Mac
     {
         readonly FamilyTree _familyTree = FamilyTree.Instance;
 
-        public GedcomDocument()
-        {
-        }
-
         [Export("canConcurrentlyReadDocumentsOfType:")]
         public static new bool CanConcurrentlyReadDocumentsOfType(string fileType) => true;
 
         public override bool ReadFromUrl(NSUrl url, string typeName, out NSError outError)
         {
-            outError = null;
+            outError = NSError.FromDomain(NSError.OsStatusErrorDomain, -4);
 
             ViewController viewController = null;
 
             InvokeOnMainThread(() =>
             {
-                var window = NSApplication.SharedApplication.Windows[0];
+                var window = NSApplication.SharedApplication.MainWindow;
                 viewController = window.ContentViewController as ViewController;
                 viewController.ClearAllProgress();
             });
