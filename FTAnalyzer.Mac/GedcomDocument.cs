@@ -21,24 +21,18 @@ namespace FTAnalyzer.Mac
             _messages = string.Empty;
         }
 
-        public override void MakeWindowControllers()
-        {
-            base.MakeWindowControllers();
-
-            var window = NSApplication.SharedApplication.MainWindow;
-            var viewController = window.ContentViewController as ViewController;
-            viewController.Document = this;
-        }
-
         [Export("SourcesProgress")]
         public int SourcesProgress
         {
             get { return _sourcesProgress; }
             set
             {
-                WillChangeValue("SourcesProgress");
-                _sourcesProgress = value;
-                DidChangeValue("SourcesProgress");
+                InvokeOnMainThread(() =>
+                {
+                    WillChangeValue("SourcesProgress");
+                    _sourcesProgress = value;
+                    DidChangeValue("SourcesProgress");
+                });
             }
         }
 
@@ -48,9 +42,12 @@ namespace FTAnalyzer.Mac
             get { return _individualsProgress; }
             set
             {
-                WillChangeValue("IndividualsProgress");
-                _individualsProgress = value;
-                DidChangeValue("IndividualsProgress");
+                InvokeOnMainThread(() =>
+                {
+                    WillChangeValue("IndividualsProgress");
+                    _individualsProgress = value;
+                    DidChangeValue("IndividualsProgress");
+                });
             }
         }
 
@@ -60,9 +57,12 @@ namespace FTAnalyzer.Mac
             get { return _familiesProgress; }
             set
             {
-                WillChangeValue("FamiliesProgress");
-                _familiesProgress = value;
-                DidChangeValue("FamiliesProgress");
+                InvokeOnMainThread(() =>
+                {
+                    WillChangeValue("FamiliesProgress");
+                    _familiesProgress = value;
+                    DidChangeValue("FamiliesProgress");
+                });
             }
         }
 
@@ -72,9 +72,12 @@ namespace FTAnalyzer.Mac
             get { return _relationshipsProgress; }
             set
             {
-                WillChangeValue("RelationshipsProgress");
-                _relationshipsProgress = value;
-                DidChangeValue("RelationshipsProgress");
+                InvokeOnMainThread(() =>
+                {
+                    WillChangeValue("RelationshipsProgress");
+                    _relationshipsProgress = value;
+                    DidChangeValue("RelationshipsProgress");
+                });
             }
         }
 
@@ -84,9 +87,12 @@ namespace FTAnalyzer.Mac
             get { return _messages; }
             set
             {
-                WillChangeValue("Messages");
-                _messages = value;
-                DidChangeValue("Messages");
+                InvokeOnMainThread(() =>
+                {
+                    WillChangeValue("Messages");
+                    _messages = value;
+                    DidChangeValue("Messages");
+                });
             }
         }
 
@@ -96,6 +102,14 @@ namespace FTAnalyzer.Mac
         public override bool ReadFromUrl(NSUrl url, string typeName, out NSError outError)
         {
             outError = null;
+
+            InvokeOnMainThread(() =>
+            {
+                var window = NSApplication.SharedApplication.MainWindow;
+                var viewController = window.ContentViewController as ViewController;
+                viewController.Document = this;
+
+            });
 
             var textProgress = new Progress<string>(m => { Messages += m; });
             var sourcesProgress = new Progress<int>(p => { SourcesProgress = p; });
