@@ -685,16 +685,13 @@
                                     <rect key="frame" x="1" y="1" width="983" height="454"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView identifier="StatusTextView" ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" fieldEditor="YES" findStyle="panel" allowsNonContiguousLayout="YES" id="Xy3-RS-ZNY" userLabel="StatusTextView">
+                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" fieldEditor="YES" findStyle="panel" allowsNonContiguousLayout="YES" id="Xy3-RS-ZNY" userLabel="StatusTextView">
                                             <rect key="frame" x="0.0" y="0.0" width="983" height="454"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="983" height="454"/>
                                             <size key="maxSize" width="1000" height="10000000"/>
                                             <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <binding destination="XfG-lQ-9wD" name="attributedString" keyPath="self.Document.Messages" id="Lfq-0f-d6P"/>
-                                            </connections>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -718,30 +715,18 @@
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="b8B-WZ-CNI">
                                             <rect key="frame" x="190" y="78" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <connections>
-                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.Document.SourcesProgress" id="KcI-UG-f6L"/>
-                                            </connections>
                                         </progressIndicator>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="xBu-LQ-XyF">
                                             <rect key="frame" x="190" y="58" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <connections>
-                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.Document.IndividualsProgress" id="ZNj-8s-VnL"/>
-                                            </connections>
                                         </progressIndicator>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="0T4-Vy-e51">
                                             <rect key="frame" x="190" y="38" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <connections>
-                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.Document.FamiliesProgress" id="ao4-Tq-Cp0"/>
-                                            </connections>
                                         </progressIndicator>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="5oa-cb-FmJ">
                                             <rect key="frame" x="190" y="17" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <connections>
-                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.Document.RelationshipsProgress" id="MmS-GH-axy"/>
-                                            </connections>
                                         </progressIndicator>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrU-x0-ClD">
                                             <rect key="frame" x="18" y="79" width="116" height="17"/>
@@ -800,6 +785,12 @@
                     </view>
                     <connections>
                         <outlet property="TitleLabel" destination="tLc-Nj-405" id="gF6-n5-QdX"/>
+                        <outlet property="_familiesProgress" destination="0T4-Vy-e51" id="oW7-oS-sJ4"/>
+                        <outlet property="_individualsProgress" destination="xBu-LQ-XyF" id="9qi-XB-pF5"/>
+                        <outlet property="_relationshipsProgress" destination="5oa-cb-FmJ" id="U49-1p-onQ"/>
+                        <outlet property="_sourcesProgress" destination="b8B-WZ-CNI" id="Zw7-pM-sfK"/>
+                        <outlet property="_statusTextView" destination="Xy3-RS-ZNY" id="U3a-FL-Ond"/>
+                        <outlet property="_titleLabel" destination="tLc-Nj-405" id="5iy-nV-5QM"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

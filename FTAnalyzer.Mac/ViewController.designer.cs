@@ -13,53 +13,53 @@ namespace FTAnalyzer.Mac
 	partial class ViewController
 	{
 		[Outlet]
-		AppKit.NSProgressIndicator FamiliesProgress { get; set; }
+		AppKit.NSProgressIndicator _familiesProgress { get; set; }
 
 		[Outlet]
-		AppKit.NSProgressIndicator IndividualsProgress { get; set; }
+		AppKit.NSProgressIndicator _individualsProgress { get; set; }
 
 		[Outlet]
-		AppKit.NSProgressIndicator RelationshipsProgress { get; set; }
+		AppKit.NSProgressIndicator _relationshipsProgress { get; set; }
 
 		[Outlet]
-		AppKit.NSProgressIndicator SourcesProgress { get; set; }
+		AppKit.NSProgressIndicator _sourcesProgress { get; set; }
 
 		[Outlet]
-		AppKit.NSTextView StatusTextView { get; set; }
+		AppKit.NSTextView _statusTextView { get; set; }
 
 		[Outlet]
-		AppKit.NSTextField TitleLabel { get; set; }
+		AppKit.NSTextField _titleLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (FamiliesProgress != null) {
-				FamiliesProgress.Dispose ();
-				FamiliesProgress = null;
+			if (_statusTextView != null) {
+				_statusTextView.Dispose ();
+				_statusTextView = null;
 			}
 
-			if (IndividualsProgress != null) {
-				IndividualsProgress.Dispose ();
-				IndividualsProgress = null;
+			if (_sourcesProgress != null) {
+				_sourcesProgress.Dispose ();
+				_sourcesProgress = null;
 			}
 
-			if (RelationshipsProgress != null) {
-				RelationshipsProgress.Dispose ();
-				RelationshipsProgress = null;
+			if (_individualsProgress != null) {
+				_individualsProgress.Dispose ();
+				_individualsProgress = null;
 			}
 
-			if (SourcesProgress != null) {
-				SourcesProgress.Dispose ();
-				SourcesProgress = null;
+			if (_familiesProgress != null) {
+				_familiesProgress.Dispose ();
+				_familiesProgress = null;
 			}
 
-			if (StatusTextView != null) {
-				StatusTextView.Dispose ();
-				StatusTextView = null;
+			if (_relationshipsProgress != null) {
+				_relationshipsProgress.Dispose ();
+				_relationshipsProgress = null;
 			}
 
-			if (TitleLabel != null) {
-				TitleLabel.Dispose ();
-				TitleLabel = null;
+			if (_titleLabel != null) {
+				_titleLabel.Dispose ();
+				_titleLabel = null;
 			}
 		}
 	}
