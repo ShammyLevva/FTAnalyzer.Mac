@@ -848,7 +848,6 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="TitleLabel" destination="tLc-Nj-405" id="gF6-n5-QdX"/>
                         <outlet property="_familiesProgress" destination="0T4-Vy-e51" id="oW7-oS-sJ4"/>
                         <outlet property="_individualsProgress" destination="xBu-LQ-XyF" id="9qi-XB-pF5"/>
                         <outlet property="_relationshipsProgress" destination="5oa-cb-FmJ" id="U49-1p-onQ"/>

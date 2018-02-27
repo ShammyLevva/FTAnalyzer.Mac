@@ -12,7 +12,7 @@ namespace FTAnalyzer.Mac
         IProgress<int> _individuals;
         IProgress<int> _families;
         IProgress<int> _relationships;
-
+ 
         public GedcomDocumentController(IntPtr handle) : base(handle)
         {
             _messages = new Progress<string>(message => AppendMessage(message));

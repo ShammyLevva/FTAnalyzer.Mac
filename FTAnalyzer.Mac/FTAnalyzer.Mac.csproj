@@ -106,6 +106,7 @@
       <DependentUpon>GedcomDocumentController.cs</DependentUpon>
     </Compile>
     <Compile Include="GedcomDocument.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
