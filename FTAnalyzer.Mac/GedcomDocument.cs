@@ -15,12 +15,12 @@ namespace FTAnalyzer.Mac
         {
             outError = NSError.FromDomain(NSError.OsStatusErrorDomain, -4);
 
-            ViewController viewController = null;
+            GedcomDocumentController viewController = null;
 
             InvokeOnMainThread(() =>
             {
                 var window = NSApplication.SharedApplication.MainWindow;
-                viewController = window.ContentViewController as ViewController;
+                viewController = window.ContentViewController as GedcomDocumentController;
                 viewController.ClearAllProgress();
             });
 

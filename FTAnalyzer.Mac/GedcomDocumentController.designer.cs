@@ -5,12 +5,11 @@
 // Manual changes to this file may not be handled correctly.
 //
 using Foundation;
-using System.CodeDom.Compiler;
 
 namespace FTAnalyzer.Mac
 {
-	[Register ("ViewController")]
-	partial class ViewController
+    [Register ("GedcomDocumentController")]
+    partial class GedcomDocumentController
 	{
 		[Outlet]
 		AppKit.NSProgressIndicator _familiesProgress { get; set; }
