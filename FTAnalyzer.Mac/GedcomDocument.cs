@@ -16,12 +16,15 @@ namespace FTAnalyzer.Mac
             outError = NSError.FromDomain(NSError.OsStatusErrorDomain, -4);
 
             GedcomDocumentController viewController = null;
+            NSTabViewController tabbedViewController = null;
 
             InvokeOnMainThread(() =>
             {
                 var window = NSApplication.SharedApplication.MainWindow;
-                viewController = window.ContentViewController as GedcomDocumentController;
+                tabbedViewController = window.ContentViewController as NSTabViewController;
+                viewController = tabbedViewController.ChildViewControllers[0] as GedcomDocumentController;
                 viewController.ClearAllProgress();
+
             });
 
             var document = _familyTree.LoadTreeHeader(url.Path, viewController.Messages);

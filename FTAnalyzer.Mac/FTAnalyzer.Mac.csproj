@@ -94,6 +94,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Resources\Fonts\" />
     <Folder Include="ViewControllers\" />
+    <Folder Include="DataSources\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -113,6 +114,7 @@
     <Compile Include="ViewControllers\IndividualsController.designer.cs">
       <DependentUpon>IndividualsController.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSources\IndividualsTableSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />

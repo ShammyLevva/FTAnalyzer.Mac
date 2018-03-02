@@ -4,10 +4,11 @@ using System;
 
 using Foundation;
 using AppKit;
+using FTAnalyzer.Mac.DataSources;
 
 namespace FTAnalyzer.Mac
 {
-    public partial class IndividualsController : NSViewController, INSTableViewDataSource, INSTabViewDelegate 
+    public partial class IndividualsController : NSViewController
 	{
         FamilyTree _familyTree;
         NSTableView _individualsTableView;
@@ -15,11 +16,13 @@ namespace FTAnalyzer.Mac
 		public IndividualsController (IntPtr handle) : base (handle)
 		{
             _familyTree = FamilyTree.Instance;
-		}
+    	}
 
-        public int GetRowCount()
+        public override void ViewDidLoad()
         {
-            return _familyTree.IndividualCount;
+            base.ViewDidLoad();
+            _individualsTableView = IndividualsTableView;
+            _individualsTableView.Source = new IndividualsTableSource();
         }
 	}
 }
