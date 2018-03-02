@@ -103,14 +103,14 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="GedcomDocumentController.cs" />
-    <Compile Include="GedcomDocumentController.designer.cs">
-      <DependentUpon>GedcomDocumentController.cs</DependentUpon>
-    </Compile>
     <Compile Include="GedcomDocument.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="IndividualsController.cs" />
-    <Compile Include="IndividualsController.designer.cs">
+    <Compile Include="ViewControllers\GedcomDocumentController.cs" />
+    <Compile Include="ViewControllers\GedcomDocumentController.designer.cs">
+      <DependentUpon>GedcomDocumentController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\IndividualsController.cs" />
+    <Compile Include="ViewControllers\IndividualsController.designer.cs">
       <DependentUpon>IndividualsController.cs</DependentUpon>
     </Compile>
   </ItemGroup>

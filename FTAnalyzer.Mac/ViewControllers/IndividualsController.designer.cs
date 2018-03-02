@@ -13,13 +13,13 @@ namespace FTAnalyzer.Mac
 	partial class IndividualsController
 	{
 		[Outlet]
-		AppKit.NSTableView IndividualsTableVIew { get; set; }
+		AppKit.NSTableView IndividualsTableView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (IndividualsTableVIew != null) {
-				IndividualsTableVIew.Dispose ();
-				IndividualsTableVIew = null;
+			if (IndividualsTableView != null) {
+				IndividualsTableView.Dispose ();
+				IndividualsTableView = null;
 			}
 		}
 	}

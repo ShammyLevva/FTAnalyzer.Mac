@@ -700,7 +700,7 @@
                                     <rect key="frame" x="1" y="0.0" width="448" height="284"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView identifier="IndividualTableView" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="91F-ku-Tzo" viewBased="YES" id="K94-cc-BSd">
+                                        <tableView identifier="IndividualsTableView" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="91F-ku-Tzo" viewBased="YES" id="K94-cc-BSd" userLabel="IndividualsTableVIew">
                                             <rect key="frame" x="0.0" y="0.0" width="461" height="261"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
