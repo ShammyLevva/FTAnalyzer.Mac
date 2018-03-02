@@ -32,18 +32,7 @@ namespace FTAnalyzer.Mac
             _titleLabel.Font = font;
         }
 
-        public override NSObject RepresentedObject
-        {
-            get
-            {
-                return base.RepresentedObject;
-            }
-            set
-            {
-                base.RepresentedObject = value;
-                // Update the view, if already loaded.
-            }
-        }
+        public override NSObject RepresentedObject => base.RepresentedObject;
 
         public IProgress<string> Messages => _messages;
 

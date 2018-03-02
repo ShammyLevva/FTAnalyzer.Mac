@@ -24,12 +24,12 @@ namespace FTAnalyzer.Mac
                 tabbedViewController = window.ContentViewController as NSTabViewController;
                 viewController = tabbedViewController.ChildViewControllers[0] as GedcomDocumentController;
                 viewController.ClearAllProgress();
-
             });
 
             var document = _familyTree.LoadTreeHeader(url.Path, viewController.Messages);
             if (document == null)
             {
+                viewController.Messages.Report("Unable to load file " + url.Path + "\n");
                 return false;
             }
 
@@ -38,6 +38,7 @@ namespace FTAnalyzer.Mac
             _familyTree.LoadTreeFamilies(document, viewController.Families, viewController.Messages);
             _familyTree.LoadTreeRelationships(document, viewController.Relationships, viewController.Messages);
 
+            viewController.Messages.Report("Finished loading file " + url.Path + "\n");
             return true;
         }
     }
