@@ -5,6 +5,7 @@ using System;
 using Foundation;
 using AppKit;
 using FTAnalyzer.Mac.DataSources;
+using System.Reflection;
 
 namespace FTAnalyzer.Mac
 {
@@ -26,9 +27,37 @@ namespace FTAnalyzer.Mac
                 return;
             }
 
-            _individualsTableView = IndividualsTableView;
+            _individualsTableView = new NSTableView()
+            {
+                RowSizeStyle = NSTableViewRowSizeStyle.Default,
+                Enabled = true,
+                UsesAlternatingRowBackgroundColors = true,
+                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
+
+
+            };
+
+            PropertyInfo[] properties = typeof(IDisplayIndividual).GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                var tableColumn = new NSTableColumn()
+                {
+                    Width = 100,
+                    Editable = false,
+                    Hidden = false,
+                    Title = property.Name
+                };
+                _individualsTableView.AddColumn(tableColumn);
+            }
             _individualsTableView.Source = new IndividualsTableSource();
         }
 
+        public override void LoadView()
+        {
+            base.LoadView();
+            ResetDocument();
+            View = _individualsTableView;
+
+        }
     }
 }
