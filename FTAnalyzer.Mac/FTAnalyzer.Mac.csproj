@@ -106,13 +106,13 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="GedcomDocument.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="ViewControllers\GedcomDocumentController.cs" />
-    <Compile Include="ViewControllers\GedcomDocumentController.designer.cs">
-      <DependentUpon>GedcomDocumentController.cs</DependentUpon>
+    <Compile Include="ViewControllers\GedcomDocumentViewController.cs" />
+    <Compile Include="ViewControllers\GedcomDocumentViewController.designer.cs">
+      <DependentUpon>GedcomDocumentViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\IndividualsController.cs" />
-    <Compile Include="ViewControllers\IndividualsController.designer.cs">
-      <DependentUpon>IndividualsController.cs</DependentUpon>
+    <Compile Include="ViewControllers\IndividualsViewController.cs" />
+    <Compile Include="ViewControllers\IndividualsViewController.designer.cs">
+      <DependentUpon>IndividualsViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSources\IndividualsTableSource.cs" />
   </ItemGroup>

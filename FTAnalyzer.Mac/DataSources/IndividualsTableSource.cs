@@ -1,5 +1,6 @@
 ﻿using System;
 using AppKit;
+using Foundation;
 
 namespace FTAnalyzer.Mac.DataSources
 {

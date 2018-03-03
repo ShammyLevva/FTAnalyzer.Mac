@@ -9,8 +9,8 @@ using System.CodeDom.Compiler;
 
 namespace FTAnalyzer.Mac
 {
-	[Register ("IndividualsController")]
-	partial class IndividualsController
+	[Register ("IndividualsViewController")]
+	partial class IndividualsViewController
 	{
 		[Outlet]
 		AppKit.NSTableView IndividualsTableView { get; set; }

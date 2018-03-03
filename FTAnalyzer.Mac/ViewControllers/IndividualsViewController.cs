@@ -8,21 +8,27 @@ using FTAnalyzer.Mac.DataSources;
 
 namespace FTAnalyzer.Mac
 {
-    public partial class IndividualsController : NSViewController
-	{
+    public partial class IndividualsViewController : NSViewController
+    {
         FamilyTree _familyTree;
         NSTableView _individualsTableView;
 
-		public IndividualsController (IntPtr handle) : base (handle)
-		{
-            _familyTree = FamilyTree.Instance;
-    	}
-
-        public override void ViewDidLoad()
+        public IndividualsViewController(IntPtr handle) : base(handle)
         {
-            base.ViewDidLoad();
+            _familyTree = FamilyTree.Instance;
+        }
+
+        public void ResetDocument()
+        {
+            if (!NSThread.IsMain)
+            {
+                InvokeOnMainThread(() => ResetDocument());
+                return;
+            }
+
             _individualsTableView = IndividualsTableView;
             _individualsTableView.Source = new IndividualsTableSource();
         }
-	}
+
+    }
 }

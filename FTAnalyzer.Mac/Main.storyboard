@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -685,10 +685,10 @@
             </objects>
             <point key="canvasLocation" x="535" y="-1435"/>
         </scene>
-        <!--IndividualsController-->
+        <!--IndividualsViewController-->
         <scene sceneID="Ae0-AZ-JDh">
             <objects>
-                <viewController title="IndividualsController" id="5L0-Za-A0D" customClass="IndividualsController" customModule="FTAnalyzer_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="IndividualsController" storyboardIdentifier="IndividualsViewController" id="5L0-Za-A0D" userLabel="IndividualsViewController" customClass="IndividualsViewController" sceneMemberID="viewController">
                     <view key="view" id="peo-lz-X91">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -826,7 +826,7 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="IndividualsTableVIew" destination="K94-cc-BSd" id="e3n-OT-7fX"/>
+                        <outlet property="IndividualsTableView" destination="K94-cc-BSd" id="Bgv-Kd-b13"/>
                     </connections>
                 </viewController>
                 <customObject id="9Ww-sU-ku3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

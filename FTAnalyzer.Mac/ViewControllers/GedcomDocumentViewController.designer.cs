@@ -9,7 +9,7 @@ using Foundation;
 namespace FTAnalyzer.Mac
 {
     [Register ("GedcomDocumentController")]
-    partial class GedcomDocumentController
+    partial class GedcomDocumentViewController
 	{
 		[Outlet]
 		AppKit.NSProgressIndicator _familiesProgress { get; set; }

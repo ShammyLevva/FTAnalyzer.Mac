@@ -5,7 +5,7 @@ using Foundation;
 
 namespace FTAnalyzer.Mac
 {
-    public partial class GedcomDocumentController : NSViewController
+    public partial class GedcomDocumentViewController : NSViewController
     {
         IProgress<string> _messages;
         IProgress<int> _sources;
@@ -13,7 +13,7 @@ namespace FTAnalyzer.Mac
         IProgress<int> _families;
         IProgress<int> _relationships;
  
-        public GedcomDocumentController(IntPtr handle) : base(handle)
+        public GedcomDocumentViewController(IntPtr handle) : base(handle)
         {
             _messages = new Progress<string>(message => AppendMessage(message));
             _sources = new Progress<int>(percent => SetProgress(_sourcesProgress, percent));

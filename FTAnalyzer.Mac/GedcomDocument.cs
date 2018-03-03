@@ -15,30 +15,38 @@ namespace FTAnalyzer.Mac
         {
             outError = NSError.FromDomain(NSError.OsStatusErrorDomain, -4);
 
-            GedcomDocumentController viewController = null;
+            GedcomDocumentViewController documentViewController = null;
+            IndividualsViewController individualsViewController = null;
             NSTabViewController tabbedViewController = null;
 
             InvokeOnMainThread(() =>
             {
                 var window = NSApplication.SharedApplication.MainWindow;
                 tabbedViewController = window.ContentViewController as NSTabViewController;
-                viewController = tabbedViewController.ChildViewControllers[0] as GedcomDocumentController;
-                viewController.ClearAllProgress();
+
+                documentViewController = tabbedViewController.ChildViewControllers[0] as GedcomDocumentViewController;
+                documentViewController.ClearAllProgress();
+
+                var mainStatsViewController = tabbedViewController.ChildViewControllers[1] as NSTabViewController;
+                individualsViewController = mainStatsViewController.ChildViewControllers[0] as IndividualsViewController;
             });
 
-            var document = _familyTree.LoadTreeHeader(url.Path, viewController.Messages);
+            var document = _familyTree.LoadTreeHeader(url.Path, documentViewController.Messages);
             if (document == null)
             {
-                viewController.Messages.Report("Unable to load file " + url.Path + "\n");
+                documentViewController.Messages.Report("\n\nUnable to load file " + url.Path + "\n");
                 return false;
             }
 
-            _familyTree.LoadTreeSources(document, viewController.Sources, viewController.Messages);
-            _familyTree.LoadTreeIndividuals(document, viewController.Individuals, viewController.Messages);
-            _familyTree.LoadTreeFamilies(document, viewController.Families, viewController.Messages);
-            _familyTree.LoadTreeRelationships(document, viewController.Relationships, viewController.Messages);
+            _familyTree.LoadTreeSources(document, documentViewController.Sources, documentViewController.Messages);
+            _familyTree.LoadTreeIndividuals(document, documentViewController.Individuals, documentViewController.Messages);
+            _familyTree.LoadTreeFamilies(document, documentViewController.Families, documentViewController.Messages);
+            _familyTree.LoadTreeRelationships(document, documentViewController.Relationships, documentViewController.Messages);
 
-            viewController.Messages.Report("Finished loading file " + url.Path + "\n");
+            documentViewController.Messages.Report("\n\nFinished loading file " + url.Path + "\n");
+
+            individualsViewController.ResetDocument();
+
             return true;
         }
     }
