@@ -32,9 +32,7 @@ namespace FTAnalyzer.Mac
                 RowSizeStyle = NSTableViewRowSizeStyle.Default,
                 Enabled = true,
                 UsesAlternatingRowBackgroundColors = true,
-                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
-
-
+                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential
             };
 
             PropertyInfo[] properties = typeof(IDisplayIndividual).GetProperties();
@@ -57,7 +55,6 @@ namespace FTAnalyzer.Mac
             base.LoadView();
             ResetDocument();
             View = _individualsTableView;
-
         }
     }
 }
