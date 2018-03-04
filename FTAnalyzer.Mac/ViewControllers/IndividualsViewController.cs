@@ -32,7 +32,8 @@ namespace FTAnalyzer.Mac
                 RowSizeStyle = NSTableViewRowSizeStyle.Default,
                 Enabled = true,
                 UsesAlternatingRowBackgroundColors = true,
-                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential
+                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
+                Source = new IndividualsTableSource()
             };
 
             PropertyInfo[] properties = typeof(IDisplayIndividual).GetProperties();
@@ -40,6 +41,7 @@ namespace FTAnalyzer.Mac
             {
                 var tableColumn = new NSTableColumn()
                 {
+                    Identifier = property.Name,
                     Width = 100,
                     Editable = false,
                     Hidden = false,
@@ -47,14 +49,20 @@ namespace FTAnalyzer.Mac
                 };
                 _individualsTableView.AddColumn(tableColumn);
             }
-            _individualsTableView.Source = new IndividualsTableSource();
         }
 
         public override void LoadView()
         {
             base.LoadView();
+
             ResetDocument();
-            View = _individualsTableView;
+            _individualsTableView.ReloadData();
+
+            var scrollView = new NSScrollView()
+            {
+                DocumentView = _individualsTableView
+            };
+            View = scrollView;
         }
     }
 }
