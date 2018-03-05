@@ -21,7 +21,7 @@ namespace FTAnalyzer.Mac.ViewControllers
                 RowSizeStyle = NSTableViewRowSizeStyle.Default,
                 Enabled = true,
                 UsesAlternatingRowBackgroundColors = true,
-                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
+                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
                 Bounds = new CoreGraphics.CGRect(0, 0, 500, 500),
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable
             };

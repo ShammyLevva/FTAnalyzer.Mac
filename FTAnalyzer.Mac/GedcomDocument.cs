@@ -19,6 +19,8 @@ namespace FTAnalyzer.Mac
 
             GedcomDocumentViewController documentViewController = null;
             BindingListViewController<IDisplayIndividual> individualsViewController = null;
+            BindingListViewController<IDisplayFamily> familiesViewController = null;
+            BindingListViewController<IDisplaySource> sourcesViewController = null;
             NSTabViewController tabbedViewController = null;
 
             InvokeOnMainThread(() =>
@@ -35,7 +37,18 @@ namespace FTAnalyzer.Mac
                 individualsViewController.LoadView();
                 individualsViewController.Title = "Individuals";
 
+                familiesViewController = new BindingListViewController<IDisplayFamily>();
+                familiesViewController.LoadView();
+                familiesViewController.Title = "Families";
+
+                sourcesViewController = new BindingListViewController<IDisplaySource>();
+                sourcesViewController.LoadView();
+                sourcesViewController.Title = "Sources";
+
+                mainListsViewController.RemoveChildViewController(0);
                 mainListsViewController.AddChildViewController(individualsViewController);
+                mainListsViewController.AddChildViewController(familiesViewController);
+                mainListsViewController.AddChildViewController(sourcesViewController);
 
             });
 
@@ -54,6 +67,8 @@ namespace FTAnalyzer.Mac
             documentViewController.Messages.Report("\n\nFinished loading file " + url.Path + "\n");
 
             individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
+            familiesViewController.RefreshDocumentView(_familyTree.AllDisplayFamilies);
+            sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
 
             return true;
         }
