@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -661,7 +661,7 @@
                     </tabView>
                     <tabViewItems>
                         <tabViewItem label="Gedcom Stats" id="5KQ-md-UQl"/>
-                        <tabViewItem label="Main Stats" id="nnU-Eq-ulZ"/>
+                        <tabViewItem label="Main Lists" id="nnU-Eq-ulZ"/>
                         <tabViewItem label="Errors/Fixes" id="CSJ-Bf-v81"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions"/>
@@ -698,10 +698,10 @@
             </objects>
             <point key="canvasLocation" x="-258" y="-126"/>
         </scene>
-        <!--MainStatsController-->
+        <!--MainListsController-->
         <scene sceneID="5Ys-nG-dGC">
             <objects>
-                <tabViewController title="MainStatsController" selectedTabViewItemIndex="0" id="CGu-hu-FSh" sceneMemberID="viewController">
+                <tabViewController title="MainListsController" selectedTabViewItemIndex="0" id="CGu-hu-FSh" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Individuals" id="U4t-vh-K1r"/>
                         <tabViewItem label="Families" id="dac-hm-LrU"/>
