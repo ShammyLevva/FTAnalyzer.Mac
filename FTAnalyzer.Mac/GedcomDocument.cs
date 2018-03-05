@@ -45,7 +45,7 @@ namespace FTAnalyzer.Mac
 
             documentViewController.Messages.Report("\n\nFinished loading file " + url.Path + "\n");
 
-            individualsViewController.ResetDocument();
+            individualsViewController.RefreshDocumentView();
 
             return true;
         }

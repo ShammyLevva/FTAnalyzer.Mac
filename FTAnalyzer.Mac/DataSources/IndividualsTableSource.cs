@@ -2,9 +2,11 @@
 using System.Linq;
 using System.Reflection;
 using AppKit;
+using Foundation;
 
 namespace FTAnalyzer.Mac.DataSources
 {
+    [Register ("IndividualsTableSource")]
     public class IndividualsTableSource : NSTableViewSource
     {
         FamilyTree _familyTree;
@@ -12,7 +14,7 @@ namespace FTAnalyzer.Mac.DataSources
         readonly PropertyInfo[] _properties;
         readonly string[] _fieldNames;
 
-        string CellIdentifier = "TableCell";
+        string CellIdentifier = "TableView";
 
         public IndividualsTableSource()
         {
