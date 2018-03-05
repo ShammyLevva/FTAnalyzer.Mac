@@ -22,7 +22,7 @@
     <WarningLevel>4</WarningLevel>
     <EnableCodeSigning>false</EnableCodeSigning>
     <CodeSigningKey>Mac Developer</CodeSigningKey>
-    <CreatePackage>false</CreatePackage>
+    <CreatePackage>true</CreatePackage>
     <EnablePackageSigning>false</EnablePackageSigning>
     <IncludeMonoRuntime>false</IncludeMonoRuntime>
     <UseSGen>true</UseSGen>
@@ -111,10 +111,6 @@
     </Compile>
     <Compile Include="ViewControllers\BindingListViewController.cs" />
     <Compile Include="DataSources\BindingListTableSource.cs" />
-    <Compile Include="IndividualsViewController.cs" />
-    <Compile Include="IndividualsViewController.designer.cs">
-      <DependentUpon>IndividualsViewController.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />

@@ -21,6 +21,8 @@ namespace FTAnalyzer.Mac
             BindingListViewController<IDisplayIndividual> individualsViewController = null;
             BindingListViewController<IDisplayFamily> familiesViewController = null;
             BindingListViewController<IDisplaySource> sourcesViewController = null;
+            BindingListViewController<IDisplayOccupation> occupationsViewController = null;
+            BindingListViewController<IDisplayFact> factsViewController = null;
             NSTabViewController tabbedViewController = null;
 
             InvokeOnMainThread(() =>
@@ -37,6 +39,7 @@ namespace FTAnalyzer.Mac
                 individualsViewController.LoadView();
                 individualsViewController.Title = "Individuals";
 
+
                 familiesViewController = new BindingListViewController<IDisplayFamily>();
                 familiesViewController.LoadView();
                 familiesViewController.Title = "Families";
@@ -45,11 +48,20 @@ namespace FTAnalyzer.Mac
                 sourcesViewController.LoadView();
                 sourcesViewController.Title = "Sources";
 
+                occupationsViewController = new BindingListViewController<IDisplayOccupation>();
+                occupationsViewController.LoadView();
+                occupationsViewController.Title = "Occupations";
+
+                factsViewController = new BindingListViewController<IDisplayFact>();
+                factsViewController.LoadView();
+                factsViewController.Title = "Facts";
+
                 mainListsViewController.RemoveChildViewController(0);
                 mainListsViewController.AddChildViewController(individualsViewController);
                 mainListsViewController.AddChildViewController(familiesViewController);
                 mainListsViewController.AddChildViewController(sourcesViewController);
-
+                mainListsViewController.AddChildViewController(occupationsViewController);
+                mainListsViewController.AddChildViewController(factsViewController);
             });
 
             var document = _familyTree.LoadTreeHeader(url.Path, documentViewController.Messages);
@@ -69,7 +81,8 @@ namespace FTAnalyzer.Mac
             individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
             familiesViewController.RefreshDocumentView(_familyTree.AllDisplayFamilies);
             sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
-
+            occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
+            factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
             return true;
         }
     }
