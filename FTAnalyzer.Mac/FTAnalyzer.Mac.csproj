@@ -109,11 +109,8 @@
     <Compile Include="ViewControllers\GedcomDocumentViewController.designer.cs">
       <DependentUpon>GedcomDocumentViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\IndividualsViewController.cs" />
-    <Compile Include="ViewControllers\IndividualsViewController.designer.cs">
-      <DependentUpon>IndividualsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataSources\IndividualsTableSource.cs" />
+    <Compile Include="ViewControllers\BindingListViewController.cs" />
+    <Compile Include="DataSources\BindingListTableSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />

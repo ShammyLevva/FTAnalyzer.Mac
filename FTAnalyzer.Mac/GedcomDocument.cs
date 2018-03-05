@@ -1,5 +1,7 @@
 ﻿using AppKit;
 using Foundation;
+using FTAnalyzer.Mac.DataSources;
+using FTAnalyzer.Mac.ViewControllers;
 
 namespace FTAnalyzer.Mac
 {
@@ -16,7 +18,7 @@ namespace FTAnalyzer.Mac
             outError = NSError.FromDomain(NSError.OsStatusErrorDomain, -4);
 
             GedcomDocumentViewController documentViewController = null;
-            IndividualsViewController individualsViewController = null;
+            BindingListViewController<IDisplayIndividual> individualsViewController = null;
             NSTabViewController tabbedViewController = null;
 
             InvokeOnMainThread(() =>
@@ -27,8 +29,14 @@ namespace FTAnalyzer.Mac
                 documentViewController = tabbedViewController.ChildViewControllers[0] as GedcomDocumentViewController;
                 documentViewController.ClearAllProgress();
 
-                var mainStatsViewController = tabbedViewController.ChildViewControllers[1] as NSTabViewController;
-                individualsViewController = mainStatsViewController.ChildViewControllers[0] as IndividualsViewController;
+                var mainListsViewController = tabbedViewController.ChildViewControllers[1] as NSTabViewController;
+
+                individualsViewController = new BindingListViewController<IDisplayIndividual>();
+                individualsViewController.LoadView();
+                individualsViewController.Title = "Individuals";
+
+                mainListsViewController.AddChildViewController(individualsViewController);
+
             });
 
             var document = _familyTree.LoadTreeHeader(url.Path, documentViewController.Messages);
@@ -45,7 +53,7 @@ namespace FTAnalyzer.Mac
 
             documentViewController.Messages.Report("\n\nFinished loading file " + url.Path + "\n");
 
-            individualsViewController.RefreshDocumentView();
+            individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
 
             return true;
         }
