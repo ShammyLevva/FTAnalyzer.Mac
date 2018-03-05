@@ -19,20 +19,7 @@ namespace FTAnalyzer.Mac
             _familyTree = FamilyTree.Instance;
         }
 
-        public void RefreshDocumentView()
-        {
-            if (!NSThread.IsMain)
-            {
-                InvokeOnMainThread(() => RefreshDocumentView());
-                return;
-            }
-            var source = new IndividualsTableSource();
-            _individualsTableView.Source = source;
-
-           _individualsTableView.ReloadData();
-        }
-
-        public override void LoadView()
+       public override void LoadView()
         {
             base.LoadView();
 
@@ -65,6 +52,17 @@ namespace FTAnalyzer.Mac
                 DocumentView = _individualsTableView
             };
             View = scrollView;
+        }
+
+        public void RefreshDocumentView()
+        {
+            if (!NSThread.IsMain)
+            {
+                InvokeOnMainThread(() => RefreshDocumentView());
+                return;
+            }
+            _individualsTableView.Source = new IndividualsTableSource(); ;
+            _individualsTableView.ReloadData();
         }
     }
 }
