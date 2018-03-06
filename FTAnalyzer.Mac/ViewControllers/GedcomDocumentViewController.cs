@@ -35,13 +35,9 @@ namespace FTAnalyzer.Mac
         public override NSObject RepresentedObject => base.RepresentedObject;
 
         public IProgress<string> Messages => _messages;
-
         public IProgress<int> Sources => _sources;
-
         public IProgress<int> Individuals => _individuals;
-
         public IProgress<int> Families => _families;
-
         public IProgress<int> Relationships => _relationships;
 
         public void ClearAllProgress()
