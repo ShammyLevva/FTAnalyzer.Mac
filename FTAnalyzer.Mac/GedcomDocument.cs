@@ -1,6 +1,5 @@
 ﻿using AppKit;
 using Foundation;
-using FTAnalyzer.Mac.DataSources;
 using FTAnalyzer.Mac.ViewControllers;
 
 namespace FTAnalyzer.Mac
@@ -35,26 +34,11 @@ namespace FTAnalyzer.Mac
 
                 var mainListsViewController = tabbedViewController.ChildViewControllers[1] as NSTabViewController;
 
-                individualsViewController = new BindingListViewController<IDisplayIndividual>();
-                individualsViewController.LoadView();
-                individualsViewController.Title = "Individuals";
-
-
-                familiesViewController = new BindingListViewController<IDisplayFamily>();
-                familiesViewController.LoadView();
-                familiesViewController.Title = "Families";
-
-                sourcesViewController = new BindingListViewController<IDisplaySource>();
-                sourcesViewController.LoadView();
-                sourcesViewController.Title = "Sources";
-
-                occupationsViewController = new BindingListViewController<IDisplayOccupation>();
-                occupationsViewController.LoadView();
-                occupationsViewController.Title = "Occupations";
-
-                factsViewController = new BindingListViewController<IDisplayFact>();
-                factsViewController.LoadView();
-                factsViewController.Title = "Facts";
+                individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals");
+                familiesViewController = new BindingListViewController<IDisplayFamily>("Families");
+                sourcesViewController = new BindingListViewController<IDisplaySource>("Sources");
+                occupationsViewController = new BindingListViewController<IDisplayOccupation>("Occupations");
+                factsViewController = new BindingListViewController<IDisplayFact>("Facts");
 
                 mainListsViewController.RemoveChildViewController(0);
                 mainListsViewController.AddChildViewController(individualsViewController);
@@ -76,13 +60,13 @@ namespace FTAnalyzer.Mac
             _familyTree.LoadTreeFamilies(document, documentViewController.Families, documentViewController.Messages);
             _familyTree.LoadTreeRelationships(document, documentViewController.Relationships, documentViewController.Messages);
 
-            documentViewController.Messages.Report("\n\nFinished loading file " + url.Path + "\n");
-
             individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
             familiesViewController.RefreshDocumentView(_familyTree.AllDisplayFamilies);
             sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
             occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
             factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
+
+            documentViewController.Messages.Report("\n\nFinished loading file " + url.Path + "\n");
             return true;
         }
     }

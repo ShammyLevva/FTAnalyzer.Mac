@@ -1,5 +1,4 @@
-﻿using System;
-using AppKit;
+﻿using AppKit;
 using Foundation;
 using FTAnalyzer.Mac.DataSources;
 using FTAnalyzer.Utilities;
@@ -9,15 +8,18 @@ namespace FTAnalyzer.Mac.ViewControllers
     public class BindingListViewController<T> : NSViewController
     {
         NSTableView _tableView;
-        const string CellIdentifier = "TableView";
 
-        public override void LoadView()
+        public BindingListViewController(string title)
         {
-            //base.LoadView();
+            SetupView(title);
+            Title = title;
+        }
 
+        void SetupView(string title)
+        {
             _tableView = new NSTableView
             {
-                Identifier = CellIdentifier,
+                Identifier = title,
                 RowSizeStyle = NSTableViewRowSizeStyle.Default,
                 Enabled = true,
                 UsesAlternatingRowBackgroundColors = true,
@@ -31,7 +33,7 @@ namespace FTAnalyzer.Mac.ViewControllers
             {
                 var tableColumn = new NSTableColumn
                 {
-                    Identifier = CellIdentifier,
+                    Identifier = property.Name,
                     Width = 100,
                     Editable = false,
                     Hidden = false,
