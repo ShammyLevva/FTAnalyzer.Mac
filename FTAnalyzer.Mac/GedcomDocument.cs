@@ -40,7 +40,6 @@ namespace FTAnalyzer.Mac
                 occupationsViewController = new BindingListViewController<IDisplayOccupation>("Occupations");
                 factsViewController = new BindingListViewController<IDisplayFact>("Facts");
 
-                mainListsViewController.RemoveChildViewController(0);
                 mainListsViewController.AddChildViewController(individualsViewController);
                 mainListsViewController.AddChildViewController(familiesViewController);
                 mainListsViewController.AddChildViewController(sourcesViewController);

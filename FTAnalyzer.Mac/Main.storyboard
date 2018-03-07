@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -685,26 +685,10 @@
             </objects>
             <point key="canvasLocation" x="535" y="-1435"/>
         </scene>
-        <!--IndividualsViewController-->
-        <scene sceneID="Ae0-AZ-JDh">
-            <objects>
-                <viewController title="IndividualsController" storyboardIdentifier="Placeholder" id="5L0-Za-A0D" userLabel="IndividualsViewController" sceneMemberID="viewController">
-                    <view key="view" id="peo-lz-X91">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="9Ww-sU-ku3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-258" y="-126"/>
-        </scene>
         <!--MainListsController-->
         <scene sceneID="5Ys-nG-dGC">
             <objects>
-                <tabViewController title="MainListsController" selectedTabViewItemIndex="0" id="CGu-hu-FSh" sceneMemberID="viewController">
-                    <tabViewItems>
-                        <tabViewItem label="Individuals" id="U4t-vh-K1r"/>
-                    </tabViewItems>
+                <tabViewController title="MainListsController" id="CGu-hu-FSh" sceneMemberID="viewController">
                     <tabView key="tabView" type="noTabsNoBorder" id="AZ8-HA-aKK">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="481"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -716,7 +700,6 @@
                     </tabView>
                     <connections>
                         <outlet property="tabView" destination="AZ8-HA-aKK" id="MVt-4g-Cue"/>
-                        <segue destination="5L0-Za-A0D" kind="relationship" relationship="tabItems" id="5RZ-ZN-Dhe"/>
                     </connections>
                 </tabViewController>
                 <customObject id="PPL-jb-iDV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
