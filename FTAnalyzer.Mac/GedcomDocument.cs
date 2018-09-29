@@ -1,4 +1,5 @@
-﻿using AppKit;
+﻿using System.Globalization;
+using AppKit;
 using Foundation;
 using FTAnalyzer.Mac.ViewControllers;
 
@@ -76,12 +77,14 @@ namespace FTAnalyzer.Mac
             occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
             factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
 
-            documentViewController.Messages.Report("\n\nFinished loading file " + url.Path + "\n");
+            documentViewController.Messages.Report($"\n\nFinished loading file {url.Path}\n");
 
             InvokeOnMainThread(() =>
             {
                 var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
                 app.Document = this;
+
+                UIHelpers.ShowMessage($"Gedcom file {url.Path} loaded.", "FTAnalyzer");
             });
 
             RaiseDocumentModified(this);
