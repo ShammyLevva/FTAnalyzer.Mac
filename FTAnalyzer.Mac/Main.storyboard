@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -707,7 +706,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="FTAnalyzer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="FTAnalyzer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="1000" height="560"/>
@@ -735,20 +734,20 @@
                             <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdZ-sC-kTA">
                                 <rect key="frame" x="0.0" y="0.0" width="1000" height="456"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <clipView key="contentView" ambiguous="YES" id="dlj-ML-GjU">
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="dlj-ML-GjU">
                                     <rect key="frame" x="1" y="1" width="983" height="454"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" fieldEditor="YES" findStyle="panel" allowsNonContiguousLayout="YES" id="Xy3-RS-ZNY" userLabel="StatusTextView">
                                             <rect key="frame" x="0.0" y="0.0" width="983" height="454"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="983" height="454"/>
                                             <size key="maxSize" width="1000" height="10000000"/>
-                                            <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="WVb-Eh-B4N">
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
@@ -763,27 +762,27 @@
                                 <rect key="frame" x="-3" y="452" width="1006" height="110"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <view key="contentView" ambiguous="YES" id="nBo-GM-A6N">
-                                    <rect key="frame" x="2" y="2" width="1002" height="106"/>
+                                    <rect key="frame" x="3" y="3" width="1000" height="104"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="b8B-WZ-CNI">
-                                            <rect key="frame" x="190" y="78" width="168" height="20"/>
+                                            <rect key="frame" x="190" y="76" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </progressIndicator>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="xBu-LQ-XyF">
-                                            <rect key="frame" x="190" y="58" width="168" height="20"/>
+                                            <rect key="frame" x="190" y="56" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </progressIndicator>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="0T4-Vy-e51">
-                                            <rect key="frame" x="190" y="38" width="168" height="20"/>
+                                            <rect key="frame" x="190" y="36" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </progressIndicator>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="5oa-cb-FmJ">
-                                            <rect key="frame" x="190" y="17" width="168" height="20"/>
+                                            <rect key="frame" x="190" y="15" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </progressIndicator>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrU-x0-ClD">
-                                            <rect key="frame" x="18" y="79" width="116" height="17"/>
+                                            <rect key="frame" x="18" y="77" width="116" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Loading sources:" id="9pH-3H-wIj">
                                                 <font key="font" metaFont="system"/>
@@ -792,7 +791,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JAq-17-2pt">
-                                            <rect key="frame" x="18" y="60" width="131" height="17"/>
+                                            <rect key="frame" x="18" y="58" width="131" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Loading individuals:" id="Qa5-Kn-RJJ">
                                                 <font key="font" metaFont="system"/>
@@ -801,7 +800,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dv9-8p-roY">
-                                            <rect key="frame" x="18" y="40" width="122" height="17"/>
+                                            <rect key="frame" x="18" y="38" width="122" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Loading families:" id="ZTL-9x-kt8">
                                                 <font key="font" metaFont="system"/>
@@ -810,7 +809,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6VM-NN-EGu">
-                                            <rect key="frame" x="18" y="19" width="166" height="17"/>
+                                            <rect key="frame" x="18" y="17" width="166" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Relationships &amp; locations:" id="f6M-OW-Ysr">
                                                 <font key="font" metaFont="system"/>
@@ -819,12 +818,12 @@
                                             </textFieldCell>
                                         </textField>
                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7n-k2-1gw">
-                                            <rect key="frame" x="902" y="6" width="100" height="100"/>
+                                            <rect key="frame" x="900" y="4" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="HighResLogo" id="bBN-bi-0LO"/>
                                         </imageView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLc-Nj-405">
-                                            <rect key="frame" x="370" y="6" width="526" height="100"/>
+                                            <rect key="frame" x="370" y="4" width="524" height="100"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Family Tree Analyzer" id="JJI-yb-XZn">
                                                 <font key="font" metaFont="system"/>
@@ -854,12 +853,15 @@
         <!--ErrorsFixesController-->
         <scene sceneID="wv0-G7-qwd">
             <objects>
-                <viewController title="ErrorsFixesController" id="LHn-6f-ueJ" sceneMemberID="viewController">
-                    <view key="view" id="OyJ-7a-5ku">
+                <tabViewController title="ErrorsFixesController" id="LHn-6f-ueJ" sceneMemberID="viewController">
+                    <tabView key="tabView" type="noTabsNoBorder" id="OyJ-7a-5ku" userLabel="Tabless Tab View">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="OyJ-7a-5ku" id="hKC-el-YiH"/>
+                    </connections>
+                </tabViewController>
                 <customObject id="gYe-vR-VI1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="854" y="-822"/>

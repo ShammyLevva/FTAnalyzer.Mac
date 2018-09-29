@@ -1,7 +1,8 @@
-﻿using System.Globalization;
-using AppKit;
+﻿using AppKit;
 using Foundation;
 using FTAnalyzer.Mac.ViewControllers;
+using FTAnalyzer.Utilities;
+using System.Linq;
 
 namespace FTAnalyzer.Mac
 {
@@ -19,11 +20,18 @@ namespace FTAnalyzer.Mac
             outError = NSError.FromDomain(NSError.OsStatusErrorDomain, -4);
 
             GedcomDocumentViewController documentViewController = null;
+
             BindingListViewController<IDisplayIndividual> individualsViewController = null;
             BindingListViewController<IDisplayFamily> familiesViewController = null;
             BindingListViewController<IDisplaySource> sourcesViewController = null;
             BindingListViewController<IDisplayOccupation> occupationsViewController = null;
             BindingListViewController<IDisplayFact> factsViewController = null;
+
+            BindingListViewController<DataError> dataErrorsViewController = null;
+            BindingListViewController<IDisplayDuplicateIndividual> duplicatesViewController = null;
+            BindingListViewController<IDisplayLooseBirth> looseBirthsViewController = null;
+            BindingListViewController<IDisplayLooseDeath> looseDeathsViewController = null;
+
             NSTabViewController tabbedViewController = null;
 
             InvokeOnMainThread(() =>
@@ -57,6 +65,24 @@ namespace FTAnalyzer.Mac
                 mainListsViewController.AddChildViewController(sourcesViewController);
                 mainListsViewController.AddChildViewController(occupationsViewController);
                 mainListsViewController.AddChildViewController(factsViewController);
+
+                var errorsAndFixesTabViewController = tabbedViewController.ChildViewControllers[2] as NSTabViewController;
+
+                // Remove any existing lists from a previous document.
+                while (errorsAndFixesTabViewController.ChildViewControllers.Length > 0)
+                {
+                    errorsAndFixesTabViewController.RemoveChildViewController(0);
+                }
+
+                dataErrorsViewController = new BindingListViewController<DataError>("Data Errors");
+                duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates");
+                looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births");
+                looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>("Loose Deaths");
+
+                errorsAndFixesTabViewController.AddChildViewController(dataErrorsViewController);
+                errorsAndFixesTabViewController.AddChildViewController(duplicatesViewController);
+                errorsAndFixesTabViewController.AddChildViewController(looseBirthsViewController);
+                errorsAndFixesTabViewController.AddChildViewController(looseDeathsViewController);
             });
 
             var document = _familyTree.LoadTreeHeader(url.Path, documentViewController.Messages);
@@ -76,6 +102,14 @@ namespace FTAnalyzer.Mac
             sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
             occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
             factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
+
+            // Flatten the data error groups into a single list until filtering implemented.
+            var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
+            dataErrorsViewController.RefreshDocumentView(errors);
+
+            duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
+            looseBirthsViewController.RefreshDocumentView(_familyTree.LooseBirths());
+            looseDeathsViewController.RefreshDocumentView(_familyTree.LooseDeaths());
 
             documentViewController.Messages.Report($"\n\nFinished loading file {url.Path}\n");
 
