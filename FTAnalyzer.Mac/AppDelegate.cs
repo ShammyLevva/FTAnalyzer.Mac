@@ -26,12 +26,6 @@ namespace FTAnalyzer.Mac
 			return true;
 		}
 
-		public override bool OpenFile(NSApplication sender, string filename)
-		{
-			Document = new GedcomDocument();
-			return true;
-		}
-
 		string Version
 		{
 			get

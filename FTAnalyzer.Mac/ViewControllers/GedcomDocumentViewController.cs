@@ -12,8 +12,7 @@ namespace FTAnalyzer.Mac
         IProgress<int> _individuals;
         IProgress<int> _families;
         IProgress<int> _relationships;
-		GedcomDocument document;
- 
+
         public GedcomDocumentViewController(IntPtr handle) : base(handle)
         {
             _messages = new Progress<string>(message => AppendMessage(message));
@@ -27,8 +26,8 @@ namespace FTAnalyzer.Mac
         {
             base.ViewDidLoad();
 
-			// Do any additional setup after loading the view.
-			ThisApp.Document = document;
+            // Do any additional setup after loading the view.
+//            ThisApp.Document = 
             var font = NSFont.FromFontName("Kunstler Script", 72.0f);
             _titleLabel.Font = font;
         }
