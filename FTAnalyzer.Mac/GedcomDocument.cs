@@ -8,12 +8,13 @@ namespace FTAnalyzer.Mac
     public class GedcomDocument : NSDocument
     {
         readonly FamilyTree _familyTree = FamilyTree.Instance;
-
+       
         [Export("canConcurrentlyReadDocumentsOfType:")]
         public static new bool CanConcurrentlyReadDocumentsOfType(string fileType) => true;
 
 		public override bool ReadFromUrl(NSUrl url, string typeName, out NSError outError)
 		{
+
 			outError = NSError.FromDomain(NSError.OsStatusErrorDomain, -4);
 
 			GedcomDocumentViewController documentViewController = null;
@@ -26,7 +27,8 @@ namespace FTAnalyzer.Mac
 
 			InvokeOnMainThread(() =>
 			{
-				var window = NSApplication.SharedApplication.MainWindow;
+                var window = NSApplication.SharedApplication.MainWindow;
+                
 				tabbedViewController = window.ContentViewController as NSTabViewController;
 
 				documentViewController = tabbedViewController.ChildViewControllers[0] as GedcomDocumentViewController;

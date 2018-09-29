@@ -1,0 +1,1 @@
+﻿Open second file should close first, clear tabs and revert to GEDCOM tab

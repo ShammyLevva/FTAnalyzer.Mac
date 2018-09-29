@@ -6,8 +6,6 @@
 	<string>FTAnalyzer</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.ftanalyzer.FTAnalyzer</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.10</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -45,5 +43,7 @@
 	<string>Fonts</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>2</string>
 </dict>
 </plist>

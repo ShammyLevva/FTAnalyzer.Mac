@@ -12,6 +12,7 @@ namespace FTAnalyzer.Mac
         IProgress<int> _individuals;
         IProgress<int> _families;
         IProgress<int> _relationships;
+		GedcomDocument document;
  
         public GedcomDocumentViewController(IntPtr handle) : base(handle)
         {
@@ -26,11 +27,22 @@ namespace FTAnalyzer.Mac
         {
             base.ViewDidLoad();
 
-            // Do any additional setup after loading the view.
-
+			// Do any additional setup after loading the view.
+			ThisApp.Document = document;
             var font = NSFont.FromFontName("Kunstler Script", 72.0f);
             _titleLabel.Font = font;
         }
+
+		#region Computed Properties
+        /// <summary>
+        /// Returns the delegate of the current running application
+        /// </summary>
+        /// <value>The this app.</value>
+        public AppDelegate ThisApp
+        {
+            get { return (AppDelegate)NSApplication.SharedApplication.Delegate; }
+        }
+        #endregion
 
         public override NSObject RepresentedObject => base.RepresentedObject;
 
