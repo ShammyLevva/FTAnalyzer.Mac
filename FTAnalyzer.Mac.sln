@@ -16,4 +16,7 @@ Global
 		{EE106C3A-38A4-4962-A747-8D5D17AE3039}.Release|x86.ActiveCfg = Release|x86
 		{EE106C3A-38A4-4962-A747-8D5D17AE3039}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		version = 0.1.1
+	EndGlobalSection
 EndGlobal
