@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{EE106C3A-38A4-4962-A747-8D5D17AE3039}|Default" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Mac/GedcomDocument.cs">
+    <Files>
+      <File FileName="FTAnalyzer.Mac/Info.plist" />
+      <File FileName="FTAnalyzer.Mac Status" />
+      <File FileName="FTAnalyzer.Mac/GedcomDocument.cs" Line="31" Column="15" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ActiveRuntime="Mono 5.16.0.151 (5e81afa90df)" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/ViewControllers/IndividualsController.cs" relfile="FTAnalyzer.Mac/ViewControllers/IndividualsController.cs" line="18" column="1" />
+      <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/ViewControllers/IndividualsController.cs" relfile="FTAnalyzer.Mac/ViewControllers/IndividualsController.cs" line="24" column="1" />
+      <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Shared/FTAnalyzer.Shared/Core/FactDate.cs" line="8" column="1" />
+      <Breakpoint file="/Library/Frameworks/Xamarin.Mac.framework/Versions/4.8.0.22/src/Xamarin.Mac/external/corert/src/System.Private.CoreLib/shared/System/String.Manipulation.cs" line="931" column="1" />
+      <Breakpoint file="/Library/Frameworks/Xamarin.Mac.framework/Versions/4.8.0.22/src/Xamarin.Mac/external/corert/src/System.Private.CoreLib/shared/System/String.Manipulation.cs" line="969" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.FTAnalyzer.Mac PreferredExecutionTarget="Test1" />
+</Properties>
