@@ -28,7 +28,7 @@ namespace FTAnalyzer.Mac
             BindingListViewController<IDisplayFact> factsViewController = null;
 
             BindingListViewController<DataError> dataErrorsViewController = null;
-            BindingListViewController<IDisplayDuplicateIndividual> duplicatesViewController = null;
+            //BindingListViewController<IDisplayDuplicateIndividual> duplicatesViewController = null;
             BindingListViewController<IDisplayLooseBirth> looseBirthsViewController = null;
             BindingListViewController<IDisplayLooseDeath> looseDeathsViewController = null;
 
@@ -42,17 +42,14 @@ namespace FTAnalyzer.Mac
 
                 //Make sure the loading tab is seleceted.
                 tabbedViewController.SelectedTabViewItemIndex = 0;
-
-                var mainListsViewController = tabbedViewController.ChildViewControllers[1] as NSTabViewController;
-
-                // Remove any existing lists from a previous document.
-                while (mainListsViewController.ChildViewControllers.Length > 0)
-                {
-                    mainListsViewController.RemoveChildViewController(0);
-                }
-
                 documentViewController = tabbedViewController.ChildViewControllers[0] as GedcomDocumentViewController;
                 documentViewController.ClearAllProgress();
+
+                var mainListsViewController = tabbedViewController.ChildViewControllers[1] as NSTabViewController;
+                RemoveOldTabs(mainListsViewController);
+                var errorsAndFixesTabViewController = tabbedViewController.ChildViewControllers[2] as NSTabViewController;
+                RemoveOldTabs(errorsAndFixesTabViewController);
+
 
                 individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals");
                 familiesViewController = new BindingListViewController<IDisplayFamily>("Families");
@@ -66,21 +63,14 @@ namespace FTAnalyzer.Mac
                 mainListsViewController.AddChildViewController(occupationsViewController);
                 mainListsViewController.AddChildViewController(factsViewController);
 
-                var errorsAndFixesTabViewController = tabbedViewController.ChildViewControllers[2] as NSTabViewController;
-
-                // Remove any existing lists from a previous document.
-                while (errorsAndFixesTabViewController.ChildViewControllers.Length > 0)
-                {
-                    errorsAndFixesTabViewController.RemoveChildViewController(0);
-                }
 
                 dataErrorsViewController = new BindingListViewController<DataError>("Data Errors");
-                duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates");
+                //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates");
                 looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births");
                 looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>("Loose Deaths");
 
                 errorsAndFixesTabViewController.AddChildViewController(dataErrorsViewController);
-                errorsAndFixesTabViewController.AddChildViewController(duplicatesViewController);
+                //errorsAndFixesTabViewController.AddChildViewController(duplicatesViewController);
                 errorsAndFixesTabViewController.AddChildViewController(looseBirthsViewController);
                 errorsAndFixesTabViewController.AddChildViewController(looseDeathsViewController);
             });
@@ -107,7 +97,7 @@ namespace FTAnalyzer.Mac
             var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
             dataErrorsViewController.RefreshDocumentView(errors);
 
-            duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
+            //duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
             looseBirthsViewController.RefreshDocumentView(_familyTree.LooseBirths());
             looseDeathsViewController.RefreshDocumentView(_familyTree.LooseDeaths());
 
@@ -123,6 +113,15 @@ namespace FTAnalyzer.Mac
 
             RaiseDocumentModified(this);
             return true;
+        }
+
+        static void RemoveOldTabs(NSTabViewController viewController)
+        {
+            // Remove any existing lists from a previous document.
+            while (viewController.ChildViewControllers.Length > 0)
+            {
+                viewController.RemoveChildViewController(0);
+            }
         }
 
         #region Events
