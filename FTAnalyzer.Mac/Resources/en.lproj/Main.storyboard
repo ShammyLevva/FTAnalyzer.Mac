@@ -875,20 +875,20 @@
             <objects>
                 <viewController title="SurnamesController" id="Lek-mj-Eof" userLabel="SurnamesController" sceneMemberID="viewController">
                     <view key="view" id="cbb-L3-9aM">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="670" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="34L-Xx-3kQ">
-                                <rect key="frame" x="0.0" y="186" width="450" height="114"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <rect key="frame" x="0.0" y="156" width="670" height="114"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" ambiguous="YES" id="ruy-mi-FKy">
-                                    <rect key="frame" x="1" y="1" width="448" height="112"/>
+                                    <rect key="frame" x="1" y="1" width="668" height="112"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xyK-G8-wTQ">
-                                            <rect key="frame" x="287" y="38" width="81" height="32"/>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xyK-G8-wTQ" userLabel="ShowSurnames">
+                                            <rect key="frame" x="516" y="13" width="138" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="h5c-Yl-txF">
+                                            <buttonCell key="cell" type="push" title="Show Surnames" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="h5c-Yl-txF">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -901,7 +901,7 @@
                 </viewController>
                 <customObject id="VdV-eH-thL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1373" y="-1243"/>
+            <point key="canvasLocation" x="1483" y="-1270"/>
         </scene>
         <!--LocationsController-->
         <scene sceneID="ljO-dQ-8k5">
