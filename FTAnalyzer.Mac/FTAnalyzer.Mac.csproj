@@ -60,9 +60,6 @@
     </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Security.Principal.Windows">
-      <HintPath>..\packages\System.Security.Principal.Windows.4.5.0\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
-    </Reference>
     <Reference Include="System.Security.AccessControl">
       <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\netstandard2.0\System.Security.AccessControl.dll</HintPath>
     </Reference>
@@ -72,8 +69,17 @@
     <Reference Include="System.Configuration.ConfigurationManager">
       <HintPath>..\packages\System.Configuration.ConfigurationManager.4.5.0\lib\netstandard2.0\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security.Principal.Windows">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.5.1\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.8.8\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\packages\HtmlAgilityPack.1.8.9\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleAnalyticsTracker.Core">
+      <HintPath>..\packages\GoogleAnalyticsTracker.Core.4.6.7\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleAnalyticsTracker.Simple">
+      <HintPath>..\packages\GoogleAnalyticsTracker.Simple.4.6.7\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Simple.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +116,7 @@
     <Folder Include="Resources\Fonts\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="DataSources\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -128,7 +135,7 @@
     </Compile>
     <Compile Include="ViewControllers\BindingListViewController.cs" />
     <Compile Include="DataSources\BindingListTableSource.cs" />
-    <Compile Include="UIHelpers.cs" />
+    <Compile Include="Utilities\UIHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
