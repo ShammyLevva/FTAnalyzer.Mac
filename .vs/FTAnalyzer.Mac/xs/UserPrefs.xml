@@ -1,6 +1,9 @@
 ﻿<Properties StartupConfiguration="{EE106C3A-38A4-4962-A747-8D5D17AE3039}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Mac Status">
     <Files>
+      <File FileName="FTAnalyzer.Mac/Utilities/Analytics.cs" Line="23" Column="9" />
+      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="2" Column="18" />
+      <File FileName="FTAnalyzer.Mac/Utilities/SpecialMethods.cs" Line="14" Column="10" />
       <File FileName="FTAnalyzer.Mac Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
