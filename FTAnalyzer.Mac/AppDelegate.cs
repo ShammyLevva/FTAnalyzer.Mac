@@ -16,6 +16,7 @@ namespace FTAnalyzer.Mac
             // Insert code here to initialize your application
             var window = NSApplication.SharedApplication.Windows[0];
             window.Title = "Family Tree Analyzer v" + Version;
+            
         }
 
         public override void WillTerminate(NSNotification notification)
