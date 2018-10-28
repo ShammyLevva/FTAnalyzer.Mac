@@ -1,9 +1,10 @@
 ﻿<Properties StartupConfiguration="{EE106C3A-38A4-4962-A747-8D5D17AE3039}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Mac/GedcomDocument.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Mac Status">
     <Files>
-      <File FileName="FTAnalyzer.Mac/Info.plist" />
+      <File FileName="FTAnalyzer.Mac/Main.cs" Line="1" Column="1" />
+      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="18" Column="63" />
+      <File FileName="FTAnalyzer.Shared Status" />
       <File FileName="FTAnalyzer.Mac Status" />
-      <File FileName="FTAnalyzer.Mac/GedcomDocument.cs" Line="106" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ActiveRuntime="Mono 5.16.0.151 (5e81afa90df)" />
