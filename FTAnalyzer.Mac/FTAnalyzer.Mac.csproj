@@ -138,8 +138,6 @@
     <Compile Include="ViewControllers\BindingListViewController.cs" />
     <Compile Include="DataSources\BindingListTableSource.cs" />
     <Compile Include="Utilities\UIHelpers.cs" />
-    <Compile Include="Utilities\Analytics.cs" />
-    <Compile Include="Utilities\SpecialMethods.cs" />
     <Compile Include="Properties\Settings.Designer.cs" />
   </ItemGroup>
   <ItemGroup>

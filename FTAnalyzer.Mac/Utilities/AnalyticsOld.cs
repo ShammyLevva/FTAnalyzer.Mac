@@ -15,7 +15,7 @@ namespace FTAnalyzer.Utilities
         public const string MainFormAction = "Main Form Action", FactsFormAction = "Facts Form Action", CensusTabAction = "Census Tab Action",
                             ReportsAction = "Reports Action", LostCousinsAction = "Lost Cousins Action", GeocodingAction = "Geocoding Action",
                             ExportAction = "Export Action", MapsAction = "Maps Action", CensusSearchAction = "Census Search Action",
-                            BMDSearchAction = "BMD Search Action";
+                            BMDSearchAction = "BMD Search Action", FTAStartup = "FTAnalyzer Startup";
 
         public static string AppVersion { get; }
         public static string DeploymentType => "Mac Website";
@@ -44,8 +44,8 @@ namespace FTAnalyzer.Utilities
         {
             try
             {
-                await SpecialMethods.TrackEventAsync(tracker, "FTAnalyzer Startup", "Load Program", AppVersion).ConfigureAwait(false);
-                await SpecialMethods.TrackScreenviewAsync(tracker, "FTAnalyzer Startup").ConfigureAwait(false); ;
+                await SpecialMethods.TrackEventAsync(tracker, FTAStartup, "Load Program", AppVersion).ConfigureAwait(false);
+                await SpecialMethods.TrackScreenviewAsync(tracker, FTAStartup).ConfigureAwait(false); ;
             }
             catch (Exception e)
                 { Console.WriteLine(e.Message); }

@@ -8,7 +8,7 @@ using GoogleAnalyticsTracker.Simple;
 
 namespace FTAnalyzer.Utilities
 {
-    public static class SpecialMethods
+    public static class SpecialMethodsOld
     {
         public static async Task<TrackingResult> TrackEventAsync(this SimpleTracker tracker, string category, string action, string label, long value = 1)
         {
@@ -17,7 +17,6 @@ namespace FTAnalyzer.Utilities
             {
                 ClientId = Analytics.GUID,
                 UserId = Analytics.GUID,
-
                 ApplicationName = "FTAnalyzer",
                 ApplicationVersion = Analytics.AppVersion,
                 Category = category,
