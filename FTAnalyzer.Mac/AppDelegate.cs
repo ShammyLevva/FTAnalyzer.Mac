@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Web;
-using System.Threading.Tasks;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
@@ -10,7 +9,7 @@ using HtmlAgilityPack;
 namespace FTAnalyzer.Mac
 {
     [Register("AppDelegate")]
-    public class AppDelegate : NSApplicationDelegate
+    public partial class AppDelegate : NSApplicationDelegate
     {
         bool _documentOpening;
 
@@ -79,5 +78,47 @@ namespace FTAnalyzer.Mac
                 { Console.WriteLine(e.Message); }
         }
 
+        partial void ViewOnlineManual(NSObject sender)
+        {
+            Analytics.TrackAction(Analytics.MainFormAction, Analytics.OnlineManualEvent);
+            HttpUtility.VisitWebsite("http://www.ftanalyzer.com");
+        }
+
+        partial void ViewOnlineGUides(NSObject sender)
+        {
+            Analytics.TrackAction(Analytics.MainFormAction, Analytics.OnlineGuideEvent);
+            HttpUtility.VisitWebsite("http://www.ftanalyzer.com/guides");
+        }
+
+        partial void ReportIssue(NSObject sender)
+        {
+            UIHelpers.ShowMessage("Please note this is a very early development version if you find a crashing bug please report it.\nOtherwise assume I'll get round to fixing things later.\nYou may find it more useful to raise issue at the Facebook User Group.");
+            Analytics.TrackAction(Analytics.MainFormAction, Analytics.ReportIssueEvent);
+            HttpUtility.VisitWebsite("https://github.com/ShammyLevva/FTAnalyzer.Mac/issues");
+        }
+
+        partial void VisitFacebookSupport(NSObject sender)
+        {
+            HttpUtility.VisitWebsite("https://www.facebook.com/ftanalyzer");
+            Analytics.TrackAction(Analytics.MainFormAction, Analytics.FacebookSupportEvent);
+        }
+
+        partial void VisitFacebookUserGroup(NSObject sender)
+        {
+            HttpUtility.VisitWebsite("https://www.facebook.com/groups/ftanalyzer");
+            Analytics.TrackAction(Analytics.MainFormAction, Analytics.FacebookUsersEvent);
+        }
+
+        partial void VisitPrivacyPolicy(NSObject sender)
+        {
+            Analytics.TrackAction(Analytics.MainFormAction, Analytics.PrivacyEvent);
+            HttpUtility.VisitWebsite("http://www.ftanalyzer.com/privacy");
+        }
+
+        partial void VisitWhatsNew(NSObject sender)
+        {
+            Analytics.TrackAction(Analytics.MainFormAction, Analytics.WhatsNewEvent);
+            HttpUtility.VisitWebsite("http://mac.ftanalyzer.com/Whats%20New%20in%20this%20Release");
+        }
     }
 }

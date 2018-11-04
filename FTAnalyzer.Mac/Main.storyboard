@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <deployment version="101200" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -629,6 +629,49 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
+                                        <menuItem title="View Online Manual" id="ZIW-mO-WTZ" userLabel="View Online Manual">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ViewOnlineManual:" target="Voe-Tx-rLC" id="kWL-fI-Kxi"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Online Guides to Using FTAnalyzer" id="BrV-63-D5S">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ViewOnlineGUides:" target="Voe-Tx-rLC" id="n8o-qt-7yR"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Report an Issue" id="YVC-Ml-gaT">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ReportIssue:" target="Voe-Tx-rLC" id="bWq-Fk-GCV"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Facebook Support Page" id="nKA-b6-g3Z">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="VisitFacebookSupport:" target="Voe-Tx-rLC" id="zBJ-am-9VA"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Facebook User Group" id="boP-zW-qui">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="VisitFacebookUserGroup:" target="Voe-Tx-rLC" id="G6v-4d-cHH"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="A6m-NN-DqR"/>
+                                        <menuItem title="Privacy Policy" id="kg5-SM-GW4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="VisitPrivacyPolicy:" target="Voe-Tx-rLC" id="qRn-RW-8bT"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="What's New" id="eeh-5P-bbU">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="VisitWhatsNew:" target="Voe-Tx-rLC" id="gXt-uC-3yK"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="FTAnalyzer Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>

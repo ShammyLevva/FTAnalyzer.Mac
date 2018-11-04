@@ -78,7 +78,7 @@ namespace FTAnalyzer.Mac
             var document = _familyTree.LoadTreeHeader(url.Path, documentViewController.Messages);
             if (document == null)
             {
-                documentViewController.Messages.Report("\n\nUnable to load file " + url.Path + "\n");
+                documentViewController.Messages.Report($"\n\nUnable to load file {url.Path}\n");
                 return false;
             }
 
@@ -103,11 +103,11 @@ namespace FTAnalyzer.Mac
 
             documentViewController.Messages.Report($"\n\nFinished loading file {url.Path}\n");
 
-            InvokeOnMainThread(() =>
+            InvokeOnMainThread(async() =>
             {
                 var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
                 app.Document = this;
-
+                await Analytics.TrackAction(Analytics.MainFormAction, Analytics.LoadGEDCOMEvent);
                 UIHelpers.ShowMessage($"Gedcom file {url.Path} loaded.", "FTAnalyzer");
             });
 
