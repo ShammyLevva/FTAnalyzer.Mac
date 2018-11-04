@@ -1,6 +1,11 @@
-﻿using AppKit;
+﻿using System;
+using System.Net;
+using System.Web;
+using System.Threading.Tasks;
+using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
+using HtmlAgilityPack;
 
 namespace FTAnalyzer.Mac
 {
@@ -15,8 +20,9 @@ namespace FTAnalyzer.Mac
         {
             // Insert code here to initialize your application
             var window = NSApplication.SharedApplication.Windows[0];
-            window.Title = "Family Tree Analyzer v" + Version;
-            Analytics.CheckProgramUsageAsync();
+            window.Title = $"Family Tree Analyzer v{Version}";
+            CheckWebVersion();
+            UpdateAnalytics();
         }
 
         public override void WillTerminate(NSNotification notification)
@@ -50,5 +56,41 @@ namespace FTAnalyzer.Mac
                 return version + "." + build;
             }
         }
+
+        async void UpdateAnalytics()
+        {
+            try
+            {
+                await Analytics.CheckProgramUsageAsync();
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage(e.Message);
+            }
+        }
+
+        async void CheckWebVersion()
+        {
+            try
+            {
+                WebClient wc = new WebClient();
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                string webData = wc.DownloadString("https://github.com/ShammyLevva/FTAnalyzer.Mac/releases");
+                doc.LoadHtml(webData);
+                HtmlNode versionNode = doc.DocumentNode.SelectSingleNode("//span[@class='css-truncate-target']/text()");
+                string webVersion = versionNode.InnerText;
+                if (webVersion != Version) 
+                {
+                    string text = $"Version installed: {Version}, Web version available: {webVersion}\nDo you want to go to website to download the latest version?";
+                   
+                    var download = UIHelpers.ShowYesNo(text, "FTAnalyzer");
+                    if (download == UIHelpers.Yes)
+                        HttpUtility.VisitWebsite("https://github.com/ShammyLevva/FTAnalyzer.Mac/releases");
+                }
+                await Analytics.CheckProgramUsageAsync();
+            }
+            catch (Exception) { }
+        }
+
     }
 }

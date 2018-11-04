@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using AppKit;
+using Foundation;
 using FTAnalyzer.Mac;
-using FTAnalyzer.Properties;
 using GoogleAnalyticsTracker.Simple;
 
 namespace FTAnalyzer.Utilities
@@ -19,22 +18,24 @@ namespace FTAnalyzer.Utilities
                             BMDSearchAction = "BMD Search Action";
 
         public static string AppVersion { get; }
-        static Dictionary<int,string> CustomDimensions { get; }
-
+        public static string DeploymentType => "Mac Website";
+        public static string OSVersion { get; }
+        public static string GUID { get; } 
+ 
         static Analytics()
         {
-            if (Settings.Default.GUID.ToString() == "00000000-0000-0000-0000-000000000000")
+            var userDefaults = new NSUserDefaults();
+            GUID = userDefaults.StringForKey("AnalyticsKey");
+            if (string.IsNullOrEmpty(GUID))
             {
-                Settings.Default.GUID = Guid.NewGuid();
-                Settings.Default.Save();
+                GUID = Guid.NewGuid().ToString();
+                userDefaults.SetString(GUID, "AnalyticsKey");
+                userDefaults.Synchronize();
             }
-            OperatingSystem os = Environment.OSVersion;
-            trackerEnvironment = new SimpleTrackerEnvironment(os.Platform.ToString(), os.Version.ToString(), os.VersionString);
+            NSProcessInfo info = new NSProcessInfo();
+            OSVersion = $"MacOSX {info.OperatingSystemVersionString}";
+            trackerEnvironment = new SimpleTrackerEnvironment("Mac OSX", info.OperatingSystemVersion.ToString(), OSVersion);
             tracker = new SimpleTracker("UA-125850339-2", trackerEnvironment);
-            CustomDimensions = new Dictionary<int, string>
-            {
-
-            };
             var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
             AppVersion = app.Version;
         }
@@ -44,20 +45,7 @@ namespace FTAnalyzer.Utilities
             try
             {
                 await SpecialMethods.TrackEventAsync(tracker, "FTAnalyzer Startup", "Load Program", AppVersion).ConfigureAwait(false);
-                await SpecialMethods.TrackEventAsync(tracker, "FTAnalyzer Startup", "Record OS Version", trackerEnvironment.OsVersion).ConfigureAwait(false);
-                await SpecialMethods.TrackEventAsync(tracker, "FTAnalyzer Startup", "Deployment Type", "Mac Download").ConfigureAwait(false);
-                await SpecialMethods.TrackScreenviewAsync(tracker, "FTAnalyzer Startup");
-            }
-            catch (Exception e)
-                { Console.WriteLine(e.Message); }
-        }
-
-        public static async Task EndProgramAsync()
-        {
-            try
-            {
-                TimeSpan duration = DateTime.Now - Settings.Default.StartTime;
-                await SpecialMethods.TrackEventAsync(tracker, "FTAnalyzer Shutdown", "Usage Time", duration.ToString("c"));
+                await SpecialMethods.TrackScreenviewAsync(tracker, "FTAnalyzer Startup").ConfigureAwait(false); ;
             }
             catch (Exception e)
                 { Console.WriteLine(e.Message); }
@@ -69,7 +57,7 @@ namespace FTAnalyzer.Utilities
             try
             {
                 await SpecialMethods.TrackEventAsync(tracker, category, action, value).ConfigureAwait(false);
-                await SpecialMethods.TrackScreenviewAsync(tracker, category);
+                await SpecialMethods.TrackScreenviewAsync(tracker, category).ConfigureAwait(false); ;
             }
             catch (Exception e)
                 { Console.WriteLine(e.Message); }
