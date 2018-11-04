@@ -1,9 +1,7 @@
 ﻿<Properties StartupConfiguration="{EE106C3A-38A4-4962-A747-8D5D17AE3039}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Mac Status">
     <Files>
-      <File FileName="FTAnalyzer.Mac/Utilities/Analytics.cs" Line="23" Column="9" />
-      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="2" Column="18" />
-      <File FileName="FTAnalyzer.Mac/Utilities/SpecialMethods.cs" Line="14" Column="10" />
+      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Utilities/Analytics.cs" Line="83" Column="96" />
       <File FileName="FTAnalyzer.Mac Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -15,6 +13,7 @@
       <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Shared/FTAnalyzer.Shared/Core/FactDate.cs" line="8" column="1" />
       <Breakpoint file="/Library/Frameworks/Xamarin.Mac.framework/Versions/4.8.0.22/src/Xamarin.Mac/external/corert/src/System.Private.CoreLib/shared/System/String.Manipulation.cs" line="931" column="1" />
       <Breakpoint file="/Library/Frameworks/Xamarin.Mac.framework/Versions/4.8.0.22/src/Xamarin.Mac/external/corert/src/System.Private.CoreLib/shared/System/String.Manipulation.cs" line="969" column="1" />
+      <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/Main.cs" relfile="FTAnalyzer.Mac/Main.cs" line="2" column="12" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
