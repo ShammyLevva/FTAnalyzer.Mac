@@ -7,7 +7,7 @@ namespace FTAnalyzer.Mac.ViewControllers
 {
     public class BindingListViewController<T> : NSViewController
     {
-        NSTableView _tableView;
+        internal NSTableView _tableView;
 
         public BindingListViewController(string title)
         {
@@ -25,7 +25,13 @@ namespace FTAnalyzer.Mac.ViewControllers
                 UsesAlternatingRowBackgroundColors = true,
                 ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
                 Bounds = new CoreGraphics.CGRect(0, 0, 500, 500),
-                AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable
+                AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
+                AllowsMultipleSelection = false,
+                AutosaveName = title,
+                AllowsColumnResizing = true,
+                AutosaveTableColumns = true,
+                Target = Self,
+                DoubleAction = new ObjCRuntime.Selector("ViewFactsSelector")
             };
 
             var properties = typeof(T).GetProperties();
@@ -46,9 +52,10 @@ namespace FTAnalyzer.Mac.ViewControllers
                 DocumentView = _tableView
             };
             View = scrollView;
+
         }
 
-        public void RefreshDocumentView(SortableBindingList<T> list)
+        public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
             if (!NSThread.IsMain)
             {
@@ -59,6 +66,39 @@ namespace FTAnalyzer.Mac.ViewControllers
             var source = new BindingListTableSource<T>(list);
             _tableView.Source = source;
             _tableView.ReloadData();
+        }
+
+        [Export ("ViewFactsSelector")]
+        public void ViewFactsSelector()
+        {
+            if (!NSThread.IsMain)
+            {
+                InvokeOnMainThread(ViewFactsSelector);
+                return;
+            }
+            NSTableColumn column = GetColumnID("IndividualID");
+            if (column != null)
+            {
+                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTextField cell)
+                {
+                    string indID = cell.StringValue;
+                    Individual ind = FamilyTree.Instance.GetIndividual(indID);
+                    var factsViewController = new FactsView<Individual>($"Facts View for {ind.Name}", ind);
+                    factsViewController.View.show
+                }
+            }
+        }
+
+        NSTableColumn GetColumnID(string identifier)
+        {
+            int count = 0;
+            foreach (NSTableColumn column in _tableView.TableColumns())
+            {
+                if (column.Identifier == identifier)
+                    return column;
+                count++;
+            }
+            return null;
         }
 
     }
