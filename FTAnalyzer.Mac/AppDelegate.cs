@@ -19,7 +19,7 @@ namespace FTAnalyzer.Mac
         {
             // Insert code here to initialize your application
             var window = NSApplication.SharedApplication.Windows[0];
-            window.Title = $"Family Tree Analyzer v{Version}";
+            window.Title = $"Family Tree Analyzer {Version}";
             CheckWebVersion();
         }
 
@@ -51,7 +51,7 @@ namespace FTAnalyzer.Mac
             {
                 var version = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString();
                 var build = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleVersion").ToString();
-                return version + "." + build;
+                return $"v{version}.{build}";
             }
         }
 

@@ -1,9 +1,11 @@
 ﻿<Properties StartupConfiguration="{EE106C3A-38A4-4962-A747-8D5D17AE3039}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Mac Status">
     <Files>
-      <File FileName="FTAnalyzer.Mac/GedcomDocument.cs" Line="115" Column="25" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Utilities/Analytics.cs" Line="88" Column="97" />
-      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="91" Column="10" />
+      <File FileName="FTAnalyzer.Mac/GedcomDocument.cs" Line="124" Column="14" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" Line="34" Column="77" />
+      <File FileName="FTAnalyzer.Mac/FactsView.cs" Line="23" Column="1" />
+      <File FileName="FTAnalyzer.Mac/Main.cs" Line="9" Column="1" />
+      <File FileName="FTAnalyzer.Mac/DataSources/BindingListTableSource.cs" Line="21" Column="1" />
       <File FileName="FTAnalyzer.Mac Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -16,6 +18,7 @@
       <Breakpoint file="/Library/Frameworks/Xamarin.Mac.framework/Versions/4.8.0.22/src/Xamarin.Mac/external/corert/src/System.Private.CoreLib/shared/System/String.Manipulation.cs" line="931" column="1" />
       <Breakpoint file="/Library/Frameworks/Xamarin.Mac.framework/Versions/4.8.0.22/src/Xamarin.Mac/external/corert/src/System.Private.CoreLib/shared/System/String.Manipulation.cs" line="969" column="1" />
       <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/Main.cs" relfile="FTAnalyzer.Mac/Main.cs" line="2" column="12" />
+      <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" relfile="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" line="87" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

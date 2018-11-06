@@ -7,19 +7,19 @@ namespace FTAnalyzer.Mac
 {
     public partial class GedcomDocumentViewController : NSViewController
     {
-        IProgress<string> _messages;
-        IProgress<int> _sources;
-        IProgress<int> _individuals;
-        IProgress<int> _families;
-        IProgress<int> _relationships;
+        public IProgress<string> Messages { get; }
+        public IProgress<int> Sources { get; }
+        public IProgress<int> Individuals { get; }
+        public IProgress<int> Families { get; }
+        public IProgress<int> Relationships { get; }
 
         public GedcomDocumentViewController(IntPtr handle) : base(handle)
         {
-            _messages = new Progress<string>(message => AppendMessage(message));
-            _sources = new Progress<int>(percent => SetProgress(_sourcesProgress, percent));
-            _individuals = new Progress<int>(percent => SetProgress(_individualsProgress, percent));
-            _families = new Progress<int>(percent => SetProgress(_familiesProgress, percent));
-            _relationships = new Progress<int>(percent => SetProgress(_relationshipsProgress, percent));
+            Messages = new Progress<string>(message => AppendMessage(message));
+            Sources = new Progress<int>(percent => SetProgress(_sourcesProgress, percent));
+            Individuals = new Progress<int>(percent => SetProgress(_individualsProgress, percent));
+            Families = new Progress<int>(percent => SetProgress(_familiesProgress, percent));
+            Relationships = new Progress<int>(percent => SetProgress(_relationshipsProgress, percent));
         }
 
         public override void ViewDidLoad()
@@ -27,29 +27,19 @@ namespace FTAnalyzer.Mac
             base.ViewDidLoad();
 
             // Do any additional setup after loading the view.
-//            ThisApp.Document = 
             var font = NSFont.FromFontName("Kunstler Script", 72.0f);
             _titleLabel.Font = font;
         }
 
-		#region Computed Properties
+        #region Computed Properties
         /// <summary>
         /// Returns the delegate of the current running application
         /// </summary>
         /// <value>The this app.</value>
-        public AppDelegate ThisApp
-        {
-            get { return (AppDelegate)NSApplication.SharedApplication.Delegate; }
-        }
+        public AppDelegate ThisApp => (AppDelegate)NSApplication.SharedApplication.Delegate;
         #endregion
 
         public override NSObject RepresentedObject => base.RepresentedObject;
-
-        public IProgress<string> Messages => _messages;
-        public IProgress<int> Sources => _sources;
-        public IProgress<int> Individuals => _individuals;
-        public IProgress<int> Families => _families;
-        public IProgress<int> Relationships => _relationships;
 
         public void ClearAllProgress()
         {

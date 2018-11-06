@@ -139,8 +139,10 @@
     <Compile Include="DataSources\BindingListTableSource.cs" />
     <Compile Include="Utilities\UIHelpers.cs" />
     <Compile Include="Properties\Settings.Designer.cs" />
-    <Compile Include="AppDelegate.designer.cs">
-      <DependentUpon>AppDelegate.cs</DependentUpon>
+    <Compile Include="AppDelegate.designer.cs" />
+    <Compile Include="FactsView.cs" />
+    <Compile Include="FactsView.designer.cs">
+      <DependentUpon>FactsView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
