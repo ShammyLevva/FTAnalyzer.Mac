@@ -83,8 +83,11 @@ namespace FTAnalyzer.Mac.ViewControllers
                 {
                     string indID = cell.StringValue;
                     Individual ind = FamilyTree.Instance.GetIndividual(indID);
-                    var factsViewController = new FactsView<Individual>($"Facts View for {ind.Name}", ind);
-                    factsViewController.View.show
+
+                    var storyboard = NSStoryboard.FromName("Facts", null);
+                    var factsWindowController = storyboard.InstantiateControllerWithIdentifier("FactsWindow") as FactsWindowController;
+                    factsWindowController.ContentViewController = new FactsViewController<Individual>($"Facts View for {ind.Name}", ind);
+                    factsWindowController.ShowWindow(this);
                 }
             }
         }

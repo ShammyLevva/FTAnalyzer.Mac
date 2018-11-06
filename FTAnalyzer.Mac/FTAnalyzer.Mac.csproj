@@ -140,14 +140,19 @@
     <Compile Include="Utilities\UIHelpers.cs" />
     <Compile Include="Properties\Settings.Designer.cs" />
     <Compile Include="AppDelegate.designer.cs" />
-    <Compile Include="FactsView.cs" />
-    <Compile Include="FactsView.designer.cs">
-      <DependentUpon>FactsView.cs</DependentUpon>
+    <Compile Include="ViewControllers\FactsViewController.cs" />
+    <Compile Include="ViewControllers\FactsViewController.designer.cs">
+      <DependentUpon>FactsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FactsWindowController.cs" />
+    <Compile Include="FactsWindowController.designer.cs">
+      <DependentUpon>FactsWindowController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="Resources\en.lproj\Main.storyboard" />
+    <InterfaceDefinition Include="Facts.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\Kunstler.ttf">

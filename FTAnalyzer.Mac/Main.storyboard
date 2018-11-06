@@ -725,19 +725,6 @@
             </objects>
             <point key="canvasLocation" x="535" y="-1435"/>
         </scene>
-        <!--Facts View-->
-        <scene sceneID="yh9-gt-Qzw">
-            <objects>
-                <viewController title="Facts View" id="viE-jr-iDq" sceneMemberID="viewController">
-                    <view key="view" id="2bq-9a-7BH" customClass="FactsView" customModule="FTAnalyzer_Mac" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="Ohq-nV-x6R" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1542" y="-2083"/>
-        </scene>
         <!--MainListsController-->
         <scene sceneID="5Ys-nG-dGC">
             <objects>
