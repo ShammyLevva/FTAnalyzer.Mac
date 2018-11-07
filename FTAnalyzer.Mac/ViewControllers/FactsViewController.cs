@@ -10,18 +10,23 @@ using FTAnalyzer.Mac.DataSources;
 
 namespace FTAnalyzer.Mac
 {
-    public partial class FactsViewController<T>: BindingListViewController<T>
+    public class FactsViewController<T>: BindingListViewController<T>
 	{
-        SortableBindingList<IDisplayFact> facts;
-        Individual Individual { get; }
+        readonly SortableBindingList<IDisplayFact> facts;
 
         public FactsViewController(string title, Individual individual) : base (title)
 		{
             facts = new SortableBindingList<IDisplayFact>();
-            Individual = individual;
             AddIndividualsFacts(individual);
             RefreshDocumentView();
 		}
+
+        public FactsViewController(string title, Family family) : base(title)
+        {
+            facts = new SortableBindingList<IDisplayFact>();
+            AddFamilyFacts(family);
+            RefreshDocumentView();
+        }
 
         public void RefreshDocumentView()
         {
@@ -40,6 +45,12 @@ namespace FTAnalyzer.Mac
             IEnumerable<Fact> list = individual.AllFacts.Union(individual.ErrorFacts.Where(f => f.FactErrorLevel != Fact.FactError.WARNINGALLOW));
             foreach (Fact f in list)
                 facts.Add(new DisplayFact(individual, f));
+        }
+
+        void AddFamilyFacts(Family family)
+        {
+            foreach (DisplayFact f in family.AllDisplayFacts)
+                facts.Add(f);
         }
     }
 }

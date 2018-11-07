@@ -27,9 +27,9 @@ namespace FTAnalyzer.Mac.ViewControllers
                 Bounds = new CoreGraphics.CGRect(0, 0, 500, 500),
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
                 AllowsMultipleSelection = false,
-                AutosaveName = title,
                 AllowsColumnResizing = true,
-                AutosaveTableColumns = true,
+                //AutosaveName = title,
+                //AutosaveTableColumns = true,
                 Target = Self,
                 DoubleAction = new ObjCRuntime.Selector("ViewFactsSelector")
             };
@@ -49,10 +49,11 @@ namespace FTAnalyzer.Mac.ViewControllers
             }
             var scrollView = new NSScrollView
             {
-                DocumentView = _tableView
+                DocumentView = _tableView,
+                HasVerticalScroller = true,
+                HasHorizontalScroller = true,
             };
             View = scrollView;
-
         }
 
         public void RefreshDocumentView(SortableBindingList<T> list)
@@ -84,6 +85,29 @@ namespace FTAnalyzer.Mac.ViewControllers
                     string indID = cell.StringValue;
                     Individual ind = FamilyTree.Instance.GetIndividual(indID);
                     RaiseFactRowClicked(ind);
+                    return;
+                }
+            } 
+            column = GetColumnID("FamilyID");
+            if (column != null)
+            {
+                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTextField cell)
+                {
+                    string familyID = cell.StringValue;
+                    Family family = FamilyTree.Instance.GetFamily(familyID);
+                    RaiseFactRowClicked(family);
+                    return;
+                }
+            }
+            column = GetColumnID("SourceID");
+            if (column != null)
+            {
+                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTextField cell)
+                {
+                    string sourceID = cell.StringValue;
+                    //FactSource factSource = FamilyTree.Instance.GetSourceDisplayFacts();
+                    //RaiseFactRowClicked(family);
+                    return;
                 }
             }
         }
@@ -101,13 +125,20 @@ namespace FTAnalyzer.Mac.ViewControllers
         }
 
         #region Events
-        public delegate void RowClickedDelegate(Individual individual);
-        public event RowClickedDelegate FactRowClicked;
+        public delegate void IndividualRowClickedDelegate(Individual individual);
+        public delegate void FamilyRowClickedDelegate(Family family);
+        public event IndividualRowClickedDelegate IndividualFactRowClicked;
+        public event FamilyRowClickedDelegate FamilyFactRowClicked;
 
         internal void RaiseFactRowClicked(Individual individual)
         {
             // Inform caller
-            FactRowClicked?.Invoke(individual);
+            IndividualFactRowClicked?.Invoke(individual);
+        }
+        internal void RaiseFactRowClicked(Family family)
+        {
+            // Inform caller
+            FamilyFactRowClicked?.Invoke(family);
         }
         #endregion
     }

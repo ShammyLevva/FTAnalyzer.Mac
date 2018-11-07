@@ -1,1 +1,2 @@
-﻿Open second file should close first, clear tabs and revert to GEDCOM tab
+﻿Opening facts window should allow multiple version to open
+Opening new GEDCOM should force close any facts windows

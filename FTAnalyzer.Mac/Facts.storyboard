@@ -10,10 +10,10 @@
         <scene sceneID="A0N-ni-4zf">
             <objects>
                 <windowController storyboardIdentifier="FactsWindow" id="gCB-qo-bfZ" sceneMemberID="viewController">
-                    <window key="window" title="Facts" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="USy-3S-DuG">
+                    <window key="window" title="Facts" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="USy-3S-DuG">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="680" height="420"/>
+                        <rect key="contentRect" x="294" y="313" width="836" height="355"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                         <connections>
                             <outlet property="delegate" destination="gCB-qo-bfZ" id="cqR-hT-C5D"/>
@@ -25,14 +25,14 @@
                 </windowController>
                 <customObject id="ZFD-a1-UZW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="-604"/>
+            <point key="canvasLocation" x="545" y="-1010"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="Qai-0n-xuV">
             <objects>
-                <tabViewController id="Iqd-2Y-WVV" sceneMemberID="viewController">
+                <tabViewController canPropagateSelectedChildViewControllerTitle="NO" id="Iqd-2Y-WVV" sceneMemberID="viewController">
                     <tabView key="tabView" type="noTabsNoBorder" id="Mid-8s-Agm">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="-97" y="0.0" width="858" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="message"/>
                         <connections>
@@ -45,7 +45,7 @@
                 </tabViewController>
                 <customObject id="y34-S1-nI6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8" y="-140"/>
+            <point key="canvasLocation" x="545" y="-587"/>
         </scene>
     </scenes>
 </document>

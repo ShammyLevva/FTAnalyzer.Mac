@@ -74,7 +74,8 @@ namespace FTAnalyzer.Mac
                 errorsAndFixesTabViewController.AddChildViewController(looseBirthsViewController);
                 errorsAndFixesTabViewController.AddChildViewController(looseDeathsViewController);
 
-                individualsViewController.FactRowClicked += IndividualsFactRowClicked;
+                individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
+                familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
             });
 
             var document = _familyTree.LoadTreeHeader(url.Path, documentViewController.Messages);
@@ -117,14 +118,24 @@ namespace FTAnalyzer.Mac
             return true;
         }
 
-        void IndividualsFactRowClicked(Individual ind)
+        void IndividualsFactRowClicked(Individual individual)
         {
             InvokeOnMainThread(() =>
             {
                 var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
-                var factsViewController = new FactsViewController<IDisplayFact>($"Facts View for {ind.Name}", ind);
+                var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual);
                 app.ShowFacts(factsViewController);
              });
+        }
+
+        void FamiliesFactRowClicked(Family family)
+        {
+            InvokeOnMainThread(() =>
+            {
+                var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
+                var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family);
+                app.ShowFacts(factsViewController);
+            });
         }
 
         static void RemoveOldTabs(NSTabViewController viewController)

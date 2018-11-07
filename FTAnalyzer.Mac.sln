@@ -23,5 +23,10 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		version = 0.1.1
+		Policies = $0
+		$0.StandardHeader = $1
+		$0.VersionControlPolicy = $2
+		$2.CommitMessageStyle = $3
+		$3.FileSeparator = ", "
 	EndGlobalSection
 EndGlobal

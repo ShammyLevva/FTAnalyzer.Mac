@@ -44,7 +44,7 @@ namespace FTAnalyzer.Mac.DataSources
             var item = _bindingList[(int)row];
             var index = Array.IndexOf(_fieldNames, tableColumn.Title);
             var propertyValue = _properties[index].GetValue(item);
-            view.StringValue = propertyValue.ToString();
+            view.StringValue = propertyValue == null ? string.Empty : propertyValue.ToString();
 
             return view;
         }

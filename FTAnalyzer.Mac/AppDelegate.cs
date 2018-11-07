@@ -49,15 +49,20 @@ namespace FTAnalyzer.Mac
         public void ShowFacts(NSViewController factsViewController)
         {
             var storyboard = NSStoryboard.FromName("Facts", null);
-            if(_factsWindow == null)
-                _factsWindow = storyboard.InstantiateControllerWithIdentifier("FactsWindow") as NSWindowController;
-            _factsWindow.ContentViewController.AddChildViewController(factsViewController);
-            _factsWindow.ShowWindow(this);
+            var factsWindow = storyboard.InstantiateControllerWithIdentifier("FactsWindow") as NSWindowController;
+            factsWindow.ContentViewController.AddChildViewController(factsViewController);
+            factsWindow.Window.Title = factsViewController.Title;
+            factsWindow.ShowWindow(this);
         }
 
         public void CloseAllFactsWindows()
         {
-            _factsWindow?.Close();
+            var storyboard = NSStoryboard.FromName("Facts", null);
+            foreach(NSWindow window in NSApplication.SharedApplication.Windows)
+            {
+                if (window.Title.Substring(0,5) == "Facts")
+                    window.Close();
+            }
         }
 
         public string Version
