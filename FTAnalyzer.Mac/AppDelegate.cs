@@ -14,7 +14,6 @@ namespace FTAnalyzer.Mac
         bool _documentOpening;
 
         public GedcomDocument Document { get; set; }
-        NSWindowController _factsWindow;
 
         public override void DidFinishLaunching(NSNotification notification)
         {

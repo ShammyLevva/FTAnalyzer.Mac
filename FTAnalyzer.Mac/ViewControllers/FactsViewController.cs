@@ -28,6 +28,13 @@ namespace FTAnalyzer.Mac
             RefreshDocumentView();
         }
 
+        public FactsViewController(string title, FactSource source) : base(title)
+        {
+            facts = FamilyTree.Instance.GetSourceDisplayFacts(source);
+            Title = $"{title}.Facts count: {facts.Count}";
+            RefreshDocumentView();
+        }
+
         public void RefreshDocumentView()
         {
             if (!NSThread.IsMain)
@@ -52,5 +59,6 @@ namespace FTAnalyzer.Mac
             foreach (DisplayFact f in family.AllDisplayFacts)
                 facts.Add(f);
         }
+
     }
 }

@@ -105,8 +105,8 @@ namespace FTAnalyzer.Mac.ViewControllers
                 if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTextField cell)
                 {
                     string sourceID = cell.StringValue;
-                    //FactSource factSource = FamilyTree.Instance.GetSourceDisplayFacts();
-                    //RaiseFactRowClicked(family);
+                    FactSource source = FamilyTree.Instance.GetSource(sourceID);
+                    RaiseFactRowClicked(source);
                     return;
                 }
             }
@@ -127,8 +127,10 @@ namespace FTAnalyzer.Mac.ViewControllers
         #region Events
         public delegate void IndividualRowClickedDelegate(Individual individual);
         public delegate void FamilyRowClickedDelegate(Family family);
+        public delegate void SourceRowClickedDelegate(FactSource source);
         public event IndividualRowClickedDelegate IndividualFactRowClicked;
         public event FamilyRowClickedDelegate FamilyFactRowClicked;
+        public event SourceRowClickedDelegate SourceFactRowClicked;
 
         internal void RaiseFactRowClicked(Individual individual)
         {
@@ -139,6 +141,11 @@ namespace FTAnalyzer.Mac.ViewControllers
         {
             // Inform caller
             FamilyFactRowClicked?.Invoke(family);
+        }
+        internal void RaiseFactRowClicked(FactSource source)
+        {
+            // Inform caller
+            SourceFactRowClicked?.Invoke(source);
         }
         #endregion
     }

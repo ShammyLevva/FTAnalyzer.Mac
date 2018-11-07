@@ -76,6 +76,7 @@ namespace FTAnalyzer.Mac
 
                 individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
                 familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
+                sourcesViewController.SourceFactRowClicked += SourcesFactRowClicked;
             });
 
             var document = _familyTree.LoadTreeHeader(url.Path, documentViewController.Messages);
@@ -106,11 +107,11 @@ namespace FTAnalyzer.Mac
 
             documentViewController.Messages.Report($"\n\nFinished loading file {url.Path}\n");
 
-            InvokeOnMainThread(async() =>
+            InvokeOnMainThread(() =>
             {
                 var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
                 app.Document = this;
-                await Analytics.TrackAction(Analytics.MainFormAction, Analytics.LoadGEDCOMEvent);
+                Analytics.TrackAction(Analytics.MainFormAction, Analytics.LoadGEDCOMEvent);
                 UIHelpers.ShowMessage($"Gedcom file {url.Path} loaded.", "FTAnalyzer");
             });
 
@@ -124,8 +125,9 @@ namespace FTAnalyzer.Mac
             {
                 var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
                 var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual);
-                app.ShowFacts(factsViewController);
-             });
+                app.ShowFacts(factsViewController); 
+                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
+            });
         }
 
         void FamiliesFactRowClicked(Family family)
@@ -135,6 +137,18 @@ namespace FTAnalyzer.Mac
                 var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
                 var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family);
                 app.ShowFacts(factsViewController);
+                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsFamiliesEvent);
+            });
+        }
+
+        void SourcesFactRowClicked(FactSource source)
+        {
+            InvokeOnMainThread(() =>
+            {
+                var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
+                var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for source: {source.ToString()}", source);
+                app.ShowFacts(factsViewController);
+                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsSourceEvent);
             });
         }
 
