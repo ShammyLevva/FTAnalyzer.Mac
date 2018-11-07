@@ -48,7 +48,6 @@ namespace FTAnalyzer.Mac
                 InvokeOnMainThread(ClearAllProgress);
                 return;
             }
-
             _statusTextView.Value = string.Empty;
             _sourcesProgress.DoubleValue = 0;
             _individualsProgress.DoubleValue = 0;
@@ -63,15 +62,10 @@ namespace FTAnalyzer.Mac
                 InvokeOnMainThread(() => AppendMessage(message));
                 return;
             }
-
             if (_statusTextView.Value == null)
-            {
                 _statusTextView.Value = message;
-            }
             else
-            {
                 _statusTextView.Value += message;
-            }
         }
 
         void SetProgress(NSProgressIndicator progressBar, int percent)
@@ -81,7 +75,6 @@ namespace FTAnalyzer.Mac
                 InvokeOnMainThread(() => SetProgress(progressBar, percent));
                 return;
             }
-
             progressBar.DoubleValue = percent;
         }
     }

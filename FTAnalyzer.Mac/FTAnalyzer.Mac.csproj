@@ -144,10 +144,6 @@
     <Compile Include="ViewControllers\FactsViewController.designer.cs">
       <DependentUpon>FactsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="FactsWindowController.cs" />
-    <Compile Include="FactsWindowController.designer.cs">
-      <DependentUpon>FactsWindowController.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />

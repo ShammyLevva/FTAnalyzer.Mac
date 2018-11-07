@@ -73,6 +73,8 @@ namespace FTAnalyzer.Mac
                 //errorsAndFixesTabViewController.AddChildViewController(duplicatesViewController);
                 errorsAndFixesTabViewController.AddChildViewController(looseBirthsViewController);
                 errorsAndFixesTabViewController.AddChildViewController(looseDeathsViewController);
+
+                individualsViewController.FactRowClicked += IndividualsFactRowClicked;
             });
 
             var document = _familyTree.LoadTreeHeader(url.Path, documentViewController.Messages);
@@ -113,6 +115,16 @@ namespace FTAnalyzer.Mac
 
             RaiseDocumentModified(this);
             return true;
+        }
+
+        void IndividualsFactRowClicked(Individual ind)
+        {
+            InvokeOnMainThread(() =>
+            {
+                var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
+                var factsViewController = new FactsViewController<IDisplayFact>($"Facts View for {ind.Name}", ind);
+                app.ShowFacts(factsViewController);
+             });
         }
 
         static void RemoveOldTabs(NSTabViewController viewController)

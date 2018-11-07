@@ -14,6 +14,7 @@ namespace FTAnalyzer.Mac
         bool _documentOpening;
 
         public GedcomDocument Document { get; set; }
+        NSWindowController _factsWindow;
 
         public override void DidFinishLaunching(NSNotification notification)
         {
@@ -39,10 +40,24 @@ namespace FTAnalyzer.Mac
             {
                 _documentOpening = true;
                 Document.Close();
+                CloseAllFactsWindows();
                 _documentOpening = false;
             }
-
             return false;
+        }
+
+        public void ShowFacts(NSViewController factsViewController)
+        {
+            var storyboard = NSStoryboard.FromName("Facts", null);
+            if(_factsWindow == null)
+                _factsWindow = storyboard.InstantiateControllerWithIdentifier("FactsWindow") as NSWindowController;
+            _factsWindow.ContentViewController.AddChildViewController(factsViewController);
+            _factsWindow.ShowWindow(this);
+        }
+
+        public void CloseAllFactsWindows()
+        {
+            _factsWindow?.Close();
         }
 
         public string Version
@@ -64,8 +79,9 @@ namespace FTAnalyzer.Mac
                 string webData = wc.DownloadString("https://github.com/ShammyLevva/FTAnalyzer.Mac/releases");
                 doc.LoadHtml(webData);
                 HtmlNode versionNode = doc.DocumentNode.SelectSingleNode("//span[@class='css-truncate-target']/text()");
-                string webVersion = versionNode.InnerText;
-                if (webVersion != Version)
+                Version webVersion = new Version(versionNode.InnerText.Substring(1));
+                Version programVersion = new Version(Version.Substring(1));
+                if (webVersion > programVersion)
                 {
                     string text = $"Version installed: {Version}, Web version available: {webVersion}\nDo you want to go to website to download the latest version?";
                     var download = UIHelpers.ShowYesNo(text, "FTAnalyzer");

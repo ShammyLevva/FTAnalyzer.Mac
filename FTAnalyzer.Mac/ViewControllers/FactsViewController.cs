@@ -10,30 +10,30 @@ using FTAnalyzer.Mac.DataSources;
 
 namespace FTAnalyzer.Mac
 {
-    public partial class FactsViewController<T> : BindingListViewController<T>
+    public partial class FactsViewController<T>: BindingListViewController<T>
 	{
         SortableBindingList<IDisplayFact> facts;
+        Individual Individual { get; }
 
-        public FactsViewController (string title, Individual individual) : base (title)
+        public FactsViewController(string title, Individual individual) : base (title)
 		{
             facts = new SortableBindingList<IDisplayFact>();
+            Individual = individual;
             AddIndividualsFacts(individual);
-            RefreshDocumentView(facts);
+            RefreshDocumentView();
 		}
 
-        public void RefreshDocumentView(SortableBindingList<IDisplayFact> list)
+        public void RefreshDocumentView()
         {
             if (!NSThread.IsMain)
             {
-                InvokeOnMainThread(() => RefreshDocumentView(list));
+                InvokeOnMainThread(RefreshDocumentView);
                 return;
             }
-
-            var source = new BindingListTableSource<IDisplayFact>(list);
+            var source = new BindingListTableSource<IDisplayFact>(facts);
             _tableView.Source = source;
             _tableView.ReloadData();
         }
-
 
         void AddIndividualsFacts(Individual individual)
         {

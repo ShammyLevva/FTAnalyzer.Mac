@@ -28,8 +28,7 @@ namespace FTAnalyzer.Mac.DataSources
 
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
-            var view = tableView.MakeView(CellIdentifier, this) as NSTextField;
-            if (view == null)
+            if (!(tableView.MakeView(CellIdentifier, this) is NSTextField view))
             {
                 view = new NSTextField
                 {

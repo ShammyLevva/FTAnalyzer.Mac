@@ -55,7 +55,7 @@ namespace FTAnalyzer.Mac.ViewControllers
 
         }
 
-        public virtual void RefreshDocumentView(SortableBindingList<T> list)
+        public void RefreshDocumentView(SortableBindingList<T> list)
         {
             if (!NSThread.IsMain)
             {
@@ -83,11 +83,7 @@ namespace FTAnalyzer.Mac.ViewControllers
                 {
                     string indID = cell.StringValue;
                     Individual ind = FamilyTree.Instance.GetIndividual(indID);
-
-                    var storyboard = NSStoryboard.FromName("Facts", null);
-                    var factsWindowController = storyboard.InstantiateControllerWithIdentifier("FactsWindow") as FactsWindowController;
-                    factsWindowController.ContentViewController = new FactsViewController<Individual>($"Facts View for {ind.Name}", ind);
-                    factsWindowController.ShowWindow(this);
+                    RaiseFactRowClicked(ind);
                 }
             }
         }
@@ -104,5 +100,15 @@ namespace FTAnalyzer.Mac.ViewControllers
             return null;
         }
 
+        #region Events
+        public delegate void RowClickedDelegate(Individual individual);
+        public event RowClickedDelegate FactRowClicked;
+
+        internal void RaiseFactRowClicked(Individual individual)
+        {
+            // Inform caller
+            FactRowClicked?.Invoke(individual);
+        }
+        #endregion
     }
 }
