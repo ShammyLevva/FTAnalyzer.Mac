@@ -1,11 +1,15 @@
 ﻿<Properties StartupConfiguration="{EE106C3A-38A4-4962-A747-8D5D17AE3039}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Mac Status">
     <Files>
-      <File FileName="FTAnalyzer.Mac/ViewControllers/FactsViewController.cs" Line="26" Column="1" />
-      <File FileName="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" Line="110" Column="21" />
-      <File FileName="FTAnalyzer.Mac/GedcomDocument.cs" Line="135" Column="1" />
-      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="66" Column="10" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/FactsViewController.cs" Line="36" Column="10" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" Line="113" Column="10" />
+      <File FileName="FTAnalyzer.Mac/GedcomDocument.cs" Line="156" Column="10" />
+      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="46" Column="9" />
       <File FileName="FTAnalyzer.Mac/DataSources/BindingListTableSource.cs" Line="53" Column="1" />
+      <File FileName="FTAnalyzer.Mac Status" />
+      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Core/FamilyTree.cs" Line="1" Column="1" />
+      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Core/Fact.cs" Line="1" Column="1" />
+      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Utilities/Analytics.cs" Line="62" Column="9" />
       <File FileName="FTAnalyzer.Mac Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
