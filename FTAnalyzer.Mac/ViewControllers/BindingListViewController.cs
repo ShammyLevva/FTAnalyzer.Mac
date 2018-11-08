@@ -1,6 +1,7 @@
 ﻿using AppKit;
 using Foundation;
 using FTAnalyzer.Mac.DataSources;
+using FTAnalyzer.Properties;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.Mac.ViewControllers
@@ -8,11 +9,19 @@ namespace FTAnalyzer.Mac.ViewControllers
     public class BindingListViewController<T> : NSViewController
     {
         internal NSTableView _tableView;
+        string CountText { get; set; }
+        public string TooltipText { get; set; }
 
-        public BindingListViewController(string title)
+        public BindingListViewController(string title, string tooltip)
         {
             SetupView(title);
             Title = title;
+            TooltipText = tooltip;
+        }
+
+        public void UpdateTooltip()
+        {
+            _tableView.ToolTip = $"{CountText}. {TooltipText}";
         }
 
         void SetupView(string title)
@@ -63,7 +72,8 @@ namespace FTAnalyzer.Mac.ViewControllers
                 InvokeOnMainThread(() => RefreshDocumentView(list));
                 return;
             }
-
+            CountText = Messages.Count + list.Count;
+            UpdateTooltip();
             var source = new BindingListTableSource<T>(list);
             _tableView.Source = source;
             _tableView.ReloadData();

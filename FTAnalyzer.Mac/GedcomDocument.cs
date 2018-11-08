@@ -1,6 +1,7 @@
 ﻿using AppKit;
 using Foundation;
 using FTAnalyzer.Mac.ViewControllers;
+using FTAnalyzer.Properties;
 using FTAnalyzer.Utilities;
 using System.Linq;
 
@@ -51,11 +52,11 @@ namespace FTAnalyzer.Mac
                 RemoveOldTabs(errorsAndFixesTabViewController);
 
 
-                individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals");
-                familiesViewController = new BindingListViewController<IDisplayFamily>("Families");
-                sourcesViewController = new BindingListViewController<IDisplaySource>("Sources");
-                occupationsViewController = new BindingListViewController<IDisplayOccupation>("Occupations");
-                factsViewController = new BindingListViewController<IDisplayFact>("Facts");
+                individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals", Messages.Hints_Individual);
+                familiesViewController = new BindingListViewController<IDisplayFamily>("Families", Messages.Hints_Family);
+                sourcesViewController = new BindingListViewController<IDisplaySource>("Sources", Messages.Hints_Sources);
+                occupationsViewController = new BindingListViewController<IDisplayOccupation>("Occupations", string.Empty); //TODO allow double click
+                factsViewController = new BindingListViewController<IDisplayFact>("Facts", string.Empty);
 
                 mainListsViewController.AddChildViewController(individualsViewController);
                 mainListsViewController.AddChildViewController(familiesViewController);
@@ -64,10 +65,10 @@ namespace FTAnalyzer.Mac
                 mainListsViewController.AddChildViewController(factsViewController);
 
 
-                dataErrorsViewController = new BindingListViewController<DataError>("Data Errors");
+                dataErrorsViewController = new BindingListViewController<DataError>("Data Errors", string.Empty); // TODO allow double click
                 //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates");
-                looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births");
-                looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>("Loose Deaths");
+                looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births", Messages.Hints_Loose_Births);
+                looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>("Loose Deaths", Messages.Hints_Loose_Deaths);
 
                 errorsAndFixesTabViewController.AddChildViewController(dataErrorsViewController);
                 //errorsAndFixesTabViewController.AddChildViewController(duplicatesViewController);
@@ -77,6 +78,8 @@ namespace FTAnalyzer.Mac
                 individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
                 familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
                 sourcesViewController.SourceFactRowClicked += SourcesFactRowClicked;
+                looseBirthsViewController.IndividualFactRowClicked += LooseBirthFactRowClicked;
+                looseDeathsViewController.IndividualFactRowClicked += LooseDeathFactRowClicked;
             });
 
             var document = _familyTree.LoadTreeHeader(url.Path, documentViewController.Messages);
@@ -136,6 +139,7 @@ namespace FTAnalyzer.Mac
             {
                 var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
                 var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family);
+
                 app.ShowFacts(factsViewController);
                 Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsFamiliesEvent);
             });
@@ -149,6 +153,28 @@ namespace FTAnalyzer.Mac
                 var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for source: {source.ToString()}", source);
                 app.ShowFacts(factsViewController);
                 Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsSourceEvent);
+            });
+        }
+
+        void LooseBirthFactRowClicked(Individual individual)
+        {
+            InvokeOnMainThread(() =>
+            {
+                var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
+                var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual);
+                app.ShowFacts(factsViewController);
+                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.LooseBirthsEvent);
+            });
+        }
+  
+        void LooseDeathFactRowClicked(Individual individual)
+        {
+            InvokeOnMainThread(() =>
+            {
+                var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
+                var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual);
+                app.ShowFacts(factsViewController);
+                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.LooseDeathsEvent);
             });
         }
 

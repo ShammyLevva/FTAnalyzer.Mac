@@ -14,28 +14,28 @@ namespace FTAnalyzer.Mac
 	{
         readonly SortableBindingList<IDisplayFact> facts;
 
-        public FactsViewController(string title, Individual individual) : base (title)
+        public FactsViewController(string title, Individual individual) : base (title, string.Empty)
 		{
             facts = new SortableBindingList<IDisplayFact>();
             AddIndividualsFacts(individual);
             RefreshDocumentView();
 		}
 
-        public FactsViewController(string title, Family family) : base(title)
+        public FactsViewController(string title, Family family) : base(title, string.Empty)
         {
             facts = new SortableBindingList<IDisplayFact>();
             AddFamilyFacts(family);
             RefreshDocumentView();
         }
 
-        public FactsViewController(string title, FactSource source) : base(title)
+        public FactsViewController(string title, FactSource source) : base(title, string.Empty)
         {
             facts = FamilyTree.Instance.GetSourceDisplayFacts(source);
             Title = $"{title}.Facts count: {facts.Count}";
             RefreshDocumentView();
         }
 
-        public void RefreshDocumentView()
+        void RefreshDocumentView()
         {
             if (!NSThread.IsMain)
             {
