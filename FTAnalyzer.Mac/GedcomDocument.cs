@@ -1,7 +1,6 @@
 ﻿using AppKit;
 using Foundation;
 using FTAnalyzer.Mac.ViewControllers;
-using FTAnalyzer.Properties;
 using FTAnalyzer.Utilities;
 using System.Linq;
 
@@ -52,9 +51,9 @@ namespace FTAnalyzer.Mac
                 RemoveOldTabs(errorsAndFixesTabViewController);
 
 
-                individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals", Messages.Hints_Individual);
-                familiesViewController = new BindingListViewController<IDisplayFamily>("Families", Messages.Hints_Family);
-                sourcesViewController = new BindingListViewController<IDisplaySource>("Sources", Messages.Hints_Sources);
+                individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals", "Double click to show a list of facts for the selected individual."); //Messages.Hints_Individual);
+                familiesViewController = new BindingListViewController<IDisplayFamily>("Families", "Double click to show a list of facts for the selected family."); //Messages.Hints_Family);
+                sourcesViewController = new BindingListViewController<IDisplaySource>("Sources", "Double click to show a list of facts referenced by the selected source."); //Messages.Hints_Sources);
                 occupationsViewController = new BindingListViewController<IDisplayOccupation>("Occupations", string.Empty); //TODO allow double click
                 factsViewController = new BindingListViewController<IDisplayFact>("Facts", string.Empty);
 
@@ -67,8 +66,8 @@ namespace FTAnalyzer.Mac
 
                 dataErrorsViewController = new BindingListViewController<DataError>("Data Errors", string.Empty); // TODO allow double click
                 //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates");
-                looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births", Messages.Hints_Loose_Births);
-                looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>("Loose Deaths", Messages.Hints_Loose_Deaths);
+                looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births", "List of Births where you could limit the date range. "); //Messages.Hints_Loose_Births);
+                looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>("Loose Deaths", "List of Deaths where you could limit the date range. "); //Messages.Hints_Loose_Deaths);
 
                 errorsAndFixesTabViewController.AddChildViewController(dataErrorsViewController);
                 //errorsAndFixesTabViewController.AddChildViewController(duplicatesViewController);

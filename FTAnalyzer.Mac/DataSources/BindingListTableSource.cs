@@ -39,12 +39,16 @@ namespace FTAnalyzer.Mac.DataSources
                     Editable = false
                 };
             }
-
             // Setup view based on the column selected
-            var item = _bindingList[(int)row];
-            var index = Array.IndexOf(_fieldNames, tableColumn.Title);
-            var propertyValue = _properties[index].GetValue(item);
-            view.StringValue = propertyValue == null ? string.Empty : propertyValue.ToString();
+            if (row >= 0)
+            {
+                var item = _bindingList[(int)row];
+                var index = Array.IndexOf(_fieldNames, tableColumn.Title);
+                var propertyValue = _properties[index].GetValue(item);
+                view.StringValue = propertyValue == null ? string.Empty : propertyValue.ToString();
+            }
+            else
+                view.StringValue = string.Empty;
 
             return view;
         }

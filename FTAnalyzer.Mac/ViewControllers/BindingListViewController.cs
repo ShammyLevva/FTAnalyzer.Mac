@@ -21,7 +21,7 @@ namespace FTAnalyzer.Mac.ViewControllers
 
         public void UpdateTooltip()
         {
-            _tableView.ToolTip = $"{CountText}. {TooltipText}";
+            View.ToolTip = $"{CountText}. {TooltipText}";
         }
 
         void SetupView(string title)
@@ -72,7 +72,7 @@ namespace FTAnalyzer.Mac.ViewControllers
                 InvokeOnMainThread(() => RefreshDocumentView(list));
                 return;
             }
-            CountText = Messages.Count + list.Count;
+            CountText = $"Count: {list.Count}";
             UpdateTooltip();
             var source = new BindingListTableSource<T>(list);
             _tableView.Source = source;
