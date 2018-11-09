@@ -14,6 +14,28 @@ namespace FTAnalyzer.Mac
         [Export("canConcurrentlyReadDocumentsOfType:")]
         public static new bool CanConcurrentlyReadDocumentsOfType(string fileType) => true;
 
+        NSTabViewController tabbedViewController;
+        BindingListViewController<IDisplayIndividual> individualsViewController;
+        BindingListViewController<IDisplayFamily> familiesViewController;
+        BindingListViewController<IDisplaySource> sourcesViewController;
+        BindingListViewController<IDisplayOccupation> occupationsViewController;
+        BindingListViewController<IDisplayFact> factsViewController;
+
+        BindingListViewController<DataError> dataErrorsViewController;
+        //BindingListViewController<IDisplayDuplicateIndividual> duplicatesViewController = null;
+        BindingListViewController<IDisplayLooseBirth> looseBirthsViewController;
+        BindingListViewController<IDisplayLooseDeath> looseDeathsViewController;
+
+        BindingListViewController<IDisplayLocation> countriesViewController;
+        BindingListViewController<IDisplayLocation> regionsViewController;
+        BindingListViewController<IDisplayLocation> subregionsViewController;
+        BindingListViewController<IDisplayLocation> addressesViewController;
+        BindingListViewController<IDisplayLocation> placesViewController;
+
+        bool MainListsLoaded { get; set; }
+        bool ErrorsAndFixesLoaded { get; set; }
+        bool LocationsLoaded { get; set; }
+
         public override bool ReadFromUrl(NSUrl url, string typeName, out NSError outError)
         {
 
@@ -21,35 +43,22 @@ namespace FTAnalyzer.Mac
 
             GedcomDocumentViewController documentViewController = null;
 
-            BindingListViewController<IDisplayIndividual> individualsViewController = null;
-            BindingListViewController<IDisplayFamily> familiesViewController = null;
-            BindingListViewController<IDisplaySource> sourcesViewController = null;
-            BindingListViewController<IDisplayOccupation> occupationsViewController = null;
-            BindingListViewController<IDisplayFact> factsViewController = null;
-
-            BindingListViewController<DataError> dataErrorsViewController = null;
-            //BindingListViewController<IDisplayDuplicateIndividual> duplicatesViewController = null;
-            BindingListViewController<IDisplayLooseBirth> looseBirthsViewController = null;
-            BindingListViewController<IDisplayLooseDeath> looseDeathsViewController = null;
-
-            NSTabViewController tabbedViewController = null;
-
             InvokeOnMainThread(() =>
             {
                 var window = NSApplication.SharedApplication.MainWindow;
 
                 tabbedViewController = window.ContentViewController as NSTabViewController;
-
                 //Make sure the loading tab is seleceted.
                 tabbedViewController.SelectedTabViewItemIndex = 0;
                 documentViewController = tabbedViewController.ChildViewControllers[0] as GedcomDocumentViewController;
                 documentViewController.ClearAllProgress();
-
-                var mainListsViewController = tabbedViewController.ChildViewControllers[1] as NSTabViewController;
+            
+                var mainListsViewController = tabbedViewController.ChildViewControllers[1] as FTAnalyzerTabViewController;
                 RemoveOldTabs(mainListsViewController);
-                var errorsAndFixesTabViewController = tabbedViewController.ChildViewControllers[2] as NSTabViewController;
+                var errorsAndFixesTabViewController = tabbedViewController.ChildViewControllers[2] as FTAnalyzerTabViewController;
                 RemoveOldTabs(errorsAndFixesTabViewController);
-
+                var locationsTabViewController = tabbedViewController.ChildViewControllers[3] as FTAnalyzerTabViewController;
+                RemoveOldTabs(locationsTabViewController);
 
                 individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals", "Double click to show a list of facts for the selected individual."); //Messages.Hints_Individual);
                 familiesViewController = new BindingListViewController<IDisplayFamily>("Families", "Double click to show a list of facts for the selected family."); //Messages.Hints_Family);
@@ -63,7 +72,6 @@ namespace FTAnalyzer.Mac
                 mainListsViewController.AddChildViewController(occupationsViewController);
                 mainListsViewController.AddChildViewController(factsViewController);
 
-
                 dataErrorsViewController = new BindingListViewController<DataError>("Data Errors", string.Empty); // TODO allow double click
                 //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates");
                 looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births", "List of Births where you could limit the date range. "); //Messages.Hints_Loose_Births);
@@ -73,6 +81,18 @@ namespace FTAnalyzer.Mac
                 //errorsAndFixesTabViewController.AddChildViewController(duplicatesViewController);
                 errorsAndFixesTabViewController.AddChildViewController(looseBirthsViewController);
                 errorsAndFixesTabViewController.AddChildViewController(looseDeathsViewController);
+
+                countriesViewController = new BindingListViewController<IDisplayLocation>("Countries", string.Empty); //TODO allow double click
+                regionsViewController = new BindingListViewController<IDisplayLocation>("Regions", string.Empty); //TODO allow double click
+                subregionsViewController = new BindingListViewController<IDisplayLocation>("Sub-Regions", string.Empty); //TODO allow double click
+                addressesViewController = new BindingListViewController<IDisplayLocation>("Addresses", string.Empty); //TODO allow double click
+                placesViewController = new BindingListViewController<IDisplayLocation>("Places", string.Empty); //TODO allow double click
+
+                locationsTabViewController.AddChildViewController(countriesViewController);
+                locationsTabViewController.AddChildViewController(regionsViewController);
+                locationsTabViewController.AddChildViewController(subregionsViewController);
+                locationsTabViewController.AddChildViewController(addressesViewController);
+                locationsTabViewController.AddChildViewController(placesViewController);
 
                 individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
                 familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
@@ -93,19 +113,6 @@ namespace FTAnalyzer.Mac
             _familyTree.LoadTreeFamilies(document, documentViewController.Families, documentViewController.Messages);
             _familyTree.LoadTreeRelationships(document, documentViewController.Relationships, documentViewController.Messages);
 
-            individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
-            familiesViewController.RefreshDocumentView(_familyTree.AllDisplayFamilies);
-            sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
-            occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
-            factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
-
-            // Flatten the data error groups into a single list until filtering implemented.
-            var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
-            dataErrorsViewController.RefreshDocumentView(errors);
-
-            //duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
-            looseBirthsViewController.RefreshDocumentView(_familyTree.LooseBirths());
-            looseDeathsViewController.RefreshDocumentView(_familyTree.LooseDeaths());
 
             documentViewController.Messages.Report($"\n\nFinished loading file {url.Path}\n");
 
@@ -121,13 +128,51 @@ namespace FTAnalyzer.Mac
             return true;
         }
 
+        internal void LoadMainLists()
+        {
+            individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
+            familiesViewController.RefreshDocumentView(_familyTree.AllDisplayFamilies);
+            sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
+            occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
+            factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
+        }
+
+        internal void LoadErrorsAndFixes()
+        {
+            // Flatten the data error groups into a single list until filtering implemented.
+            var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
+            dataErrorsViewController.RefreshDocumentView(errors);
+
+            //duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
+            looseBirthsViewController.RefreshDocumentView(_familyTree.LooseBirths());
+            looseDeathsViewController.RefreshDocumentView(_familyTree.LooseDeaths());
+        }
+
+        internal void LoadLocations()
+        {
+            countriesViewController.RefreshDocumentView(_familyTree.AllDisplayCountries);
+            regionsViewController.RefreshDocumentView(_familyTree.AllDisplayRegions);
+            subregionsViewController.RefreshDocumentView(_familyTree.AllDisplaySubRegions);
+            addressesViewController.RefreshDocumentView(_familyTree.AllDisplayAddresses);
+            placesViewController.RefreshDocumentView(_familyTree.AllDisplayPlaces);
+        }
+
+        void MainListsViewController_ViewDidAppear()
+        {
+            InvokeOnMainThread(() =>
+            {
+                LoadMainLists();
+                Analytics.TrackAction(Analytics.MainFormAction, Analytics.MainListsEvent);
+            });
+        }
+
+
         void IndividualsFactRowClicked(Individual individual)
         {
             InvokeOnMainThread(() =>
             {
                 var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
-                var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual);
-                app.ShowFacts(factsViewController); 
+                app.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual)); 
                 Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
             });
         }
@@ -137,9 +182,7 @@ namespace FTAnalyzer.Mac
             InvokeOnMainThread(() =>
             {
                 var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
-                var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family);
-
-                app.ShowFacts(factsViewController);
+                app.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family));
                 Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsFamiliesEvent);
             });
         }
@@ -149,8 +192,7 @@ namespace FTAnalyzer.Mac
             InvokeOnMainThread(() =>
             {
                 var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
-                var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for source: {source.ToString()}", source);
-                app.ShowFacts(factsViewController);
+                app.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for source: {source.ToString()}", source));
                 Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsSourceEvent);
             });
         }
@@ -160,8 +202,7 @@ namespace FTAnalyzer.Mac
             InvokeOnMainThread(() =>
             {
                 var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
-                var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual);
-                app.ShowFacts(factsViewController);
+                app.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
                 Analytics.TrackAction(Analytics.FactsFormAction, Analytics.LooseBirthsEvent);
             });
         }
@@ -171,8 +212,7 @@ namespace FTAnalyzer.Mac
             InvokeOnMainThread(() =>
             {
                 var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
-                var factsViewController = new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual);
-                app.ShowFacts(factsViewController);
+                app.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
                 Analytics.TrackAction(Analytics.FactsFormAction, Analytics.LooseDeathsEvent);
             });
         }
@@ -180,7 +220,7 @@ namespace FTAnalyzer.Mac
         static void RemoveOldTabs(NSTabViewController viewController)
         {
             // Remove any existing lists from a previous document.
-            while (viewController.ChildViewControllers.Length > 0)
+            while (viewController?.ChildViewControllers.Length > 0)
             {
                 viewController.RemoveChildViewController(0);
             }

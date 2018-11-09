@@ -691,10 +691,10 @@
             </objects>
             <point key="canvasLocation" x="-400" y="-1307"/>
         </scene>
-        <!--TabbedController-->
+        <!--MainTabSelector-->
         <scene sceneID="pXS-AW-A6S">
             <objects>
-                <tabViewController title="TabbedController" showSeguePresentationStyle="single" selectedTabViewItemIndex="0" id="kye-gt-91O" sceneMemberID="viewController">
+                <tabViewController title="MainTabSelector" showSeguePresentationStyle="single" selectedTabViewItemIndex="0" id="kye-gt-91O" customClass="FTAnalyzerTabViewController" customModule="FTAnalyzer_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <tabView key="view" id="ip0-Sy-c5Y">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -704,6 +704,7 @@
                         <tabViewItem label="Gedcom Stats" id="5KQ-md-UQl"/>
                         <tabViewItem label="Main Lists" id="nnU-Eq-ulZ"/>
                         <tabViewItem label="Errors/Fixes" id="CSJ-Bf-v81"/>
+                        <tabViewItem label="Locations" id="DMe-j4-sWE"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions"/>
                     <tabView key="tabView" type="noTabsNoBorder" id="y8i-E2-aTc">
@@ -719,11 +720,12 @@
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="tabItems" id="yse-z5-huH"/>
                         <segue destination="CGu-hu-FSh" kind="relationship" relationship="tabItems" id="MhZ-U1-MmU"/>
                         <segue destination="LHn-6f-ueJ" kind="relationship" relationship="tabItems" id="7ye-AF-inL"/>
+                        <segue destination="hKK-5N-IBj" kind="relationship" relationship="tabItems" id="yC9-7z-Zo3"/>
                     </connections>
                 </tabViewController>
                 <customObject id="4Wv-cV-nU2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="535" y="-1435"/>
+            <point key="canvasLocation" x="592" y="-1445"/>
         </scene>
         <!--MainListsController-->
         <scene sceneID="5Ys-nG-dGC">
@@ -743,12 +745,32 @@
                 </tabViewController>
                 <customObject id="PPL-jb-iDV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1182" y="-1565"/>
+            <point key="canvasLocation" x="1323" y="-1502"/>
         </scene>
-        <!--Window Controller-->
+        <!--LocationsController-->
+        <scene sceneID="Zzx-ga-URe">
+            <objects>
+                <tabViewController title="LocationsController" id="hKK-5N-IBj" sceneMemberID="viewController">
+                    <tabView key="tabView" type="noTabsNoBorder" id="0XS-vp-xrq">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="hKK-5N-IBj" id="0vd-gh-MhY"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="0XS-vp-xrq" id="mfV-pj-a1Y"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="83d-t3-LF0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1059" y="-1620"/>
+        </scene>
+        <!--FTAnalyzerController-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController storyboardIdentifier="FTAnalyzerController" showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="FTAnalyzerController" showSeguePresentationStyle="single" id="B8D-0N-5wS" userLabel="FTAnalyzerController" sceneMemberID="viewController">
                     <window key="window" title="FTAnalyzer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
