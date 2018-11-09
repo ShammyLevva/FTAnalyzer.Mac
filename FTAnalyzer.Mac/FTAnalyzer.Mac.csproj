@@ -119,7 +119,6 @@
     <Folder Include="ViewControllers\" />
     <Folder Include="DataSources\" />
     <Folder Include="Properties\" />
-    <Folder Include="Delegates\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -145,7 +144,6 @@
     <Compile Include="ViewControllers\FactsViewController.designer.cs">
       <DependentUpon>FactsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Delegates\TabSelectionDelegate.cs" />
     <Compile Include="ViewControllers\FTAnalyzerTabViewController.cs" />
     <Compile Include="ViewControllers\FTAnalyzerTabViewController.designer.cs" />
   </ItemGroup>
