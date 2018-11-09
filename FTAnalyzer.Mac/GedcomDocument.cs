@@ -11,6 +11,7 @@ namespace FTAnalyzer.Mac
     public class GedcomDocument : NSDocument
     {
         readonly FamilyTree _familyTree = FamilyTree.Instance;
+        AppDelegate App => (AppDelegate) NSApplication.SharedApplication.Delegate;
 
         [Export("canConcurrentlyReadDocumentsOfType:")]
         public static new bool CanConcurrentlyReadDocumentsOfType(string fileType) => true;
@@ -77,8 +78,8 @@ namespace FTAnalyzer.Mac
 
                 dataErrorsViewController = new BindingListViewController<DataError>("Data Errors", string.Empty); // TODO allow double click
                 //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates", Messages.Hints_Duplicates);
-                looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births", "List of Births where you could limit the date range. "); //Messages.Hints_Loose_Births);
-                looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>("Loose Deaths", "List of Deaths where you could limit the date range. "); //Messages.Hints_Loose_Deaths);
+                looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births", "List of Births where you could limit the date range."); //Messages.Hints_Loose_Births);
+                looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>("Loose Deaths", "List of Deaths where you could limit the date range."); //Messages.Hints_Loose_Deaths);
 
                 errorsAndFixesTabViewController.AddChildViewController(dataErrorsViewController);
                 //errorsAndFixesTabViewController.AddChildViewController(duplicatesViewController);
@@ -121,8 +122,7 @@ namespace FTAnalyzer.Mac
 
             InvokeOnMainThread(() =>
             {
-                var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
-                app.Document = this;
+                App.Document = this;
                 Analytics.TrackAction(Analytics.MainFormAction, Analytics.LoadGEDCOMEvent);
                 UIHelpers.ShowMessage($"Gedcom file {url.Path} loaded.", "FTAnalyzer");
             });
@@ -176,8 +176,7 @@ namespace FTAnalyzer.Mac
         {
             InvokeOnMainThread(() =>
             {
-                var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
-                app.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual)); 
+                App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual)); 
                 Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
             });
         }
@@ -186,8 +185,7 @@ namespace FTAnalyzer.Mac
         {
             InvokeOnMainThread(() =>
             {
-                var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
-                app.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family));
+                App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family));
                 Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsFamiliesEvent);
             });
         }
@@ -196,8 +194,7 @@ namespace FTAnalyzer.Mac
         {
             InvokeOnMainThread(() =>
             {
-                var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
-                app.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for source: {source.ToString()}", source));
+                App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for source: {source.ToString()}", source));
                 Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsSourceEvent);
             });
         }
@@ -206,8 +203,7 @@ namespace FTAnalyzer.Mac
         {
             InvokeOnMainThread(() =>
             {
-                var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
-                app.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
+                App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
                 Analytics.TrackAction(Analytics.FactsFormAction, Analytics.LooseBirthsEvent);
             });
         }
@@ -216,8 +212,7 @@ namespace FTAnalyzer.Mac
         {
             InvokeOnMainThread(() =>
             {
-                var app = (AppDelegate)NSApplication.SharedApplication.Delegate;
-                app.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
+                App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
                 Analytics.TrackAction(Analytics.FactsFormAction, Analytics.LooseDeathsEvent);
             });
         }
