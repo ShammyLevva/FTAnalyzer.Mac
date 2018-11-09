@@ -1,6 +1,7 @@
 ﻿using AppKit;
 using Foundation;
 using FTAnalyzer.Mac.ViewControllers;
+using FTAnalyzer.Properties;
 using FTAnalyzer.Utilities;
 using System.Linq;
 
@@ -53,11 +54,12 @@ namespace FTAnalyzer.Mac
                 documentViewController = tabbedViewController.ChildViewControllers[0] as GedcomDocumentViewController;
                 documentViewController.ClearAllProgress();
             
-                var mainListsViewController = tabbedViewController.ChildViewControllers[1] as FTAnalyzerTabViewController;
+                var mainListsViewController = tabbedViewController.ChildViewControllers[1] as NSTabViewController;
+               // mainListsViewController.TabView.DidSelect += (sender,e) => MainListsViewController_TabSelected();
                 RemoveOldTabs(mainListsViewController);
-                var errorsAndFixesTabViewController = tabbedViewController.ChildViewControllers[2] as FTAnalyzerTabViewController;
+                var errorsAndFixesTabViewController = tabbedViewController.ChildViewControllers[2] as NSTabViewController;
                 RemoveOldTabs(errorsAndFixesTabViewController);
-                var locationsTabViewController = tabbedViewController.ChildViewControllers[3] as FTAnalyzerTabViewController;
+                var locationsTabViewController = tabbedViewController.ChildViewControllers[3] as NSTabViewController;
                 RemoveOldTabs(locationsTabViewController);
 
                 individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals", "Double click to show a list of facts for the selected individual."); //Messages.Hints_Individual);
@@ -73,7 +75,7 @@ namespace FTAnalyzer.Mac
                 mainListsViewController.AddChildViewController(factsViewController);
 
                 dataErrorsViewController = new BindingListViewController<DataError>("Data Errors", string.Empty); // TODO allow double click
-                //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates");
+                //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates", Messages.Hints_Duplicates);
                 looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births", "List of Births where you could limit the date range. "); //Messages.Hints_Loose_Births);
                 looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>("Loose Deaths", "List of Deaths where you could limit the date range. "); //Messages.Hints_Loose_Deaths);
 
@@ -157,7 +159,7 @@ namespace FTAnalyzer.Mac
             placesViewController.RefreshDocumentView(_familyTree.AllDisplayPlaces);
         }
 
-        void MainListsViewController_ViewDidAppear()
+        void MainListsViewController_TabSelected()
         {
             InvokeOnMainThread(() =>
             {
