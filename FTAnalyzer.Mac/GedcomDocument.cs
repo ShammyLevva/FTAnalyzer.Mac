@@ -39,7 +39,9 @@ namespace FTAnalyzer.Mac
 
         public override bool ReadFromUrl(NSUrl url, string typeName, out NSError outError)
         {
-
+            MainListsLoaded = false;
+            ErrorsAndFixesLoaded = false;
+            LocationsLoaded = false;
             outError = NSError.FromDomain(NSError.OsStatusErrorDomain, -4);
 
             GedcomDocumentViewController documentViewController = null;
@@ -55,7 +57,6 @@ namespace FTAnalyzer.Mac
                 documentViewController.ClearAllProgress();
             
                 var mainListsViewController = tabbedViewController.ChildViewControllers[1] as NSTabViewController;
-               // mainListsViewController.TabView.DidSelect += (sender,e) => MainListsViewController_TabSelected();
                 RemoveOldTabs(mainListsViewController);
                 var errorsAndFixesTabViewController = tabbedViewController.ChildViewControllers[2] as NSTabViewController;
                 RemoveOldTabs(errorsAndFixesTabViewController);
@@ -132,42 +133,44 @@ namespace FTAnalyzer.Mac
 
         internal void LoadMainLists()
         {
-            individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
-            familiesViewController.RefreshDocumentView(_familyTree.AllDisplayFamilies);
-            sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
-            occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
-            factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
+            if (!MainListsLoaded)
+            {
+                individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
+                familiesViewController.RefreshDocumentView(_familyTree.AllDisplayFamilies);
+                sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
+                occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
+                factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
+                MainListsLoaded = true;
+            }
         }
 
         internal void LoadErrorsAndFixes()
         {
-            // Flatten the data error groups into a single list until filtering implemented.
-            var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
-            dataErrorsViewController.RefreshDocumentView(errors);
+            if (!ErrorsAndFixesLoaded)
+            {
+                // Flatten the data error groups into a single list until filtering implemented.
+                var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
+                dataErrorsViewController.RefreshDocumentView(errors);
 
-            //duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
-            looseBirthsViewController.RefreshDocumentView(_familyTree.LooseBirths());
-            looseDeathsViewController.RefreshDocumentView(_familyTree.LooseDeaths());
+                //duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
+                looseBirthsViewController.RefreshDocumentView(_familyTree.LooseBirths());
+                looseDeathsViewController.RefreshDocumentView(_familyTree.LooseDeaths());
+                ErrorsAndFixesLoaded = true;
+            }
         }
 
         internal void LoadLocations()
         {
-            countriesViewController.RefreshDocumentView(_familyTree.AllDisplayCountries);
-            regionsViewController.RefreshDocumentView(_familyTree.AllDisplayRegions);
-            subregionsViewController.RefreshDocumentView(_familyTree.AllDisplaySubRegions);
-            addressesViewController.RefreshDocumentView(_familyTree.AllDisplayAddresses);
-            placesViewController.RefreshDocumentView(_familyTree.AllDisplayPlaces);
-        }
-
-        void MainListsViewController_TabSelected()
-        {
-            InvokeOnMainThread(() =>
+            if (!LocationsLoaded)
             {
-                LoadMainLists();
-                Analytics.TrackAction(Analytics.MainFormAction, Analytics.MainListsEvent);
-            });
+                countriesViewController.RefreshDocumentView(_familyTree.AllDisplayCountries);
+                regionsViewController.RefreshDocumentView(_familyTree.AllDisplayRegions);
+                subregionsViewController.RefreshDocumentView(_familyTree.AllDisplaySubRegions);
+                addressesViewController.RefreshDocumentView(_familyTree.AllDisplayAddresses);
+                placesViewController.RefreshDocumentView(_familyTree.AllDisplayPlaces);
+                LocationsLoaded = true;
+            }
         }
-
 
         void IndividualsFactRowClicked(Individual individual)
         {

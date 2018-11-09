@@ -119,6 +119,7 @@
     <Folder Include="ViewControllers\" />
     <Folder Include="DataSources\" />
     <Folder Include="Properties\" />
+    <Folder Include="Delegates\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -144,21 +145,14 @@
     <Compile Include="ViewControllers\FactsViewController.designer.cs">
       <DependentUpon>FactsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Delegates\TabSelectionDelegate.cs" />
     <Compile Include="ViewControllers\FTAnalyzerTabViewController.cs" />
-    <Compile Include="ViewControllers\View.cs" />
-    <Compile Include="ViewControllers\ViewController.cs" />
-    <Compile Include="ViewControllers\View.designer.cs">
-      <DependentUpon>View.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
+    <Compile Include="ViewControllers\FTAnalyzerTabViewController.designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="Resources\en.lproj\Main.storyboard" />
     <InterfaceDefinition Include="Facts.storyboard" />
-    <InterfaceDefinition Include="ViewControllers\View.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\Kunstler.ttf">
