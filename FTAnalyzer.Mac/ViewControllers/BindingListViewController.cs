@@ -74,6 +74,7 @@ namespace FTAnalyzer.Mac.ViewControllers
             }
             CountText = $"Count: {list.Count}";
             UpdateTooltip();
+
             var source = new BindingListTableSource<T>(list);
             _tableView.Source = source;
             _tableView.ReloadData();

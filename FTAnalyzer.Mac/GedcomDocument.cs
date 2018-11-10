@@ -64,9 +64,9 @@ namespace FTAnalyzer.Mac
                 var locationsTabViewController = tabbedViewController.ChildViewControllers[3] as NSTabViewController;
                 RemoveOldTabs(locationsTabViewController);
 
-                individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals", "Double click to show a list of facts for the selected individual."); //Messages.Hints_Individual);
-                familiesViewController = new BindingListViewController<IDisplayFamily>("Families", "Double click to show a list of facts for the selected family."); //Messages.Hints_Family);
-                sourcesViewController = new BindingListViewController<IDisplaySource>("Sources", "Double click to show a list of facts referenced by the selected source."); //Messages.Hints_Sources);
+                individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals", "Double click to show a list of facts for the selected individual.");
+                familiesViewController = new BindingListViewController<IDisplayFamily>("Families", "Double click to show a list of facts for the selected family.") ;
+                sourcesViewController = new BindingListViewController<IDisplaySource>("Sources", "Double click to show a list of facts referenced by the selected source.");
                 occupationsViewController = new BindingListViewController<IDisplayOccupation>("Occupations", string.Empty); //TODO allow double click
                 factsViewController = new BindingListViewController<IDisplayFact>("Facts", string.Empty);
 
@@ -77,9 +77,9 @@ namespace FTAnalyzer.Mac
                 mainListsViewController.AddChildViewController(factsViewController);
 
                 dataErrorsViewController = new BindingListViewController<DataError>("Data Errors", string.Empty); // TODO allow double click
-                //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates", Messages.Hints_Duplicates);
-                looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births", "List of Births where you could limit the date range."); //Messages.Hints_Loose_Births);
-                looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>("Loose Deaths", "List of Deaths where you could limit the date range."); //Messages.Hints_Loose_Deaths);
+                //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates", "Double click to show the facts for both the individual and their possible match.");
+                looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births", "List of Births where you could limit the date range.");
+                looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>("Loose Deaths", "List of Deaths where you could limit the date range.");
 
                 errorsAndFixesTabViewController.AddChildViewController(dataErrorsViewController);
                 //errorsAndFixesTabViewController.AddChildViewController(duplicatesViewController);
@@ -131,44 +131,69 @@ namespace FTAnalyzer.Mac
             return true;
         }
 
-        internal void LoadMainLists()
+        internal void LoadMainLists(NSProgressIndicator progress)
         {
             if (!MainListsLoaded)
             {
+                progress.Hidden = false;
+                progress.ToolTip = "Loading main lists";
+                progress.DoubleValue = 0;
                 individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
+                progress.DoubleValue = 20;
                 familiesViewController.RefreshDocumentView(_familyTree.AllDisplayFamilies);
+                progress.DoubleValue = 40;
                 sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
+                progress.DoubleValue = 60;
                 occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
+                progress.DoubleValue = 80;
                 factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
+                progress.DoubleValue = 100;
                 MainListsLoaded = true;
+                progress.Hidden = true;
             }
         }
 
-        internal void LoadErrorsAndFixes()
+        internal void LoadErrorsAndFixes(NSProgressIndicator progress)
         {
             if (!ErrorsAndFixesLoaded)
             {
+                progress.Hidden = false;
+                progress.ToolTip = "Calculating Error and Fixes.";
                 // Flatten the data error groups into a single list until filtering implemented.
+                progress.DoubleValue = 0;
                 var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
                 dataErrorsViewController.RefreshDocumentView(errors);
-
+                progress.DoubleValue = 25;
                 //duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
+                progress.DoubleValue = 50;
                 looseBirthsViewController.RefreshDocumentView(_familyTree.LooseBirths());
+                progress.DoubleValue = 75;
                 looseDeathsViewController.RefreshDocumentView(_familyTree.LooseDeaths());
+                progress.DoubleValue = 100;
                 ErrorsAndFixesLoaded = true;
+                progress.Hidden = true;
             }
         }
 
-        internal void LoadLocations()
+        internal void LoadLocations(NSProgressIndicator progress)
         {
             if (!LocationsLoaded)
             {
+                progress.Hidden = false;
+                progress.ToolTip = "Loading Locations from GEDCOM data.";
+                progress.DoubleValue = 0;
                 countriesViewController.RefreshDocumentView(_familyTree.AllDisplayCountries);
+                progress.DoubleValue = 20;
                 regionsViewController.RefreshDocumentView(_familyTree.AllDisplayRegions);
+                progress.DoubleValue = 40;
                 subregionsViewController.RefreshDocumentView(_familyTree.AllDisplaySubRegions);
+                progress.DoubleValue = 60;
                 addressesViewController.RefreshDocumentView(_familyTree.AllDisplayAddresses);
+                progress.DoubleValue = 80;
                 placesViewController.RefreshDocumentView(_familyTree.AllDisplayPlaces);
+                progress.DoubleValue = 100;
                 LocationsLoaded = true;
+                progress.Hidden = true;
             }
         }
 

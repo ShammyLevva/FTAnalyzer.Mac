@@ -2,6 +2,7 @@
 using Foundation;
 using AppKit;
 using FTAnalyzer.Utilities;
+using CoreGraphics;
 
 namespace FTAnalyzer.Mac
 {
@@ -22,7 +23,7 @@ namespace FTAnalyzer.Mac
             Console.WriteLine($"Item: {item.Label}");
             switch (Title)
             {
-                case "MainTabSelector":
+                case "MainTabController":
                     MainForm(item.Label);
                     break;
                 case "MainListsController":
@@ -37,22 +38,42 @@ namespace FTAnalyzer.Mac
             }
         }
 
+        NSProgressIndicator ProgressBar { get; set; }
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            if (Title == "MainTabController")
+            {
+                ProgressBar = new NSProgressIndicator(new CGRect(390, 0, 490, 20))
+                {
+                    MinValue = 0,
+                    MaxValue = 100,
+                    DoubleValue = 0,
+                    Hidden = false,
+                    Indeterminate = true
+                };
+                TabView.AddSubview(ProgressBar);
+            }
+        }
+
         void MainForm(string label)
         {
+            
             switch (label)
             {
                 case "Gedcom Stats":
                     break;
                 case "Main Lists":
-                    App.Document.LoadMainLists();
+                    App.Document.LoadMainLists(ProgressBar);
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.MainListsEvent);
                     break;
                 case "Errors/Fixes":
-                    App.Document.LoadErrorsAndFixes();
+                    App.Document.LoadErrorsAndFixes(ProgressBar);
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.ErrorsFixesEvent);
                     break;
                 case "Locations":
-                    App.Document.LoadLocations();
+                    App.Document.LoadLocations(ProgressBar);
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.LocationTabViewed);
                     break;
             }
@@ -87,13 +108,13 @@ namespace FTAnalyzer.Mac
                 case "Data Errors":
                     break;
                 case "Duplicates":
-                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.MainListsEvent);
+                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.DuplicatesTabEvent);
                     break;
                 case "Loose Births":
-                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.ErrorsFixesEvent);
+                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.LooseBirthsEvent);
                     break;
                 case "Loose Deaths":
-                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.LocationTabViewed);
+                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.LooseDeathsEvent);
                     break;
             }
         }

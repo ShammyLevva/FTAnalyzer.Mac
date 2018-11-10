@@ -691,10 +691,10 @@
             </objects>
             <point key="canvasLocation" x="-400" y="-1307"/>
         </scene>
-        <!--MainTabSelector-->
+        <!--MainTabController-->
         <scene sceneID="pXS-AW-A6S">
             <objects>
-                <tabViewController title="MainTabSelector" showSeguePresentationStyle="single" selectedTabViewItemIndex="0" id="kye-gt-91O" customClass="FTAnalyzerTabViewController" sceneMemberID="viewController">
+                <tabViewController title="MainTabController" showSeguePresentationStyle="single" selectedTabViewItemIndex="0" id="kye-gt-91O" customClass="FTAnalyzerTabViewController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Gedcom Stats" id="5KQ-md-UQl"/>
                         <tabViewItem label="Main Lists" id="nnU-Eq-ulZ"/>
@@ -740,7 +740,7 @@
                 </tabViewController>
                 <customObject id="PPL-jb-iDV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1323" y="-1502"/>
+            <point key="canvasLocation" x="1466" y="-1473"/>
         </scene>
         <!--LocationsController-->
         <scene sceneID="Zzx-ga-URe">
@@ -760,7 +760,7 @@
                 </tabViewController>
                 <customObject id="83d-t3-LF0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1059" y="-1620"/>
+            <point key="canvasLocation" x="370" y="-822"/>
         </scene>
         <!--FTAnalyzerController-->
         <scene sceneID="R2V-B0-nI4">
@@ -771,6 +771,8 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="1000" height="560"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="1000" height="560"/>
+                        <contentBorderThickness minY="22"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="w0X-6C-TT8"/>
                         </connections>
@@ -818,31 +820,31 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <box fixedFrame="YES" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1UL-AA-AfS">
+                            <box fixedFrame="YES" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1UL-AA-AfS">
                                 <rect key="frame" x="-3" y="452" width="1006" height="110"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <view key="contentView" ambiguous="YES" id="nBo-GM-A6N">
-                                    <rect key="frame" x="3" y="3" width="1000" height="104"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1006" height="110"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="b8B-WZ-CNI">
-                                            <rect key="frame" x="190" y="76" width="168" height="20"/>
+                                            <rect key="frame" x="190" y="82" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </progressIndicator>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="xBu-LQ-XyF">
-                                            <rect key="frame" x="190" y="56" width="168" height="20"/>
+                                            <rect key="frame" x="190" y="62" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </progressIndicator>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="0T4-Vy-e51">
-                                            <rect key="frame" x="190" y="36" width="168" height="20"/>
+                                            <rect key="frame" x="190" y="42" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </progressIndicator>
                                         <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="5oa-cb-FmJ">
-                                            <rect key="frame" x="190" y="15" width="168" height="20"/>
+                                            <rect key="frame" x="190" y="21" width="168" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </progressIndicator>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrU-x0-ClD">
-                                            <rect key="frame" x="18" y="77" width="116" height="17"/>
+                                            <rect key="frame" x="18" y="83" width="116" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Loading sources:" id="9pH-3H-wIj">
                                                 <font key="font" metaFont="system"/>
@@ -851,7 +853,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JAq-17-2pt">
-                                            <rect key="frame" x="18" y="58" width="131" height="17"/>
+                                            <rect key="frame" x="18" y="64" width="131" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Loading individuals:" id="Qa5-Kn-RJJ">
                                                 <font key="font" metaFont="system"/>
@@ -860,7 +862,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dv9-8p-roY">
-                                            <rect key="frame" x="18" y="38" width="122" height="17"/>
+                                            <rect key="frame" x="18" y="44" width="122" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Loading families:" id="ZTL-9x-kt8">
                                                 <font key="font" metaFont="system"/>
@@ -869,7 +871,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6VM-NN-EGu">
-                                            <rect key="frame" x="18" y="17" width="166" height="17"/>
+                                            <rect key="frame" x="18" y="23" width="166" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Relationships &amp; locations:" id="f6M-OW-Ysr">
                                                 <font key="font" metaFont="system"/>
@@ -877,13 +879,8 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7n-k2-1gw">
-                                            <rect key="frame" x="900" y="4" width="100" height="100"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="HighResLogo" id="bBN-bi-0LO"/>
-                                        </imageView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLc-Nj-405">
-                                            <rect key="frame" x="370" y="4" width="524" height="100"/>
+                                            <rect key="frame" x="370" y="10" width="530" height="100"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Family Tree Analyzer" id="JJI-yb-XZn">
                                                 <font key="font" metaFont="system"/>
@@ -891,6 +888,11 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7n-k2-1gw">
+                                            <rect key="frame" x="892" y="10" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="HighResLogo" id="bBN-bi-0LO"/>
+                                        </imageView>
                                     </subviews>
                                 </view>
                             </box>
@@ -908,7 +910,7 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="QM4-Vn-YqU"/>
             </objects>
-            <point key="canvasLocation" x="-692" y="-692"/>
+            <point key="canvasLocation" x="-692" y="-700"/>
         </scene>
         <!--ErrorsFixesController-->
         <scene sceneID="wv0-G7-qwd">

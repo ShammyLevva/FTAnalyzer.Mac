@@ -21,7 +21,8 @@ namespace FTAnalyzer.Mac
             // Insert code here to initialize your application
             var window = NSApplication.SharedApplication.Windows[0];
             window.Title = $"Family Tree Analyzer {Version}";
-       //     string message = Properties.Messages.Hints_Individual;
+            var tabs = window.ContentViewController as NSTabViewController;
+            tabs.SelectedTabViewItemIndex = 0; //set tab to GEDCOM stats
             CheckWebVersion();
         }
 
@@ -114,7 +115,7 @@ namespace FTAnalyzer.Mac
 
         partial void ReportIssue(NSObject sender)
         {
-            UIHelpers.ShowMessage("Please note this is a very early development version if you find a crashing bug please report it.\nOtherwise assume I'll get round to fixing things later.\nYou may find it more useful to raise issue at the Facebook User Group.");
+            UIHelpers.ShowMessage("Please note this is a early development version if you find a crashing bug please report it.\nOtherwise assume I'll get round to fixing things later.\nYou may find it more useful to raise issue at the Facebook User Group.");
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.ReportIssueEvent);
             HttpUtility.VisitWebsite("https://github.com/ShammyLevva/FTAnalyzer.Mac/issues");
         }
