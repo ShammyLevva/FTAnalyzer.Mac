@@ -2,7 +2,6 @@
 using Foundation;
 using AppKit;
 using FTAnalyzer.Utilities;
-using CoreGraphics;
 
 namespace FTAnalyzer.Mac
 {
@@ -30,7 +29,7 @@ namespace FTAnalyzer.Mac
                     ErrorsFixes(item.Label);
                     break;
                 case "LocationsTabController":
-                    //Locations(item.Label);
+                    Locations(item.Label);
                     break;
             }
         }
@@ -62,6 +61,7 @@ namespace FTAnalyzer.Mac
             switch (label)
             {
                 case "Data Errors":
+                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.DataErrorsTabEvent);
                     break;
                 case "Duplicates":
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.DuplicatesTabEvent);
@@ -75,25 +75,26 @@ namespace FTAnalyzer.Mac
             }
         }
 
-        //void Locations(string label)
-        //{
-        //    switch (label)
-        //    {
-        //        case "Countries":
-        //            break;
-        //        case "Regions":
-        //            //Analytics.TrackAction(Analytics.MainFormAction, Analytics.);
-        //            break;
-        //        case "SubRegions":
-        //            Analytics.TrackAction(Analytics.MainFormAction, Analytics.ErrorsFixesEvent);
-        //            break;
-        //        case "Addresses":
-        //            Analytics.TrackAction(Analytics.MainFormAction, Analytics.LocationTabViewed);
-        //            break;
-        //        case "Places":
-        //            Analytics.TrackAction(Analytics.MainFormAction, Analytics.LocationTabViewed);
-        //            break;
-        //    }
-        //}    
+        void Locations(string label)
+        {
+            switch (label)
+            {
+                case "Countries":
+                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.CountriesTabEvent);
+                    break;
+                case "Regions":
+                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.RegionsTabEvent);
+                    break;
+                case "SubRegions":
+                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.SubRegionsTabEvent);
+                    break;
+                case "Addresses":
+                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.AddressesTabEvent);
+                    break;
+                case "Places":
+                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.PlacesTabEvent);
+                    break;
+            }
+        }    
     }
 }
