@@ -1,10 +1,16 @@
 ﻿<Properties StartupConfiguration="{EE106C3A-38A4-4962-A747-8D5D17AE3039}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Mac Status">
     <Files>
-      <File FileName="FTAnalyzer.Mac/GedcomDocument.cs" Line="70" Column="127" />
-      <File FileName="FTAnalyzer.Mac/ViewControllers/FTAnalyzerTabViewController.cs" Line="32" Column="49" />
-      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="10" Column="25" />
-      <File FileName="FTAnalyzer.Shared Status" />
+      <File FileName="FTAnalyzer.Mac/GedcomDocument.cs" Line="208" Column="94" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/FTAnalyzerTabViewController.cs" Line="31" Column="27" />
+      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="41" Column="10" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/ProgressViewController.cs" Line="19" Column="10" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/ProgressController.cs" Line="25" Column="9" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/ListsTabViewController.designer.cs" Line="14" Column="6" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/ListsTabViewController.cs" Line="5" Column="1" />
+      <File FileName="FTAnalyzer.Mac Status" />
+      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Core/FamilyTree.cs" Line="1373" Column="89" />
+      <File FileName="FTAnalyzer.Mac/Main.cs" Line="11" Column="10" />
       <File FileName="FTAnalyzer.Mac Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -21,7 +27,7 @@
       <Breakpoint file="/Library/Frameworks/Xamarin.Mac.framework/Versions/5.0.0.0/src/Xamarin.Mac/mcs/class/corlib/System.Reflection/Assembly.cs" line="515" column="1" />
       <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/ViewControllers/MainViewController.cs" relfile="FTAnalyzer.Mac/ViewControllers/MainViewController.cs" line="41" column="1" />
       <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/ViewControllers/MainViewController.cs" relfile="FTAnalyzer.Mac/ViewControllers/MainViewController.cs" line="36" column="1" />
-      <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/ViewControllers/FTAnalyzerTabViewController.cs" relfile="FTAnalyzer.Mac/ViewControllers/FTAnalyzerTabViewController.cs" line="143" column="13" />
+      <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/ViewControllers/FTAnalyzerTabViewController.cs" relfile="FTAnalyzer.Mac/ViewControllers/FTAnalyzerTabViewController.cs" line="60" column="13" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

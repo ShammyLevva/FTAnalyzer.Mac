@@ -26,15 +26,15 @@ namespace FTAnalyzer.Mac
                 case "Gedcom Stats":
                     break;
                 case "Main Lists":
-                    App.Document.LoadMainLists(ProgressController, "Loading Main List data. Please Wait");
+                    App.Document.LoadMainLists(ProgressController);
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.MainListsEvent);
                     break;
                 case "Errors/Fixes":
-                    App.Document.LoadErrorsAndFixes(ProgressController, "Loading Errors and Fixes data. Please Wait");
+                    App.Document.LoadErrorsAndFixes(ProgressController);
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.ErrorsFixesEvent);
                     break;
                 case "Locations":
-                    App.Document.LoadLocations(ProgressController, "Loading Location Data. Please Wait");
+                    App.Document.LoadLocations(ProgressController);
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.LocationTabViewed);
                     break;
             }

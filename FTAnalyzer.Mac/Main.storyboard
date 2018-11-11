@@ -934,8 +934,10 @@
                 <windowController storyboardIdentifier="ProgressDisplay" showSeguePresentationStyle="single" id="5gz-dm-B4l" userLabel="Progress Display" customClass="ProgressController" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="Z7B-Fd-To6">
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="480" height="78"/>
+                        <rect key="contentRect" x="294" y="312" width="480" height="79"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <value key="minSize" type="size" width="480" height="79"/>
+                        <value key="maxSize" type="size" width="480" height="79"/>
                         <connections>
                             <outlet property="delegate" destination="5gz-dm-B4l" id="cle-wD-yKq"/>
                         </connections>
@@ -946,7 +948,7 @@
                 </windowController>
                 <customObject id="Nai-TG-q2N" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="-2818"/>
+            <point key="canvasLocation" x="1054" y="-2818.5"/>
         </scene>
         <!--Progress Bar-->
         <scene sceneID="Teu-Kq-IP9">

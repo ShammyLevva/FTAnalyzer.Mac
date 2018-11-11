@@ -22,15 +22,6 @@ namespace FTAnalyzer.Mac
             viewController = ContentViewController as ProgressViewController;
         }
 
-        public override void ShowWindow(NSObject sender)
-        {
-            if(!NSThread.IsMain)
-            {
-                InvokeOnMainThread(() => ShowWindow(sender));
-            }
-            base.ShowWindow(sender);
-        }
-
         public string ProgressText
         {
             set => viewController.ProgressString.Report(value);

@@ -4,6 +4,7 @@ using FTAnalyzer.Mac.ViewControllers;
 using FTAnalyzer.Properties;
 using FTAnalyzer.Utilities;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FTAnalyzer.Mac
 {
@@ -130,69 +131,88 @@ namespace FTAnalyzer.Mac
             return true;
         }
 
-        internal void LoadMainLists(ProgressController progressController, string text)
+        internal void LoadMainLists(ProgressController progressController)
         {
             if (!MainListsLoaded)
             {
-                progressController.ProgressText = text;
-                progressController.ShowWindow(this);
-                progressController.ProgressBar = 0;
-                individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
-                progressController.ProgressBar = 20;
-                familiesViewController.RefreshDocumentView(_familyTree.AllDisplayFamilies);
-                progressController.ProgressBar = 40;
-                sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
-                progressController.ProgressBar = 60;
-                occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
-                progressController.ProgressBar = 80;
-                factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
-                progressController.ProgressBar = 100;
-                //progressController.Close();
-                MainListsLoaded = true;
-             }
-        }
-
-        internal void LoadErrorsAndFixes(ProgressController progressController, string text)
-        {
-            if (!ErrorsAndFixesLoaded)
-            {
-                progressController.ProgressText = text;
-                progressController.ShowWindow(this);
-                // Flatten the data error groups into a single list until filtering implemented.
-                progressController.ProgressBar = 0;
-                var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
-                dataErrorsViewController.RefreshDocumentView(errors);
-                progressController.ProgressBar = 25;
-                //duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
-                progressController.ProgressBar = 50;
-                looseBirthsViewController.RefreshDocumentView(_familyTree.LooseBirths());
-                progressController.ProgressBar = 75;
-                looseDeathsViewController.RefreshDocumentView(_familyTree.LooseDeaths());
-                progressController.ProgressBar = 100;
-                ErrorsAndFixesLoaded = true;
-                //progressController.Close();
+                Task.Run(() =>
+                {
+                    InvokeOnMainThread(() => progressController.ShowWindow(this));
+                    progressController.ProgressBar = 0;
+                    progressController.ProgressText = "Loading Individuals Data. Please Wait";
+                    individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
+                    progressController.ProgressBar = 20;
+                    progressController.ProgressText = "Loading Families Data. Please Wait";
+                    familiesViewController.RefreshDocumentView(_familyTree.AllDisplayFamilies);
+                    progressController.ProgressBar = 40;
+                    progressController.ProgressText = "Loading Sources Data. Please Wait";
+                    sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
+                    progressController.ProgressBar = 60;
+                    progressController.ProgressText = "Loading Occupations Data. Please Wait";
+                    occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
+                    progressController.ProgressBar = 80;
+                    progressController.ProgressText = "Loading Facts Data. Please Wait";
+                    factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
+                    progressController.ProgressBar = 100;
+                    MainListsLoaded = true;
+                    InvokeOnMainThread(progressController.Close);
+                });
             }
         }
 
-        internal void LoadLocations(ProgressController progressController, string text)
+        internal void LoadErrorsAndFixes(ProgressController progressController)
+        {
+            if (!ErrorsAndFixesLoaded)
+            {
+                Task.Run(() =>
+                {
+                    InvokeOnMainThread(() => progressController.ShowWindow(this));
+                    progressController.ProgressBar = 0;
+                    progressController.ProgressText = "Loading Data Errors. Please Wait";
+                    // Flatten the data error groups into a single list until filtering implemented.
+                    var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
+                    dataErrorsViewController.RefreshDocumentView(errors);
+                    progressController.ProgressBar = 25;
+                    //duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
+                    progressController.ProgressBar = 50;
+                    progressController.ProgressText = "Loading Loose Births. Please Wait";
+                    looseBirthsViewController.RefreshDocumentView(_familyTree.LooseBirths());
+                    progressController.ProgressBar = 75;
+                    progressController.ProgressText = "Loading Loose Deaths. Please Wait";
+                    looseDeathsViewController.RefreshDocumentView(_familyTree.LooseDeaths());
+                    progressController.ProgressBar = 100;
+                    ErrorsAndFixesLoaded = true;
+                    InvokeOnMainThread(progressController.Close);
+                });
+            }
+        }
+
+        internal void LoadLocations(ProgressController progressController)
         {
             if (!LocationsLoaded)
             {
-                progressController.ProgressText = text;
-                progressController.ShowWindow(this);
-                progressController.ProgressBar = 0;
-                countriesViewController.RefreshDocumentView(_familyTree.AllDisplayCountries);
-                progressController.ProgressBar = 20;
-                regionsViewController.RefreshDocumentView(_familyTree.AllDisplayRegions);
-                progressController.ProgressBar = 40;
-                subregionsViewController.RefreshDocumentView(_familyTree.AllDisplaySubRegions);
-                progressController.ProgressBar = 60;
-                addressesViewController.RefreshDocumentView(_familyTree.AllDisplayAddresses);
-                progressController.ProgressBar = 80;
-                placesViewController.RefreshDocumentView(_familyTree.AllDisplayPlaces);
-                progressController.ProgressBar = 100;
-                LocationsLoaded = true;
-                //progressController.Close();
+                Task.Run(() =>
+                {
+                    InvokeOnMainThread(() => progressController.ShowWindow(this));
+                    progressController.ProgressBar = 0;
+                    progressController.ProgressText = "Loading List of Countries. Please Wait";
+                    countriesViewController.RefreshDocumentView(_familyTree.AllDisplayCountries);
+                    progressController.ProgressBar = 20;
+                    progressController.ProgressText = "Loading List of Regions. Please Wait";
+                    regionsViewController.RefreshDocumentView(_familyTree.AllDisplayRegions);
+                    progressController.ProgressBar = 40;
+                    progressController.ProgressText = "Loading List of SubRegions. Please Wait";
+                    subregionsViewController.RefreshDocumentView(_familyTree.AllDisplaySubRegions);
+                    progressController.ProgressBar = 60;
+                    progressController.ProgressText = "Loading List of Addresses. Please Wait";
+                    addressesViewController.RefreshDocumentView(_familyTree.AllDisplayAddresses);
+                    progressController.ProgressBar = 80;
+                    progressController.ProgressText = "Loading List of Places. Please Wait";
+                    placesViewController.RefreshDocumentView(_familyTree.AllDisplayPlaces);
+                    progressController.ProgressBar = 100;
+                    LocationsLoaded = true;
+                    InvokeOnMainThread(progressController.Close);
+                });
             }
         }
 
