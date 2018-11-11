@@ -720,7 +720,7 @@
                 </tabViewController>
                 <customObject id="4Wv-cV-nU2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="592" y="-1445"/>
+            <point key="canvasLocation" x="597" y="-1434"/>
         </scene>
         <!--MainListsController-->
         <scene sceneID="5Ys-nG-dGC">
@@ -740,7 +740,7 @@
                 </tabViewController>
                 <customObject id="PPL-jb-iDV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1466" y="-1473"/>
+            <point key="canvasLocation" x="1437" y="-1434"/>
         </scene>
         <!--LocationsController-->
         <scene sceneID="Zzx-ga-URe">
@@ -927,6 +927,58 @@
                 <customObject id="gYe-vR-VI1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="854" y="-822"/>
+        </scene>
+        <!--Progress Display-->
+        <scene sceneID="Xnb-O1-Qfk">
+            <objects>
+                <windowController storyboardIdentifier="ProgressDisplay" showSeguePresentationStyle="single" id="5gz-dm-B4l" userLabel="Progress Display" customClass="ProgressController" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="Z7B-Fd-To6">
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="480" height="78"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="5gz-dm-B4l" id="cle-wD-yKq"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="4fp-Rk-eoY" kind="relationship" relationship="window.shadowedContentViewController" id="tRR-t4-KLm"/>
+                    </connections>
+                </windowController>
+                <customObject id="Nai-TG-q2N" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1054" y="-2818"/>
+        </scene>
+        <!--Progress Bar-->
+        <scene sceneID="Teu-Kq-IP9">
+            <objects>
+                <viewController storyboardIdentifier="ProgressView" showSeguePresentationStyle="single" id="4fp-Rk-eoY" userLabel="Progress Bar" customClass="ProgressViewController" sceneMemberID="viewController">
+                    <view key="view" canDrawConcurrently="YES" id="QVd-i3-Fza">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="79"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <progressIndicator wantsLayer="YES" canDrawConcurrently="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="c4K-Y1-E6K">
+                                <rect key="frame" x="0.0" y="27" width="450" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                            <textField canDrawConcurrently="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LUu-Cm-9rX">
+                                <rect key="frame" x="-2" y="54" width="454" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="center" title="Label" id="5bR-Cr-Zbg">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="ProgressBar" destination="c4K-Y1-E6K" id="nwm-af-vlE"/>
+                        <outlet property="ProgressText" destination="LUu-Cm-9rX" id="ZqC-rC-dev"/>
+                    </connections>
+                </viewController>
+                <customObject id="3QT-Zp-Z6t" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1054" y="-2599.5"/>
         </scene>
     </scenes>
     <resources>

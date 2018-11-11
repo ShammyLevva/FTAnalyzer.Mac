@@ -20,9 +20,10 @@ namespace FTAnalyzer.Mac
         {
             // Insert code here to initialize your application
             var window = NSApplication.SharedApplication.Windows[0];
+            window.MakeKeyAndOrderFront(Self);
             window.Title = $"Family Tree Analyzer {Version}";
-            var tabs = window.ContentViewController as NSTabViewController;
-            tabs.SelectedTabViewItemIndex = 0; //set tab to GEDCOM stats
+            //var tabs = window.ContentViewController as NSTabViewController;
+            //tabs.SelectedTabViewItemIndex = 0; //set tab to GEDCOM stats
             CheckWebVersion();
         }
 

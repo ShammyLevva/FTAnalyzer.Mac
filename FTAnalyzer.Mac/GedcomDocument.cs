@@ -117,7 +117,6 @@ namespace FTAnalyzer.Mac
             _familyTree.LoadTreeFamilies(document, documentViewController.Families, documentViewController.Messages);
             _familyTree.LoadTreeRelationships(document, documentViewController.Relationships, documentViewController.Messages);
 
-
             documentViewController.Messages.Report($"\n\nFinished loading file {url.Path}\n");
 
             InvokeOnMainThread(() =>
@@ -131,34 +130,43 @@ namespace FTAnalyzer.Mac
             return true;
         }
 
-        internal void LoadMainLists(NSProgressIndicator progress)
+        internal void LoadMainLists(ProgressController progressController, string text)
         {
             if (!MainListsLoaded)
             {
-                progress.Hidden = false;
-                progress.ToolTip = "Loading main lists";
-                progress.DoubleValue = 0;
+                InvokeOnMainThread(() =>
+                {
+                    progressController.ProgressText = text;
+                    progressController.ProgressBar.ToolTip = text;
+                    progressController.ShowWindow(this);
+                });
+                InvokeOnMainThread(() => progressController.ProgressBar.DoubleValue = 0);
                 individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
-                progress.DoubleValue = 20;
+                InvokeOnMainThread(() => progressController.ProgressBar.DoubleValue = 20);
                 familiesViewController.RefreshDocumentView(_familyTree.AllDisplayFamilies);
-                progress.DoubleValue = 40;
+                InvokeOnMainThread(() => progressController.ProgressBar.DoubleValue = 40);
                 sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
-                progress.DoubleValue = 60;
+                InvokeOnMainThread(() => progressController.ProgressBar.DoubleValue = 60);
                 occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
-                progress.DoubleValue = 80;
+                InvokeOnMainThread(() => progressController.ProgressBar.DoubleValue = 80);
                 factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
-                progress.DoubleValue = 100;
+                InvokeOnMainThread(() =>
+                {
+                    progressController.ProgressBar.DoubleValue = 100;
+                    //progressController.Close();
+                });
                 MainListsLoaded = true;
-                progress.Hidden = true;
-            }
+             }
         }
 
-        internal void LoadErrorsAndFixes(NSProgressIndicator progress)
+        internal void LoadErrorsAndFixes(ProgressController progressController, string text)
         {
             if (!ErrorsAndFixesLoaded)
             {
-                progress.Hidden = false;
-                progress.ToolTip = "Calculating Error and Fixes.";
+                NSProgressIndicator progress = progressController.ProgressBar;
+                progressController.ProgressText = text;
+                progressController.ProgressBar.ToolTip = text;
+                progressController.ShowWindow(this);
                 // Flatten the data error groups into a single list until filtering implemented.
                 progress.DoubleValue = 0;
                 var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
@@ -171,16 +179,18 @@ namespace FTAnalyzer.Mac
                 looseDeathsViewController.RefreshDocumentView(_familyTree.LooseDeaths());
                 progress.DoubleValue = 100;
                 ErrorsAndFixesLoaded = true;
-                progress.Hidden = true;
+                //progressController.Close();
             }
         }
 
-        internal void LoadLocations(NSProgressIndicator progress)
+        internal void LoadLocations(ProgressController progressController, string text)
         {
             if (!LocationsLoaded)
             {
-                progress.Hidden = false;
-                progress.ToolTip = "Loading Locations from GEDCOM data.";
+                NSProgressIndicator progress = progressController.ProgressBar;
+                progressController.ProgressText = text;
+                progressController.ProgressBar.ToolTip = text;
+                progressController.ShowWindow(this);
                 progress.DoubleValue = 0;
                 countriesViewController.RefreshDocumentView(_familyTree.AllDisplayCountries);
                 progress.DoubleValue = 20;
@@ -193,7 +203,7 @@ namespace FTAnalyzer.Mac
                 placesViewController.RefreshDocumentView(_familyTree.AllDisplayPlaces);
                 progress.DoubleValue = 100;
                 LocationsLoaded = true;
-                progress.Hidden = true;
+                //progressController.Close();
             }
         }
 

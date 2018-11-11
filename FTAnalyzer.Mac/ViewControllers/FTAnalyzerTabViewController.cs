@@ -37,43 +37,36 @@ namespace FTAnalyzer.Mac
                     break;
             }
         }
-
-        NSProgressIndicator ProgressBar { get; set; }
+        ProgressController ProgressController { get; set; }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
             if (Title == "MainTabController")
             {
-                ProgressBar = new NSProgressIndicator(new CGRect(390, 0, 490, 20))
-                {
-                    MinValue = 0,
-                    MaxValue = 100,
-                    DoubleValue = 0,
-                    Hidden = false,
-                    Indeterminate = true
-                };
-                TabView.AddSubview(ProgressBar);
+                var storyboard = NSStoryboard.FromName("Main", null);
+                ProgressController = storyboard.InstantiateControllerWithIdentifier("ProgressDisplay") as ProgressController;
+                ProgressController.Presentor = this;
             }
         }
 
         void MainForm(string label)
         {
-            
+
             switch (label)
             {
                 case "Gedcom Stats":
                     break;
                 case "Main Lists":
-                    App.Document.LoadMainLists(ProgressBar);
+                    App.Document.LoadMainLists(ProgressController, "Loading Main List data. Please Wait");
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.MainListsEvent);
                     break;
                 case "Errors/Fixes":
-                    App.Document.LoadErrorsAndFixes(ProgressBar);
+                    App.Document.LoadErrorsAndFixes(ProgressController, "Loading Errors and Fixes data. Please Wait");
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.ErrorsFixesEvent);
                     break;
                 case "Locations":
-                    App.Document.LoadLocations(ProgressBar);
+                    App.Document.LoadLocations(ProgressController, "Loading Location Data. Please Wait");
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.LocationTabViewed);
                     break;
             }
