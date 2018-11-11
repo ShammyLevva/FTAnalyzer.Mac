@@ -154,6 +154,8 @@
     <Compile Include="ViewControllers\ProgressViewController.designer.cs">
       <DependentUpon>ProgressViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\ListsTabViewController.cs" />
+    <Compile Include="ViewControllers\ListsTabViewController.designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />

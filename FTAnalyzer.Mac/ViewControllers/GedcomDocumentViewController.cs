@@ -15,7 +15,7 @@ namespace FTAnalyzer.Mac
 
         public GedcomDocumentViewController(IntPtr handle) : base(handle)
         {
-            Messages = new Progress<string>(message => AppendMessage(message));
+            Messages = new Progress<string>(AppendMessage);
             Sources = new Progress<int>(percent => SetProgress(_sourcesProgress, percent));
             Individuals = new Progress<int>(percent => SetProgress(_individualsProgress, percent));
             Families = new Progress<int>(percent => SetProgress(_familiesProgress, percent));

@@ -22,13 +22,24 @@ namespace FTAnalyzer.Mac
             viewController = ContentViewController as ProgressViewController;
         }
 
-        public string ProgressText
+        public override void ShowWindow(NSObject sender)
         {
-            get => viewController.ProgressText.StringValue;
-            set => viewController.ProgressText.StringValue = value;
+            if(!NSThread.IsMain)
+            {
+                InvokeOnMainThread(() => ShowWindow(sender));
+            }
+            base.ShowWindow(sender);
         }
 
-        public NSProgressIndicator ProgressBar => viewController.ProgressBar;
+        public string ProgressText
+        {
+            set => viewController.ProgressString.Report(value);
+        }
+
+        public int ProgressBar
+        {
+            set => viewController.ProgressValue.Report(value);
+        }
 
     }
 }

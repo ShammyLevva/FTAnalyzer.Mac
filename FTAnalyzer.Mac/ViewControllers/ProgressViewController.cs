@@ -9,8 +9,13 @@ namespace FTAnalyzer.Mac
 {
 	public partial class ProgressViewController : NSViewController
 	{
+        internal IProgress<string> ProgressString;
+        internal IProgress<int> ProgressValue;
+
 		public ProgressViewController (IntPtr handle) : base (handle)
 		{
+            ProgressString = new Progress<string>(AppendMessage);
+            ProgressValue = new Progress<int>(percent => SetProgress(ProgressBar, percent));
         }
 
         public override void ViewDidLoad()
@@ -18,6 +23,26 @@ namespace FTAnalyzer.Mac
             base.ViewDidLoad();
             ProgressText.StringValue = "empty text";
             ProgressBar.DoubleValue = 0;
+        }
+
+        void AppendMessage(string message)
+        {
+            if (!NSThread.IsMain)
+            {
+                InvokeOnMainThread(() => AppendMessage(message));
+                return;
+            }
+            ProgressText.StringValue = message;
+        }
+
+        void SetProgress(NSProgressIndicator progressBar, int percent)
+        {
+            if (!NSThread.IsMain)
+            {
+                InvokeOnMainThread(() => SetProgress(progressBar, percent));
+                return;
+            }
+            ProgressBar.DoubleValue = percent;
         }
     }
 }

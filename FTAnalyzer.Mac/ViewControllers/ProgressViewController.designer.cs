@@ -14,10 +14,10 @@ namespace FTAnalyzer.Mac
 	partial class ProgressViewController
 	{
 		[Outlet]
-        internal NSProgressIndicator ProgressBar { get; set; }
+        NSProgressIndicator ProgressBar { get; set; }
 
 		[Outlet]
-		internal NSTextField ProgressText { get; set; }
+		NSTextField ProgressText { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

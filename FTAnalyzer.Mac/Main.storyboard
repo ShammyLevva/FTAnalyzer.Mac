@@ -725,7 +725,7 @@
         <!--MainListsController-->
         <scene sceneID="5Ys-nG-dGC">
             <objects>
-                <tabViewController title="MainListsController" id="CGu-hu-FSh" customClass="FTAnalyzerTabViewController" sceneMemberID="viewController">
+                <tabViewController title="MainListsController" id="CGu-hu-FSh" customClass="ListsTabViewController" sceneMemberID="viewController">
                     <tabView key="tabView" type="noTabsNoBorder" id="AZ8-HA-aKK">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="481"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -745,7 +745,7 @@
         <!--LocationsController-->
         <scene sceneID="Zzx-ga-URe">
             <objects>
-                <tabViewController title="LocationsController" id="hKK-5N-IBj" customClass="FTAnalyzerTabViewController" sceneMemberID="viewController">
+                <tabViewController title="LocationsController" id="hKK-5N-IBj" customClass="ListsTabViewController" sceneMemberID="viewController">
                     <tabView key="tabView" type="noTabsNoBorder" id="0XS-vp-xrq">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -915,7 +915,7 @@
         <!--ErrorsFixesController-->
         <scene sceneID="wv0-G7-qwd">
             <objects>
-                <tabViewController title="ErrorsFixesController" id="LHn-6f-ueJ" customClass="FTAnalyzerTabViewController" sceneMemberID="viewController">
+                <tabViewController title="ErrorsFixesController" id="LHn-6f-ueJ" customClass="ListsTabViewController" sceneMemberID="viewController">
                     <tabView key="tabView" type="noTabsNoBorder" id="OyJ-7a-5ku" userLabel="Tabless Tab View">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

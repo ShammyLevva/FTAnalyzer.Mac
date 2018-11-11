@@ -134,27 +134,20 @@ namespace FTAnalyzer.Mac
         {
             if (!MainListsLoaded)
             {
-                InvokeOnMainThread(() =>
-                {
-                    progressController.ProgressText = text;
-                    progressController.ProgressBar.ToolTip = text;
-                    progressController.ShowWindow(this);
-                });
-                InvokeOnMainThread(() => progressController.ProgressBar.DoubleValue = 0);
+                progressController.ProgressText = text;
+                progressController.ShowWindow(this);
+                progressController.ProgressBar = 0;
                 individualsViewController.RefreshDocumentView(_familyTree.AllDisplayIndividuals);
-                InvokeOnMainThread(() => progressController.ProgressBar.DoubleValue = 20);
+                progressController.ProgressBar = 20;
                 familiesViewController.RefreshDocumentView(_familyTree.AllDisplayFamilies);
-                InvokeOnMainThread(() => progressController.ProgressBar.DoubleValue = 40);
+                progressController.ProgressBar = 40;
                 sourcesViewController.RefreshDocumentView(_familyTree.AllDisplaySources);
-                InvokeOnMainThread(() => progressController.ProgressBar.DoubleValue = 60);
+                progressController.ProgressBar = 60;
                 occupationsViewController.RefreshDocumentView(_familyTree.AllDisplayOccupations);
-                InvokeOnMainThread(() => progressController.ProgressBar.DoubleValue = 80);
+                progressController.ProgressBar = 80;
                 factsViewController.RefreshDocumentView(_familyTree.AllDisplayFacts);
-                InvokeOnMainThread(() =>
-                {
-                    progressController.ProgressBar.DoubleValue = 100;
-                    //progressController.Close();
-                });
+                progressController.ProgressBar = 100;
+                //progressController.Close();
                 MainListsLoaded = true;
              }
         }
@@ -163,21 +156,19 @@ namespace FTAnalyzer.Mac
         {
             if (!ErrorsAndFixesLoaded)
             {
-                NSProgressIndicator progress = progressController.ProgressBar;
                 progressController.ProgressText = text;
-                progressController.ProgressBar.ToolTip = text;
                 progressController.ShowWindow(this);
                 // Flatten the data error groups into a single list until filtering implemented.
-                progress.DoubleValue = 0;
+                progressController.ProgressBar = 0;
                 var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
                 dataErrorsViewController.RefreshDocumentView(errors);
-                progress.DoubleValue = 25;
+                progressController.ProgressBar = 25;
                 //duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
-                progress.DoubleValue = 50;
+                progressController.ProgressBar = 50;
                 looseBirthsViewController.RefreshDocumentView(_familyTree.LooseBirths());
-                progress.DoubleValue = 75;
+                progressController.ProgressBar = 75;
                 looseDeathsViewController.RefreshDocumentView(_familyTree.LooseDeaths());
-                progress.DoubleValue = 100;
+                progressController.ProgressBar = 100;
                 ErrorsAndFixesLoaded = true;
                 //progressController.Close();
             }
@@ -187,21 +178,19 @@ namespace FTAnalyzer.Mac
         {
             if (!LocationsLoaded)
             {
-                NSProgressIndicator progress = progressController.ProgressBar;
                 progressController.ProgressText = text;
-                progressController.ProgressBar.ToolTip = text;
                 progressController.ShowWindow(this);
-                progress.DoubleValue = 0;
+                progressController.ProgressBar = 0;
                 countriesViewController.RefreshDocumentView(_familyTree.AllDisplayCountries);
-                progress.DoubleValue = 20;
+                progressController.ProgressBar = 20;
                 regionsViewController.RefreshDocumentView(_familyTree.AllDisplayRegions);
-                progress.DoubleValue = 40;
+                progressController.ProgressBar = 40;
                 subregionsViewController.RefreshDocumentView(_familyTree.AllDisplaySubRegions);
-                progress.DoubleValue = 60;
+                progressController.ProgressBar = 60;
                 addressesViewController.RefreshDocumentView(_familyTree.AllDisplayAddresses);
-                progress.DoubleValue = 80;
+                progressController.ProgressBar = 80;
                 placesViewController.RefreshDocumentView(_familyTree.AllDisplayPlaces);
-                progress.DoubleValue = 100;
+                progressController.ProgressBar = 100;
                 LocationsLoaded = true;
                 //progressController.Close();
             }
