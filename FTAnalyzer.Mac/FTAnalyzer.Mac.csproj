@@ -11,7 +11,7 @@
     <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
     <AssemblyOriginatorKeyFile>..\..\..\Dropbox\code signing certificate.crt.pfx</AssemblyOriginatorKeyFile>
-    <ReleaseVersion>0.1.1</ReleaseVersion>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">

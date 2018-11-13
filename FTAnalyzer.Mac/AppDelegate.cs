@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using System.Net;
 using System.Web;
 using AppKit;
@@ -15,6 +14,7 @@ namespace FTAnalyzer.Mac
         bool _documentOpening;
 
         public GedcomDocument Document { get; set; }
+        static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public override void DidFinishLaunching(NSNotification notification)
         {
@@ -32,7 +32,6 @@ namespace FTAnalyzer.Mac
             // Insert code here to tear down your application
             foreach (NSWindow window in NSApplication.SharedApplication.Windows)
             {
-
                 window.Dispose();
             }
         }
@@ -68,7 +67,7 @@ namespace FTAnalyzer.Mac
             var storyboard = NSStoryboard.FromName("Facts", null);
             foreach(NSWindow window in NSApplication.SharedApplication.Windows)
             {
-                if (window.Title.Substring(0,5) == "Facts")
+                if (window.Title.Length >= 5 && window.Title.Substring(0,5) == "Facts")
                     window.Close();
             }
         }

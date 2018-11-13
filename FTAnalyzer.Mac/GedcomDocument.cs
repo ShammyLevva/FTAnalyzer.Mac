@@ -1,7 +1,6 @@
 ﻿using AppKit;
 using Foundation;
 using FTAnalyzer.Mac.ViewControllers;
-using FTAnalyzer.Properties;
 using FTAnalyzer.Utilities;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +16,7 @@ namespace FTAnalyzer.Mac
         [Export("canConcurrentlyReadDocumentsOfType:")]
         public static new bool CanConcurrentlyReadDocumentsOfType(string fileType) => true;
 
-        NSTabViewController tabbedViewController;
+        FTAnalyzerTabViewController tabbedViewController;
         BindingListViewController<IDisplayIndividual> individualsViewController;
         BindingListViewController<IDisplayFamily> familiesViewController;
         BindingListViewController<IDisplaySource> sourcesViewController;
@@ -51,18 +50,19 @@ namespace FTAnalyzer.Mac
             InvokeOnMainThread(() =>
             {
                 var window = NSApplication.SharedApplication.MainWindow;
+                tabbedViewController = window.ContentViewController as FTAnalyzerTabViewController;
 
-                tabbedViewController = window.ContentViewController as NSTabViewController;
                 //Make sure the loading tab is seleceted.
                 tabbedViewController.SelectedTabViewItemIndex = 0;
                 documentViewController = tabbedViewController.ChildViewControllers[0] as GedcomDocumentViewController;
                 documentViewController.ClearAllProgress();
-            
-                var mainListsViewController = tabbedViewController.ChildViewControllers[1] as NSTabViewController;
+
+                var mainListsViewController = tabbedViewController.ChildViewControllers[1] as ListsTabViewController;
                 RemoveOldTabs(mainListsViewController);
-                var errorsAndFixesTabViewController = tabbedViewController.ChildViewControllers[2] as NSTabViewController;
+
+                var errorsAndFixesTabViewController = tabbedViewController.ChildViewControllers[2] as ListsTabViewController;
                 RemoveOldTabs(errorsAndFixesTabViewController);
-                var locationsTabViewController = tabbedViewController.ChildViewControllers[3] as NSTabViewController;
+                var locationsTabViewController = tabbedViewController.ChildViewControllers[3] as ListsTabViewController;
                 RemoveOldTabs(locationsTabViewController);
 
                 individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals", "Double click to show a list of facts for the selected individual.");

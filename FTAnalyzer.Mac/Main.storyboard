@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment version="101003" identifier="macosx"/>
+        <deployment version="101100" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -954,7 +954,7 @@
         <scene sceneID="Teu-Kq-IP9">
             <objects>
                 <viewController storyboardIdentifier="ProgressView" showSeguePresentationStyle="single" id="4fp-Rk-eoY" userLabel="Progress Bar" customClass="ProgressViewController" sceneMemberID="viewController">
-                    <view key="view" canDrawConcurrently="YES" id="QVd-i3-Fza">
+                    <view key="view" id="QVd-i3-Fza">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="79"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>

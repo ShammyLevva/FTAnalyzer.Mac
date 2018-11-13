@@ -2,7 +2,6 @@
 using Foundation;
 using AppKit;
 using FTAnalyzer.Utilities;
-using CoreGraphics;
 
 namespace FTAnalyzer.Mac
 {
@@ -19,8 +18,6 @@ namespace FTAnalyzer.Mac
         {
             if (App.Document == null)
                 return; // don't bother if we've not loaded a document yet
-            Console.WriteLine($"TabView: {Title}");
-            Console.WriteLine($"Item: {item.Label}");
             switch (item.Label)
             {
                 case "Gedcom Stats":

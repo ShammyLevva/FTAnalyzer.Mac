@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using AppKit;
@@ -21,13 +22,11 @@ namespace FTAnalyzer.Mac.DataSources
             _fieldNames = typeof(T).GetProperties().Select(f => f.Name).ToArray();
         }
 
-        public override nint GetRowCount(NSTableView tableView)
-        {
-            return _bindingList.Count;
-        }
+        public override nint GetRowCount(NSTableView tableView) => _bindingList.Count;
 
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
+            var index = Array.IndexOf(_fieldNames, tableColumn.Title);
             if (!(tableView.MakeView(CellIdentifier, this) is NSTextField view))
             {
                 view = new NSTextField
@@ -43,14 +42,13 @@ namespace FTAnalyzer.Mac.DataSources
             if (row >= 0)
             {
                 var item = _bindingList[(int)row];
-                var index = Array.IndexOf(_fieldNames, tableColumn.Title);
                 var propertyValue = _properties[index].GetValue(item);
                 view.StringValue = propertyValue == null ? string.Empty : propertyValue.ToString();
             }
             else
                 view.StringValue = string.Empty;
-
             return view;
         }
+
     }
 }

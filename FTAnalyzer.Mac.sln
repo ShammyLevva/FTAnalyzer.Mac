@@ -10,6 +10,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ToDoList.txt = ToDoList.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{22E07357-4110-408A-A878-9D1F33440731}"
+	ProjectSection(SolutionItems) = preProject
+		docs\readme.md = docs\readme.md
+		docs\Whats New in this Release.md = docs\Whats New in this Release.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "issues", "issues", "{4DA751DE-22B5-46EB-AB21-449C1F46DD6B}"
+	ProjectSection(SolutionItems) = preProject
+		docs\issues\index.md = docs\issues\index.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "releases", "releases", "{5DF16135-8B08-4FD5-B65F-77CE0CE4A935}"
+	ProjectSection(SolutionItems) = preProject
+		docs\releases\IdentifiedDeveloper.png = docs\releases\IdentifiedDeveloper.png
+		docs\releases\index.md = docs\releases\index.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -22,11 +39,19 @@ Global
 		{EE106C3A-38A4-4962-A747-8D5D17AE3039}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		version = 0.1.1
+		version = 1.0.0
 		Policies = $0
 		$0.StandardHeader = $1
 		$0.VersionControlPolicy = $2
 		$2.CommitMessageStyle = $3
 		$3.FileSeparator = ", "
+		$3.LineAlign = 0
+		$0.DotNetNamingPolicy = $4
+		$4.DirectoryNamespaceAssociation = PrefixedHierarchical
+		description = Analyzer the depths of your family tree with a native Mac OS App.
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4DA751DE-22B5-46EB-AB21-449C1F46DD6B} = {22E07357-4110-408A-A878-9D1F33440731}
+		{5DF16135-8B08-4FD5-B65F-77CE0CE4A935} = {22E07357-4110-408A-A878-9D1F33440731}
 	EndGlobalSection
 EndGlobal
