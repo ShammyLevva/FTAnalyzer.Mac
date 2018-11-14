@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using AppKit;
@@ -26,7 +25,15 @@ namespace FTAnalyzer.Mac.DataSources
 
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
-            var index = Array.IndexOf(_fieldNames, tableColumn.Title);
+            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
+            var property = _properties[index];
+            NSTextAlignment alignment = NSTextAlignment.Left;
+            ColumnDetail[] x = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
+            if (x?.Length == 1)
+                alignment = x[0].Alignment;
+            if (property.PropertyType.FullName == "System.Int32")
+                alignment = NSTextAlignment.Right;
+
             if (!(tableView.MakeView(CellIdentifier, this) is NSTextField view))
             {
                 view = new NSTextField
@@ -35,7 +42,8 @@ namespace FTAnalyzer.Mac.DataSources
                     BackgroundColor = NSColor.Clear,
                     Bordered = false,
                     Selectable = false,
-                    Editable = false
+                    Editable = false,
+                    Alignment = alignment
                 };
             }
             // Setup view based on the column selected

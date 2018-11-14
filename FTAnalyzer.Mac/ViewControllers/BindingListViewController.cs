@@ -1,5 +1,4 @@
-﻿using System;
-using AppKit;
+﻿using AppKit;
 using Foundation;
 using FTAnalyzer.Mac.DataSources;
 using FTAnalyzer.Utilities;
@@ -46,20 +45,23 @@ namespace FTAnalyzer.Mac.ViewControllers
             };
 
             var properties = typeof(T).GetProperties();
-            float width;
             foreach (var property in properties)
             {
-                width = 100;
-                ColumnWidth[] x = property.GetCustomAttributes(typeof(ColumnWidth), false) as ColumnWidth[];
+                float width = 100;
+                string columnTitle = property.Name;
+                ColumnDetail[] x = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
                 if (x?.Length == 1)
-                    width = x[0].ColWidth;
+                {
+                	columnTitle = x[0].ColumnName;
+                    width = x[0].ColumnWidth;
+                }
                 var tableColumn = new NSTableColumn
                 {
                     Identifier = property.Name,
                     Width = width,
                     Editable = false,
                     Hidden = false,
-                    Title = property.Name
+                    Title = columnTitle
                 };
                 _tableView.AddColumn(tableColumn);
             }
