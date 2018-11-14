@@ -1,6 +1,6 @@
 This is the Mac version of FTAnalyzer pages.
 
-Please note that the development of the Mac version is still in a early "beta" stage. It can load a file and display individuals, families, sources, occupations and facts, and locations. 
+Please note that the development of the Mac version is still in a early "beta" stage. It can load a file and display individuals, families, sources, occupations, facts and locations. 
 
 I've also added the errors and fixes tab. This is quite basic at present as it doesnt yet have the filters that the windows version has and the duplicates isn't yet working. Although the latest version allows a double click to show all the facts for that person or family.
 
