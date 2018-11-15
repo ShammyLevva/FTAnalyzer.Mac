@@ -1,21 +1,11 @@
 ﻿<Properties StartupConfiguration="{EE106C3A-38A4-4962-A747-8D5D17AE3039}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Mac Status">
     <Files>
-      <File FileName="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" Line="1" Column="14" />
-      <File FileName="FTAnalyzer.Mac/DataSources/BindingListTableSource.cs" Line="2" Column="19" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Displays/IDisplayIndividual.cs" Line="31" Column="1" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Displays/IDisplayFamily.cs" Line="9" Column="1" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Displays/IDisplayFact.cs" Line="29" Column="33" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Displays/IDisplayColourBMD.cs" Line="13" Column="37" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Displays/DisplayOccupation.cs" Line="7" Column="9" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Displays/IDisplayOccupation.cs" Line="2" Column="28" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Displays/IDisplayLooseDeath.cs" Line="26" Column="1" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Displays/IDisplayLocation.cs" Line="32" Column="6" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Displays/IDisplayDuplicateIndividual.cs" Line="1" Column="1" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Displays/IDisplayColourCensus.cs" Line="21" Column="36" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Displays/IDisplayChildrenStatus.cs" Line="32" Column="2" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Displays/IDisplayCensus.cs" Line="1" Column="1" />
-      <File FileName="FTAnalyzer.Shared Status" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" Line="150" Column="46" />
+      <File FileName="FTAnalyzer.Mac/DataSources/People.cs" Line="52" Column="10" />
+      <File FileName="FTAnalyzer.Mac/DataSources/GedcomDocument.cs" Line="255" Column="9" />
+      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="65" Column="9" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/FactsViewController.cs" Line="1" Column="1" />
       <File FileName="FTAnalyzer.Mac Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>

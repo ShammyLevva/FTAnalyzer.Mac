@@ -41,7 +41,7 @@ namespace FTAnalyzer.Mac.ViewControllers
                 //AutosaveName = title,
                 //AutosaveTableColumns = true,
                 Target = Self,
-                DoubleAction = new ObjCRuntime.Selector("ViewFactsSelector")
+                DoubleAction = new ObjCRuntime.Selector("ViewDetailsSelector")
             };
 
             var properties = typeof(T).GetProperties();
@@ -72,7 +72,7 @@ namespace FTAnalyzer.Mac.ViewControllers
                 HasHorizontalScroller = true,
                 WantsLayer = true,
                 Layer = NewLayer(),
-                Bounds = new CoreGraphics.CGRect(0, 0, 0, 0)
+                Bounds = new CoreGraphics.CGRect(0, 0, 500, 500)
             };
             View = scrollView;
         }
@@ -100,12 +100,12 @@ namespace FTAnalyzer.Mac.ViewControllers
             _tableView.ReloadData();
         }
 
-        [Export ("ViewFactsSelector")]
-        public void ViewFactsSelector()
+        [Export ("ViewDetailsSelector")]
+        public void ViewDetailsSelector()
         {
             if (!NSThread.IsMain)
             {
-                InvokeOnMainThread(ViewFactsSelector);
+                InvokeOnMainThread(ViewDetailsSelector);
                 return;
             }
             NSTableColumn column = GetColumnID("IndividualID");
@@ -141,6 +141,18 @@ namespace FTAnalyzer.Mac.ViewControllers
                     return;
                 }
             }
+            column = GetColumnID("Occupation");
+            if (column != null)
+            {
+                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTextField cell)
+                {
+                    string occupation = cell.StringValue;
+                    People people = new People();
+                    people.SetWorkers(occupation, FamilyTree.Instance.AllWorkers(occupation));
+                    RaiseOccupationRowClicked(people);
+                    return;
+                }
+            }
         }
 
         NSTableColumn GetColumnID(string identifier)
@@ -159,9 +171,11 @@ namespace FTAnalyzer.Mac.ViewControllers
         public delegate void IndividualRowClickedDelegate(Individual individual);
         public delegate void FamilyRowClickedDelegate(Family family);
         public delegate void SourceRowClickedDelegate(FactSource source);
+        public delegate void OccupationRowClickedDelegate(People people);
         public event IndividualRowClickedDelegate IndividualFactRowClicked;
         public event FamilyRowClickedDelegate FamilyFactRowClicked;
         public event SourceRowClickedDelegate SourceFactRowClicked;
+        public event OccupationRowClickedDelegate OccupationRowClicked;
 
         internal void RaiseFactRowClicked(Individual individual)
         {
@@ -177,6 +191,10 @@ namespace FTAnalyzer.Mac.ViewControllers
         {
             // Inform caller
             SourceFactRowClicked?.Invoke(source);
+        }
+        internal void RaiseOccupationRowClicked(People people)
+        {
+            OccupationRowClicked?.Invoke(people);
         }
         #endregion
     }

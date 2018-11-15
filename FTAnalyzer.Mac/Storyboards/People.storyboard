@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="owQ-T1-BCH">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="2UV-0c-EcZ">
+            <objects>
+                <windowController storyboardIdentifier="PeopleWindow" id="owQ-T1-BCH" sceneMemberID="viewController">
+                    <window key="window" title="People" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="1k5-Lo-K3z">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="900" height="500"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="owQ-T1-BCH" id="3iP-7i-GcJ"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="O63-6Z-bkG" kind="relationship" relationship="window.shadowedContentViewController" id="fAZ-Ok-27l"/>
+                    </connections>
+                </windowController>
+                <customObject id="S2T-Ye-xbn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4515" y="-425"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="u5l-yA-4fT">
+            <objects>
+                <splitViewController id="O63-6Z-bkG" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem canCollapse="YES" id="BOK-ae-PE8"/>
+                        <splitViewItem canCollapse="YES" id="KeB-sF-quc"/>
+                    </splitViewItems>
+                    <splitView key="splitView" dividerStyle="thin" id="iLv-67-8uv">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="O63-6Z-bkG" id="OsT-HD-Vh2"/>
+                        </connections>
+                    </splitView>
+                    <connections>
+                        <outlet property="splitView" destination="iLv-67-8uv" id="yxa-iV-dKO"/>
+                        <segue destination="bCK-Cr-Ode" kind="relationship" relationship="splitItems" id="jst-WL-odY"/>
+                        <segue destination="c1x-Sp-0Et" kind="relationship" relationship="splitItems" id="MLb-yg-jui"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="F5q-LA-8fm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4582" y="70"/>
+        </scene>
+        <!--Individuals-->
+        <scene sceneID="rhk-Rg-MRN">
+            <objects>
+                <tabViewController title="Individuals" id="bCK-Cr-Ode" sceneMemberID="viewController">
+                    <tabView key="tabView" type="noTabsNoBorder" id="3w1-yh-UMr">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="bCK-Cr-Ode" id="zmP-Tu-m5a"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="3w1-yh-UMr" id="nWT-Je-8lX"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="1Sd-to-TWi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3932" y="-107"/>
+        </scene>
+        <!--Families-->
+        <scene sceneID="f53-EY-aqR">
+            <objects>
+                <tabViewController title="Families" id="c1x-Sp-0Et" sceneMemberID="viewController">
+                    <tabView key="tabView" type="noTabsNoBorder" id="dfL-x0-gqt">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="c1x-Sp-0Et" id="4PU-24-ZDT"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="dfL-x0-gqt" id="fEy-Ba-2zb"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="S0N-ae-XS9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3932" y="260"/>
+        </scene>
+    </scenes>
+</document>
