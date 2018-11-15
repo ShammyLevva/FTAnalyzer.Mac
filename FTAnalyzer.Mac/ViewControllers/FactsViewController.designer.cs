@@ -10,9 +10,8 @@ using System.CodeDom.Compiler;
 namespace FTAnalyzer.Mac
 {
 	[Register ("FactsViewController")]
-	public partial class FactsViewController
+	public partial class FactsViewController<T>
 	{
-		
 		void ReleaseDesignerOutlets ()
 		{
 		}
