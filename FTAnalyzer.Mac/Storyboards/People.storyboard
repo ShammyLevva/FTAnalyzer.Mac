@@ -27,22 +27,25 @@
             </objects>
             <point key="canvasLocation" x="-4515" y="-425"/>
         </scene>
-        <!--Split View Controller-->
+        <!--People View Controller-->
         <scene sceneID="u5l-yA-4fT">
             <objects>
-                <splitViewController id="O63-6Z-bkG" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="PeopleViewController" id="O63-6Z-bkG" customClass="PeopleViewController" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" id="BOK-ae-PE8"/>
                         <splitViewItem canCollapse="YES" id="KeB-sF-quc"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="iLv-67-8uv">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="-261" y="0.0" width="711" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="delegate" destination="O63-6Z-bkG" id="OsT-HD-Vh2"/>
                         </connections>
                     </splitView>
                     <connections>
+                        <outlet property="FamilyView" destination="KeB-sF-quc" id="KZa-XB-ye2"/>
+                        <outlet property="IndividualView" destination="BOK-ae-PE8" id="eIe-QT-yO1"/>
+                        <outlet property="SplitView" destination="iLv-67-8uv" id="Ao1-Z5-akg"/>
                         <outlet property="splitView" destination="iLv-67-8uv" id="yxa-iV-dKO"/>
                         <segue destination="bCK-Cr-Ode" kind="relationship" relationship="splitItems" id="jst-WL-odY"/>
                         <segue destination="c1x-Sp-0Et" kind="relationship" relationship="splitItems" id="MLb-yg-jui"/>
@@ -50,7 +53,7 @@
                 </splitViewController>
                 <customObject id="F5q-LA-8fm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4582" y="70"/>
+            <point key="canvasLocation" x="-4712.5" y="70"/>
         </scene>
         <!--Individuals-->
         <scene sceneID="rhk-Rg-MRN">

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using AppKit;
+using Foundation;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.Mac.DataSources
@@ -31,8 +32,6 @@ namespace FTAnalyzer.Mac.DataSources
             ColumnDetail[] x = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
             if (x?.Length == 1)
                 alignment = x[0].Alignment;
-            if (property.PropertyType.FullName == "System.Int32")
-                alignment = NSTextAlignment.Right;
 
             if (!(tableView.MakeView(CellIdentifier, this) is NSTextField view))
             {
@@ -58,5 +57,16 @@ namespace FTAnalyzer.Mac.DataSources
             return view;
         }
 
+        public override void SortDescriptorsChanged(NSTableView tableView, NSSortDescriptor[] oldDescriptors)
+        {
+            base.SortDescriptorsChanged(tableView, oldDescriptors);
+            //var list = _bindingList.ToList();
+            //foreach(NSSortDescriptor descr in tableView.SortDescriptors)
+            //{
+            //    list.Sort(descr
+            //}
+            //_bindingList.(tableView.SortDescriptors);
+            //tableView.ReloadData();
+        }
     }
 }

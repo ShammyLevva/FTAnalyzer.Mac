@@ -17,17 +17,25 @@ namespace FTAnalyzer.Mac
 
 		[Outlet]
 		AppKit.NSSplitViewItem IndividualView { get; set; }
+
+		[Outlet]
+		AppKit.NSSplitView SplitView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (FamilyView != null) {
+				FamilyView.Dispose ();
+				FamilyView = null;
+			}
+
 			if (IndividualView != null) {
 				IndividualView.Dispose ();
 				IndividualView = null;
 			}
 
-			if (FamilyView != null) {
-				FamilyView.Dispose ();
-				FamilyView = null;
+			if (SplitView != null) {
+				SplitView.Dispose ();
+				SplitView = null;
 			}
 		}
 	}

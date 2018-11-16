@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using AppKit;
 using Foundation;
-using FTAnalyzer.Mac.ViewControllers;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.Mac
@@ -11,19 +8,15 @@ namespace FTAnalyzer.Mac
     public class People
     {
         enum ReportType { People, MissingChildrenStatus, MismatchedChildrenStatus }
-        public BindingListViewController<IDisplayIndividual> IndividualsViewController { get; }
-        public BindingListViewController<IDisplayFamily> FamiliesViewController { get; }
         NSWindowController peopleWindow;
+        PeopleViewController peopleView;
 
         public People()
         {
-            IndividualsViewController = new BindingListViewController<IDisplayIndividual>(string.Empty, string.Empty);
-            FamiliesViewController = new BindingListViewController<IDisplayFamily>(string.Empty, string.Empty);
             var storyboard = NSStoryboard.FromName("People", null);
             peopleWindow = storyboard.InstantiateControllerWithIdentifier("PeopleWindow") as NSWindowController;
-            peopleWindow.ContentViewController.AddChildViewController(IndividualsViewController);
-            peopleWindow.ContentViewController.AddChildViewController(FamiliesViewController);
-        }
+            peopleView = peopleWindow.ContentViewController as PeopleViewController;
+         }
 
         public void SetWorkers(string job, SortableBindingList<Individual> workers)
         {
@@ -31,18 +24,17 @@ namespace FTAnalyzer.Mac
             SortableBindingList<IDisplayIndividual> dsInd = new SortableBindingList<IDisplayIndividual>();
             foreach (Individual i in workers)
                 dsInd.Add(i);
-            IndividualsViewController.RefreshDocumentView(dsInd);
-
+            peopleView.RefreshIndividuals(dsInd);
             SortIndividuals();
-           // splitContainer.Panel2Collapsed = true;
+            peopleView.HideFamilies();
             UpdateStatusCount();
         }
 
         public void SetIndividuals(List<Individual> individuals, string reportTitle)
         {
             peopleWindow.Window.Title = reportTitle;
-            IndividualsViewController.RefreshDocumentView(new SortableBindingList<IDisplayIndividual>(individuals));
-            //splitContainer.Panel2Collapsed = true;
+            peopleView.RefreshIndividuals(new SortableBindingList<IDisplayIndividual>(individuals));
+            peopleView.HideFamilies();
             UpdateStatusCount();
         }
 
@@ -68,7 +60,7 @@ namespace FTAnalyzer.Mac
             //    txtCount.Text = $"{dgFamilies.RowCount} Problems detected. " + Properties.Messages.Hints_IndividualFamily + " Shift Double click to see colour census report for family.";
             //else
             //{
-            //    if (splitContainer.Panel2Collapsed)
+            //   if (splitContainer.Panel2Collapsed)
             //        txtCount.Text = "Count: " + dgIndividuals.RowCount + " Individuals.  " + Properties.Messages.Hints_Individual;
             //    else
             //        txtCount.Text = "Count: " + dgIndividuals.RowCount + " Individuals and " + dgFamilies.RowCount + " Families. " + Properties.Messages.Hints_IndividualFamily;
@@ -77,10 +69,10 @@ namespace FTAnalyzer.Mac
 
         void ResetTable()
         {
- //           if (!splitContainer.Panel1Collapsed)
- //               SortIndividuals();
- //           if (!splitContainer.Panel2Collapsed)
- //               SortFamilies();
+            if (peopleView.IsIndividualViewVisible)
+                peopleView.SortIndividuals();
+            if (peopleView.IsFamilyViewVisible)
+                peopleView.SortFamilies();
         }
 
 

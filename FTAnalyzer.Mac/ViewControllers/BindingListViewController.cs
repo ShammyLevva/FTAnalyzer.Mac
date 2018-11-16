@@ -34,12 +34,12 @@ namespace FTAnalyzer.Mac.ViewControllers
                 ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
                 WantsLayer = true,
                 Layer = NewLayer(),
-                Bounds = new CoreGraphics.CGRect(0, 0, 500, 500),
+                Bounds = new CoreGraphics.CGRect(0, 0, 600, 300),
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
                 AllowsMultipleSelection = false,
                 AllowsColumnResizing = true,
-                //AutosaveName = title,
-                //AutosaveTableColumns = true,
+                AutosaveName = title,
+                AutosaveTableColumns = true,
                 Target = Self,
                 DoubleAction = new ObjCRuntime.Selector("ViewDetailsSelector")
             };
@@ -165,6 +165,12 @@ namespace FTAnalyzer.Mac.ViewControllers
                 count++;
             }
             return null;
+        }
+
+        public void Sort(NSSortDescriptor[] columns)
+        {
+            _tableView.SortDescriptors = columns;
+            _tableView.ReloadData();
         }
 
         #region Events

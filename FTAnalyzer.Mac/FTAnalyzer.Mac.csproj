@@ -158,6 +158,10 @@
     <Compile Include="ViewControllers\ListsTabViewController.designer.cs" />
     <Compile Include="DataSources\GedcomDocument.cs" />
     <Compile Include="DataSources\People.cs" />
+    <Compile Include="ViewControllers\PeopleViewController.cs" />
+    <Compile Include="ViewControllers\PeopleViewController.designer.cs">
+      <DependentUpon>PeopleViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\en.lproj\Main.storyboard" />

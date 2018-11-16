@@ -20,8 +20,14 @@ namespace FTAnalyzer.Mac
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            foreach(NSSplitViewItem item in SplitViewItems)
+            {
+                RemoveSplitViewItem(item); // we need to remove any old items to re-add the updated controllers
+            }
             IndividualView.ViewController = IndividualsViewController;
             FamilyView.ViewController = FamiliesViewController;
+            InsertSplitViewItem(IndividualView,0);
+            InsertSplitViewItem(FamilyView, 1);
         }
 
         public void RefreshIndividuals(SortableBindingList<IDisplayIndividual> list)
@@ -55,5 +61,27 @@ namespace FTAnalyzer.Mac
         {
             FamilyView.Collapsed = true;
         }
+
+        public void SortIndividuals()
+        {
+            NSSortDescriptor[] descriptors = 
+            {
+                new NSSortDescriptor("Surname", true),
+                new NSSortDescriptor("Forename", true)
+            };
+            IndividualsViewController.Sort(descriptors);
+        }
+
+        public void SortFamilies()
+        {
+            NSSortDescriptor[] descriptors =
+            {
+                new NSSortDescriptor("FamilyID", true)
+            };
+            FamiliesViewController.Sort(descriptors);
+        }
+
+        public bool IsIndividualViewVisible => !IndividualView.Collapsed;
+        public bool IsFamilyViewVisible => !FamilyView.Collapsed;
     }
 }
