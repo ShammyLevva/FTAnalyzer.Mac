@@ -10,6 +10,7 @@ namespace FTAnalyzer.Mac
     {
         BindingListViewController<IDisplayIndividual> IndividualsViewController { get; }
         BindingListViewController<IDisplayFamily> FamiliesViewController { get; }
+        AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
 
         public PeopleViewController(IntPtr handle) : base(handle) 
         {
@@ -28,24 +29,26 @@ namespace FTAnalyzer.Mac
             FamilyView.ViewController = FamiliesViewController;
             InsertSplitViewItem(IndividualView,0);
             InsertSplitViewItem(FamilyView, 1);
+            IndividualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
+            FamiliesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
         }
 
-        public void RefreshIndividuals(SortableBindingList<IDisplayIndividual> list)
+        public void LoadIndividuals(SortableBindingList<IDisplayIndividual> list)
         {
             if (!NSThread.IsMain)
             {
-                InvokeOnMainThread(() => RefreshIndividuals(list));
+                InvokeOnMainThread(() => LoadIndividuals(list));
                 return;
             }
             IndividualView.Collapsed = false;
             IndividualsViewController.RefreshDocumentView(list);
          }
 
-        public void RefreshFamilies(SortableBindingList<IDisplayFamily> list)
+        public void LoadFamilies(SortableBindingList<IDisplayFamily> list)
         {
             if (!NSThread.IsMain)
             {
-                InvokeOnMainThread(() => RefreshFamilies(list));
+                InvokeOnMainThread(() => LoadFamilies(list));
                 return;
             }
             FamilyView.Collapsed = false;
@@ -83,5 +86,24 @@ namespace FTAnalyzer.Mac
 
         public bool IsIndividualViewVisible => !IndividualView.Collapsed;
         public bool IsFamilyViewVisible => !FamilyView.Collapsed;
+
+        void IndividualsFactRowClicked(Individual individual)
+        {
+            InvokeOnMainThread(() =>
+            {
+                App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
+                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
+            });
+        }
+
+        void FamiliesFactRowClicked(Family family)
+        {
+            InvokeOnMainThread(() =>
+            {
+                App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family));
+                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsFamiliesEvent);
+            });
+        }
+
     }
 }

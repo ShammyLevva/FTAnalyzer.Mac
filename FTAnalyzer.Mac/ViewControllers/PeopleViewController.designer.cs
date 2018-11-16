@@ -17,9 +17,6 @@ namespace FTAnalyzer.Mac
 
 		[Outlet]
 		AppKit.NSSplitViewItem IndividualView { get; set; }
-
-		[Outlet]
-		AppKit.NSSplitView SplitView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -31,11 +28,6 @@ namespace FTAnalyzer.Mac
 			if (IndividualView != null) {
 				IndividualView.Dispose ();
 				IndividualView = null;
-			}
-
-			if (SplitView != null) {
-				SplitView.Dispose ();
-				SplitView = null;
 			}
 		}
 	}

@@ -56,17 +56,5 @@ namespace FTAnalyzer.Mac.DataSources
                 view.StringValue = string.Empty;
             return view;
         }
-
-        public override void SortDescriptorsChanged(NSTableView tableView, NSSortDescriptor[] oldDescriptors)
-        {
-            base.SortDescriptorsChanged(tableView, oldDescriptors);
-            //var list = _bindingList.ToList();
-            //foreach(NSSortDescriptor descr in tableView.SortDescriptors)
-            //{
-            //    list.Sort(descr
-            //}
-            //_bindingList.(tableView.SortDescriptors);
-            //tableView.ReloadData();
-        }
     }
 }

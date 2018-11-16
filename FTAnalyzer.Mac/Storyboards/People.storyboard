@@ -53,7 +53,7 @@
                 </splitViewController>
                 <customObject id="F5q-LA-8fm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4712.5" y="70"/>
+            <point key="canvasLocation" x="-4639" y="112"/>
         </scene>
         <!--Individuals-->
         <scene sceneID="rhk-Rg-MRN">
@@ -73,7 +73,7 @@
                 </tabViewController>
                 <customObject id="1Sd-to-TWi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3932" y="-107"/>
+            <point key="canvasLocation" x="-3932" y="-102"/>
         </scene>
         <!--Families-->
         <scene sceneID="f53-EY-aqR">

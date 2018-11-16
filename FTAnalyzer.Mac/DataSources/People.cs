@@ -15,6 +15,7 @@ namespace FTAnalyzer.Mac
         {
             var storyboard = NSStoryboard.FromName("People", null);
             peopleWindow = storyboard.InstantiateControllerWithIdentifier("PeopleWindow") as NSWindowController;
+            peopleWindow.Window.SetFrame(new CoreGraphics.CGRect(200,100,800,500),true);
             peopleView = peopleWindow.ContentViewController as PeopleViewController;
          }
 
@@ -24,8 +25,8 @@ namespace FTAnalyzer.Mac
             SortableBindingList<IDisplayIndividual> dsInd = new SortableBindingList<IDisplayIndividual>();
             foreach (Individual i in workers)
                 dsInd.Add(i);
-            peopleView.RefreshIndividuals(dsInd);
-            SortIndividuals();
+            peopleView.LoadIndividuals(dsInd);
+            peopleView.SortIndividuals();
             peopleView.HideFamilies();
             UpdateStatusCount();
         }
@@ -33,7 +34,7 @@ namespace FTAnalyzer.Mac
         public void SetIndividuals(List<Individual> individuals, string reportTitle)
         {
             peopleWindow.Window.Title = reportTitle;
-            peopleView.RefreshIndividuals(new SortableBindingList<IDisplayIndividual>(individuals));
+            peopleView.LoadIndividuals(new SortableBindingList<IDisplayIndividual>(individuals));
             peopleView.HideFamilies();
             UpdateStatusCount();
         }
@@ -41,17 +42,6 @@ namespace FTAnalyzer.Mac
         public void ShowWindow(NSObject sender)
         {
             peopleWindow.ShowWindow(sender);
-        }
-
-        void SortIndividuals()
-        {
-           // dgIndividuals.Sort(dgIndividuals.Columns[1], ListSortDirection.Ascending);
-           // dgIndividuals.Sort(dgIndividuals.Columns[2], ListSortDirection.Ascending);
-        }
-
-        void SortFamilies()
-        {
-           // dgFamilies.Sort(dgFamilies.Columns[0], ListSortDirection.Ascending);
         }
 
         void UpdateStatusCount()
@@ -74,7 +64,5 @@ namespace FTAnalyzer.Mac
             if (peopleView.IsFamilyViewVisible)
                 peopleView.SortFamilies();
         }
-
-
     }
 }
