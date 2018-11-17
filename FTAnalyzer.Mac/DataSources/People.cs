@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
@@ -15,7 +16,7 @@ namespace FTAnalyzer.Mac
         {
             var storyboard = NSStoryboard.FromName("People", null);
             peopleWindow = storyboard.InstantiateControllerWithIdentifier("PeopleWindow") as NSWindowController;
-            peopleWindow.Window.SetFrame(new CoreGraphics.CGRect(200,100,800,500),true);
+            peopleWindow.Window.SetFrame(new CoreGraphics.CGRect(300,300,800,500),true);
             peopleView = peopleWindow.ContentViewController as PeopleViewController;
          }
 
@@ -26,8 +27,7 @@ namespace FTAnalyzer.Mac
             foreach (Individual i in workers)
                 dsInd.Add(i);
             peopleView.LoadIndividuals(dsInd);
-            peopleView.SortIndividuals();
-            peopleView.HideFamilies();
+            peopleView.HideFamilies(true);
             UpdateStatusCount();
         }
 
@@ -35,7 +35,25 @@ namespace FTAnalyzer.Mac
         {
             peopleWindow.Window.Title = reportTitle;
             peopleView.LoadIndividuals(new SortableBindingList<IDisplayIndividual>(individuals));
-            peopleView.HideFamilies();
+            peopleView.HideFamilies(true);
+            UpdateStatusCount();
+        }
+
+        public void SetLocation(FactLocation loc, int level)
+        {
+            peopleWindow.Window.Title = "Individuals & Families with connection to " + loc.ToString();
+            level = Math.Min(loc.Level, level); // if location level isn't as detailed as level on tab use location level
+            IEnumerable<Individual> listInd = FamilyTree.Instance.GetIndividualsAtLocation(loc, level);
+            SortableBindingList<IDisplayIndividual> dsInd = new SortableBindingList<IDisplayIndividual>();
+            foreach (Individual i in listInd)
+                dsInd.Add(i);
+            peopleView.LoadIndividuals(dsInd);
+
+            IEnumerable<Family> listFam = FamilyTree.Instance.GetFamiliesAtLocation(loc, level);
+            SortableBindingList<IDisplayFamily> dsFam = new SortableBindingList<IDisplayFamily>();
+            foreach (Family f in listFam)
+                dsFam.Add(f);
+            peopleView.LoadFamilies(dsFam);
             UpdateStatusCount();
         }
 

@@ -68,7 +68,7 @@ namespace FTAnalyzer.Mac
                 individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals", "Double click to show a list of facts for the selected individual.");
                 familiesViewController = new BindingListViewController<IDisplayFamily>("Families", "Double click to show a list of facts for the selected family.") ;
                 sourcesViewController = new BindingListViewController<IDisplaySource>("Sources", "Double click to show a list of facts referenced by the selected source.");
-                occupationsViewController = new BindingListViewController<IDisplayOccupation>("Occupations", string.Empty); //TODO allow double click
+                occupationsViewController = new BindingListViewController<IDisplayOccupation>("Occupations", "Double click to show a list of individuals with that occupation.");
                 factsViewController = new BindingListViewController<IDisplayFact>("Facts", string.Empty);
 
                 mainListsViewController.AddChildViewController(individualsViewController);
@@ -79,19 +79,21 @@ namespace FTAnalyzer.Mac
 
                 dataErrorsViewController = new BindingListViewController<DataError>("Data Errors", string.Empty); // TODO allow double click
                 //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates", "Double click to show the facts for both the individual and their possible match.");
-                looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>("Loose Births", "List of Births where you could limit the date range.");
-                looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>("Loose Deaths", "List of Deaths where you could limit the date range.");
+                looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>
+                    ("Loose Births", "List of Births where you could limit the date range.\nDouble click to show a list of facts for the selected individual.");
+                looseDeathsViewController = new BindingListViewController<IDisplayLooseDeath>
+                    ("Loose Deaths", "List of Deaths where you could limit the date range.\nDouble click to show a list of facts for the selected individual.");
 
                 errorsAndFixesTabViewController.AddChildViewController(dataErrorsViewController);
                 //errorsAndFixesTabViewController.AddChildViewController(duplicatesViewController);
                 errorsAndFixesTabViewController.AddChildViewController(looseBirthsViewController);
                 errorsAndFixesTabViewController.AddChildViewController(looseDeathsViewController);
 
-                countriesViewController = new BindingListViewController<IDisplayLocation>("Countries", string.Empty); //TODO allow double click
-                regionsViewController = new BindingListViewController<IDisplayLocation>("Regions", string.Empty); //TODO allow double click
-                subregionsViewController = new BindingListViewController<IDisplayLocation>("Sub-Regions", string.Empty); //TODO allow double click
-                addressesViewController = new BindingListViewController<IDisplayLocation>("Addresses", string.Empty); //TODO allow double click
-                placesViewController = new BindingListViewController<IDisplayLocation>("Places", string.Empty); //TODO allow double click
+                countriesViewController = new BindingListViewController<IDisplayLocation>("Countries", "Double click to show all the individuals and families in that Country."); 
+                regionsViewController = new BindingListViewController<IDisplayLocation>("Regions", "Double click to show all the individuals and families in that Region."); 
+                subregionsViewController = new BindingListViewController<IDisplayLocation>("Sub-Regions", "Double click to show all the individuals and families in that Sub-Region."); 
+                addressesViewController = new BindingListViewController<IDisplayLocation>("Addresses", "Double click to show all the individuals and families at that Address."); 
+                placesViewController = new BindingListViewController<IDisplayLocation>("Places", "Double click to show all the individuals and families at that Place."); 
 
                 locationsTabViewController.AddChildViewController(countriesViewController);
                 locationsTabViewController.AddChildViewController(regionsViewController);
@@ -105,6 +107,11 @@ namespace FTAnalyzer.Mac
                 looseBirthsViewController.IndividualFactRowClicked += LooseBirthFactRowClicked;
                 looseDeathsViewController.IndividualFactRowClicked += LooseDeathFactRowClicked;
                 occupationsViewController.OccupationRowClicked += OccupationRowClicked;
+                countriesViewController.LocationRowClicked +=  LocationRowClicked;
+                regionsViewController.LocationRowClicked += LocationRowClicked;
+                subregionsViewController.LocationRowClicked += LocationRowClicked;
+                addressesViewController.LocationRowClicked += LocationRowClicked;
+                placesViewController.LocationRowClicked += LocationRowClicked;
             });
 
             var document = _familyTree.LoadTreeHeader(url.Path, documentViewController.Messages);
@@ -249,7 +256,16 @@ namespace FTAnalyzer.Mac
             InvokeOnMainThread(() =>
             {
                 people.ShowWindow(App);
-                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsSourceEvent);
+                //Analytics.TrackAction(Analytics.Peo, Analytics.);
+            });
+        }
+
+        void LocationRowClicked(People people)
+        {
+            InvokeOnMainThread(() =>
+            {
+                people.ShowWindow(App);
+                //Analytics.TrackAction(Analytics.Peo, Analytics.);
             });
         }
 

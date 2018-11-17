@@ -1,36 +1,36 @@
+using System;
+using AppKit;
 using Foundation;
 using FTAnalyzer.Mac.ViewControllers;
-using AppKit;
 using FTAnalyzer.Utilities;
-using System;
 
 namespace FTAnalyzer.Mac
 {
     public partial class PeopleViewController : NSSplitViewController
     {
-        BindingListViewController<IDisplayIndividual> IndividualsViewController { get; }
-        BindingListViewController<IDisplayFamily> FamiliesViewController { get; }
+        BindingListViewController<IDisplayIndividual> _individualsViewController;
+        BindingListViewController<IDisplayFamily> _familiesViewController;
         AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
 
         public PeopleViewController(IntPtr handle) : base(handle) 
         {
-            IndividualsViewController = new BindingListViewController<IDisplayIndividual>(string.Empty, string.Empty);
-            FamiliesViewController = new BindingListViewController<IDisplayFamily>(string.Empty, string.Empty);
+            _individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals", "Double click to show a list of facts for the selected individual.");
+            _familiesViewController = new BindingListViewController<IDisplayFamily>("Families", "Double click to show a list of facts for the selected family.");
         }
-
+        
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
             foreach(NSSplitViewItem item in SplitViewItems)
-            {
                 RemoveSplitViewItem(item); // we need to remove any old items to re-add the updated controllers
-            }
-            IndividualView.ViewController = IndividualsViewController;
-            FamilyView.ViewController = FamiliesViewController;
+            IndividualView.ViewController = _individualsViewController;
+            FamilyView.ViewController = _familiesViewController;
             InsertSplitViewItem(IndividualView,0);
             InsertSplitViewItem(FamilyView, 1);
-            IndividualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
-            FamiliesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
+            _individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
+            _familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
+            SplitView.AutosaveName = "SplitView";
+            SplitView.ResizeSubviewsWithOldSize(new CoreGraphics.CGSize(800, 250));
         }
 
         public void LoadIndividuals(SortableBindingList<IDisplayIndividual> list)
@@ -40,8 +40,9 @@ namespace FTAnalyzer.Mac
                 InvokeOnMainThread(() => LoadIndividuals(list));
                 return;
             }
-            IndividualView.Collapsed = false;
-            IndividualsViewController.RefreshDocumentView(list);
+            HideIndividuals(false);
+            _individualsViewController.RefreshDocumentView(list);
+            SortIndividuals();
          }
 
         public void LoadFamilies(SortableBindingList<IDisplayFamily> list)
@@ -51,19 +52,14 @@ namespace FTAnalyzer.Mac
                 InvokeOnMainThread(() => LoadFamilies(list));
                 return;
             }
-            FamilyView.Collapsed = false;
-            FamiliesViewController.RefreshDocumentView(list);
+            HideFamilies(false);
+            _familiesViewController.RefreshDocumentView(list);
+            SortFamilies();
         }
 
-        public void HideIndividuals()
-        {
-            IndividualView.Collapsed = true;
-        }
-      
-        public void HideFamilies()
-        {
-            FamilyView.Collapsed = true;
-        }
+        public void HideIndividuals(bool value) => IndividualView.Collapsed = value;
+
+        public void HideFamilies(bool value) => FamilyView.Collapsed = value;
 
         public void SortIndividuals()
         {
@@ -72,7 +68,7 @@ namespace FTAnalyzer.Mac
                 new NSSortDescriptor("Surname", true),
                 new NSSortDescriptor("Forename", true)
             };
-            IndividualsViewController.Sort(descriptors);
+            _individualsViewController.Sort(descriptors);
         }
 
         public void SortFamilies()
@@ -81,7 +77,7 @@ namespace FTAnalyzer.Mac
             {
                 new NSSortDescriptor("FamilyID", true)
             };
-            FamiliesViewController.Sort(descriptors);
+            _familiesViewController.Sort(descriptors);
         }
 
         public bool IsIndividualViewVisible => !IndividualView.Collapsed;

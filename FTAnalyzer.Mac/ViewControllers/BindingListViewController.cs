@@ -16,6 +16,7 @@ namespace FTAnalyzer.Mac.ViewControllers
             SetupView(title);
             Title = title;
             TooltipText = tooltip;
+            UpdateTooltip();
         }
 
         public void UpdateTooltip()
@@ -34,7 +35,7 @@ namespace FTAnalyzer.Mac.ViewControllers
                 ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
                 WantsLayer = true,
                 Layer = NewLayer(),
-                Bounds = new CoreGraphics.CGRect(0, 0, 600, 300),
+                Bounds = new CoreGraphics.CGRect(0, 0, 800, 500),
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
                 AllowsMultipleSelection = false,
                 AllowsColumnResizing = true,
@@ -153,6 +154,36 @@ namespace FTAnalyzer.Mac.ViewControllers
                     return;
                 }
             }
+            column = GetColumnID("Country");
+            if (column != null)
+            {
+                var source = _tableView.Source as BindingListTableSource<T>;
+                var location = source.GetRowObject(_tableView.SelectedRow) as FactLocation;
+                if (location != null)
+                {
+                    People people = new People();
+                    switch(_tableView.Identifier)
+                    {
+                        case "Countries":
+                            people.SetLocation(location, FactLocation.COUNTRY);
+                            break;
+                        case "Regions":
+                            people.SetLocation(location, FactLocation.REGION);
+                            break;
+                        case "Sub-Regions":
+                            people.SetLocation(location, FactLocation.SUBREGION);
+                            break;
+                        case "Addresses":
+                            people.SetLocation(location, FactLocation.ADDRESS);
+                            break;
+                        case "Places":
+                            people.SetLocation(location, FactLocation.PLACE);
+                            break;
+                    }
+                    RaiseLocationRowClicked(people);
+                    return;
+                }
+            }
         }
 
         NSTableColumn GetColumnID(string identifier)
@@ -178,10 +209,12 @@ namespace FTAnalyzer.Mac.ViewControllers
         public delegate void FamilyRowClickedDelegate(Family family);
         public delegate void SourceRowClickedDelegate(FactSource source);
         public delegate void OccupationRowClickedDelegate(People people);
+        public delegate void LocationRowClickedDelegate(People people);
         public event IndividualRowClickedDelegate IndividualFactRowClicked;
         public event FamilyRowClickedDelegate FamilyFactRowClicked;
         public event SourceRowClickedDelegate SourceFactRowClicked;
         public event OccupationRowClickedDelegate OccupationRowClicked;
+        public event OccupationRowClickedDelegate LocationRowClicked;
 
         internal void RaiseFactRowClicked(Individual individual)
         {
@@ -201,6 +234,10 @@ namespace FTAnalyzer.Mac.ViewControllers
         internal void RaiseOccupationRowClicked(People people)
         {
             OccupationRowClicked?.Invoke(people);
+        }
+        internal void RaiseLocationRowClicked(People people)
+        {
+            LocationRowClicked?.Invoke(people);
         }
         #endregion
     }

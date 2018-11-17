@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{EE106C3A-38A4-4962-A747-8D5D17AE3039}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Mac Status">
     <Files>
-      <File FileName="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" Line="32" Column="32" />
-      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="65" Column="9" />
-      <File FileName="FTAnalyzer.Mac/DataSources/People.cs" Line="74" Column="48" />
-      <File FileName="FTAnalyzer.Mac/ViewControllers/PeopleViewController.cs" Line="12" Column="51" />
-      <File FileName="FTAnalyzer.Mac/DataSources/GedcomDocument.cs" Line="280" Column="14" />
-      <File FileName="FTAnalyzer.Mac/DataSources/BindingListTableSource.cs" Line="61" Column="10" />
-      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Utilities/SortableBindingList.cs" Line="34" Column="13" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" Line="19" Column="29" />
+      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="63" Column="42" />
+      <File FileName="FTAnalyzer.Mac/DataSources/People.cs" Line="19" Column="13" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/PeopleViewController.cs" Line="17" Column="173" />
+      <File FileName="FTAnalyzer.Mac/DataSources/GedcomDocument.cs" Line="98" Column="92" />
+      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/GedcomParser/GedcomToXml.cs" Line="149" Column="1" />
+      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Core/Individual.cs" Line="74" Column="34" />
       <File FileName="FTAnalyzer.Mac Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -25,8 +25,6 @@
       <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/ViewControllers/MainViewController.cs" relfile="FTAnalyzer.Mac/ViewControllers/MainViewController.cs" line="41" column="1" />
       <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/ViewControllers/MainViewController.cs" relfile="FTAnalyzer.Mac/ViewControllers/MainViewController.cs" line="36" column="1" />
       <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/ViewControllers/FTAnalyzerTabViewController.cs" relfile="FTAnalyzer.Mac/ViewControllers/FTAnalyzerTabViewController.cs" line="57" column="13" />
-      <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/DataSources/BindingListTableSource.cs" relfile="FTAnalyzer.Mac/DataSources/BindingListTableSource.cs" line="62" column="1" />
-      <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" relfile="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" line="173" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

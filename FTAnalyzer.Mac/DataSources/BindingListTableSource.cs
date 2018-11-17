@@ -56,5 +56,7 @@ namespace FTAnalyzer.Mac.DataSources
                 view.StringValue = string.Empty;
             return view;
         }
+
+        public object GetRowObject(nint row) => _bindingList[(int)row];
     }
 }
