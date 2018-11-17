@@ -1,15 +1,15 @@
 ﻿<Properties StartupConfiguration="{EE106C3A-38A4-4962-A747-8D5D17AE3039}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Shared Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Mac Status">
     <Files>
-      <File FileName="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" Line="19" Column="29" />
-      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="63" Column="42" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" Line="107" Column="34" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/LocationViewController.cs" Line="59" Column="67" />
+      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="33" Column="72" />
       <File FileName="FTAnalyzer.Mac/DataSources/People.cs" Line="19" Column="13" />
       <File FileName="FTAnalyzer.Mac/ViewControllers/PeopleViewController.cs" Line="17" Column="173" />
-      <File FileName="FTAnalyzer.Mac/DataSources/GedcomDocument.cs" Line="98" Column="92" />
+      <File FileName="FTAnalyzer.Mac/DataSources/GedcomDocument.cs" Line="74" Column="91" />
       <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/GedcomParser/GedcomToXml.cs" Line="149" Column="1" />
       <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Core/Individual.cs" Line="74" Column="34" />
       <File FileName="FTAnalyzer.Mac Status" />
-      <File FileName="FTAnalyzer.Shared Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ActiveRuntime="Mono 5.16.0.209 (709b46e3338)" />
