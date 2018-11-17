@@ -22,17 +22,24 @@ namespace FTAnalyzer.Mac
             var window = NSApplication.SharedApplication.Windows[0];
             window.MakeKeyAndOrderFront(Self);
             window.Title = $"Family Tree Analyzer {Version}";
+            window.Delegate = new MainWindowDelegate();
             //var tabs = window.ContentViewController as NSTabViewController;
             //tabs.SelectedTabViewItemIndex = 0; //set tab to GEDCOM stats
             CheckWebVersion();
         }
 
-        public override void WillTerminate(NSNotification notification)
+        class MainWindowDelegate : NSWindowDelegate
         {
-            // Insert code here to tear down your application
-            foreach (NSWindow window in NSApplication.SharedApplication.Windows)
+            public override void WillClose(NSNotification notification)
             {
-                window.Dispose();
+                foreach (NSWindow window in NSApplication.SharedApplication.Windows)
+                {
+                    if (window != NSApplication.SharedApplication.Windows[0])
+                    {
+                        window.Close();
+                        window.Dispose();
+                    }
+                }
             }
         }
 

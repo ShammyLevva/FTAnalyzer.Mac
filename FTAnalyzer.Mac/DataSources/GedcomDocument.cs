@@ -28,11 +28,11 @@ namespace FTAnalyzer.Mac
         BindingListViewController<IDisplayLooseBirth> looseBirthsViewController;
         BindingListViewController<IDisplayLooseDeath> looseDeathsViewController;
 
-        BindingListViewController<IDisplayLocation> countriesViewController;
-        BindingListViewController<IDisplayLocation> regionsViewController;
-        BindingListViewController<IDisplayLocation> subregionsViewController;
-        BindingListViewController<IDisplayLocation> addressesViewController;
-        BindingListViewController<IDisplayLocation> placesViewController;
+        LocationViewController countriesViewController;
+        LocationViewController regionsViewController;
+        LocationViewController subregionsViewController;
+        LocationViewController addressesViewController;
+        LocationViewController placesViewController;
 
         bool MainListsLoaded { get; set; }
         bool ErrorsAndFixesLoaded { get; set; }
@@ -89,11 +89,11 @@ namespace FTAnalyzer.Mac
                 errorsAndFixesTabViewController.AddChildViewController(looseBirthsViewController);
                 errorsAndFixesTabViewController.AddChildViewController(looseDeathsViewController);
 
-                countriesViewController = new BindingListViewController<IDisplayLocation>("Countries", "Double click to show all the individuals and families in that Country."); 
-                regionsViewController = new BindingListViewController<IDisplayLocation>("Regions", "Double click to show all the individuals and families in that Region."); 
-                subregionsViewController = new BindingListViewController<IDisplayLocation>("Sub-Regions", "Double click to show all the individuals and families in that Sub-Region."); 
-                addressesViewController = new BindingListViewController<IDisplayLocation>("Addresses", "Double click to show all the individuals and families at that Address."); 
-                placesViewController = new BindingListViewController<IDisplayLocation>("Places", "Double click to show all the individuals and families at that Place."); 
+                countriesViewController = new LocationViewController("Countries", "Double click to show all the individuals and families in that Country."); 
+                regionsViewController = new LocationViewController("Regions", "Double click to show all the individuals and families in that Region."); 
+                subregionsViewController = new LocationViewController("Sub-Regions", "Double click to show all the individuals and families in that Sub-Region."); 
+                addressesViewController = new LocationViewController("Addresses", "Double click to show all the individuals and families at that Address."); 
+                placesViewController = new LocationViewController("Places", "Double click to show all the individuals and families at that Place."); 
 
                 locationsTabViewController.AddChildViewController(countriesViewController);
                 locationsTabViewController.AddChildViewController(regionsViewController);

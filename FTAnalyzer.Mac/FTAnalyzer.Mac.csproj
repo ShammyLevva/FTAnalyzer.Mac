@@ -162,6 +162,7 @@
     <Compile Include="ViewControllers\PeopleViewController.designer.cs">
       <DependentUpon>PeopleViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\LocationViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\en.lproj\Main.storyboard" />
