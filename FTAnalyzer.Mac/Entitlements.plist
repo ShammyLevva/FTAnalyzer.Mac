@@ -11,7 +11,7 @@
 	<string>$(AppIdentifierPrefix)$(CFBundleIdentifier)</string>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.com.ftanalyzer.FTAnalyzer.Mac</string>
+		<string>iCloud.com.ftanalyzer.Mac</string>
 	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
