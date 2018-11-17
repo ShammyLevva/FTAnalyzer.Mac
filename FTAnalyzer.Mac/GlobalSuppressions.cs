@@ -19,4 +19,6 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0045:Convert to conditional expression", Justification = "<Pending>", Scope = "member", Target = "~M:FTAnalyzer.Age.#ctor(FTAnalyzer.Individual,FTAnalyzer.FactDate)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "<Pending>", Scope = "member", Target = "~M:FTAnalyzer.CensusFamily.IsValidIndividual(FTAnalyzer.CensusIndividual,System.Boolean,System.Boolean,System.Boolean)~System.Boolean")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "<Pending>", Scope = "member", Target = "~M:FTAnalyzer.FactDate.op_Equality(FTAnalyzer.FactDate,FTAnalyzer.FactDate)~System.Boolean")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Redundancies in Symbol Declarations", "RECS0122:Initializing field with default value is redundant", Justification = "<Pending>", Scope = "member", Target = "~F:FTAnalyzer.FactDate.MINYEARS")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Redundancies in Symbol Declarations", "RECS0122:Initializing field with default value is redundant", Justification = "<Pending>", Scope = "member", Target = "~F:FTAnalyzer.FactDate.LOW")]
 

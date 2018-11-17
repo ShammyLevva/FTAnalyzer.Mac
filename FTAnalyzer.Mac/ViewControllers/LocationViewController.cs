@@ -53,8 +53,6 @@ namespace FTAnalyzer.Mac.ViewControllers
 
         }
 
-
-
         public delegate void LocationRowClickedDelegate(People people);
         public event LocationRowClickedDelegate LocationRowClicked;
 
