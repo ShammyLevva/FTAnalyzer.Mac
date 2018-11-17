@@ -1,4 +1,11 @@
-
+#### Beta Version 1.0.3.0, 17th November 2018 ####  
+**Updates**  
+Double clicking on occupations shows all individuals with that occupation  
+Double clicking on locations shows all individuals and families at that location  
+Tooltips implemented to alert you to the availability of double click option  
+Columns displayed now have appropriate widths for the data in the column  
+**Bugfixes**  
+Fixed issue with loading GEDCOM file on older versions of MacOS  
 
 #### Beta Version 1.0.2.0, 11th November 2018 ####  
 **Updates**  
