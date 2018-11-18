@@ -2,6 +2,7 @@
 using Foundation;
 using AppKit;
 using FTAnalyzer.Utilities;
+using FTAnalyzer.Mac.Storyboards;
 
 namespace FTAnalyzer.Mac
 {
@@ -16,7 +17,6 @@ namespace FTAnalyzer.Mac
         [Export("tabView:didSelectTabViewItem:")]
         public override void DidSelect(NSTabView tabView, NSTabViewItem item)
         {
-            base.DidSelect(tabView, item);
             if (App.Document == null)
                 return; // don't bother if we've not loaded a document yet
             switch (item.Label)

@@ -8,7 +8,7 @@ namespace FTAnalyzer.Mac.ViewControllers
     public class BindingListViewController<T> : NSViewController
     {
         internal NSTableView _tableView;
-        string CountText { get; set; }
+        internal string CountText { get; set; }
         public string TooltipText { get; set; }
 
         public BindingListViewController(string title, string tooltip)
@@ -19,10 +19,7 @@ namespace FTAnalyzer.Mac.ViewControllers
             UpdateTooltip();
         }
 
-        public void UpdateTooltip()
-        {
-            View.ToolTip = $"{CountText}. {TooltipText}";
-        }
+        public void UpdateTooltip() => View.ToolTip = $"{CountText}. {TooltipText}";
 
         void SetupView(string title)
         {
@@ -86,7 +83,7 @@ namespace FTAnalyzer.Mac.ViewControllers
             };
         }
 
-        public void RefreshDocumentView(SortableBindingList<T> list)
+        public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
             if (!NSThread.IsMain)
             {
@@ -184,6 +181,18 @@ namespace FTAnalyzer.Mac.ViewControllers
                 count++;
             }
             return null;
+        }
+
+        protected int GetColumnIndex(string identifier)
+        {
+            int count = 0;
+            foreach (NSTableColumn column in _tableView.TableColumns())
+            {
+                if (column.Identifier == identifier)
+                    return count;
+                count++;
+            }
+            return -1;
         }
 
         public void Sort(NSSortDescriptor[] columns)

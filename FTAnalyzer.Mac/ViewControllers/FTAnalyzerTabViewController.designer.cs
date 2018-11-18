@@ -9,12 +9,18 @@ using System.CodeDom.Compiler;
 
 namespace FTAnalyzer.Mac
 {
-    [Register ("FTAnalyzerTabViewController")]
-    partial class FTAnalyzerTabViewController
-    {
-        
-        void ReleaseDesignerOutlets ()
-        {
-        }
-    }
+	[Register ("FTAnalyzerTabViewController")]
+	partial class FTAnalyzerTabViewController
+	{
+		[Outlet]
+		AppKit.NSTabViewItem ResearchSuggestions { get; set; }
+		
+		void ReleaseDesignerOutlets ()
+		{
+			if (ResearchSuggestions != null) {
+				ResearchSuggestions.Dispose ();
+				ResearchSuggestions = null;
+			}
+		}
+	}
 }

@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Reflection;
 using AppKit;
-using Foundation;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.Mac.DataSources

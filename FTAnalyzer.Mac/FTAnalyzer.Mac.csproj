@@ -113,6 +113,7 @@
     <Folder Include="DataSources\" />
     <Folder Include="Properties\" />
     <Folder Include="Storyboards\" />
+    <Folder Include="ViewControllers\Controls\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -156,12 +157,24 @@
       <DependentUpon>PeopleViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\LocationViewController.cs" />
+    <Compile Include="ViewControllers\ResearchViewController.cs" />
+    <Compile Include="ViewControllers\ResearchViewController.designer.cs">
+      <DependentUpon>ResearchViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\Controls\RelationTypes.cs" />
+    <Compile Include="ViewControllers\ColourCensusViewController.cs" />
+    <Compile Include="ViewControllers\ColourCensusViewController.designer.cs">
+      <DependentUpon>ColourCensusViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSources\ColourCensus.cs" />
+    <Compile Include="Utilities\Color.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\en.lproj\Main.storyboard" />
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />
     <InterfaceDefinition Include="Storyboards\Main.storyboard" />
     <InterfaceDefinition Include="Storyboards\People.storyboard" />
+    <InterfaceDefinition Include="Storyboards\ColourCensus.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\Kunstler.ttf">

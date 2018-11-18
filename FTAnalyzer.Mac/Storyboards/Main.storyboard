@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment version="101100" identifier="macosx"/>
-        <development version="10000" identifier="xcode"/>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -701,6 +700,7 @@
                         <tabViewItem label="Main Lists" id="nnU-Eq-ulZ"/>
                         <tabViewItem label="Errors/Fixes" id="CSJ-Bf-v81"/>
                         <tabViewItem label="Locations" id="DMe-j4-sWE"/>
+                        <tabViewItem label="Research Suggestions" id="87P-3v-hw9"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions"/>
                     <tabView key="tabView" type="noTabsNoBorder" id="y8i-E2-aTc">
@@ -712,11 +712,13 @@
                         </connections>
                     </tabView>
                     <connections>
+                        <outlet property="ResearchSuggestions" destination="87P-3v-hw9" id="TQZ-aL-HsB"/>
                         <outlet property="tabView" destination="y8i-E2-aTc" id="kRK-As-Ijj"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="tabItems" id="yse-z5-huH"/>
                         <segue destination="CGu-hu-FSh" kind="relationship" relationship="tabItems" id="MhZ-U1-MmU"/>
                         <segue destination="LHn-6f-ueJ" kind="relationship" relationship="tabItems" id="7ye-AF-inL"/>
                         <segue destination="hKK-5N-IBj" kind="relationship" relationship="tabItems" id="yC9-7z-Zo3"/>
+                        <segue destination="9G0-dd-9dE" kind="relationship" relationship="tabItems" id="sUc-P6-wtB"/>
                     </connections>
                 </tabViewController>
                 <customObject id="4Wv-cV-nU2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -928,6 +930,86 @@
                 <customObject id="gYe-vR-VI1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="854" y="-822"/>
+        </scene>
+        <!--Research Suggestions-->
+        <scene sceneID="OfS-jA-mgW">
+            <objects>
+                <viewController title="Research Suggestions" storyboardIdentifier="ResearchSuggestions" id="9G0-dd-9dE" customClass="ResearchViewController" sceneMemberID="viewController">
+                    <view key="view" id="fs4-0u-MVG">
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="462"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box fixedFrame="YES" title="Census Suggestion Reports" translatesAutoresizingMaskIntoConstraints="NO" id="5Mh-tw-1Tb">
+                                <rect key="frame" x="-3" y="344" width="528" height="118"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" id="Nzq-zM-T2B">
+                                    <rect key="frame" x="3" y="3" width="522" height="100"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LrN-fi-2fs">
+                                            <rect key="frame" x="14" y="52" width="228" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="View UK Colour Census Report" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VZQ-ZE-Gz5">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="UKCensusClicked:" target="9G0-dd-9dE" id="cuU-G9-JhT"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mkk-MW-jXY">
+                                            <rect key="frame" x="242" y="19" width="267" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="View Canadian Colour Census Report" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g6F-TH-u4g">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="CanadianCensusClicked:" target="9G0-dd-9dE" id="jBq-0d-YfH"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OU7-gh-vqs">
+                                            <rect key="frame" x="14" y="19" width="228" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="View US Colour Census Report" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hIC-7R-TTm">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="USCensusClicked:" target="9G0-dd-9dE" id="guQ-gW-76g"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l8q-6h-UWy">
+                                            <rect key="frame" x="242" y="52" width="267" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="View Irish Colour Census Report" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jHH-G7-rh6">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="IrishCensusClicked:" target="9G0-dd-9dE" id="4Mp-3Y-e4k"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </box>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="CanadianCensus" destination="mkk-MW-jXY" id="bwS-DF-qjT"/>
+                        <outlet property="CanadianCensusClicked" destination="mkk-MW-jXY" id="E4Q-j7-EqC"/>
+                        <outlet property="CanadianColourCensus" destination="mkk-MW-jXY" id="nSd-qp-3PD"/>
+                        <outlet property="IrishCensus" destination="l8q-6h-UWy" id="aoA-o7-SNq"/>
+                        <outlet property="IrishColourCensus" destination="l8q-6h-UWy" id="5Lk-Bk-joB"/>
+                        <outlet property="UKCensus" destination="LrN-fi-2fs" id="Gx4-iT-GuL"/>
+                        <outlet property="UKColourCensus" destination="LrN-fi-2fs" id="LVP-mR-6wU"/>
+                        <outlet property="USCensus" destination="OU7-gh-vqs" id="pVS-uG-DWi"/>
+                        <outlet property="USColourCensus" destination="OU7-gh-vqs" id="gh4-CM-QAP"/>
+                    </connections>
+                </viewController>
+                <customObject id="vre-dl-FUg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="244" y="25"/>
         </scene>
         <!--Progress Display-->
         <scene sceneID="Xnb-O1-Qfk">
