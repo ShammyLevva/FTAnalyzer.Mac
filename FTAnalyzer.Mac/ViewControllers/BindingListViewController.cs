@@ -154,6 +154,24 @@ namespace FTAnalyzer.Mac.ViewControllers
                     return;
                 }
             }
+            column = GetColumnID("ErrorType");
+            if (column != null)
+            {
+                var source = _tableView.Source as BindingListTableSource<DataError>;
+                if (source.GetRowObject(_tableView.SelectedRow) is DataError error)
+                {
+                    if (error.IsFamily == "Yes")
+                    {
+                        Family family = FamilyTree.Instance.GetFamily(error.Reference);
+                        RaiseDataErrorRowClicked(null, family);
+                    }
+                    else
+                    {
+                        Individual ind = FamilyTree.Instance.GetIndividual(error.Reference);
+                        RaiseDataErrorRowClicked(ind, null);
+                    }
+                }
+            }
         }
 
         protected NSTableColumn GetColumnID(string identifier)
@@ -179,10 +197,12 @@ namespace FTAnalyzer.Mac.ViewControllers
         public delegate void FamilyRowClickedDelegate(Family family);
         public delegate void SourceRowClickedDelegate(FactSource source);
         public delegate void OccupationRowClickedDelegate(People people);
+        public delegate void DataErrorRowClickedDelegate(Individual individual, Family family);
         public event IndividualRowClickedDelegate IndividualFactRowClicked;
         public event FamilyRowClickedDelegate FamilyFactRowClicked;
         public event SourceRowClickedDelegate SourceFactRowClicked;
         public event OccupationRowClickedDelegate OccupationRowClicked;
+        public event DataErrorRowClickedDelegate DataErrorRowClicked;
  
         internal void RaiseFactRowClicked(Individual individual)
         {
@@ -202,6 +222,10 @@ namespace FTAnalyzer.Mac.ViewControllers
         internal void RaiseOccupationRowClicked(People people)
         {
             OccupationRowClicked?.Invoke(people);
+        }
+        internal void RaiseDataErrorRowClicked(Individual individual, Family family)
+        {
+            DataErrorRowClicked?.Invoke(individual,family);
         }
         #endregion
     }

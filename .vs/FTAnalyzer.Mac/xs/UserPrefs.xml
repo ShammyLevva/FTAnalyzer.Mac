@@ -1,21 +1,18 @@
 ﻿<Properties StartupConfiguration="{EE106C3A-38A4-4962-A747-8D5D17AE3039}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="FTAnalyzer.Mac Status">
     <Files>
-      <File FileName="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" Line="104" Column="24" />
-      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="33" Column="72" />
-      <File FileName="FTAnalyzer.Mac/DataSources/People.cs" Line="19" Column="13" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/BindingListViewController.cs" Line="171" Column="61" />
+      <File FileName="FTAnalyzer.Mac/AppDelegate.cs" Line="17" Column="11" />
+      <File FileName="FTAnalyzer.Mac/DataSources/People.cs" Line="31" Column="33" />
       <File FileName="FTAnalyzer.Mac/ViewControllers/PeopleViewController.cs" Line="83" Column="74" />
-      <File FileName="FTAnalyzer.Mac/DataSources/GedcomDocument.cs" Line="74" Column="91" />
-      <File FileName="FTAnalyzer.Mac/ViewControllers/FactsViewController.cs" Line="1" Column="1" />
-      <File FileName="FTAnalyzer.Mac/ViewControllers/FTAnalyzerTabViewController.cs" Line="45" Column="32" />
-      <File FileName="FTAnalyzer.Mac/ViewControllers/FTAnalyzerTabViewController.designer.cs" Line="1" Column="1" />
-      <File FileName="FTAnalyzer.Mac/ViewControllers/GedcomDocumentViewController.cs" Line="28" Column="13" />
-      <File FileName="FTAnalyzer.Mac/ViewControllers/ListsTabViewController.cs" Line="44" Column="33" />
-      <File FileName="FTAnalyzer.Mac/ViewControllers/ListsTabViewController.designer.cs" Line="11" Column="6" />
+      <File FileName="FTAnalyzer.Mac/DataSources/GedcomDocument.cs" Line="268" Column="1" />
+      <File FileName="FTAnalyzer.Mac/ViewControllers/LocationViewController.cs" Line="28" Column="1" />
+      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Core/FamilyTree.cs" Line="1831" Column="74" />
+      <File FileName="../FTAnalyzer.Shared/FTAnalyzer.Shared/Core/DataError.cs" Line="17" Column="30" />
       <File FileName="FTAnalyzer.Mac Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ActiveRuntime="Mono 5.12.0.309" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ActiveRuntime="Mono 5.16.0.209 (709b46e3338)" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/alexander/Projects/FTAnalyzer.Mac/FTAnalyzer.Mac/ViewControllers/IndividualsController.cs" relfile="FTAnalyzer.Mac/ViewControllers/IndividualsController.cs" line="18" column="1" />
@@ -32,7 +29,13 @@
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <AuthorInfo Name="Alexander Bisset" Email="ambisset@btinternet.com" Copyright="Alexander Bisset 2018" Company="FTAnalyzer" Trademark="FTAnalyzer" />
-  <MultiItemStartupConfigurations />
+  <AuthorInfo Name="Alexander Bisset" Email="ambisset@btinternet.com" Copyright="Alexander Bisset © 2018" Company="FTAnalyzer" Trademark="FTAnalyzer" />
+  <MultiItemStartupConfigurations>
+    <MultiItemSolutionRunConfiguration Id="Default" Name="Default">
+      <Items>
+        <StartupItem ItemId="{EE106C3A-38A4-4962-A747-8D5D17AE3039}" ItemName="FTAnalyzer.Mac" ConfigurationId="Default" />
+      </Items>
+    </MultiItemSolutionRunConfiguration>
+  </MultiItemStartupConfigurations>
   <MonoDevelop.Ide.ItemProperties.FTAnalyzer.Mac PreferredExecutionTarget="Test1" />
 </Properties>

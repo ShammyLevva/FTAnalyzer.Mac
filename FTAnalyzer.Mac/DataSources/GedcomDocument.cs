@@ -77,7 +77,7 @@ namespace FTAnalyzer.Mac
                 mainListsViewController.AddChildViewController(occupationsViewController);
                 mainListsViewController.AddChildViewController(factsViewController);
 
-                dataErrorsViewController = new BindingListViewController<DataError>("Data Errors", string.Empty); // TODO allow double click
+                dataErrorsViewController = new BindingListViewController<DataError>("Data Errors", "Double click to show Individual/Family with this error."); 
                 //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates", "Double click to show the facts for both the individual and their possible match.");
                 looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>
                     ("Loose Births", "List of Births where you could limit the date range.\nDouble click to show a list of facts for the selected individual.");
@@ -104,6 +104,7 @@ namespace FTAnalyzer.Mac
                 individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
                 familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
                 sourcesViewController.SourceFactRowClicked += SourcesFactRowClicked;
+                dataErrorsViewController.DataErrorRowClicked += DataErrorRowClicked;
                 looseBirthsViewController.IndividualFactRowClicked += LooseBirthFactRowClicked;
                 looseDeathsViewController.IndividualFactRowClicked += LooseDeathFactRowClicked;
                 occupationsViewController.OccupationRowClicked += OccupationRowClicked;
@@ -257,6 +258,23 @@ namespace FTAnalyzer.Mac
             {
                 people.ShowWindow(App);
                 //Analytics.TrackAction(Analytics.Peo, Analytics.);
+            });
+        }
+
+        void DataErrorRowClicked(Individual individual, Family family)
+        {
+            InvokeOnMainThread(() =>
+            {
+                if(individual == null)
+                {
+                    App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family));
+                    Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsFamiliesEvent);
+                }
+                else
+                {
+                    App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
+                    Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
+                }
             });
         }
 

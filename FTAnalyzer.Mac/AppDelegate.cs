@@ -14,7 +14,7 @@ namespace FTAnalyzer.Mac
         bool _documentOpening;
 
         public GedcomDocument Document { get; set; }
-        static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        //static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public override void DidFinishLaunching(NSNotification notification)
         {
