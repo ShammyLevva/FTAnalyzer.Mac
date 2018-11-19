@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.Mac.ViewControllers;
 
-namespace FTAnalyzer.Mac.Storyboards
+namespace FTAnalyzer.Mac.ViewControllers
 {
     public partial class ResearchViewController : NSViewController
 	{
@@ -24,7 +24,13 @@ namespace FTAnalyzer.Mac.Storyboards
             SetButtonsActive(App.Document != null);
         }
 
-        public void SetButtonsActive(bool active)
+        public override void ViewDidAppear()
+        {
+            base.ViewDidAppear();
+            SetButtonsActive(App.Document != null);
+        }
+
+        void SetButtonsActive(bool active)
         {
             UKColourCensus.Enabled = active;
             IrishColourCensus.Enabled = active;

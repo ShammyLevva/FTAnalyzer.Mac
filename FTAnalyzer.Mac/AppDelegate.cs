@@ -3,6 +3,7 @@ using System.Net;
 using System.Web;
 using AppKit;
 using Foundation;
+using FTAnalyzer.Mac.ViewControllers;
 using FTAnalyzer.Utilities;
 using HtmlAgilityPack;
 
@@ -12,8 +13,8 @@ namespace FTAnalyzer.Mac
     public partial class AppDelegate : NSApplicationDelegate
     {
         bool _documentOpening;
-
         public GedcomDocument Document { get; set; }
+
         //static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public override void DidFinishLaunching(NSNotification notification)

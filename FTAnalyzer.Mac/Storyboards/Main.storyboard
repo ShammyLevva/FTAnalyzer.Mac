@@ -1009,7 +1009,7 @@
                 </viewController>
                 <customObject id="vre-dl-FUg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="244" y="25"/>
+            <point key="canvasLocation" x="376" y="-337"/>
         </scene>
         <!--Progress Display-->
         <scene sceneID="Xnb-O1-Qfk">

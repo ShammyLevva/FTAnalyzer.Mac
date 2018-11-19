@@ -9,7 +9,7 @@
         <!--Window Controller-->
         <scene sceneID="f4b-ME-0dT">
             <objects>
-                <windowController storyboardIdentifier="ColourCensus" id="36l-Sq-DjN" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="ColourCensusWindow" id="36l-Sq-DjN" sceneMemberID="viewController">
                     <window key="window" identifier="ColourCensus" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="KJg-4y-3FG">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="358" y="-228"/>
         </scene>
-        <!--Colour Census View Controller-->
+        <!--Tab View Controller-->
         <scene sceneID="Cpg-dy-emq">
             <objects>
-                <tabViewController id="C2a-K9-plN" customClass="ColourCensusViewController" sceneMemberID="viewController">
+                <tabViewController id="C2a-K9-plN" sceneMemberID="viewController">
                     <tabView key="tabView" type="noTabsNoBorder" id="qtN-TF-eYI">
                         <rect key="frame" x="-215" y="0.0" width="881" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

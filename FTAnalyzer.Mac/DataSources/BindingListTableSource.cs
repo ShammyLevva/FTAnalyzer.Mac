@@ -25,6 +25,11 @@ namespace FTAnalyzer.Mac.DataSources
 
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
+            return GetFTAnalyzerGridCell(tableView, tableColumn, row);
+        }
+
+        internal NSView GetFTAnalyzerGridCell(NSTableView tableView, NSTableColumn tableColumn, nint row)
+        {
             var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
             var property = _properties[index];
             NSTextAlignment alignment = NSTextAlignment.Left;

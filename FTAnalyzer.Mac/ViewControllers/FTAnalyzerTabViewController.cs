@@ -2,7 +2,6 @@
 using Foundation;
 using AppKit;
 using FTAnalyzer.Utilities;
-using FTAnalyzer.Mac.Storyboards;
 
 namespace FTAnalyzer.Mac
 {

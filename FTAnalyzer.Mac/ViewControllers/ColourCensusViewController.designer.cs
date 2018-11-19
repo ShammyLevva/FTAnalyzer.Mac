@@ -7,7 +7,7 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace FTAnalyzer.Mac.Storyboards
+namespace FTAnalyzer.Mac.ViewControllers
 {
 	[Register ("ColourCensusViewController")]
 	partial class ColourCensusViewController

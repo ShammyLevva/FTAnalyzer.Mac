@@ -166,7 +166,7 @@
     <Compile Include="ViewControllers\ColourCensusViewController.designer.cs">
       <DependentUpon>ColourCensusViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataSources\ColourCensus.cs" />
+    <Compile Include="DataSources\ColourCensusSource.cs" />
     <Compile Include="Utilities\Color.cs" />
   </ItemGroup>
   <ItemGroup>

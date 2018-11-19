@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using AppKit;
-using FTAnalyzer.Mac.Utilities;
 using FTAnalyzer.Utilities;
 namespace FTAnalyzer.Mac.DataSources
 {
-    public class ColourCensus : BindingListTableSource<IDisplayColourCensus>
+    public class ColourCensusSource : BindingListTableSource<IDisplayColourCensus>
     {
         Dictionary<int, NSCellType> styles;
         public string Country { get; }
 
-        public ColourCensus(string country, SortableBindingList<IDisplayColourCensus> reportList)
+        public ColourCensusSource(string country, SortableBindingList<IDisplayColourCensus> reportList)
             : base(reportList)
         {
             Country = country;
@@ -48,10 +47,10 @@ namespace FTAnalyzer.Mac.DataSources
 
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
-            NSTextView textView = base.GetViewForItem(tableView, tableColumn, row) as NSTextView;
-            textView.BackgroundColor = Color.DarkGray;
+            NSTextView textView = GetFTAnalyzerGridCell(tableView,tableColumn, row) as NSTextView;
+            //if(textView != null)
+                //textView.BackgroundColor = Color.DarkOrange;
             return textView;
         }
-
     }
 }
