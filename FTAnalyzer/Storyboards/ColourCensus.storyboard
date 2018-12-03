@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="f4b-ME-0dT">
+            <objects>
+                <windowController storyboardIdentifier="ColourCensusWindow" id="36l-Sq-DjN" sceneMemberID="viewController">
+                    <window key="window" identifier="ColourCensus" title="Census Research Suggestions" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="KJg-4y-3FG">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="974" height="333"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="36l-Sq-DjN" id="g3M-71-Hwb"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="C2a-K9-plN" kind="relationship" relationship="window.shadowedContentViewController" id="TrM-EU-cq2"/>
+                    </connections>
+                </windowController>
+                <customObject id="igf-RY-G6K" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="358" y="-228"/>
+        </scene>
+        <!--Tab View Controller-->
+        <scene sceneID="Cpg-dy-emq">
+            <objects>
+                <tabViewController showSeguePresentationStyle="single" canPropagateSelectedChildViewControllerTitle="NO" id="C2a-K9-plN" sceneMemberID="viewController">
+                    <tabView key="tabView" type="noTabsNoBorder" id="qtN-TF-eYI">
+                        <rect key="frame" x="-215" y="0.0" width="881" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="C2a-K9-plN" id="SJS-vN-YV1"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="qtN-TF-eYI" id="7kf-q3-383"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="Y5Q-03-kGw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="358.5" y="216"/>
+        </scene>
+    </scenes>
+</document>
