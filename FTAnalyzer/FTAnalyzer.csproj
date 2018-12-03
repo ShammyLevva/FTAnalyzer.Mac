@@ -178,6 +178,7 @@
     </Compile>
     <Compile Include="DataSources\ColourCensusSource.cs" />
     <Compile Include="Utilities\Color.cs" />
+    <Compile Include="Utilities\ReplaceViewSegue.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\en.lproj\Main.storyboard" />
