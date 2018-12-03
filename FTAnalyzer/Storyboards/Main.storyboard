@@ -23,7 +23,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <segue destination="iG3-Yj-Xly" kind="show" id="4Nd-LT-Ss2"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Hide FTAnalyzer" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
@@ -430,7 +434,129 @@
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-400" y="-1307"/>
+            <point key="canvasLocation" x="-749" y="-1691"/>
+        </scene>
+        <!--Preferences-->
+        <scene sceneID="T6i-rt-7I2">
+            <objects>
+                <windowController id="iG3-Yj-Xly" userLabel="Preferences" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="WXI-XW-zvX">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <toolbar key="toolbar" implicitIdentifier="9C4414D6-3158-4CC8-B20E-D56C8A1A55DB" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="LGw-bM-oRE">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="hUd-n8-t9V"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="tFd-Lj-cVP"/>
+                                <toolbarItem implicitItemIdentifier="74A3DDC2-377A-4564-9895-C2A3111B343E" label="General" paletteLabel="General" tag="-1" image="HighResLogo" id="gQ5-pw-d5K">
+                                    <size key="minSize" width="768" height="768"/>
+                                    <size key="maxSize" width="768" height="768"/>
+                                    <connections>
+                                        <segue destination="jvD-3R-R44" kind="custom" customClass="ReplaceViewSeque" id="RwQ-dy-AGx"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="D2300AAA-A8A0-451E-9681-988841B52D83" label="File Handling" paletteLabel="File Handling" tag="-1" image="NSApplicationIcon" id="wgn-mD-nVx">
+                                    <size key="minSize" width="32" height="32"/>
+                                    <size key="maxSize" width="32" height="32"/>
+                                    <connections>
+                                        <segue destination="XUW-QQ-7UG" kind="custom" customClass="ReplaceViewSeque" id="FEv-JI-ip2"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="E959839D-3768-45DA-A3DC-5E11A167C662" label="Invalid Dates" paletteLabel="Invalid Dates" tag="-1" image="Calendar-icon" id="U7w-E6-7FZ">
+                                    <size key="minSize" width="19" height="12"/>
+                                    <size key="maxSize" width="19" height="12"/>
+                                    <connections>
+                                        <segue destination="hhO-71-oac" kind="custom" customClass="ReplaceViewSeque" id="Hvk-xi-Ixb"/>
+                                    </connections>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="gQ5-pw-d5K"/>
+                                <toolbarItem reference="wgn-mD-nVx"/>
+                                <toolbarItem reference="U7w-E6-7FZ"/>
+                            </defaultToolbarItems>
+                        </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="iG3-Yj-Xly" id="L38-9n-5K0"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="jvD-3R-R44" kind="relationship" relationship="window.shadowedContentViewController" id="yl6-wf-t2n"/>
+                    </connections>
+                </windowController>
+                <customObject id="di3-0Z-y33" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-661" y="-1307"/>
+        </scene>
+        <!--General Preferences-->
+        <scene sceneID="biv-YI-7jk">
+            <objects>
+                <viewController id="jvD-3R-R44" userLabel="General Preferences" sceneMemberID="viewController">
+                    <view key="view" id="L7k-BB-ZCe">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UVE-uL-yt0">
+                                <rect key="frame" x="35" y="234" width="193" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="General Preference Option 1" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9mZ-q0-cc8">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="Gl1-WP-HcV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-97" y="-1727"/>
+        </scene>
+        <!--Invalid GEDCOM Date Preferences-->
+        <scene sceneID="xcw-tQ-f6N">
+            <objects>
+                <viewController id="hhO-71-oac" userLabel="Invalid GEDCOM Date Preferences" sceneMemberID="viewController">
+                    <view key="view" id="YT7-uf-R9v">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AIT-p1-sXq">
+                                <rect key="frame" x="52" y="224" width="240" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Invalid GEDCOM Dates Preference 1" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YdS-2J-4Zc">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="711-VI-HHE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-442" y="-950"/>
+        </scene>
+        <!--File Handling Preferences-->
+        <scene sceneID="2Q0-mP-Xrg">
+            <objects>
+                <viewController id="XUW-QQ-7UG" userLabel="File Handling Preferences" sceneMemberID="viewController">
+                    <view key="view" id="CeH-Gl-fa9">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AEW-Pf-cTe">
+                                <rect key="frame" x="12" y="234" width="180" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="File Handling Preference 1" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="I9h-K7-PC9">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="T7Q-eG-oFq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-112" y="-1270"/>
         </scene>
         <!--MainTabController-->
         <scene sceneID="pXS-AW-A6S">
@@ -808,6 +934,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Calendar-icon" width="128" height="128"/>
         <image name="HighResLogo" width="768" height="768"/>
+        <image name="NSApplicationIcon" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="RwQ-dy-AGx"/>
+    </inferredMetricsTieBreakers>
 </document>

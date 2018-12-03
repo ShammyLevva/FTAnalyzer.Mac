@@ -192,6 +192,9 @@
     </BundleResource>
     <BundleResource Include="Resources\FTAnalyzer.entitlements" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Icons\Calendar-icon.png" />
+  </ItemGroup>
   <Import Project="..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems" Label="Shared" Condition="Exists('..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>
