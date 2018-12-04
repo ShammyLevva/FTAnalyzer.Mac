@@ -1,8 +1,6 @@
-﻿using System;
-using System.Reflection;
+﻿namespace FTAnalyzer.Properties
+{
 
-namespace FTAnalyzer.Properties {
-    
     public class GeneralSettings
     {
         public static GeneralSettings Default { get; } = (GeneralSettings)SettingsBase.Load(new GeneralSettings(), typeof(GeneralSettings));
@@ -75,22 +73,5 @@ namespace FTAnalyzer.Properties {
 
         [DefaultSettingValue("True")]
         public bool HideIgnoredDuplicates { get; set; }
-
-        public object this[string propertyName]
-        {
-            get
-            {
-                Type myType = typeof(GeneralSettings);
-                PropertyInfo myPropInfo = myType.GetProperty(propertyName);
-                return myPropInfo.GetValue(this, null);
-            }
-            set
-            {
-                Type myType = typeof(GeneralSettings);
-                PropertyInfo myPropInfo = myType.GetProperty(propertyName);
-                myPropInfo.SetValue(this, value, null);
-            }
-        }
-
     }
 }
