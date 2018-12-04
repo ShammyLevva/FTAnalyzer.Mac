@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Reflection;
 
 namespace FTAnalyzer.Properties {
     
     public class GeneralSettings
     {
-        public static GeneralSettings Default { get; } = (GeneralSettings)SettingsBase.Load(new GeneralSettings());
+        public static GeneralSettings Default { get; } = (GeneralSettings)SettingsBase.Load(new GeneralSettings(), typeof(GeneralSettings));
 
         [DefaultSettingValue("True")]
         public bool UseBaptismDates { get; set; }
 
-        [DefaultSettingValue("")]
+        [DefaultSettingValue(typeof(string), "")]
         public string SavePath { get; set; }
 
         [DefaultSettingValue("False")]
@@ -27,7 +28,7 @@ namespace FTAnalyzer.Properties {
         [DefaultSettingValue("False")]
         public bool ReportOptions { get; set; }
 
-        [DefaultSettingValue("16")]
+        [DefaultSettingValue(typeof(int), "16")]
         public int MinParentalAge { get; set; }
 
         [DefaultSettingValue("False")]
@@ -74,5 +75,22 @@ namespace FTAnalyzer.Properties {
 
         [DefaultSettingValue("True")]
         public bool HideIgnoredDuplicates { get; set; }
+
+        public object this[string propertyName]
+        {
+            get
+            {
+                Type myType = typeof(GeneralSettings);
+                PropertyInfo myPropInfo = myType.GetProperty(propertyName);
+                return myPropInfo.GetValue(this, null);
+            }
+            set
+            {
+                Type myType = typeof(GeneralSettings);
+                PropertyInfo myPropInfo = myType.GetProperty(propertyName);
+                myPropInfo.SetValue(this, value, null);
+            }
+        }
+
     }
 }

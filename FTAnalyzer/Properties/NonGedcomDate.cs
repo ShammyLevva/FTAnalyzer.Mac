@@ -2,24 +2,24 @@
 
     class NonGedcomDate
     {
-        public static NonGedcomDate Default { get; } = (NonGedcomDate)SettingsBase.Load(new NonGedcomDate());
+        public static NonGedcomDate Default { get; } = (NonGedcomDate)SettingsBase.Load(new NonGedcomDate(), typeof(NonGedcomDate));
 
         [DefaultSettingValue("False")]
         public bool UseNonGedcomDates { get; set; }
 
-        [DefaultSettingValue("dd/MM/yyyy")]
+        [DefaultSettingValue(typeof(string), "dd/MM/yyyy")]
         public string DateFormat { get; set; }
 
-        [DefaultSettingValue("^\\d{1,2}\\/\\d{1,2}\\/\\d{4}$")]
+        [DefaultSettingValue(typeof(string), "^\\d{1,2}\\/\\d{1,2}\\/\\d{4}$")]
         public string Regex { get; set; }
 
-        [DefaultSettingValue("/")]
+        [DefaultSettingValue(typeof(string), "/")]
         public string Separator { get; set; }
 
-        [DefaultSettingValue("1")]
+        [DefaultSettingValue(typeof(int), "1")]
         public int FormatSelected { get; set; }
 
-        [DefaultSettingValue("")]
+        [DefaultSettingValue(typeof(string), "")]
         public string Setting { get; set; }
     }
 }
