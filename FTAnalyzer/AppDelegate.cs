@@ -3,7 +3,6 @@ using System.Net;
 using System.Web;
 using AppKit;
 using Foundation;
-using FTAnalyzer.ViewControllers;
 using FTAnalyzer.Utilities;
 using HtmlAgilityPack;
 

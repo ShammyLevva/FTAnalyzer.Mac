@@ -83,9 +83,6 @@
     <Reference Include="System.Security.Principal.Windows">
       <HintPath>..\packages\System.Security.Principal.Windows.4.5.1\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
-    <Reference Include="System.Configuration.ConfigurationManager">
-      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.5.0\lib\netstandard2.0\System.Configuration.ConfigurationManager.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -128,7 +125,6 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
-    <None Include="Properties\Settings.settings" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -142,7 +138,7 @@
     <Compile Include="ViewControllers\BindingListViewController.cs" />
     <Compile Include="DataSources\BindingListTableSource.cs" />
     <Compile Include="Utilities\UIHelpers.cs" />
-    <Compile Include="Properties\Settings.Designer.cs" />
+    <Compile Include="Properties\Settings.cs" />
     <Compile Include="AppDelegate.designer.cs" />
     <Compile Include="ViewControllers\FactsViewController.cs" />
     <Compile Include="ViewControllers\FactsViewController.designer.cs">
@@ -179,6 +175,8 @@
     <Compile Include="DataSources\ColourCensusSource.cs" />
     <Compile Include="Utilities\Color.cs" />
     <Compile Include="Utilities\ReplaceViewSegue.cs" />
+    <Compile Include="Properties\SettingsBase.cs" />
+    <Compile Include="Properties\DefaultSettingValueAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\en.lproj\Main.storyboard" />
