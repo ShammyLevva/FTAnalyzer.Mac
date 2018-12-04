@@ -1,8 +1,15 @@
-﻿namespace FTAnalyzer.Properties {
+﻿using System;
+using AppKit;
+using Foundation;
 
-    class NonGedcomDate
+namespace FTAnalyzer.Properties 
+{
+    [Register ("NonGedcomDate")]
+    public class NonGedcomDate : NSViewController
     {
-        public static NonGedcomDate Default { get; } = (NonGedcomDate)SettingsBase.Load(new NonGedcomDate(), typeof(NonGedcomDate));
+        public NonGedcomDate(IntPtr handle) : base(handle) { }
+
+        public static NonGedcomDate Default { get; } = (NonGedcomDate)SettingsBase.Load(new NonGedcomDate(new IntPtr()), typeof(NonGedcomDate));
 
         [DefaultSettingValue("False")]
         public bool UseNonGedcomDates { get; set; }

@@ -1,14 +1,22 @@
-﻿namespace FTAnalyzer.Properties
-{
+using System;
+using AppKit;
+using Foundation;
 
-    public class FileHandling
+namespace FTAnalyzer.Properties
+{
+    [Register ("FileHandling")]
+    public class FileHandling : NSViewController
     {
-        public static FileHandling Default { get; } = (FileHandling)SettingsBase.Load(new FileHandling(), typeof(FileHandling));
+        public FileHandling(IntPtr handle) : base(handle) { }
+
+        public static FileHandling Default { get; } = (FileHandling)SettingsBase.Load(new FileHandling(new IntPtr()), typeof(FileHandling));
 
         [DefaultSettingValue("False")]
         public bool LoadWithFilters { get; set; }
 
         [DefaultSettingValue("False")]
         public bool RetryFailedLines { get; set; }
+
+        public void Save() => SettingsBase.Save(Default, typeof(FileHandling));
     }
 }

@@ -434,38 +434,32 @@
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-749" y="-1691"/>
+            <point key="canvasLocation" x="-1016" y="-2129"/>
         </scene>
         <!--Preferences-->
         <scene sceneID="T6i-rt-7I2">
             <objects>
                 <windowController id="iG3-Yj-Xly" userLabel="Preferences" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="WXI-XW-zvX">
+                    <window key="window" title="FTAnalyzer Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="PreferencesWindow" animationBehavior="default" id="WXI-XW-zvX">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
+                        <rect key="contentRect" x="620" y="420" width="480" height="400"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-                        <toolbar key="toolbar" implicitIdentifier="9C4414D6-3158-4CC8-B20E-D56C8A1A55DB" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="LGw-bM-oRE">
+                        <toolbar key="toolbar" implicitIdentifier="9C4414D6-3158-4CC8-B20E-D56C8A1A55DB" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="LGw-bM-oRE">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="hUd-n8-t9V"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="tFd-Lj-cVP"/>
-                                <toolbarItem implicitItemIdentifier="74A3DDC2-377A-4564-9895-C2A3111B343E" label="General" paletteLabel="General" tag="-1" image="HighResLogo" id="gQ5-pw-d5K">
-                                    <size key="minSize" width="768" height="768"/>
-                                    <size key="maxSize" width="768" height="768"/>
+                                <toolbarItem implicitItemIdentifier="74A3DDC2-377A-4564-9895-C2A3111B343E" label="General Settings" paletteLabel="General Settings" tag="-1" image="HighResLogo" sizingBehavior="auto" id="gQ5-pw-d5K">
                                     <connections>
                                         <segue destination="jvD-3R-R44" kind="custom" customClass="ReplaceViewSeque" id="RwQ-dy-AGx"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="D2300AAA-A8A0-451E-9681-988841B52D83" label="File Handling" paletteLabel="File Handling" tag="-1" image="NSApplicationIcon" id="wgn-mD-nVx">
-                                    <size key="minSize" width="32" height="32"/>
-                                    <size key="maxSize" width="32" height="32"/>
+                                <toolbarItem implicitItemIdentifier="D2300AAA-A8A0-451E-9681-988841B52D83" label="File Handling" paletteLabel="File Handling" tag="-1" image="FileHandling" sizingBehavior="auto" id="wgn-mD-nVx">
                                     <connections>
                                         <segue destination="XUW-QQ-7UG" kind="custom" customClass="ReplaceViewSeque" id="FEv-JI-ip2"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="E959839D-3768-45DA-A3DC-5E11A167C662" label="Invalid Dates" paletteLabel="Invalid Dates" tag="-1" image="Calendar-icon" id="U7w-E6-7FZ">
-                                    <size key="minSize" width="19" height="12"/>
-                                    <size key="maxSize" width="19" height="12"/>
+                                <toolbarItem implicitItemIdentifier="E959839D-3768-45DA-A3DC-5E11A167C662" label="Non-Gedcom Dates" paletteLabel="Non-Gedcom Dates" tag="-1" image="Calendar-icon" sizingBehavior="auto" id="U7w-E6-7FZ">
                                     <connections>
                                         <segue destination="hhO-71-oac" kind="custom" customClass="ReplaceViewSeque" id="Hvk-xi-Ixb"/>
                                     </connections>
@@ -473,7 +467,9 @@
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="gQ5-pw-d5K"/>
+                                <toolbarItem reference="tFd-Lj-cVP"/>
                                 <toolbarItem reference="wgn-mD-nVx"/>
+                                <toolbarItem reference="tFd-Lj-cVP"/>
                                 <toolbarItem reference="U7w-E6-7FZ"/>
                             </defaultToolbarItems>
                         </toolbar>
@@ -486,19 +482,20 @@
                     </connections>
                 </windowController>
                 <customObject id="di3-0Z-y33" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="tDQ-yT-H9d"/>
             </objects>
-            <point key="canvasLocation" x="-661" y="-1307"/>
+            <point key="canvasLocation" x="-1095" y="-1687"/>
         </scene>
         <!--General Preferences-->
         <scene sceneID="biv-YI-7jk">
             <objects>
-                <viewController id="jvD-3R-R44" userLabel="General Preferences" sceneMemberID="viewController">
+                <viewController title="General Preferences" storyboardIdentifier="GeneralSettings" id="jvD-3R-R44" customClass="PreferencesViewController" sceneMemberID="viewController">
                     <view key="view" id="L7k-BB-ZCe">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UVE-uL-yt0">
-                                <rect key="frame" x="35" y="234" width="193" height="18"/>
+                                <rect key="frame" x="18" y="364" width="193" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="General Preference Option 1" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9mZ-q0-cc8">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -510,18 +507,18 @@
                 </viewController>
                 <customObject id="Gl1-WP-HcV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-97" y="-1727"/>
+            <point key="canvasLocation" x="-432" y="-1953"/>
         </scene>
-        <!--Invalid GEDCOM Date Preferences-->
+        <!--Non-Gedcom Date Preferences-->
         <scene sceneID="xcw-tQ-f6N">
             <objects>
-                <viewController id="hhO-71-oac" userLabel="Invalid GEDCOM Date Preferences" sceneMemberID="viewController">
+                <viewController title="Non-Gedcom Date Preferences" storyboardIdentifier="NonGedcomDates" id="hhO-71-oac" userLabel="Non-Gedcom Date Preferences" customClass="PreferencesViewController" sceneMemberID="viewController">
                     <view key="view" id="YT7-uf-R9v">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AIT-p1-sXq">
-                                <rect key="frame" x="52" y="224" width="240" height="18"/>
+                                <rect key="frame" x="18" y="364" width="240" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Invalid GEDCOM Dates Preference 1" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YdS-2J-4Zc">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -533,30 +530,42 @@
                 </viewController>
                 <customObject id="711-VI-HHE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-442" y="-950"/>
+            <point key="canvasLocation" x="-959" y="-1153"/>
         </scene>
         <!--File Handling Preferences-->
         <scene sceneID="2Q0-mP-Xrg">
             <objects>
-                <viewController id="XUW-QQ-7UG" userLabel="File Handling Preferences" sceneMemberID="viewController">
+                <viewController title="File Handling Preferences" storyboardIdentifier="FileHandling" id="XUW-QQ-7UG" userLabel="File Handling Preferences" customClass="PreferencesViewController" sceneMemberID="viewController">
                     <view key="view" id="CeH-Gl-fa9">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AEW-Pf-cTe">
-                                <rect key="frame" x="12" y="234" width="180" height="18"/>
+                                <rect key="frame" x="18" y="364" width="308" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="File Handling Preference 1" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="I9h-K7-PC9">
+                                <buttonCell key="cell" type="check" title="Use Special Character Filters When Loading (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="I9h-K7-PC9">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JA8-7y-Fse">
+                                <rect key="frame" x="18" y="337" width="324" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Retry failed lines by looking for bad line breaks (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="i33-RN-dHv">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="LoadWithFiltersOutlet" destination="AEW-Pf-cTe" id="LXT-oQ-NCm"/>
+                        <outlet property="RetryFailedLinesOutlet" destination="JA8-7y-Fse" id="2GN-uT-2dG"/>
+                    </connections>
                 </viewController>
                 <customObject id="T7Q-eG-oFq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-112" y="-1270"/>
+            <point key="canvasLocation" x="-439" y="-1489"/>
         </scene>
         <!--MainTabController-->
         <scene sceneID="pXS-AW-A6S">
@@ -935,8 +944,8 @@
     </scenes>
     <resources>
         <image name="Calendar-icon" width="128" height="128"/>
+        <image name="FileHandling" width="600" height="600"/>
         <image name="HighResLogo" width="768" height="768"/>
-        <image name="NSApplicationIcon" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RwQ-dy-AGx"/>

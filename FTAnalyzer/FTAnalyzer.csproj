@@ -189,6 +189,10 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Properties\SettingsBase.cs" />
+    <Compile Include="ViewControllers\PreferencesViewController.cs" />
+    <Compile Include="ViewControllers\PreferencesViewController.designer.cs">
+      <DependentUpon>PreferencesViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\en.lproj\Main.storyboard" />
@@ -202,9 +206,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
     <BundleResource Include="Resources\FTAnalyzer.entitlements" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\Icons\Calendar-icon.png" />
   </ItemGroup>
   <Import Project="..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems" Label="Shared" Condition="Exists('..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />

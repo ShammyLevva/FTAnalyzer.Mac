@@ -1,9 +1,15 @@
-﻿namespace FTAnalyzer.Properties
-{
+﻿using System;
+using AppKit;
+using Foundation;
 
-    public class GeneralSettings
+namespace FTAnalyzer.Properties
+{
+    [Register ("GeneralSettings")]
+    public class GeneralSettings : NSViewController
     {
-        public static GeneralSettings Default { get; } = (GeneralSettings)SettingsBase.Load(new GeneralSettings(), typeof(GeneralSettings));
+        public GeneralSettings(IntPtr handle) : base(handle) { }
+
+        public static GeneralSettings Default { get; } = (GeneralSettings)SettingsBase.Load(new GeneralSettings(new IntPtr()), typeof(GeneralSettings));
 
         [DefaultSettingValue("True")]
         public bool UseBaptismDates { get; set; }
