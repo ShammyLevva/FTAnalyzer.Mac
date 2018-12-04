@@ -28,5 +28,7 @@ namespace FTAnalyzer.Properties
 
         [DefaultSettingValue(typeof(string), "")]
         public string Setting { get; set; }
+
+        public void Save() => SettingsBase.Save(Default, typeof(NonGedcomDate));
     }
 }
