@@ -1,19 +1,15 @@
 ﻿using System;
 namespace FTAnalyzer.Properties
 {
-	public class SettingsBase
+	public static class SettingsBase
 	{
-		public SettingsBase()
-		{
-		}
-
-        public void Save()
+		public static void Save()
         { 
         }
 
-        public void Load(object settingsClass)
-        { 
-
+        public static object Load(object settingsClass)
+        {
+            return settingsClass;
         }
 	}
 }

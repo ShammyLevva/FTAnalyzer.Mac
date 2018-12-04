@@ -177,6 +177,18 @@
     <Compile Include="Utilities\ReplaceViewSegue.cs" />
     <Compile Include="Properties\SettingsBase.cs" />
     <Compile Include="Properties\DefaultSettingValueAttribute.cs" />
+    <Compile Include="Properties\FileHandling.cs">
+      <DependentUpon>..\..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\Properties\FileHandling.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Properties\GeneralSettings.cs">
+      <DependentUpon>..\..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\Properties\GeneralSettings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Properties\NonGedcomDate.cs">
+      <DependentUpon>..\..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\Properties\NonGedcomDate.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\en.lproj\Main.storyboard" />
