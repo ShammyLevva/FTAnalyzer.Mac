@@ -7,7 +7,7 @@ Just click on the App store on your Mac and enter FTAnalyzer into the search bar
 
 ### Facebook, Support Site & Twitter
 
-The [User Group](facebook.com/groups/ftanalyzer) is hosted as a page on Facebook. The  [Support website](facebook.com/FTAnalyzer) is also on Facebook. The Twitter account is @FTAnalyzer note I don't check twitter very often.
+The [User Group](https://www.facebook.com/groups/ftanalyzer) is hosted as a page on Facebook. The  [Support website](https://www.facebook.com/FTAnalyzer) is also on Facebook. The Twitter account is @FTAnalyzer note I don't check twitter very often.
 
 ### Notes ###  
 Please note that the development of the Mac version is still in a "beta" stage. It can load a file and display individuals, families, sources, occupations, facts and locations. I've also added the errors and fixes tab, and the research suggestions tab. 
