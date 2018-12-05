@@ -102,6 +102,7 @@ namespace FTAnalyzer
                 locationsTabViewController.AddChildViewController(placesViewController);
 
                 individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
+                individualsViewController.SetRootPersonClicked += SetRootPersonClicked;
                 familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
                 sourcesViewController.SourceFactRowClicked += SourcesFactRowClicked;
                 dataErrorsViewController.DataErrorRowClicked += DataErrorRowClicked;
@@ -224,6 +225,17 @@ namespace FTAnalyzer
                     InvokeOnMainThread(progressController.Close);
                 });
             }
+        }
+
+        void SetRootPersonClicked(Individual individual)
+        {
+            InvokeOnMainThread(() =>
+            {
+                // need to check that user right clicked and that they are happy to proceed with setting this root person before calling update root individual
+                //FamilyTree.Instance.UpdateRootIndividual(individual.IndividualID, null, null);
+               //Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
+            });
+
         }
 
         void IndividualsFactRowClicked(Individual individual)

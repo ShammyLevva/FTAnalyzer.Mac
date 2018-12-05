@@ -39,7 +39,8 @@ namespace FTAnalyzer.ViewControllers
                 AutosaveName = title,
                 AutosaveTableColumns = true,
                 Target = Self,
-                DoubleAction = new ObjCRuntime.Selector("ViewDetailsSelector")
+                DoubleAction = new ObjCRuntime.Selector("ViewDetailsSelector"),
+                Action = new ObjCRuntime.Selector("SetRootPersonSelector")
             };
 
             var properties = typeof(T).GetProperties();
@@ -96,6 +97,27 @@ namespace FTAnalyzer.ViewControllers
             var source = new BindingListTableSource<T>(list);
             _tableView.Source = source;
             _tableView.ReloadData();
+        }
+
+        [Export ("SetRootPersonSelector")]
+        public void SetRootPersonSelector()
+        {
+            if (!NSThread.IsMain)
+            {
+                InvokeOnMainThread(SetRootPersonSelector);
+                return;
+            }
+            NSTableColumn column = GetColumnID("IndividualID");
+            if (column != null)
+            {
+                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTextField cell)
+                {
+                    string indID = cell.StringValue;
+                    Individual ind = FamilyTree.Instance.GetIndividual(indID);
+                    RaiseSetRootPersonClicked(ind);
+                    return;
+                }
+            }
         }
 
         [Export ("ViewDetailsSelector")]
@@ -207,12 +229,14 @@ namespace FTAnalyzer.ViewControllers
         public delegate void SourceRowClickedDelegate(FactSource source);
         public delegate void OccupationRowClickedDelegate(People people);
         public delegate void DataErrorRowClickedDelegate(Individual individual, Family family);
+        public delegate void SetRootPersonDelegate(Individual individual);
         public event IndividualRowClickedDelegate IndividualFactRowClicked;
         public event FamilyRowClickedDelegate FamilyFactRowClicked;
         public event SourceRowClickedDelegate SourceFactRowClicked;
         public event OccupationRowClickedDelegate OccupationRowClicked;
         public event DataErrorRowClickedDelegate DataErrorRowClicked;
- 
+        public event SetRootPersonDelegate SetRootPersonClicked;
+
         internal void RaiseFactRowClicked(Individual individual)
         {
             // Inform caller
@@ -235,6 +259,10 @@ namespace FTAnalyzer.ViewControllers
         internal void RaiseDataErrorRowClicked(Individual individual, Family family)
         {
             DataErrorRowClicked?.Invoke(individual,family);
+        }
+        internal void RaiseSetRootPersonClicked(Individual individual)
+        {
+            SetRootPersonClicked?.Invoke(individual);
         }
         #endregion
     }
