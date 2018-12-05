@@ -530,15 +530,15 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gDP-Qv-MB4">
+                            <popUpButton hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gDP-Qv-MB4">
                                 <rect key="frame" x="18" y="276" width="62" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="zUp-ol-J07" id="LYi-Vw-vXE">
+                                <popUpButtonCell key="cell" type="push" title="16" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" enabled="NO" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="zUp-ol-J07" id="LYi-Vw-vXE">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="Mqm-0z-kss">
                                         <items>
-                                            <menuItem title="Item 1" state="on" id="zUp-ol-J07"/>
+                                            <menuItem title="16" state="on" id="zUp-ol-J07"/>
                                             <menuItem title="Item 2" id="9jZ-2A-gO8"/>
                                             <menuItem title="Item 3" id="Gbu-IX-dMt"/>
                                         </items>
@@ -601,7 +601,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVw-kQ-8Eu">
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVw-kQ-8Eu">
                                 <rect key="frame" x="85" y="281" width="265" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Loose Birth Minimum Parental Age (*)" id="Whg-0e-dXv">
@@ -649,9 +649,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AIT-p1-sXq">
-                                <rect key="frame" x="18" y="364" width="240" height="18"/>
+                                <rect key="frame" x="18" y="364" width="281" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Invalid GEDCOM Dates Preference 1" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YdS-2J-4Zc">
+                                <buttonCell key="cell" type="check" title="Add Non GEDCOM Dates Preferences here" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YdS-2J-4Zc">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -672,72 +672,82 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRi-MY-bgg">
-                                <rect key="frame" x="18" y="375" width="61" height="18"/>
+                                <rect key="frame" x="18" y="375" width="279" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="KJg-td-gsG">
+                                <buttonCell key="cell" type="check" title="Treat Residence Facts As Census Facts (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="KJg-td-gsG">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aT-dQ-VWn">
-                                <rect key="frame" x="18" y="355" width="61" height="18"/>
+                                <rect key="frame" x="18" y="355" width="294" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9aA-mc-OJE">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xkx-ok-UWd">
-                                <rect key="frame" x="18" y="335" width="61" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uVx-T9-sQc">
+                                <buttonCell key="cell" type="check" title="Tolerate Slightly Inaccurate Census Dates (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9aA-mc-OJE">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mvt-Va-I72">
-                                <rect key="frame" x="18" y="315" width="61" height="18"/>
+                                <rect key="frame" x="18" y="335" width="225" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="20R-Ry-vXX">
+                                <buttonCell key="cell" type="check" title="Use Compact Census References" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="20R-Ry-vXX">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cR2-N7-zKE">
-                                <rect key="frame" x="18" y="295" width="61" height="18"/>
+                                <rect key="frame" x="18" y="295" width="343" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SW9-Ma-OWJ">
+                                <buttonCell key="cell" type="check" title="Auto Create Census Events from Notes &amp; Sources (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SW9-Ma-OWJ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fts-cP-3ci">
-                                <rect key="frame" x="18" y="275" width="61" height="18"/>
+                                <rect key="frame" x="18" y="275" width="363" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="klz-uE-jvW">
+                                <buttonCell key="cell" type="check" title="Add Auto Created Census Locations to Locations List (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="klz-uE-jvW">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2C9-p8-R4W">
-                                <rect key="frame" x="18" y="255" width="61" height="18"/>
+                                <rect key="frame" x="18" y="255" width="296" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Nh0-8o-Edi">
+                                <buttonCell key="cell" type="check" title="Hide People Tagged As Missing From Census" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Nh0-8o-Edi">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1TB-pP-GfQ">
-                                <rect key="frame" x="20" y="20" width="238" height="17"/>
+                                <rect key="frame" x="20" y="20" width="257" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="This option requires a GEDCOM reload" id="SWV-pr-9oR">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="(*) This option requires a GEDCOM reload" id="SWV-pr-9oR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xkx-ok-UWd">
+                                <rect key="frame" x="18" y="315" width="302" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Family Census Facts Apply To Only Parents (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uVx-T9-sQc">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="AutoCreateCensusFactsOutlet" destination="cR2-N7-zKE" id="oo0-Nx-CaL"/>
+                        <outlet property="AutoCreateCensusLocationsOutlet" destination="fts-cP-3ci" id="b4d-Xw-R1H"/>
+                        <outlet property="AutoCreateCensusOutlet" destination="cR2-N7-zKE" id="xqe-4y-mRC"/>
+                        <outlet property="CompactCensusRefOutlet" destination="mvt-Va-I72" id="SWx-vF-GcF"/>
+                        <outlet property="FamilyCensusFactsOutlet" destination="xkx-ok-UWd" id="SI6-4E-Ax0"/>
+                        <outlet property="HideMissingCensusOutlet" destination="2C9-p8-R4W" id="gEG-kH-YOr"/>
+                        <outlet property="SlightlyInaccurateOutlet" destination="6aT-dQ-VWn" id="rV3-3s-6eK"/>
+                        <outlet property="TreatResidenceasCensusOutlet" destination="dRi-MY-bgg" id="7xg-RC-Qrj"/>
+                    </connections>
                 </viewController>
                 <customObject id="jix-aT-STf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

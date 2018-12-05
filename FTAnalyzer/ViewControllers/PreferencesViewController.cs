@@ -36,12 +36,87 @@ namespace FTAnalyzer.ViewControllers
                     SetGeneralSettings();
                     break;
                 case "Census Preferences":
+                    TreatResidenceasCensusOutlet.Activated += TreatResidenceasCensusOutlet_Activated;
+                    SlightlyInaccurateOutlet.Activated += SlightlyInaccurateOutlet_Activated;
+                    FamilyCensusFactsOutlet.Activated += FamilyCensusFactsOutlet_Activated;
+                    CompactCensusRefOutlet.Activated += CompactCensusRefOutlet_Activated;
+                    AutoCreateCensusFactsOutlet.Activated += AutoCreateCensusFactsOutlet_Activated;
+                    AutoCreateCensusLocationsOutlet.Activated += AutoCreateCensusLocationsOutlet_Activated;
+                    HideMissingCensusOutlet.Activated += HideMissingCensusOutlet_Activated;
                     SetCensusSettings();
                     break;
                 case "Non Gedcom Date Preferences":
                     SetNonGedcomDateSettings();
                     break;
             }
+        }
+
+        #region Census Settings
+        void SetCensusSettings()
+        {
+            TreatResidenceasCensusOutlet.State = GeneralSettings.Default.UseResidenceAsCensus ? NSCellStateValue.On : NSCellStateValue.Off;
+            SlightlyInaccurateOutlet.State = GeneralSettings.Default.TolerateInaccurateCensusDate ? NSCellStateValue.On : NSCellStateValue.Off;
+            FamilyCensusFactsOutlet.State = GeneralSettings.Default.OnlyCensusParents ? NSCellStateValue.On : NSCellStateValue.Off;
+            CompactCensusRefOutlet.State = GeneralSettings.Default.UseCompactCensusRef ? NSCellStateValue.On : NSCellStateValue.Off;
+            AutoCreateCensusFactsOutlet.State = GeneralSettings.Default.AutoCreateCensusFacts ? NSCellStateValue.On : NSCellStateValue.Off;
+            AutoCreateCensusLocationsOutlet.State = GeneralSettings.Default.AddCreatedLocations ? NSCellStateValue.On : NSCellStateValue.Off;
+            HideMissingCensusOutlet.State = GeneralSettings.Default.HidePeopleWithMissingTag ? NSCellStateValue.On : NSCellStateValue.Off;
+        }
+
+        void TreatResidenceasCensusOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.UseResidenceAsCensus = TreatResidenceasCensusOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+            GeneralSettings.Default.ReloadRequired = true;
+        }
+
+        void SlightlyInaccurateOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.TolerateInaccurateCensusDate = SlightlyInaccurateOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+            GeneralSettings.Default.ReloadRequired = true;
+        }
+
+        void FamilyCensusFactsOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.OnlyCensusParents = FamilyCensusFactsOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+            GeneralSettings.Default.ReloadRequired = true;
+        }
+
+        void CompactCensusRefOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.UseCompactCensusRef = CompactCensusRefOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+        }
+
+        void AutoCreateCensusFactsOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.AutoCreateCensusFacts = AutoCreateCensusFactsOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+            GeneralSettings.Default.ReloadRequired = true;
+        }
+
+        void AutoCreateCensusLocationsOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.AddCreatedLocations = AutoCreateCensusLocationsOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+            GeneralSettings.Default.ReloadRequired = true;
+        }
+
+        void HideMissingCensusOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.HidePeopleWithMissingTag = HideMissingCensusOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+        }
+        #endregion
+
+        #region File Handling
+
+        void SetFileHandlingSettings()
+        {
+            LoadWithFiltersOutlet.State = FileHandling.Default.LoadWithFilters ? NSCellStateValue.On : NSCellStateValue.Off;
+            RetryFailedLinesOutlet.State = FileHandling.Default.RetryFailedLines ? NSCellStateValue.On : NSCellStateValue.Off;
         }
 
         void LoadWithFiltersOutlet_Activated(object sender, EventArgs e)
@@ -56,6 +131,26 @@ namespace FTAnalyzer.ViewControllers
             FileHandling.Default.RetryFailedLines = RetryFailedLinesOutlet.State == NSCellStateValue.On;
             FileHandling.Default.Save();
             GeneralSettings.Default.ReloadRequired = true;
+        }
+
+        #endregion
+
+        #region General Settings
+
+        void SetGeneralSettings()
+        {
+            UseBurialDatesOutlet.State = GeneralSettings.Default.UseBaptismDates ? NSCellStateValue.On : NSCellStateValue.Off;
+            UseBurialDatesOutlet.State = GeneralSettings.Default.UseBurialDates ? NSCellStateValue.On : NSCellStateValue.Off;
+            AllowEmptyLocationsOutlet.State = GeneralSettings.Default.AllowEmptyLocations ? NSCellStateValue.On : NSCellStateValue.Off;
+            ShowDuplicateFactsOutlet.State = GeneralSettings.Default.MultipleFactForms ? NSCellStateValue.On : NSCellStateValue.Off;
+            LooseBirthMinimumAgeOutlet.IntValue = GeneralSettings.Default.MinParentalAge;
+            AliasinNameDisplayOutlet.State = GeneralSettings.Default.ShowAliasInName ? NSCellStateValue.On : NSCellStateValue.Off;
+            UseCountryFirstOutlet.State = GeneralSettings.Default.ReverseLocations ? NSCellStateValue.On : NSCellStateValue.Off;
+            ShowWorldEventsOutlet.State = GeneralSettings.Default.ShowWorldEvents ? NSCellStateValue.On : NSCellStateValue.Off;
+            IgnoreUnknownFactTypeOutlet.State = GeneralSettings.Default.IgnoreFactTypeWarnings ? NSCellStateValue.On : NSCellStateValue.Off;
+            FemaleUnknownOutlet.State = GeneralSettings.Default.TreatFemaleSurnamesAsUnknown ? NSCellStateValue.On : NSCellStateValue.Off;
+            ShowMultiAncestorOutlet.State = GeneralSettings.Default.ShowMultiAncestors ? NSCellStateValue.On : NSCellStateValue.Off;
+            SkipCensusRefNotesOutlet.State = GeneralSettings.Default.SkipCensusReferences ? NSCellStateValue.On : NSCellStateValue.Off;
         }
 
         void UseBaptismDatesOutlet_Activated(object sender, EventArgs e)
@@ -134,37 +229,15 @@ namespace FTAnalyzer.ViewControllers
             GeneralSettings.Default.Save();
         }
 
+        #endregion
 
-        void SetFileHandlingSettings()
-        {
-            LoadWithFiltersOutlet.State = FileHandling.Default.LoadWithFilters ? NSCellStateValue.On : NSCellStateValue.Off;
-            RetryFailedLinesOutlet.State = FileHandling.Default.RetryFailedLines ? NSCellStateValue.On : NSCellStateValue.Off;
-        }
-
-        void SetGeneralSettings()
-        {
-            UseBurialDatesOutlet.State = GeneralSettings.Default.UseBaptismDates ? NSCellStateValue.On : NSCellStateValue.Off;
-            UseBurialDatesOutlet.State = GeneralSettings.Default.UseBurialDates ? NSCellStateValue.On : NSCellStateValue.Off;
-            AllowEmptyLocationsOutlet.State = GeneralSettings.Default.AllowEmptyLocations ? NSCellStateValue.On : NSCellStateValue.Off;
-            ShowDuplicateFactsOutlet.State = GeneralSettings.Default.MultipleFactForms ? NSCellStateValue.On : NSCellStateValue.Off;
-            LooseBirthMinimumAgeOutlet.IntValue = GeneralSettings.Default.MinParentalAge;
-            AliasinNameDisplayOutlet.State = GeneralSettings.Default.ShowAliasInName ? NSCellStateValue.On : NSCellStateValue.Off;
-            UseCountryFirstOutlet.State = GeneralSettings.Default.ReverseLocations ? NSCellStateValue.On : NSCellStateValue.Off;
-            ShowWorldEventsOutlet.State = GeneralSettings.Default.ShowWorldEvents ? NSCellStateValue.On : NSCellStateValue.Off;
-            IgnoreUnknownFactTypeOutlet.State = GeneralSettings.Default.IgnoreFactTypeWarnings ? NSCellStateValue.On : NSCellStateValue.Off;
-            FemaleUnknownOutlet.State = GeneralSettings.Default.TreatFemaleSurnamesAsUnknown ? NSCellStateValue.On : NSCellStateValue.Off;
-            ShowMultiAncestorOutlet.State = GeneralSettings.Default.ShowMultiAncestors ? NSCellStateValue.On : NSCellStateValue.Off;
-            SkipCensusRefNotesOutlet.State = GeneralSettings.Default.SkipCensusReferences ? NSCellStateValue.On : NSCellStateValue.Off;
-        }
-
-        void SetCensusSettings()
-        {
-
-        }
+        #region Non Gedcom Dates
 
         void SetNonGedcomDateSettings()
         {
             // set checkboxes according to loaded settings
         }
+
+        #endregion
     }
 }
