@@ -2,6 +2,9 @@
 
 You can find the latest Mac Release version on the MacOS App Store for your region just search for FTAnalyzer. (note NOT the iPhone/iPad App Store) 
 
+Just click on the App store on your Mac and enter FTAnalyzer into the search bar to find the app. 
+![alt text](http://mac.ftanalyzer.com/AppStore.png "Finding the app on the MacOS App Store")
+
 ### Facebook, Support Site & Twitter
 
 The [User Group](facebook.com/groups/ftanalyzer) is hosted as a page on Facebook. The  [Support website](facebook.com/FTAnalyzer) is also on Facebook. The Twitter account is @FTAnalyzer note I don't check twitter very often.
