@@ -20,4 +20,4 @@ More changes will be implemented over the comming months. However I need some fo
 
 These beta versions will be released through the github website and not via the App Store. If you wish to take part in beta testing please email me via this site and I'll setup a beta testers discussion group. The more folks that can provide feedback from testing the quicker I can release a new version to the App Store. 
 
-[Privacy Policy](ftanalyzer.com/privacy)
+[Privacy Policy](http://www.ftanalyzer.com/privacy)
