@@ -14,6 +14,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{22E07357-4
 	ProjectSection(SolutionItems) = preProject
 		docs\readme.md = docs\readme.md
 		docs\Whats New in this Release.md = docs\Whats New in this Release.md
+		docs\android-chrome-192x192.png = docs\android-chrome-192x192.png
+		docs\android-chrome-512x512.png = docs\android-chrome-512x512.png
+		docs\apple-touch-icon.png = docs\apple-touch-icon.png
+		docs\favicon-16x16.png = docs\favicon-16x16.png
+		docs\favicon-32x32.png = docs\favicon-32x32.png
+		docs\favicon.ico = docs\favicon.ico
+		docs\mstile-150x150.png = docs\mstile-150x150.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "issues", "issues", "{4DA751DE-22B5-46EB-AB21-449C1F46DD6B}"

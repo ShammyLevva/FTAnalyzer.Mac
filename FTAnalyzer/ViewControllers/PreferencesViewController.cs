@@ -35,6 +35,9 @@ namespace FTAnalyzer.ViewControllers
                     SkipCensusRefNotesOutlet.Activated += SkipCensusRefNotesOutlet_Activated;
                     SetGeneralSettings();
                     break;
+                case "Census Preferences":
+                    SetCensusSettings();
+                    break;
                 case "Non Gedcom Date Preferences":
                     SetNonGedcomDateSettings();
                     break;
@@ -152,6 +155,11 @@ namespace FTAnalyzer.ViewControllers
             FemaleUnknownOutlet.State = GeneralSettings.Default.TreatFemaleSurnamesAsUnknown ? NSCellStateValue.On : NSCellStateValue.Off;
             ShowMultiAncestorOutlet.State = GeneralSettings.Default.ShowMultiAncestors ? NSCellStateValue.On : NSCellStateValue.Off;
             SkipCensusRefNotesOutlet.State = GeneralSettings.Default.SkipCensusReferences ? NSCellStateValue.On : NSCellStateValue.Off;
+        }
+
+        void SetCensusSettings()
+        {
+
         }
 
         void SetNonGedcomDateSettings()
