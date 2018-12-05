@@ -15,6 +15,7 @@ The research suggestions tab allows auto searching of census records on Ancestry
 
 The version under development and hopefully available by the end of 2018 will include option panels and printing of the reports.
 
-More changes will be implemented over the comming months. However I'm aware that some folks want to test the features as they become available so I'll be releasing various beta versions over the coming months. These beta versions will be released through the github website and not via the App Store. If you wish to take part in beta testing please email me via this site and I'll setup a beta testers discussion group.
+### Beta Testers Needed ###  
+More changes will be implemented over the comming months. However I need some folks to help to test the features as they become available and find bugs before I release a new version to the App Store. App Store users expect versions to work without issues but spotting bugs can be hard for a solo developer so I need help. 
 
-The more folks that can provide feedback from testing the quicker I can release a new version to the App Store. 
+These beta versions will be released through the github website and not via the App Store. If you wish to take part in beta testing please email me via this site and I'll setup a beta testers discussion group. The more folks that can provide feedback from testing the quicker I can release a new version to the App Store. 
