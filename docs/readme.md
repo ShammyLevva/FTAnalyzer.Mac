@@ -2,6 +2,11 @@ This is the Mac version of FTAnalyzer pages.
 
 You can find the latest Mac Release version on the MacOS App Store for your region just search for FTAnalyzer. (note NOT the iPhone/iPad App Store) 
 
+### Facebook, Support Site & Twitter
+
+The [User Group](facebook.com/groups/ftanalyzer) is hosted as a page on Facebook. The  [Support website](facebook.com/FTAnalyzer) is also on Facebook. The Twitter account is @FTAnalyzer note I don't check twitter very often.
+
+###Notes###  
 Please note that the development of the Mac version is still in a "beta" stage. It can load a file and display individuals, families, sources, occupations, facts and locations. I've also added the errors and fixes tab, and the research suggestions tab. 
 
 These are quite basic at present as it doesnt yet have the filters that the windows version has and the duplicates isn't yet working. I've also added a double click to the lists to show all the facts for that person or family.
