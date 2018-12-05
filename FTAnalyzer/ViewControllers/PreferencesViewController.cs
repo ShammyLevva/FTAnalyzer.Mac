@@ -21,6 +21,18 @@ namespace FTAnalyzer.ViewControllers
                     SetFileHandlingSettings();
                     break;
                 case "General Preferences":
+                    UseBaptismDatesOutlet.Activated += UseBaptismDatesOutlet_Activated;
+                    UseBurialDatesOutlet.Activated += UseBurialDatesOutlet_Activated;
+                    AllowEmptyLocationsOutlet.Activated += AllowEmptyLocationsOutlet_Activated;
+                    ShowDuplicateFactsOutlet.Activated += ShowDuplicateFactsOutlet_Activated;
+                    LooseBirthMinimumAgeOutlet.Activated += LooseBirthMinimumAgeOutlet_Activated;
+                    AliasinNameDisplayOutlet.Activated += AliasinNameDisplayOutlet_Activated; 
+                    UseCountryFirstOutlet.Activated += UseCountryFirstOutlet_Activated;
+                    ShowWorldEventsOutlet.Activated += ShowWorldEventsOutlet_Activated;
+                    IgnoreUnknownFactTypeOutlet.Activated += IgnoreUnknownFactTypeOutlet_Activated;
+                    FemaleUnknownOutlet.Activated += FemaleUnknownOutlet_Activated;
+                    ShowMultiAncestorOutlet.Activated += ShowMultiAncestorOutlet_Activated;
+                    SkipCensusRefNotesOutlet.Activated += SkipCensusRefNotesOutlet_Activated;
                     SetGeneralSettings();
                     break;
                 case "Non Gedcom Date Preferences":
@@ -43,6 +55,83 @@ namespace FTAnalyzer.ViewControllers
             GeneralSettings.Default.ReloadRequired = true;
         }
 
+        void UseBaptismDatesOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.UseBaptismDates = UseBaptismDatesOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+        }
+
+        void UseBurialDatesOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.UseBurialDates = UseBurialDatesOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+        }
+
+        void AllowEmptyLocationsOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.AllowEmptyLocations = AllowEmptyLocationsOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+            GeneralSettings.Default.ReloadRequired = true;
+        }
+
+        void ShowDuplicateFactsOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.MultipleFactForms = ShowDuplicateFactsOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+        }
+
+        void LooseBirthMinimumAgeOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.MinParentalAge = LooseBirthMinimumAgeOutlet.IntValue;
+            GeneralSettings.Default.Save();
+            GeneralSettings.Default.ReloadRequired = true;
+        }
+
+        void AliasinNameDisplayOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.ShowAliasInName = AliasinNameDisplayOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+        }
+
+        void UseCountryFirstOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.ReverseLocations = UseCountryFirstOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+            GeneralSettings.Default.ReloadRequired = true;
+        }
+
+        void ShowWorldEventsOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.ShowWorldEvents = ShowWorldEventsOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+        }
+
+        void IgnoreUnknownFactTypeOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.IgnoreFactTypeWarnings = IgnoreUnknownFactTypeOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+        }
+
+        void FemaleUnknownOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.TreatFemaleSurnamesAsUnknown = FemaleUnknownOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+            GeneralSettings.Default.ReloadRequired = true;
+        }
+
+        void ShowMultiAncestorOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.ShowMultiAncestors = ShowMultiAncestorOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+        }
+
+        void SkipCensusRefNotesOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.SkipCensusReferences = SkipCensusRefNotesOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+        }
+
+
         void SetFileHandlingSettings()
         {
             LoadWithFiltersOutlet.State = FileHandling.Default.LoadWithFilters ? NSCellStateValue.On : NSCellStateValue.Off;
@@ -51,7 +140,18 @@ namespace FTAnalyzer.ViewControllers
 
         void SetGeneralSettings()
         {
-            // set checkboxes according to loaded settings
+            UseBurialDatesOutlet.State = GeneralSettings.Default.UseBaptismDates ? NSCellStateValue.On : NSCellStateValue.Off;
+            UseBurialDatesOutlet.State = GeneralSettings.Default.UseBurialDates ? NSCellStateValue.On : NSCellStateValue.Off;
+            AllowEmptyLocationsOutlet.State = GeneralSettings.Default.AllowEmptyLocations ? NSCellStateValue.On : NSCellStateValue.Off;
+            ShowDuplicateFactsOutlet.State = GeneralSettings.Default.MultipleFactForms ? NSCellStateValue.On : NSCellStateValue.Off;
+            LooseBirthMinimumAgeOutlet.IntValue = GeneralSettings.Default.MinParentalAge;
+            AliasinNameDisplayOutlet.State = GeneralSettings.Default.ShowAliasInName ? NSCellStateValue.On : NSCellStateValue.Off;
+            UseCountryFirstOutlet.State = GeneralSettings.Default.ReverseLocations ? NSCellStateValue.On : NSCellStateValue.Off;
+            ShowWorldEventsOutlet.State = GeneralSettings.Default.ShowWorldEvents ? NSCellStateValue.On : NSCellStateValue.Off;
+            IgnoreUnknownFactTypeOutlet.State = GeneralSettings.Default.IgnoreFactTypeWarnings ? NSCellStateValue.On : NSCellStateValue.Off;
+            FemaleUnknownOutlet.State = GeneralSettings.Default.TreatFemaleSurnamesAsUnknown ? NSCellStateValue.On : NSCellStateValue.Off;
+            ShowMultiAncestorOutlet.State = GeneralSettings.Default.ShowMultiAncestors ? NSCellStateValue.On : NSCellStateValue.Off;
+            SkipCensusRefNotesOutlet.State = GeneralSettings.Default.SkipCensusReferences ? NSCellStateValue.On : NSCellStateValue.Off;
         }
 
         void SetNonGedcomDateSettings()
