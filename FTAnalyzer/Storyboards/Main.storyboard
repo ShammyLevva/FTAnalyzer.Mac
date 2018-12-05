@@ -464,10 +464,15 @@
                                         <segue destination="hhO-71-oac" kind="custom" customClass="ReplaceViewSeque" id="Hvk-xi-Ixb"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="3D3C727D-5778-4D74-B2E6-24B22C496225" label="Census Settings" paletteLabel="Census Settings" tag="-1" id="Cx3-vh-b1b"/>
+                                <toolbarItem implicitItemIdentifier="3D3C727D-5778-4D74-B2E6-24B22C496225" label="Census Settings" paletteLabel="Census Settings" tag="-1" image="CensusSettingsIcon" id="Cx3-vh-b1b">
+                                    <connections>
+                                        <segue destination="FjQ-fP-Lxf" kind="custom" customClass="ReplaceViewSeque" id="gVP-ag-WYC"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="gQ5-pw-d5K"/>
+                                <toolbarItem reference="Cx3-vh-b1b"/>
                                 <toolbarItem reference="wgn-mD-nVx"/>
                                 <toolbarItem reference="U7w-E6-7FZ"/>
                             </defaultToolbarItems>
@@ -665,11 +670,78 @@
                     <view key="view" id="N7s-Pk-ukc">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRi-MY-bgg">
+                                <rect key="frame" x="18" y="275" width="61" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="KJg-td-gsG">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aT-dQ-VWn">
+                                <rect key="frame" x="18" y="255" width="61" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9aA-mc-OJE">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xkx-ok-UWd">
+                                <rect key="frame" x="18" y="235" width="61" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uVx-T9-sQc">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mvt-Va-I72">
+                                <rect key="frame" x="18" y="215" width="61" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="20R-Ry-vXX">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cR2-N7-zKE">
+                                <rect key="frame" x="18" y="195" width="61" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SW9-Ma-OWJ">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fts-cP-3ci">
+                                <rect key="frame" x="18" y="175" width="61" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="klz-uE-jvW">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2C9-p8-R4W">
+                                <rect key="frame" x="18" y="155" width="61" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Nh0-8o-Edi">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1TB-pP-GfQ">
+                                <rect key="frame" x="20" y="20" width="238" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="This option requires a GEDCOM reload" id="SWV-pr-9oR">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
                     </view>
                 </viewController>
                 <customObject id="jix-aT-STf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-592" y="-1270"/>
+            <point key="canvasLocation" x="-1678" y="-1794"/>
         </scene>
         <!--File Handling Preferences-->
         <scene sceneID="2Q0-mP-Xrg">
@@ -1082,6 +1154,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CensusSettingsIcon" width="28.327869415283203" height="28.327869415283203"/>
         <image name="FileHandlingIcon" width="28.327869415283203" height="28.327869415283203"/>
         <image name="GeneralSettingsIcon" width="28.327869415283203" height="28.327869415283203"/>
         <image name="HighResLogo" width="768" height="768"/>

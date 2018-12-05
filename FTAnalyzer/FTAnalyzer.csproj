@@ -124,6 +124,10 @@
     <ImageAsset Include="Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%401x.png" />
     <ImageAsset Include="Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%402x.png" />
     <ImageAsset Include="Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%403x.png" />
+    <ImageAsset Include="Assets.xcassets\CensusSettingsIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\CensusSettingsIcon.imageset\CensusSettings%401x.png" />
+    <ImageAsset Include="Assets.xcassets\CensusSettingsIcon.imageset\CensusSettings%402x.png" />
+    <ImageAsset Include="Assets.xcassets\CensusSettingsIcon.imageset\CensusSettings%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -136,6 +140,7 @@
     <Folder Include="Assets.xcassets\GeneralSettingsIcon.imageset\" />
     <Folder Include="Assets.xcassets\FileHandlingIcon.imageset\" />
     <Folder Include="Assets.xcassets\NonGedcomDatesIcon.imageset\" />
+    <Folder Include="Assets.xcassets\CensusSettingsIcon.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
