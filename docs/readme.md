@@ -1,4 +1,4 @@
-### This is the Mac version of FTAnalyzer pages. ###  
+### Introducing the Mac version of FTAnalyzer. ###  
 
 You can find the latest Mac Release version on the MacOS App Store for your region just search for FTAnalyzer. (note NOT the iPhone/iPad App Store) 
 
