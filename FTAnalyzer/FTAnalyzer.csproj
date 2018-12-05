@@ -71,9 +71,6 @@
     <Reference Include="GoogleAnalyticsTracker.Simple">
       <HintPath>..\packages\GoogleAnalyticsTracker.Simple.4.6.7\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Simple.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.8.10\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
-    </Reference>
     <Reference Include="System.Security.AccessControl">
       <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\netstandard2.0\System.Security.AccessControl.dll</HintPath>
     </Reference>
@@ -82,6 +79,9 @@
     </Reference>
     <Reference Include="System.Security.Principal.Windows">
       <HintPath>..\packages\System.Security.Principal.Windows.4.5.1\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.11\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +112,18 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\512.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\512%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024.png" />
+    <ImageAsset Include="Assets.xcassets\GeneralSettingsIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\FileHandlingIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\NonGedcomDatesIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\NonGedcomDatesIcon.imageset\Calendar-icon%401x.png" />
+    <ImageAsset Include="Assets.xcassets\NonGedcomDatesIcon.imageset\Calendar-icon%402x.png" />
+    <ImageAsset Include="Assets.xcassets\NonGedcomDatesIcon.imageset\Calendar-icon%403x.png" />
+    <ImageAsset Include="Assets.xcassets\FileHandlingIcon.imageset\FileHandling%401x.png" />
+    <ImageAsset Include="Assets.xcassets\FileHandlingIcon.imageset\FileHandling%402x.png" />
+    <ImageAsset Include="Assets.xcassets\FileHandlingIcon.imageset\FileHandling%403x.png" />
+    <ImageAsset Include="Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%401x.png" />
+    <ImageAsset Include="Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%402x.png" />
+    <ImageAsset Include="Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -121,6 +133,9 @@
     <Folder Include="Properties\" />
     <Folder Include="Storyboards\" />
     <Folder Include="ViewControllers\Controls\" />
+    <Folder Include="Assets.xcassets\GeneralSettingsIcon.imageset\" />
+    <Folder Include="Assets.xcassets\FileHandlingIcon.imageset\" />
+    <Folder Include="Assets.xcassets\NonGedcomDatesIcon.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -195,7 +210,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="Resources\en.lproj\Main.storyboard" />
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />
     <InterfaceDefinition Include="Storyboards\Main.storyboard" />
     <InterfaceDefinition Include="Storyboards\People.storyboard" />
@@ -205,7 +219,6 @@
     <BundleResource Include="Resources\Fonts\Kunstler.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
-    <BundleResource Include="Resources\FTAnalyzer.entitlements" />
   </ItemGroup>
   <Import Project="..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems" Label="Shared" Condition="Exists('..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />

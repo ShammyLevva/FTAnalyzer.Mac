@@ -449,17 +449,17 @@
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="hUd-n8-t9V"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="tFd-Lj-cVP"/>
-                                <toolbarItem implicitItemIdentifier="74A3DDC2-377A-4564-9895-C2A3111B343E" label="General Settings" paletteLabel="General Settings" tag="-1" image="HighResLogo" sizingBehavior="auto" id="gQ5-pw-d5K">
+                                <toolbarItem implicitItemIdentifier="74A3DDC2-377A-4564-9895-C2A3111B343E" label="General Settings" paletteLabel="General Settings" tag="-1" image="GeneralSettingsIcon" sizingBehavior="auto" id="gQ5-pw-d5K">
                                     <connections>
                                         <segue destination="jvD-3R-R44" kind="custom" customClass="ReplaceViewSeque" id="RwQ-dy-AGx"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="D2300AAA-A8A0-451E-9681-988841B52D83" label="File Handling" paletteLabel="File Handling" tag="-1" image="FileHandling" sizingBehavior="auto" id="wgn-mD-nVx">
+                                <toolbarItem implicitItemIdentifier="D2300AAA-A8A0-451E-9681-988841B52D83" label="File Handling" paletteLabel="File Handling" tag="-1" image="FileHandlingIcon" sizingBehavior="auto" id="wgn-mD-nVx">
                                     <connections>
                                         <segue destination="XUW-QQ-7UG" kind="custom" customClass="ReplaceViewSeque" id="FEv-JI-ip2"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="E959839D-3768-45DA-A3DC-5E11A167C662" label="Non-Gedcom Dates" paletteLabel="Non-Gedcom Dates" tag="-1" image="Calendar-icon" sizingBehavior="auto" id="U7w-E6-7FZ">
+                                <toolbarItem implicitItemIdentifier="E959839D-3768-45DA-A3DC-5E11A167C662" label="Non-Gedcom Dates" paletteLabel="Non-Gedcom Dates" tag="-1" image="NonGedcomDatesIcon" sizingBehavior="auto" id="U7w-E6-7FZ">
                                     <connections>
                                         <segue destination="hhO-71-oac" kind="custom" customClass="ReplaceViewSeque" id="Hvk-xi-Ixb"/>
                                     </connections>
@@ -467,9 +467,7 @@
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="gQ5-pw-d5K"/>
-                                <toolbarItem reference="tFd-Lj-cVP"/>
                                 <toolbarItem reference="wgn-mD-nVx"/>
-                                <toolbarItem reference="tFd-Lj-cVP"/>
                                 <toolbarItem reference="U7w-E6-7FZ"/>
                             </defaultToolbarItems>
                         </toolbar>
@@ -943,9 +941,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Calendar-icon" width="128" height="128"/>
-        <image name="FileHandling" width="600" height="600"/>
+        <image name="FileHandlingIcon" width="28.327869415283203" height="28.327869415283203"/>
+        <image name="GeneralSettingsIcon" width="28.327869415283203" height="28.327869415283203"/>
         <image name="HighResLogo" width="768" height="768"/>
+        <image name="NonGedcomDatesIcon" width="28.327869415283203" height="28.327869415283203"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RwQ-dy-AGx"/>
