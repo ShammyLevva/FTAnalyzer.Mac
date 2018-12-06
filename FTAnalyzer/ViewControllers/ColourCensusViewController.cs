@@ -100,7 +100,7 @@ namespace FTAnalyzer.ViewControllers
             }
             nint row = _tableView.ClickedRow;
             int columnIndex = (int)_tableView.ClickedColumn;
-            if (row >=0 && columnIndex >= startColumnIndex && columnIndex <= endColumnIndex)
+            if (row >= 0 && columnIndex >= startColumnIndex && columnIndex <= endColumnIndex)
             {
                 var source = _tableView.Source as ColourCensusSource;
                 IDisplayColourCensus person = source.GetRowObject(row) as IDisplayColourCensus;
@@ -131,10 +131,6 @@ namespace FTAnalyzer.ViewControllers
                     }
                 }
             }
-        }
-
-        void SearchCensus()
-        {
         }
     }
 }

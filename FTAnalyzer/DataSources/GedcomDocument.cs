@@ -230,16 +230,23 @@ namespace FTAnalyzer
             }
         }
 
-        public void PrintDocument(NSView view)
+        public void PrintDocument(IPrintView printView)
         {
-            var oldBounds = view.Bounds;
-            //var rect = new CoreGraphics.CGRect(0, 0, 3000, view.IntrinsicContentSize.Height);
-            //view.Bounds = rect;
-            var printOperation = NSPrintOperation.FromView(view, PrintInfo);
-            printOperation.ShowsPrintPanel = true;
-            printOperation.CanSpawnSeparateThread = true;
-            printOperation.RunOperation();
-            view.Bounds = oldBounds;
+            try
+            {
+                var view = printView.PrintView;
+                var oldBounds = printView.PrintView.Bounds;
+                view.Bounds = printView.Bounds;
+                var printOperation = NSPrintOperation.FromView(view as NSView, PrintInfo);
+                printOperation.ShowsPrintPanel = true;
+                printOperation.CanSpawnSeparateThread = true;
+                printOperation.RunOperation();
+                view.Bounds = oldBounds;
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Sorry there was a problem printing.\nError was: {e.Message}");
+            }
         }
 
         public override void PrintDocument(NSDictionary printSettings, bool showPrintPanel, NSObject delegateObject, Selector didPrintSelector, IntPtr contextInfo)

@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -141,6 +141,7 @@
     <Folder Include="Assets.xcassets\FileHandlingIcon.imageset\" />
     <Folder Include="Assets.xcassets\NonGedcomDatesIcon.imageset\" />
     <Folder Include="Assets.xcassets\CensusSettingsIcon.imageset\" />
+    <Folder Include="ViewControllers\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -150,6 +151,9 @@
     <None Include="packages.config" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="AppDelegate.designer.cs">
+     <DependentUpon>AppDelegate.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ViewControllers\GedcomDocumentViewController.cs" />
     <Compile Include="ViewControllers\GedcomDocumentViewController.designer.cs">
@@ -159,13 +163,14 @@
     <Compile Include="DataSources\BindingListTableSource.cs" />
     <Compile Include="Utilities\UIHelpers.cs" />
     <Compile Include="Properties\Settings.cs" />
-    <Compile Include="AppDelegate.designer.cs" />
     <Compile Include="ViewControllers\FactsViewController.cs" />
     <Compile Include="ViewControllers\FactsViewController.designer.cs">
       <DependentUpon>FactsViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\FTAnalyzerTabViewController.cs" />
-    <Compile Include="ViewControllers\FTAnalyzerTabViewController.designer.cs" />
+    <Compile Include="ViewControllers\FTAnalyzerTabViewController.designer.cs">
+	<DependentUpon>FTAnalyzerTabViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewControllers\ProgressController.cs" />
     <Compile Include="ViewControllers\ProgressController.designer.cs">
       <DependentUpon>ProgressController.cs</DependentUpon>
@@ -175,7 +180,9 @@
       <DependentUpon>ProgressViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\ListsTabViewController.cs" />
-    <Compile Include="ViewControllers\ListsTabViewController.designer.cs" />
+    <Compile Include="ViewControllers\ListsTabViewController.designer.cs">
+      <DependentUpon>ListsTabViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataSources\GedcomDocument.cs" />
     <Compile Include="DataSources\People.cs" />
     <Compile Include="ViewControllers\PeopleViewController.cs" />
@@ -213,6 +220,7 @@
     <Compile Include="ViewControllers\PreferencesViewController.designer.cs">
       <DependentUpon>PreferencesViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\Interfaces\IPrintView.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />

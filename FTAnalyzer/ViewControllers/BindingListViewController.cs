@@ -1,21 +1,28 @@
 ﻿using AppKit;
+using CoreGraphics;
 using Foundation;
 using FTAnalyzer.DataSources;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.ViewControllers
 {
-    public class BindingListViewController<T> : NSViewController
+    public class BindingListViewController<T> : NSViewController, IPrintView
     {
+        public string TooltipText { get; set; }
+        public NSView PrintView => _tableView;
+        public NSView ScrollView => View;
+        public CGRect Bounds { get; private set; }
+
         internal NSTableView _tableView;
         internal string CountText { get; set; }
-        public string TooltipText { get; set; }
+        float TableWidth { get; set; }
 
         public BindingListViewController(string title, string tooltip)
         {
-            SetupView(title);
+            TableWidth = 0;
             Title = title;
             TooltipText = tooltip;
+            SetupView(title);
             UpdateTooltip();
         }
 
@@ -32,7 +39,7 @@ namespace FTAnalyzer.ViewControllers
                 ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
                 WantsLayer = true,
                 Layer = NewLayer(),
-                Bounds = new CoreGraphics.CGRect(0, 0, 800, 500),
+                Bounds = new CGRect(0, 0, 0, 0),
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
                 AllowsMultipleSelection = false,
                 AllowsColumnResizing = true,
@@ -63,6 +70,7 @@ namespace FTAnalyzer.ViewControllers
                     Title = columnTitle
                 };
                 _tableView.AddColumn(tableColumn);
+                TableWidth += width;
             }
             var scrollView = new NSScrollView
             {
@@ -71,14 +79,14 @@ namespace FTAnalyzer.ViewControllers
                 HasHorizontalScroller = true,
                 WantsLayer = true,
                 Layer = NewLayer(),
-                Bounds = new CoreGraphics.CGRect(0, 0, 500, 500)
+                Bounds = new CGRect(0, 0, 0, 0)
             };
             View = scrollView;
         }
 
         static CoreAnimation.CALayer NewLayer() => new CoreAnimation.CALayer
         {
-            Bounds = new CoreGraphics.CGRect(0, 0, 0, 0)
+            Bounds = new CGRect(0, 0, 0, 0)
         };
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
@@ -94,6 +102,7 @@ namespace FTAnalyzer.ViewControllers
             var source = new BindingListTableSource<T>(list);
             _tableView.Source = source;
             _tableView.ReloadData();
+            Bounds = new CGRect(0, 0, TableWidth, _tableView.IntrinsicContentSize.Height);
         }
 
         [Export ("SetRootPersonSelector")]

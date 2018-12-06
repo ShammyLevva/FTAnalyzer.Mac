@@ -30,7 +30,6 @@ namespace FTAnalyzer
             // Do any additional setup after loading the view.
             var font = NSFont.FromFontName("Kunstler Script", 72.0f);
             _titleLabel.Font = font;
-            App.CurrentViewController = this;
         }
 
         #region Computed Properties

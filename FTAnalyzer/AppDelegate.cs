@@ -3,6 +3,7 @@ using System.Web;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
+using FTAnalyzer.ViewControllers;
 
 namespace FTAnalyzer
 {
@@ -12,7 +13,7 @@ namespace FTAnalyzer
         bool _documentOpening;
         public GedcomDocument Document { get; set; }
         NSWindow Window { get; set; }
-        public NSViewController CurrentViewController { get; set; }
+        public IPrintView CurrentView { get; set; }
 
         //static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -27,7 +28,6 @@ namespace FTAnalyzer
             //var tabs = window.ContentViewController as NSTabViewController;
             //tabs.SelectedTabViewItemIndex = 0; //set tab to GEDCOM stats
             CheckWebVersion();
-            CurrentViewController = Window.ContentViewController;
         }
 
         public override bool ApplicationShouldTerminateAfterLastWindowClosed(NSApplication sender)
@@ -112,8 +112,10 @@ namespace FTAnalyzer
 
         partial void PrintClicked(NSObject sender)
         {
-            if(CurrentViewController != null)
-                Document.PrintDocument(CurrentViewController.View);
+            if (CurrentView != null)
+                Document.PrintDocument(CurrentView);
+            else
+                UIHelpers.ShowMessage("Sorry Printing Not currently available for this view");
         }
 
         partial void ViewOnlineManual(NSObject sender)

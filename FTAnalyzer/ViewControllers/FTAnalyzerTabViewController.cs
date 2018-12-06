@@ -2,6 +2,7 @@
 using Foundation;
 using AppKit;
 using FTAnalyzer.Utilities;
+using FTAnalyzer.ViewControllers;
 
 namespace FTAnalyzer
 {
@@ -21,30 +22,31 @@ namespace FTAnalyzer
             switch (item.Label)
             {
                 case "Gedcom Stats":
-                    App.CurrentViewController = ChildViewControllers[0];
+                    App.CurrentView = ChildViewControllers[0]?.ChildViewControllers[0] as IPrintView;
                     break;
                 case "Main Lists":
                     App.Document.LoadMainLists(ProgressController);
-                    App.CurrentViewController = ChildViewControllers[1]?.ChildViewControllers[0];
+                    App.CurrentView = ChildViewControllers[1]?.ChildViewControllers[0] as IPrintView;
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.MainListsEvent);
                     break;
                 case "Errors/Fixes":
                     App.Document.LoadErrorsAndFixes(ProgressController);
-                    App.CurrentViewController = ChildViewControllers[2]?.ChildViewControllers[0];
+                    App.CurrentView = ChildViewControllers[2]?.ChildViewControllers[0] as IPrintView;
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.ErrorsFixesEvent);
                     break;
                 case "Locations":
                     App.Document.LoadLocations(ProgressController);
-                    App.CurrentViewController = ChildViewControllers[3]?.ChildViewControllers[0];
+                    App.CurrentView = ChildViewControllers[3]?.ChildViewControllers[0] as IPrintView;
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.LocationTabViewed);
                     break;
                 default:
-                    App.CurrentViewController = null;
+                    App.CurrentView = null;
                     break;
             }
         }
 
         ProgressController ProgressController { get; set; }
+        public NSView PrintView { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override void ViewDidLoad()
         {
