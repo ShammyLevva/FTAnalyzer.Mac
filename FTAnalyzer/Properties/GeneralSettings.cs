@@ -74,7 +74,7 @@ namespace FTAnalyzer.Properties
         [DefaultSettingValue("False")]
         public bool ShowMultiAncestors { get; set; }
 
-        [DefaultSettingValue("False")]
+        [DefaultSettingValue("True")]
         public bool SkipCensusReferences { get; set; }
 
         [DefaultSettingValue("True")]
