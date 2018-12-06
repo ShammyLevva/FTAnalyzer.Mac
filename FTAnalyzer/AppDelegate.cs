@@ -1,10 +1,8 @@
 using System;
-using System.Net;
 using System.Web;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
-using HtmlAgilityPack;
 
 namespace FTAnalyzer
 {
@@ -13,20 +11,23 @@ namespace FTAnalyzer
     {
         bool _documentOpening;
         public GedcomDocument Document { get; set; }
+        NSWindow Window { get; set; }
+        public NSViewController CurrentViewController { get; set; }
 
         //static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public override void DidFinishLaunching(NSNotification notification)
         {
             // Insert code here to initialize your application
-            var window = NSApplication.SharedApplication.Windows[0];
-            window.MakeKeyAndOrderFront(Self);
-            window.Title = $"FTAnalyzer {Version} - Family Tree Analyzer";
-            window.Delegate = new MainWindowDelegate();
+            Window = NSApplication.SharedApplication.Windows[0];
+            Window.MakeKeyAndOrderFront(Self);
+            Window.Title = $"FTAnalyzer {Version} - Family Tree Analyzer";
+            Window.Delegate = new MainWindowDelegate();
             SetMenus(false);
             //var tabs = window.ContentViewController as NSTabViewController;
             //tabs.SelectedTabViewItemIndex = 0; //set tab to GEDCOM stats
             CheckWebVersion();
+            CurrentViewController = Window.ContentViewController;
         }
 
         public override bool ApplicationShouldTerminateAfterLastWindowClosed(NSApplication sender)
@@ -109,13 +110,19 @@ namespace FTAnalyzer
                 { Console.WriteLine(e.Message); }
         }
 
+        partial void PrintClicked(NSObject sender)
+        {
+            if(CurrentViewController != null)
+                Document.PrintDocument(CurrentViewController.View);
+        }
+
         partial void ViewOnlineManual(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.OnlineManualEvent);
             HttpUtility.VisitWebsite("http://www.ftanalyzer.com");
         }
 
-        partial void ViewOnlineGUides(NSObject sender)
+        partial void ViewOnlineGuides(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.OnlineGuideEvent);
             HttpUtility.VisitWebsite("http://www.ftanalyzer.com/guides");

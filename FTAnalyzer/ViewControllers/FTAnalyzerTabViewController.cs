@@ -21,18 +21,25 @@ namespace FTAnalyzer
             switch (item.Label)
             {
                 case "Gedcom Stats":
+                    App.CurrentViewController = ChildViewControllers[0];
                     break;
                 case "Main Lists":
                     App.Document.LoadMainLists(ProgressController);
+                    App.CurrentViewController = ChildViewControllers[1]?.ChildViewControllers[0];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.MainListsEvent);
                     break;
                 case "Errors/Fixes":
                     App.Document.LoadErrorsAndFixes(ProgressController);
+                    App.CurrentViewController = ChildViewControllers[2]?.ChildViewControllers[0];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.ErrorsFixesEvent);
                     break;
                 case "Locations":
                     App.Document.LoadLocations(ProgressController);
+                    App.CurrentViewController = ChildViewControllers[3]?.ChildViewControllers[0];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.LocationTabViewed);
+                    break;
+                default:
+                    App.CurrentViewController = null;
                     break;
             }
         }

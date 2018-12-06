@@ -4,6 +4,8 @@ using FTAnalyzer.ViewControllers;
 using FTAnalyzer.Utilities;
 using System.Linq;
 using System.Threading.Tasks;
+using ObjCRuntime;
+using System;
 
 namespace FTAnalyzer
 {
@@ -132,6 +134,7 @@ namespace FTAnalyzer
 
             InvokeOnMainThread(() =>
             {
+                PrintInfo.Orientation = NSPrintingOrientation.Landscape;
                 App.Document = this;
                 App.SetMenus(true);
                 Analytics.TrackAction(Analytics.MainFormAction, Analytics.LoadGEDCOMEvent);
@@ -225,6 +228,23 @@ namespace FTAnalyzer
                     InvokeOnMainThread(progressController.Close);
                 });
             }
+        }
+
+        public void PrintDocument(NSView view)
+        {
+            var oldBounds = view.Bounds;
+            //var rect = new CoreGraphics.CGRect(0, 0, 3000, view.IntrinsicContentSize.Height);
+            //view.Bounds = rect;
+            var printOperation = NSPrintOperation.FromView(view, PrintInfo);
+            printOperation.ShowsPrintPanel = true;
+            printOperation.CanSpawnSeparateThread = true;
+            printOperation.RunOperation();
+            view.Bounds = oldBounds;
+        }
+
+        public override void PrintDocument(NSDictionary printSettings, bool showPrintPanel, NSObject delegateObject, Selector didPrintSelector, IntPtr contextInfo)
+        {
+            base.PrintDocument(printSettings, showPrintPanel, delegateObject, didPrintSelector, contextInfo);
         }
 
         void SetRootPersonClicked(Individual individual)

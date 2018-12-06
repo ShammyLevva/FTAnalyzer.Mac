@@ -7,6 +7,8 @@ namespace FTAnalyzer
 {
     public partial class GedcomDocumentViewController : NSViewController
     {
+        AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
+
         public IProgress<string> Messages { get; }
         public IProgress<int> Sources { get; }
         public IProgress<int> Individuals { get; }
@@ -28,6 +30,7 @@ namespace FTAnalyzer
             // Do any additional setup after loading the view.
             var font = NSFont.FromFontName("Kunstler Script", 72.0f);
             _titleLabel.Font = font;
+            App.CurrentViewController = this;
         }
 
         #region Computed Properties

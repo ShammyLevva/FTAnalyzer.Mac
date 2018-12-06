@@ -76,13 +76,10 @@ namespace FTAnalyzer.ViewControllers
             View = scrollView;
         }
 
-        static CoreAnimation.CALayer NewLayer()
+        static CoreAnimation.CALayer NewLayer() => new CoreAnimation.CALayer
         {
-            return new CoreAnimation.CALayer
-            {
-                Bounds = new CoreGraphics.CGRect(0, 0, 0, 0)
-            };
-        }
+            Bounds = new CoreGraphics.CGRect(0, 0, 0, 0)
+        };
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {

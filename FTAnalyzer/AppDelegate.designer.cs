@@ -20,11 +20,14 @@ namespace FTAnalyzer
 		[Action ("Options:")]
 		partial void Options (Foundation.NSObject sender);
 
+		[Action ("PrintClicked:")]
+		partial void PrintClicked (Foundation.NSObject sender);
+
 		[Action ("ReportIssue:")]
 		partial void ReportIssue (Foundation.NSObject sender);
 
-		[Action ("ViewOnlineGUides:")]
-		partial void ViewOnlineGUides (Foundation.NSObject sender);
+		[Action ("ViewOnlineGuides:")]
+		partial void ViewOnlineGuides (Foundation.NSObject sender);
 
 		[Action ("ViewOnlineManual:")]
 		partial void ViewOnlineManual (Foundation.NSObject sender);
