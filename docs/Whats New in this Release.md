@@ -1,3 +1,23 @@
+#### Version 1.0.6.0, 7th December 2018 ####
+**Updates**  
+Added support for options panels  
+Worked on printing now prints but formatting is still odd  
+
+#### Version 1.0.5.0, 27th November 2018 ####
+**First release to app store**  
+Small tweaks on v1.0.4.2 to comply with Apple Guidelines  
+Initial release took three attempts to get approved due entirely to naming conventions  
+So app is now FTAnalyzer (subtitiled Family Tree Analazer) and doesn't have .Mac appearing anywhere  
+
+#### Beta Version 1.0.4.2, 21st November 2018 ####  
+**Updates**  
+Added Research suggestions tab  
+Added colour census reports  
+Added research source dropdown  
+Double clicking on colour census visits research source  
+Added support for publish to App Store  
+Added sorting to lists  
+
 #### Beta Version 1.0.3.0, 17th November 2018 ####  
 **Updates**  
 Double clicking on occupations shows all individuals with that occupation  
