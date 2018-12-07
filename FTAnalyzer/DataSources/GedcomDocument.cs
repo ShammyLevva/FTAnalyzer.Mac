@@ -235,13 +235,12 @@ namespace FTAnalyzer
             try
             {
                 var view = printView.PrintView;
-                var oldBounds = printView.PrintView.Bounds;
-                view.Bounds = printView.Bounds;
                 var printOperation = NSPrintOperation.FromView(view as NSView, PrintInfo);
                 printOperation.ShowsPrintPanel = true;
                 printOperation.CanSpawnSeparateThread = true;
+                printOperation.PrintPanel.Options = NSPrintPanelOptions.ShowsCopies | NSPrintPanelOptions.ShowsPageRange | NSPrintPanelOptions.ShowsPreview | 
+                                                    NSPrintPanelOptions.ShowsPageSetupAccessory | NSPrintPanelOptions.ShowsScaling;
                 printOperation.RunOperation();
-                view.Bounds = oldBounds;
             }
             catch (Exception e)
             {
