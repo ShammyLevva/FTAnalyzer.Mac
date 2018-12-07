@@ -135,6 +135,13 @@ namespace FTAnalyzer
             InvokeOnMainThread(() =>
             {
                 PrintInfo.Orientation = NSPrintingOrientation.Landscape;
+                PrintInfo.LeftMargin = 45;
+                PrintInfo.RightMargin = 45;
+                PrintInfo.TopMargin = 45;
+                PrintInfo.BottomMargin = 45;
+                PrintInfo.HorizontalPagination = NSPrintingPaginationMode.Auto;
+                PrintInfo.VerticallyCentered = false;
+                PrintInfo.HorizontallyCentered = false;
                 App.Document = this;
                 App.SetMenus(true);
                 Analytics.TrackAction(Analytics.MainFormAction, Analytics.LoadGEDCOMEvent);
