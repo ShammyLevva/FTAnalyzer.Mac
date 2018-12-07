@@ -222,7 +222,7 @@
     <Compile Include="ViewControllers\PreferencesViewController.designer.cs">
       <DependentUpon>PreferencesViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\Interfaces\IPrintView.cs" />
+    <Compile Include="ViewControllers\Interfaces\IPrintViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />

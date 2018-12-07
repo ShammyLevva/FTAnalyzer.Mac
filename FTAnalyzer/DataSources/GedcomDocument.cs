@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ObjCRuntime;
 using System;
+using CoreGraphics;
 
 namespace FTAnalyzer
 {
@@ -237,12 +238,11 @@ namespace FTAnalyzer
             }
         }
 
-        public void PrintDocument(IPrintView printView)
+        public void PrintDocument(IPrintViewController viewController)
         {
             try
             {
-                var view = printView.PrintView;
-                var printOperation = NSPrintOperation.FromView(view as NSView, PrintInfo);
+                var printOperation = NSPrintOperation.FromView(viewController.PrintView as NSView, PrintInfo);
                 printOperation.ShowsPrintPanel = true;
                 printOperation.CanSpawnSeparateThread = true;
                 printOperation.PrintPanel.Options = NSPrintPanelOptions.ShowsCopies | NSPrintPanelOptions.ShowsPageRange | NSPrintPanelOptions.ShowsPreview | 

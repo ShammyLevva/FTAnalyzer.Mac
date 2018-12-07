@@ -40,23 +40,23 @@ namespace FTAnalyzer
             switch (label)
             {
                 case "Individuals":
-                    App.CurrentView = ChildViewControllers[0] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[0];
                     Analytics.TrackAction(Analytics.MainListsAction, Analytics.IndividualsTabEvent);
                     break;
                 case "Families":
-                    App.CurrentView = ChildViewControllers[1] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[1];
                     Analytics.TrackAction(Analytics.MainListsAction, Analytics.FamilyTabEvent);
                     break;
                 case "Sources":
-                    App.CurrentView = ChildViewControllers[2] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[2];
                     Analytics.TrackAction(Analytics.MainListsAction, Analytics.SourcesTabEvent);
                     break;
                 case "Occupations":
-                    App.CurrentView = ChildViewControllers[3] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[3];
                     Analytics.TrackAction(Analytics.MainListsAction, Analytics.OccupationsTabEvent);
                     break;
                 case "Facts":
-                    App.CurrentView = ChildViewControllers[4] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[4];
                     Analytics.TrackAction(Analytics.MainListsAction, Analytics.FactsTabEvent);
                     break;
             }
@@ -67,18 +67,18 @@ namespace FTAnalyzer
             switch (label)
             {
                 case "Data Errors":
-                    App.CurrentView = ChildViewControllers[0] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[0];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.DataErrorsTabEvent);
                     break;
                 case "Duplicates": //todo: update child view controller values when added back
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.DuplicatesTabEvent);
                     break;
                 case "Loose Births":
-                    App.CurrentView = ChildViewControllers[1] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[1];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.LooseBirthsEvent);
                     break;
                 case "Loose Deaths":
-                    App.CurrentView = ChildViewControllers[2] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[2];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.LooseDeathsEvent);
                     break;
             }
@@ -89,23 +89,23 @@ namespace FTAnalyzer
             switch (label)
             {
                 case "Countries":
-                    App.CurrentView = ChildViewControllers[0] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[0];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.CountriesTabEvent);
                     break;
                 case "Regions":
-                    App.CurrentView = ChildViewControllers[1] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[1];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.RegionsTabEvent);
                     break;
                 case "SubRegions":
-                    App.CurrentView = ChildViewControllers[2] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[2];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.SubRegionsTabEvent);
                     break;
                 case "Addresses":
-                    App.CurrentView = ChildViewControllers[3] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[3];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.AddressesTabEvent);
                     break;
                 case "Places":
-                    App.CurrentView = ChildViewControllers[4] as IPrintView;
+                    App.CurrentViewController = ChildViewControllers[4];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.PlacesTabEvent);
                     break;
             }

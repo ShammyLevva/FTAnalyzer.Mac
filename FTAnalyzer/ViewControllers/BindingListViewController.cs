@@ -6,33 +6,33 @@ using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.ViewControllers
 {
-    public class BindingListViewController<T> : NSViewController, IPrintView
+    public class BindingListViewController<T> : NSViewController, IPrintViewController
     {
         public string TooltipText { get; set; }
-        public NSView PrintView => _tableView;
-        public NSView ScrollView => View;
-        public CGRect Bounds { get; private set; }
 
+        float _tableWidth;
+        internal NSTableView _printView;
         internal NSTableView _tableView;
         internal string CountText { get; set; }
-        float TableWidth { get; set; }
+
+        public NSView PrintView => SetupPrintView();
 
         public BindingListViewController(string title, string tooltip)
         {
-            TableWidth = 0;
             Title = title;
             TooltipText = tooltip;
-            SetupView(title);
+            SetupTableView();
+            SetupPrintView();
             UpdateTooltip();
         }
 
         public void UpdateTooltip() => View.ToolTip = $"{CountText}. {TooltipText}";
 
-        void SetupView(string title)
+        void SetupTableView()
         {
             _tableView = new NSTableView
             {
-                Identifier = title,
+                Identifier = Title,
                 RowSizeStyle = NSTableViewRowSizeStyle.Default,
                 Enabled = true,
                 UsesAlternatingRowBackgroundColors = true,
@@ -43,35 +43,13 @@ namespace FTAnalyzer.ViewControllers
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
                 AllowsMultipleSelection = false,
                 AllowsColumnResizing = true,
-                AutosaveName = title,
+                AutosaveName = Title,
                 AutosaveTableColumns = true,
                 Target = Self,
                 DoubleAction = new ObjCRuntime.Selector("ViewDetailsSelector"),
                 Action = new ObjCRuntime.Selector("SetRootPersonSelector")
             };
-
-            var properties = typeof(T).GetProperties();
-            foreach (var property in properties)
-            {
-                float width = 100;
-                string columnTitle = property.Name;
-                ColumnDetail[] columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
-                if (columnDetail?.Length == 1)
-                {
-                	columnTitle = columnDetail[0].ColumnName;
-                    width = columnDetail[0].ColumnWidth;
-                }
-                var tableColumn = new NSTableColumn
-                {
-                    Identifier = property.Name,
-                    Width = width,
-                    Editable = false,
-                    Hidden = false,
-                    Title = columnTitle
-                };
-                _tableView.AddColumn(tableColumn);
-                TableWidth += width;
-            }
+            AddTableColumns(_tableView);
             var scrollView = new NSScrollView
             {
                 DocumentView = _tableView,
@@ -84,10 +62,35 @@ namespace FTAnalyzer.ViewControllers
             View = scrollView;
         }
 
-        static CoreAnimation.CALayer NewLayer() => new CoreAnimation.CALayer
+        public NSView SetupPrintView()
         {
-            Bounds = new CGRect(0, 0, 0, 0)
-        };
+            _printView = new NSTableView
+            {
+                Identifier = Title,
+                RowSizeStyle = NSTableViewRowSizeStyle.Small,
+                Enabled = true,
+                UsesAlternatingRowBackgroundColors = true,
+                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
+                WantsLayer = true,
+                Layer = NewLayer(),
+                Bounds = new CGRect(0, 0, 0, 0),
+                AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
+                Target = Self,
+            };
+            AddTableColumns(_printView);
+            var scrollView = new NSScrollView
+            {
+                DocumentView = _printView,
+                HasVerticalScroller = false,
+                HasHorizontalScroller = false,
+                WantsLayer = true,
+                Layer = NewLayer(),
+                Bounds = new CGRect(0, 0, 0, 0)
+            };
+            return _printView;
+        }
+
+        static CoreAnimation.CALayer NewLayer() => new CoreAnimation.CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
@@ -102,7 +105,35 @@ namespace FTAnalyzer.ViewControllers
             var source = new BindingListTableSource<T>(list);
             _tableView.Source = source;
             _tableView.ReloadData();
-            Bounds = new CGRect(0, 0, TableWidth, _tableView.IntrinsicContentSize.Height);
+            _printView.Source = source;
+            _printView.ReloadData();
+        }
+
+        private void AddTableColumns(NSTableView view)
+        {
+            _tableWidth = 0f;
+            var properties = typeof(T).GetProperties();
+            foreach (var property in properties)
+            {
+                float width = 100;
+                string columnTitle = property.Name;
+                ColumnDetail[] columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
+                if (columnDetail?.Length == 1)
+                {
+                    columnTitle = columnDetail[0].ColumnName;
+                    width = columnDetail[0].ColumnWidth;
+                }
+                var tableColumn = new NSTableColumn
+                {
+                    Identifier = property.Name,
+                    Width = width,
+                    Editable = false,
+                    Hidden = false,
+                    Title = columnTitle
+                };
+                view.AddColumn(tableColumn);
+                _tableWidth += width;
+             }
         }
 
         [Export ("SetRootPersonSelector")]
@@ -269,6 +300,11 @@ namespace FTAnalyzer.ViewControllers
         internal void RaiseSetRootPersonClicked(Individual individual)
         {
             SetRootPersonClicked?.Invoke(individual);
+        }
+
+        public void RefreshView()
+        {
+            throw new System.NotImplementedException();
         }
         #endregion
     }
