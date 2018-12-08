@@ -48,20 +48,10 @@ namespace FTAnalyzer
 
         public void PreparePrintView(float width, float height)
         {
-            Hidden = false;
-            var x1 = Bounds;
-            var y1 = Layer.Bounds;
-            var a1 = VisibleRect();
-
             _tableView.ReloadData();
             SetFrameSize(new CGSize(width, height));
             Layer.Bounds = new CGRect(0,0, width, height);
             SetBoundsSize(new CGSize(width, height));
-           
-            var x2 = Bounds;
-            var y2 = Layer.Bounds;
-
-            var a2 = VisibleRect();
         }
     }
 }
