@@ -12,25 +12,24 @@ namespace FTAnalyzer.ViewControllers
         public string TooltipText { get; set; }
 
         float _tableWidth;
-        internal NSTableView _printView;
         internal NSTableView _tableView;
+        internal TablePrintView _printView { get; }
         internal string CountText { get; set; }
 
-        NSView IPrintViewController.PrintView => _printView;
-        public void SetPrintBounds() => _printView.SetBoundsSize(new CGSize(_tableWidth, _printView.IntrinsicContentSize.Height));
+        public NSView PrintView => _printView;
 
         public BindingListViewController(string title, string tooltip)
         {
             Title = title;
             TooltipText = tooltip;
-            SetupTableView();
-            SetupPrintView();
+            View = SetupTableView();
+            _printView = new TablePrintView(GetPrintViewTable());
             UpdateTooltip();
         }
 
         public void UpdateTooltip() => View.ToolTip = $"{CountText}. {TooltipText}";
 
-        void SetupTableView()
+        NSScrollView SetupTableView()
         {
             _tableView = new NSTableView
             {
@@ -61,38 +60,34 @@ namespace FTAnalyzer.ViewControllers
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0)
             };
-            View = scrollView;
+            return scrollView;
         }
 
-        public NSView SetupPrintView()
+        public NSTableView GetPrintViewTable()
         {
-            _printView = new NSTableView
+            var printViewDetails = new NSTableView
             {
                 Identifier = Title,
-                RowSizeStyle = NSTableViewRowSizeStyle.Small,
+                RowSizeStyle = NSTableViewRowSizeStyle.Default,
                 Enabled = true,
                 UsesAlternatingRowBackgroundColors = true,
                 ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
                 WantsLayer = true,
                 Layer = NewLayer(),
-                Bounds = new CGRect(0, 0, 0, 0),
+                Bounds = new CGRect(0, 0, 500, 10000),
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
+                AllowsMultipleSelection = false,
+                AllowsColumnResizing = true,
                 Target = Self
             };
-            AddTableColumns(_printView);
-            var scrollView = new NSScrollView
-            {
-                DocumentView = _printView,
-                HasVerticalScroller = false,
-                HasHorizontalScroller = false,
-                WantsLayer = true,
-                Layer = NewLayer(),
-                Bounds = new CGRect(0, 0, 0, 0)
-            };
-            return _printView;
+            AddTableColumns(printViewDetails);
+
+            return printViewDetails;
         }
 
         static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
+
+        public void PreparePrintView() => _printView.PreparePrintView(_tableWidth, (float)_tableView.IntrinsicContentSize.Height);
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
@@ -111,7 +106,6 @@ namespace FTAnalyzer.ViewControllers
             _tableView.Source = source;
             _tableView.ReloadData();
             _printView.Source = source;
-            _printView.ReloadData();
         }        
 
         void AddTableColumns(NSTableView view)
@@ -264,7 +258,6 @@ namespace FTAnalyzer.ViewControllers
             _tableView.SortDescriptors = columns;
             _tableView.ReloadData();
             _printView.SortDescriptors = columns;
-            _printView.ReloadData();
         }
 
         #region Events

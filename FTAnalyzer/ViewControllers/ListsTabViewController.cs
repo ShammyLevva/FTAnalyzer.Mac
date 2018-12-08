@@ -70,7 +70,7 @@ namespace FTAnalyzer
                     App.CurrentViewController = ChildViewControllers[0];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.DataErrorsTabEvent);
                     break;
-                case "Duplicates": //todo: update child view controller values when added back
+                case "Duplicates": //TODO: update child view controller values when added back
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.DuplicatesTabEvent);
                     break;
                 case "Loose Births":

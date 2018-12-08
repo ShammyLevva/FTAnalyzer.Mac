@@ -5,6 +5,6 @@ namespace FTAnalyzer
     public interface IPrintViewController
     {
         NSView PrintView { get; }
-        void SetPrintBounds();
+        void PreparePrintView(); 
     }
 }

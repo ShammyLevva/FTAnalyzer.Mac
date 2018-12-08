@@ -1,12 +1,11 @@
-﻿using AppKit;
-using Foundation;
-using FTAnalyzer.ViewControllers;
-using FTAnalyzer.Utilities;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using AppKit;
+using Foundation;
+using FTAnalyzer.Utilities;
+using FTAnalyzer.ViewControllers;
 using ObjCRuntime;
-using System;
-using CoreGraphics;
 
 namespace FTAnalyzer
 {
@@ -242,8 +241,8 @@ namespace FTAnalyzer
         {
             try
             {
+                viewController.PreparePrintView();
                 var printOperation = NSPrintOperation.FromView(viewController.PrintView as NSView, PrintInfo);
-                viewController.SetPrintBounds();
                 printOperation.ShowsPrintPanel = true;
                 printOperation.CanSpawnSeparateThread = true;
                 printOperation.PrintPanel.Options = NSPrintPanelOptions.ShowsCopies | NSPrintPanelOptions.ShowsPageRange | NSPrintPanelOptions.ShowsPreview | 

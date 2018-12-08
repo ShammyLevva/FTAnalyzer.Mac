@@ -144,6 +144,7 @@
     <Folder Include="Assets.xcassets\NonGedcomDatesIcon.imageset\" />
     <Folder Include="Assets.xcassets\CensusSettingsIcon.imageset\" />
     <Folder Include="ViewControllers\Interfaces\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -223,6 +224,7 @@
       <DependentUpon>PreferencesViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\Interfaces\IPrintViewController.cs" />
+    <Compile Include="Views\TablePrintView.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />
