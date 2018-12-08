@@ -1,8 +1,7 @@
 ﻿using System;
-using Foundation;
 using AppKit;
+using Foundation;
 using FTAnalyzer.Utilities;
-using FTAnalyzer.ViewControllers;
 
 namespace FTAnalyzer
 {
@@ -19,8 +18,6 @@ namespace FTAnalyzer
         {
             if (App.Document == null)
                 return; // don't bother if we've not loaded a document yet
-            Console.WriteLine($"TabView: {Title}");
-            Console.WriteLine($"Item: {item.Label}");
             switch (Title)
             {
                 case "MainListsController":

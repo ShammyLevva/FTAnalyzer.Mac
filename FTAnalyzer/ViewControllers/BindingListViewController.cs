@@ -44,13 +44,15 @@ namespace FTAnalyzer.ViewControllers
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
                 AllowsMultipleSelection = false,
                 AllowsColumnResizing = true,
+                AllowsColumnSelection = false,
+                AllowsColumnReordering = false,
                 AutosaveName = Title,
                 AutosaveTableColumns = true,
                 Target = Self,
                 DoubleAction = new ObjCRuntime.Selector("ViewDetailsSelector"),
-                Action = new ObjCRuntime.Selector("SetRootPersonSelector")
+                Action = new ObjCRuntime.Selector("SetRootPersonSelector:")
             };
-            AddTableColumns(_tableView);
+            AddTableColumns(_tableView, false);
             var scrollView = new NSScrollView
             {
                 DocumentView = _tableView,
@@ -76,16 +78,19 @@ namespace FTAnalyzer.ViewControllers
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0),
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
+                AllowsColumnResizing = true,
+                AllowsColumnSelection = false,
+                AllowsColumnReordering = false,
                 Target = Self
             };
-            AddTableColumns(printViewDetails);
+            AddTableColumns(printViewDetails, true);
 
             return printViewDetails;
         }
 
         static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
-        public void PreparePrintView(NSPrintInfo info) => _printView.PreparePrintView(_tableWidth, (float)_tableView.IntrinsicContentSize.Height, info);
+        public void PreparePrintView() => _printView.PreparePrintView(_tableWidth, (float)_tableView.IntrinsicContentSize.Height);
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
@@ -106,7 +111,7 @@ namespace FTAnalyzer.ViewControllers
             _printView.Source = source;
         }        
 
-        void AddTableColumns(NSTableView view)
+        void AddTableColumns(NSTableView view, bool printing)
         {
             _tableWidth = 0f;
             var properties = typeof(T).GetProperties();

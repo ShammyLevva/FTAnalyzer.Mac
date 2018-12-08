@@ -48,7 +48,7 @@ namespace FTAnalyzer
 
         public int RowCount => (int)_tableView.RowCount;
 
-        public void PreparePrintView(float width, float height, NSPrintInfo info)
+        public void PreparePrintView(float width, float height)
         {
             float headerHeight = 30;
             width += 51;
@@ -59,7 +59,6 @@ namespace FTAnalyzer
             _headerView.SetFrameSize(new CGSize(width, headerHeight));
             _headerView.SetFrameOrigin(new CGPoint(0, height));
             SetFrameSize(new CGSize(width, height + headerHeight));
-            //SetFrameOrigin(new CGPoint(0, 0));
             var x1 = _headerView.Frame;
             var x2 = _tableView.Frame;
             var y = Frame;

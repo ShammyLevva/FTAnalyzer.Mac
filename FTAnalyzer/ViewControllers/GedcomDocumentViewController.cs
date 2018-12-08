@@ -5,7 +5,7 @@ using Foundation;
 
 namespace FTAnalyzer
 {
-    public partial class GedcomDocumentViewController : NSViewController
+    public partial class GedcomDocumentViewController : NSViewController, IPrintViewController
     {
         AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
 
@@ -14,6 +14,8 @@ namespace FTAnalyzer
         public IProgress<int> Individuals { get; }
         public IProgress<int> Families { get; }
         public IProgress<int> Relationships { get; }
+        public NSView PrintView { get; set; }
+        NSTextStorage textStorage;
 
         public GedcomDocumentViewController(IntPtr handle) : base(handle)
         {
@@ -21,7 +23,7 @@ namespace FTAnalyzer
             Sources = new Progress<int>(percent => SetProgress(_sourcesProgress, percent));
             Individuals = new Progress<int>(percent => SetProgress(_individualsProgress, percent));
             Families = new Progress<int>(percent => SetProgress(_familiesProgress, percent));
-            Relationships = new Progress<int>(percent => SetProgress(_relationshipsProgress, percent));
+        	Relationships = new Progress<int>(percent => SetProgress(_relationshipsProgress, percent));
         }
 
         public override void ViewDidLoad()
@@ -30,6 +32,24 @@ namespace FTAnalyzer
             // Do any additional setup after loading the view.
             var font = NSFont.FromFontName("Kunstler Script", 72.0f);
             _titleLabel.Font = font;
+        }
+
+        public void PreparePrintView()
+        {
+            NSTextView view = new NSTextView();
+            textStorage = new NSTextStorage();
+            NSLayoutManager layoutManager = new NSLayoutManager();
+            textStorage.AddLayoutManager(layoutManager);
+            NSTextContainer textContainer = NSTextContainer.FromSize(view.Bounds.Size);
+            layoutManager.AddTextContainer(textContainer);
+            view.TextStorage?.Append(new NSAttributedString(Messages.ToString()));
+            PrintView = new NSTextView(view.Bounds, textContainer)
+            {
+                Editable = true,
+                Selectable = true
+            };
+            PrintView.AddSubview(view);
+            PrintView.SetFrameSize(PrintView.IntrinsicContentSize);
         }
 
         #region Computed Properties

@@ -241,7 +241,7 @@ namespace FTAnalyzer
         {
             try
             {
-                viewController.PreparePrintView(PrintInfo);
+                viewController.PreparePrintView();
                 var printOperation = NSPrintOperation.FromView(viewController.PrintView as NSView, PrintInfo);
                 printOperation.ShowsPrintPanel = true;
                 printOperation.CanSpawnSeparateThread = true;

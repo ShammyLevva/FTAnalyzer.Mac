@@ -41,6 +41,7 @@ namespace FTAnalyzer
             {
                 _documentOpening = true;
                 Document.Close();
+                Document = null;
                 SetMenus(false);
                 CloseAllFactsWindows();
                 _documentOpening = false;
