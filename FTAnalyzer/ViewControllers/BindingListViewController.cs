@@ -23,7 +23,7 @@ namespace FTAnalyzer.ViewControllers
             Title = title;
             TooltipText = tooltip;
             View = SetupTableView();
-            _printView = new TablePrintView(GetPrintViewTable());
+            _printView = new TablePrintView(GetPrintViewTable(), _tableWidth);
             UpdateTooltip();
         }
 
@@ -74,10 +74,8 @@ namespace FTAnalyzer.ViewControllers
                 ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
                 WantsLayer = true,
                 Layer = NewLayer(),
-                Bounds = new CGRect(0, 0, 500, 10000),
+                Bounds = new CGRect(0, 0, 0, 0),
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
-                AllowsMultipleSelection = false,
-                AllowsColumnResizing = true,
                 Target = Self
             };
             AddTableColumns(printViewDetails);
@@ -87,7 +85,7 @@ namespace FTAnalyzer.ViewControllers
 
         static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
-        public void PreparePrintView() => _printView.PreparePrintView(_tableWidth, (float)_tableView.IntrinsicContentSize.Height);
+        public void PreparePrintView(NSPrintInfo info) => _printView.PreparePrintView(_tableWidth, (float)_tableView.IntrinsicContentSize.Height, info);
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {

@@ -137,8 +137,8 @@ namespace FTAnalyzer
                 PrintInfo.Orientation = NSPrintingOrientation.Landscape;
                 PrintInfo.LeftMargin = 45;
                 PrintInfo.RightMargin = 45;
-                PrintInfo.TopMargin = 45;
-                PrintInfo.BottomMargin = 45;
+                PrintInfo.TopMargin = 30;
+                PrintInfo.BottomMargin = 30;
                 PrintInfo.HorizontalPagination = NSPrintingPaginationMode.Auto;
                 PrintInfo.VerticallyCentered = false;
                 PrintInfo.HorizontallyCentered = false;
@@ -241,7 +241,7 @@ namespace FTAnalyzer
         {
             try
             {
-                viewController.PreparePrintView();
+                viewController.PreparePrintView(PrintInfo);
                 var printOperation = NSPrintOperation.FromView(viewController.PrintView as NSView, PrintInfo);
                 printOperation.ShowsPrintPanel = true;
                 printOperation.CanSpawnSeparateThread = true;
