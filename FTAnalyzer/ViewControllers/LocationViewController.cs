@@ -50,7 +50,6 @@ namespace FTAnalyzer.ViewControllers
                     return;
                 }
             }
-
         }
 
         public delegate void LocationRowClickedDelegate(People people);

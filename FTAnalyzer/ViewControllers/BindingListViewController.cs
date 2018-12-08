@@ -1,4 +1,5 @@
 ﻿using AppKit;
+using CoreAnimation;
 using CoreGraphics;
 using Foundation;
 using FTAnalyzer.DataSources;
@@ -15,7 +16,8 @@ namespace FTAnalyzer.ViewControllers
         internal NSTableView _tableView;
         internal string CountText { get; set; }
 
-        public NSView PrintView => SetupPrintView();
+        NSView IPrintViewController.PrintView => _printView;
+        public void SetPrintBounds() => _printView.SetBoundsSize(new CGSize(_tableWidth, _printView.IntrinsicContentSize.Height));
 
         public BindingListViewController(string title, string tooltip)
         {
@@ -75,7 +77,7 @@ namespace FTAnalyzer.ViewControllers
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0),
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
-                Target = Self,
+                Target = Self
             };
             AddTableColumns(_printView);
             var scrollView = new NSScrollView
@@ -90,7 +92,7 @@ namespace FTAnalyzer.ViewControllers
             return _printView;
         }
 
-        static CoreAnimation.CALayer NewLayer() => new CoreAnimation.CALayer { Bounds = new CGRect(0, 0, 0, 0) };
+        static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
@@ -101,15 +103,18 @@ namespace FTAnalyzer.ViewControllers
             }
             CountText = $"Count: {list.Count}";
             UpdateTooltip();
+            SetViews(new BindingListTableSource<T>(list));
+        }
 
-            var source = new BindingListTableSource<T>(list);
+        internal void SetViews(BindingListTableSource<T> source)
+        {
             _tableView.Source = source;
             _tableView.ReloadData();
             _printView.Source = source;
             _printView.ReloadData();
-        }
+        }        
 
-        private void AddTableColumns(NSTableView view)
+        void AddTableColumns(NSTableView view)
         {
             _tableWidth = 0f;
             var properties = typeof(T).GetProperties();
@@ -258,6 +263,8 @@ namespace FTAnalyzer.ViewControllers
         {
             _tableView.SortDescriptors = columns;
             _tableView.ReloadData();
+            _printView.SortDescriptors = columns;
+            _printView.ReloadData();
         }
 
         #region Events
@@ -300,11 +307,6 @@ namespace FTAnalyzer.ViewControllers
         internal void RaiseSetRootPersonClicked(Individual individual)
         {
             SetRootPersonClicked?.Invoke(individual);
-        }
-
-        public void RefreshView()
-        {
-            throw new System.NotImplementedException();
         }
         #endregion
     }

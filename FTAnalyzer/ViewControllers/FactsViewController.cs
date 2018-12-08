@@ -39,9 +39,9 @@ namespace FTAnalyzer
                 InvokeOnMainThread(RefreshDocumentView);
                 return;
             }
+
             var source = new BindingListTableSource<IDisplayFact>(facts);
-            _tableView.Source = source;
-            _tableView.ReloadData();
+            SetViews(source as BindingListTableSource<T>);
         }
 
         void AddIndividualsFacts(Individual individual)
