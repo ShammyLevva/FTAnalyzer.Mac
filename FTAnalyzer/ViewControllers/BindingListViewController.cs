@@ -72,24 +72,21 @@ namespace FTAnalyzer.ViewControllers
             var printViewDetails = new NSTableView
             {
                 Identifier = Title,
-                RowSizeStyle = NSTableViewRowSizeStyle.Small,
-                RowHeight = layoutManager.DefaultLineHeightForFont(NSFont.SystemFontOfSize(8)),
                 Enabled = true,
                 UsesAlternatingRowBackgroundColors = true,
-                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
                 WantsLayer = true,
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0),
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
                 AllowsColumnResizing = true,
-                AllowsColumnSelection = false,
-                AllowsColumnReordering = false,
-                UsesAutomaticRowHeights = true,
                 Target = Self,
                 AutosaveName = "PrintView"
             };
-            AddTableColumns(printViewDetails, true);
+            NSProcessInfo info = new NSProcessInfo();
+            if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
+                printViewDetails.UsesAutomaticRowHeights = true; // only available in OSX 13.
 
+            AddTableColumns(printViewDetails, true);
             return printViewDetails;
         }
 

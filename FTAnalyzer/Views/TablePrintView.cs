@@ -15,14 +15,13 @@ namespace FTAnalyzer
         public TablePrintView(NSTableView tableView, float width)
         {
             _tableView = tableView;
-            AutoresizesSubviews = false; 
+            AutoresizesSubviews = true; 
             WantsLayer = true;
             Layer = NewLayer();
             Bounds = new CGRect(0, 0, 0, 0);
             _headerView = new NSTableHeaderView
             {
                 TableView = tableView,
-                NeedsLayout = true,
                 WantsLayer = true,
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0),
