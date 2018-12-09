@@ -3,7 +3,6 @@ using System.Web;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
-using FTAnalyzer.ViewControllers;
 
 namespace FTAnalyzer
 {
@@ -14,6 +13,7 @@ namespace FTAnalyzer
         public GedcomDocument Document { get; set; }
         NSWindow Window { get; set; }
         public NSViewController CurrentViewController { get; set; }
+        public NSWindow CurrentWindow { get; set; }
 
         //static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -25,8 +25,6 @@ namespace FTAnalyzer
             Window.Title = $"FTAnalyzer {Version} - Family Tree Analyzer";
             Window.Delegate = new MainWindowDelegate();
             SetMenus(false);
-            //var tabs = window.ContentViewController as NSTabViewController;
-            //tabs.SelectedTabViewItemIndex = 0; //set tab to GEDCOM stats
             CheckWebVersion();
         }
 
@@ -97,7 +95,8 @@ namespace FTAnalyzer
 
         partial void PrintClicked(NSObject sender)
         {
-            if (CurrentViewController != null && CurrentViewController is IPrintViewController)
+            var parentWindow = NSApplication.SharedApplication.KeyWindow;
+            if (CurrentViewController is IPrintViewController)
                 Document.PrintDocument(CurrentViewController as IPrintViewController);
             else
                 UIHelpers.ShowMessage("Sorry Printing Not currently available for this view");

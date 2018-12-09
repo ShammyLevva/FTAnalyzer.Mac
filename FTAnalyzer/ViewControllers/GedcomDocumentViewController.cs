@@ -15,7 +15,6 @@ namespace FTAnalyzer
         public IProgress<int> Families { get; }
         public IProgress<int> Relationships { get; }
         public NSView PrintView { get; set; }
-        NSTextStorage textStorage;
 
         public GedcomDocumentViewController(IntPtr handle) : base(handle)
         {
@@ -30,25 +29,13 @@ namespace FTAnalyzer
         {
             base.ViewDidLoad();
             // Do any additional setup after loading the view.
-            var font = NSFont.FromFontName("Kunstler Script", 72.0f);
-            _titleLabel.Font = font;
+            _titleLabel.Font = NSFont.FromFontName("Kunstler Script", 72.0f);
         }
 
         public void PreparePrintView()
         {
             NSTextView view = new NSTextView();
-            textStorage = new NSTextStorage();
-            NSLayoutManager layoutManager = new NSLayoutManager();
-            textStorage.AddLayoutManager(layoutManager);
-            NSTextContainer textContainer = NSTextContainer.FromSize(view.Bounds.Size);
-            layoutManager.AddTextContainer(textContainer);
-            view.TextStorage?.Append(new NSAttributedString(Messages.ToString()));
-            PrintView = new NSTextView(view.Bounds, textContainer)
-            {
-                Editable = true,
-                Selectable = true
-            };
-            PrintView.AddSubview(view);
+            PrintView.AddSubview(_statusTextView);
             PrintView.SetFrameSize(PrintView.IntrinsicContentSize);
         }
 

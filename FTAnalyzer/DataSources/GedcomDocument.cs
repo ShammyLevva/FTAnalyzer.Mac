@@ -244,20 +244,17 @@ namespace FTAnalyzer
                 viewController.PreparePrintView();
                 var printOperation = NSPrintOperation.FromView(viewController.PrintView as NSView, PrintInfo);
                 printOperation.ShowsPrintPanel = true;
+                printOperation.ShowsProgressPanel = true;
                 printOperation.CanSpawnSeparateThread = true;
                 printOperation.PrintPanel.Options = NSPrintPanelOptions.ShowsCopies | NSPrintPanelOptions.ShowsPageRange | NSPrintPanelOptions.ShowsPreview | 
                                                     NSPrintPanelOptions.ShowsPageSetupAccessory | NSPrintPanelOptions.ShowsScaling;
                 printOperation.RunOperation();
+                printOperation.CleanUpOperation();
             }
             catch (Exception e)
             {
                 UIHelpers.ShowMessage($"Sorry there was a problem printing.\nError was: {e.Message}");
             }
-        }
-
-        public override void PrintDocument(NSDictionary printSettings, bool showPrintPanel, NSObject delegateObject, Selector didPrintSelector, IntPtr contextInfo)
-        {
-            base.PrintDocument(printSettings, showPrintPanel, delegateObject, didPrintSelector, contextInfo);
         }
 
         void SetRootPersonClicked(Individual individual)

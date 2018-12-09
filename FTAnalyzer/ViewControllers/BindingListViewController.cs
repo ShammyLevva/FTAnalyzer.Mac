@@ -17,6 +17,7 @@ namespace FTAnalyzer.ViewControllers
         internal string CountText { get; set; }
 
         public NSView PrintView => _printView;
+        public float scale = 0.75f;
 
         public BindingListViewController(string title, string tooltip)
         {
@@ -67,13 +68,15 @@ namespace FTAnalyzer.ViewControllers
 
         public NSTableView GetPrintViewTable()
         {
+            var layoutManager = new NSLayoutManager();
             var printViewDetails = new NSTableView
             {
                 Identifier = Title,
-                RowSizeStyle = NSTableViewRowSizeStyle.Default,
+                RowSizeStyle = NSTableViewRowSizeStyle.Small,
+                RowHeight = layoutManager.DefaultLineHeightForFont(NSFont.SystemFontOfSize(8)),
                 Enabled = true,
                 UsesAlternatingRowBackgroundColors = true,
-                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
+                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
                 WantsLayer = true,
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0),
@@ -81,7 +84,9 @@ namespace FTAnalyzer.ViewControllers
                 AllowsColumnResizing = true,
                 AllowsColumnSelection = false,
                 AllowsColumnReordering = false,
-                Target = Self
+                UsesAutomaticRowHeights = true,
+                Target = Self,
+                AutosaveName = "PrintView"
             };
             AddTableColumns(printViewDetails, true);
 
@@ -90,7 +95,7 @@ namespace FTAnalyzer.ViewControllers
 
         static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
-        public void PreparePrintView() => _printView.PreparePrintView(_tableWidth, (float)_tableView.IntrinsicContentSize.Height);
+        public void PreparePrintView() => _printView.PreparePrintView();
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
@@ -128,7 +133,7 @@ namespace FTAnalyzer.ViewControllers
                 var tableColumn = new NSTableColumn
                 {
                     Identifier = property.Name,
-                    Width = width,
+                    Width = printing ? width * scale : width,
                     Editable = false,
                     Hidden = false,
                     Title = columnTitle

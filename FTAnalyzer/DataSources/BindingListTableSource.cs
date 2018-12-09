@@ -46,8 +46,11 @@ namespace FTAnalyzer.DataSources
                     Bordered = false,
                     Selectable = false,
                     Editable = false,
-                    Alignment = alignment
+                    Alignment = alignment,
+                    AutoresizingMask = NSViewResizingMask.HeightSizable
                 };
+                if (tableView.AutosaveName == "PrintView")
+                    view.Font = NSFont.SystemFontOfSize(8);
             }
             // Setup view based on the column selected
             if (row >= 0)

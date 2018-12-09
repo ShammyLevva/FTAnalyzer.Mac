@@ -1,4 +1,5 @@
-﻿using AppKit;
+﻿using System;
+using AppKit;
 using CoreAnimation;
 using CoreGraphics;
 using Foundation;
@@ -9,14 +10,11 @@ namespace FTAnalyzer
     {
         NSTableView _tableView;
         NSTableHeaderView _headerView;
-        float _headerRowSize = 60;
+        readonly float _headerRowSize = 30;
 
         public TablePrintView(NSTableView tableView, float width)
         {
-             _tableView = tableView;
-            _tableView.SetFrameOrigin(new CGPoint(0, _headerRowSize));
-            var x = _tableView.Font;
-
+            _tableView = tableView;
             AutoresizesSubviews = false; 
             WantsLayer = true;
             Layer = NewLayer();
@@ -24,10 +22,10 @@ namespace FTAnalyzer
             _headerView = new NSTableHeaderView
             {
                 TableView = tableView,
+                NeedsLayout = true,
                 WantsLayer = true,
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0),
-                Frame = new CGRect(0, 0, width, 0),
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable
             };
             AddSubview(_headerView);
@@ -46,25 +44,26 @@ namespace FTAnalyzer
             set => _tableView.SortDescriptors = value;
         }
 
-        public int RowCount => (int)_tableView.RowCount;
-
-        public void PreparePrintView(float width, float height)
+        public void PreparePrintView()
         {
-            float headerHeight = 30;
-            width += 51;
             _tableView.ReloadData();
-            _tableView.SetFrameSize(new CGSize(width, height));
-            _tableView.SetFrameOrigin(new CGPoint(0, 0));
-
-            _headerView.SetFrameSize(new CGSize(width, headerHeight));
-            _headerView.SetFrameOrigin(new CGPoint(0, height));
-            SetFrameSize(new CGSize(width, height + headerHeight));
-            var x1 = _headerView.Frame;
-            var x2 = _tableView.Frame;
-            var y = Frame;
+            SetFrameSizes();
         }
 
         static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
+        public override void ViewWillDraw()
+        {
+            SetFrameSizes();
+            base.ViewWillDraw();
+        }
+
+        private void SetFrameSizes()
+        {
+            _tableView.SetFrameOrigin(new CGPoint(0, 0));
+            _headerView.SetFrameSize(new CGSize(_tableView.Frame.Width, _headerRowSize));
+            _headerView.SetFrameOrigin(new CGPoint(0, _tableView.Frame.Height));
+            SetFrameSize(new CGSize(_tableView.Frame.Width, _tableView.Frame.Height + _headerRowSize));
+        }
     }
 }
