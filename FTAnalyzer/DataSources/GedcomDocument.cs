@@ -241,13 +241,13 @@ namespace FTAnalyzer
         {
             try
             {
-                viewController.PreparePrintView();
+                var printPanel = new CustomPrintPanel();
+                viewController.PreparePrintView(printPanel);
                 var printOperation = NSPrintOperation.FromView(viewController.PrintView as NSView, PrintInfo);
                 printOperation.ShowsPrintPanel = true;
                 printOperation.ShowsProgressPanel = true;
                 printOperation.CanSpawnSeparateThread = true;
-                printOperation.PrintPanel.Options = NSPrintPanelOptions.ShowsCopies | NSPrintPanelOptions.ShowsPageRange | NSPrintPanelOptions.ShowsPreview | 
-                                                    NSPrintPanelOptions.ShowsPageSetupAccessory | NSPrintPanelOptions.ShowsScaling;
+                printOperation.PrintPanel = printPanel;
                 printOperation.RunOperation();
                 printOperation.CleanUpOperation();
             }

@@ -2,6 +2,7 @@
 
 using AppKit;
 using Foundation;
+using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer
 {
@@ -32,11 +33,12 @@ namespace FTAnalyzer
             _titleLabel.Font = NSFont.FromFontName("Kunstler Script", 72.0f);
         }
 
-        public void PreparePrintView()
+        public void PreparePrintView(CustomPrintPanel panel)
         {
             NSTextView view = new NSTextView();
             PrintView.AddSubview(_statusTextView);
             PrintView.SetFrameSize(PrintView.IntrinsicContentSize);
+            panel.Refresh = true;
         }
 
         #region Computed Properties

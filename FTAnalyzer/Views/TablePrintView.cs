@@ -3,6 +3,7 @@ using AppKit;
 using CoreAnimation;
 using CoreGraphics;
 using Foundation;
+using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer
 {
@@ -11,8 +12,9 @@ namespace FTAnalyzer
         NSTableView _tableView;
         NSTableHeaderView _headerView;
         readonly float _headerRowSize = 30;
+        CustomPrintPanel _printPanel;
 
-        public TablePrintView(NSTableView tableView, float width)
+        public TablePrintView(NSTableView tableView)
         {
             _tableView = tableView;
             AutoresizesSubviews = true; 
@@ -43,8 +45,9 @@ namespace FTAnalyzer
             set => _tableView.SortDescriptors = value;
         }
 
-        public void PreparePrintView()
+        public void PreparePrintView(CustomPrintPanel printPanel)
         {
+            _printPanel = printPanel;
             _tableView.ReloadData();
             SetFrameSizes();
         }
@@ -53,16 +56,29 @@ namespace FTAnalyzer
 
         public override void ViewWillDraw()
         {
+            //ResizeColumns();
             SetFrameSizes();
             base.ViewWillDraw();
+            _printPanel.Refresh = true;
         }
 
-        private void SetFrameSizes()
+        void SetFrameSizes()
         {
             _tableView.SetFrameOrigin(new CGPoint(0, 0));
             _headerView.SetFrameSize(new CGSize(_tableView.Frame.Width, _headerRowSize));
             _headerView.SetFrameOrigin(new CGPoint(0, _tableView.Frame.Height));
             SetFrameSize(new CGSize(_tableView.Frame.Width, _tableView.Frame.Height + _headerRowSize));
+            var head = _headerView.Frame;
+            var body = _tableView.Frame;
+            var overall = Frame;
+        }
+
+        void ResizeColumns()
+        {
+            foreach(NSTableColumn col in _tableView.TableColumns())
+            {
+                col.Width = 123; // TODO: Set width as whatever user has set width of column on table adjusted by scaling of screen font vs printing font.
+            }
         }
     }
 }

@@ -862,6 +862,30 @@
             </objects>
             <point key="canvasLocation" x="370" y="-822"/>
         </scene>
+        <!--FTAnalyzer Options-->
+        <scene sceneID="gCI-36-32f">
+            <objects>
+                <viewController title="FTAnalyzer Options" storyboardIdentifier="PrintPanelAdditionalOptions" id="uwP-cT-TWV" customClass="PrintPanelViewController" sceneMemberID="viewController">
+                    <view key="view" id="HVU-Dm-HyG">
+                        <rect key="frame" x="0.0" y="0.0" width="233" height="98"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKF-Yh-qGH">
+                                <rect key="frame" x="18" y="50" width="212" height="28"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" selectable="YES" title="Additional options could go here" id="UI9-qC-52o">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="1fe-Zv-eaa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="351.5" y="-2782"/>
+        </scene>
         <!--FTAnalyzerController-->
         <scene sceneID="R2V-B0-nI4">
             <objects>

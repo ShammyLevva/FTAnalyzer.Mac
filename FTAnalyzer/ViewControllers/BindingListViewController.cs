@@ -24,7 +24,7 @@ namespace FTAnalyzer.ViewControllers
             Title = title;
             TooltipText = tooltip;
             View = SetupTableView();
-            _printView = new TablePrintView(GetPrintViewTable(), _tableWidth);
+            _printView = new TablePrintView(GetPrintViewTable());
             UpdateTooltip();
         }
 
@@ -92,7 +92,7 @@ namespace FTAnalyzer.ViewControllers
 
         static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
-        public void PreparePrintView() => _printView.PreparePrintView();
+        public void PreparePrintView(CustomPrintPanel printPanel) => _printView.PreparePrintView(printPanel);
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
@@ -111,7 +111,7 @@ namespace FTAnalyzer.ViewControllers
             _tableView.Source = source;
             _tableView.ReloadData();
             _printView.Source = source;
-        }        
+        }
 
         void AddTableColumns(NSTableView view, bool printing)
         {
@@ -130,17 +130,18 @@ namespace FTAnalyzer.ViewControllers
                 var tableColumn = new NSTableColumn
                 {
                     Identifier = property.Name,
-                    Width = printing ? width * scale : width,
+                    Width = width,
                     Editable = false,
                     Hidden = false,
-                    Title = columnTitle
+                    Title = columnTitle,
+                    ResizingMask = printing ? NSTableColumnResizing.Autoresizing : NSTableColumnResizing.UserResizingMask
                 };
                 view.AddColumn(tableColumn);
                 _tableWidth += width;
-             }
+            }
         }
 
-        [Export ("SetRootPersonSelector")]
+        [Export("SetRootPersonSelector")]
         public void SetRootPersonSelector()
         {
             if (!NSThread.IsMain)
@@ -161,7 +162,7 @@ namespace FTAnalyzer.ViewControllers
             }
         }
 
-        [Export ("ViewDetailsSelector")]
+        [Export("ViewDetailsSelector")]
         public virtual void ViewDetailsSelector()
         {
             if (!NSThread.IsMain)
@@ -179,7 +180,7 @@ namespace FTAnalyzer.ViewControllers
                     RaiseFactRowClicked(ind);
                     return;
                 }
-            } 
+            }
             column = GetColumnID("FamilyID");
             if (column != null)
             {
@@ -300,7 +301,7 @@ namespace FTAnalyzer.ViewControllers
         }
         internal void RaiseDataErrorRowClicked(Individual individual, Family family)
         {
-            DataErrorRowClicked?.Invoke(individual,family);
+            DataErrorRowClicked?.Invoke(individual, family);
         }
         internal void RaiseSetRootPersonClicked(Individual individual)
         {

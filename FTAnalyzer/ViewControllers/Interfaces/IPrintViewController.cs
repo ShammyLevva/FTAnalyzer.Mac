@@ -1,10 +1,11 @@
 ﻿using AppKit;
+using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer
 {
     public interface IPrintViewController
     {
         NSView PrintView { get; }
-        void PreparePrintView(); 
+        void PreparePrintView(CustomPrintPanel printPanel); 
     }
 }

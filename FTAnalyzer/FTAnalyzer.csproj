@@ -225,6 +225,11 @@
     </Compile>
     <Compile Include="ViewControllers\Interfaces\IPrintViewController.cs" />
     <Compile Include="Views\TablePrintView.cs" />
+    <Compile Include="Utilities\CustomPrintPanel.cs" />
+    <Compile Include="ViewControllers\PrintPanelViewController.cs" />
+    <Compile Include="ViewControllers\PrintPanelViewController.designer.cs">
+      <DependentUpon>PrintPanelViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />
