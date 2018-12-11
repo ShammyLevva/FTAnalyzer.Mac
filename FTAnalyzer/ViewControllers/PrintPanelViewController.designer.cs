@@ -12,9 +12,15 @@ namespace FTAnalyzer.ViewControllers
 	[Register ("PrintPanelViewController")]
 	partial class PrintPanelViewController
 	{
+		[Outlet]
+		AppKit.NSTextField LabelText { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (LabelText != null) {
+				LabelText.Dispose ();
+				LabelText = null;
+			}
 		}
 	}
 }

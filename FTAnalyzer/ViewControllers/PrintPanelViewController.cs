@@ -1,19 +1,27 @@
 using System;
 using AppKit;
-using Foundation;
 
 namespace FTAnalyzer.ViewControllers
 {
-    public partial class PrintPanelViewController : NSViewController
-	{
-        public bool Refresh { get; set; }
-        readonly string[] observedProperties = { "Refresh" };
+    //public partial class PrintPanelViewController : NSViewController
+    //{
+        //public bool Refresh { get; set; }
+        ////readonly string[] observedProperties = { "Refresh" };
 
-        public PrintPanelViewController() => Refresh = false;
-        public PrintPanelViewController (IntPtr handle) : base (handle) { }
+        //public PrintPanelViewController(IntPtr intPtr) { }
 
-        public NSSet KeyPathsForValuesAffectingPreview() => new NSSet(observedProperties);
+        ////public NSSet KeyPathsForValuesAffectingPreview() => new NSSet(observedProperties);
 
-        public NSDictionary[] LocalizedSummaryItems() => null;
+        ////public NSDictionary[] LocalizedSummaryItems()
+        ////{
+        ////    return new NSDictionary[] { new NSDictionary(), new NSDictionary() };
+        ////}
+
+        //public override void ViewDidLoad()
+        //{
+        //    base.ViewDidLoad();
+        //    Title = "FTAnalyzer Options";
+        //    Refresh = false;
+        //}
     }
-}
+//}

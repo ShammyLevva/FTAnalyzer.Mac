@@ -443,7 +443,7 @@
                     <window key="window" title="FTAnalyzer Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="PreferencesWindow" animationBehavior="default" id="WXI-XW-zvX">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="620" y="420" width="480" height="400"/>
+                        <rect key="contentRect" x="620" y="420" width="480" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                         <toolbar key="toolbar" implicitIdentifier="9C4414D6-3158-4CC8-B20E-D56C8A1A55DB" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="LGw-bM-oRE">
                             <allowedToolbarItems>
@@ -488,7 +488,7 @@
                 <customObject id="di3-0Z-y33" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="tDQ-yT-H9d"/>
             </objects>
-            <point key="canvasLocation" x="-1095" y="-1687"/>
+            <point key="canvasLocation" x="-1105" y="-1709"/>
         </scene>
         <!--General Preferences-->
         <scene sceneID="biv-YI-7jk">
@@ -530,21 +530,6 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <popUpButton hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gDP-Qv-MB4">
-                                <rect key="frame" x="18" y="276" width="62" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="16" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" enabled="NO" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="zUp-ol-J07" id="LYi-Vw-vXE">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="Mqm-0z-kss">
-                                        <items>
-                                            <menuItem title="16" state="on" id="zUp-ol-J07"/>
-                                            <menuItem title="Item 2" id="9jZ-2A-gO8"/>
-                                            <menuItem title="Item 3" id="Gbu-IX-dMt"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dbs-yZ-8km">
                                 <rect key="frame" x="18" y="255" width="186" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -601,19 +586,19 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVw-kQ-8Eu">
-                                <rect key="frame" x="85" y="281" width="265" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-T3-bbB">
+                                <rect key="frame" x="18" y="20" width="257" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Loose Birth Minimum Parental Age (*)" id="Whg-0e-dXv">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="(*) This option requires a GEDCOM reload" id="9tm-yK-wv1">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-T3-bbB">
-                                <rect key="frame" x="18" y="20" width="257" height="17"/>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVw-kQ-8Eu">
+                                <rect key="frame" x="98" y="281" width="265" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="(*) This option requires a GEDCOM reload" id="9tm-yK-wv1">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Loose Birth Minimum Parental Age (*)" id="Whg-0e-dXv">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -626,7 +611,6 @@
                         <outlet property="AllowEmptyLocationsOutlet" destination="vP7-OO-g3m" id="4jD-uR-jyD"/>
                         <outlet property="FemaleUnknownOutlet" destination="jic-ZP-3oI" id="JPd-Fn-fSV"/>
                         <outlet property="IgnoreUnknownFactTypeOutlet" destination="P7z-zh-prY" id="5MP-9c-45d"/>
-                        <outlet property="LooseBirthMinimumAgeOutlet" destination="gDP-Qv-MB4" id="waH-yj-bj3"/>
                         <outlet property="ShowDuplicateFactsOutlet" destination="Zyd-eI-5QH" id="yWs-na-XSQ"/>
                         <outlet property="ShowMultiAncestorOutlet" destination="3c6-pO-8Ft" id="zM9-D2-wvg"/>
                         <outlet property="ShowWorldEventsOutlet" destination="ShY-8P-fMl" id="Naa-DP-fcg"/>
@@ -865,7 +849,7 @@
         <!--FTAnalyzer Options-->
         <scene sceneID="gCI-36-32f">
             <objects>
-                <viewController title="FTAnalyzer Options" storyboardIdentifier="PrintPanelAdditionalOptions" id="uwP-cT-TWV" customClass="PrintPanelViewController" sceneMemberID="viewController">
+                <viewController title="FTAnalyzer Options" storyboardIdentifier="FTAnalyzerOptions" showSeguePresentationStyle="single" id="uwP-cT-TWV" customClass="PrintPanelViewController" sceneMemberID="viewController">
                     <view key="view" id="HVU-Dm-HyG">
                         <rect key="frame" x="0.0" y="0.0" width="233" height="98"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -881,6 +865,9 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="LabelText" destination="aKF-Yh-qGH" id="Zwf-Ii-qgH"/>
+                    </connections>
                 </viewController>
                 <customObject id="1fe-Zv-eaa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -908,6 +895,19 @@
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="534" y="-2153"/>
+        </scene>
+        <!--Accessory View Controller-->
+        <scene sceneID="wmD-ZK-74x">
+            <objects>
+                <viewController storyboardIdentifier="AccessoryViewController" id="UaJ-Il-XJu" customClass="AccessoryViewController" sceneMemberID="viewController">
+                    <view key="view" id="TnG-UU-YFB">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="dKr-hu-1LV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="304" y="-1758"/>
         </scene>
         <!--GedcomDocumentController-->
         <scene sceneID="hIz-AP-VOD">

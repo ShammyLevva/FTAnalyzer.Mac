@@ -230,6 +230,12 @@
     <Compile Include="ViewControllers\PrintPanelViewController.designer.cs">
       <DependentUpon>PrintPanelViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Storyboards\AccessoryViewController.cs" />
+    <Compile Include="Storyboards\AccessoryViewController.designer.cs">
+      <DependentUpon>AccessoryViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\CustomPrintOperation.cs" />
+    <Compile Include="Utilities\PrintDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />

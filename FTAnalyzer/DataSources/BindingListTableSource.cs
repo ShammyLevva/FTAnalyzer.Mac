@@ -47,7 +47,7 @@ namespace FTAnalyzer.DataSources
                     Selectable = false,
                     Editable = false,
                     Alignment = alignment,
-                    AutoresizingMask = NSViewResizingMask.HeightSizable
+                    AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable
                 };
                 if (tableView.AutosaveName == "PrintView")
                     view.Font = NSFont.SystemFontOfSize(8);

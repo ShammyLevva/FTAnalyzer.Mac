@@ -1,25 +1,12 @@
-﻿using System;
-using AppKit;
-using FTAnalyzer.ViewControllers;
+﻿using AppKit;
 
 namespace FTAnalyzer.Utilities
 {
-    public class CustomPrintPanel : NSPrintPanel
-    {
-        PrintPanelViewController _viewController;
+    //public class CustomPrintPanel : NSPrintPanel
+    //{
+    //    public CustomPrintPanel()
+    //    {
 
-        public bool Refresh
-        {
-            get => _viewController.Refresh;
-            set => _viewController.Refresh = value;
-        }
-
-        public CustomPrintPanel()
-        {
-            Options = NSPrintPanelOptions.ShowsCopies | NSPrintPanelOptions.ShowsPageRange | NSPrintPanelOptions.ShowsPreview |
-                      NSPrintPanelOptions.ShowsPageSetupAccessory | NSPrintPanelOptions.ShowsScaling;
-            _viewController = new PrintPanelViewController();
-            //AddAccessoryController(_viewController);
-        }
-    }
+    //     }
+    //}
 }

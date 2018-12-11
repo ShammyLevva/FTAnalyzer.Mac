@@ -9,8 +9,12 @@ namespace FTAnalyzer.Storyboards
 {
 	public partial class AccessoryViewController : NSViewController
 	{
-		public AccessoryViewController (IntPtr handle) : base (handle)
+        readonly string[] observedProperties = { "Refresh" };
+
+        public AccessoryViewController (IntPtr handle) : base (handle)
 		{
 		}
-	}
+
+        public NSSet KeyPathsForValuesAffectingPreview() => null;
+    }
 }

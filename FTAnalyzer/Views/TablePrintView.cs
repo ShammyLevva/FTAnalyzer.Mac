@@ -12,7 +12,6 @@ namespace FTAnalyzer
         NSTableView _tableView;
         NSTableHeaderView _headerView;
         readonly float _headerRowSize = 30;
-        CustomPrintPanel _printPanel;
 
         public TablePrintView(NSTableView tableView)
         {
@@ -31,6 +30,7 @@ namespace FTAnalyzer
             };
             AddSubview(_headerView);
             AddSubview(_tableView);
+            NeedsDisplay = true;
         }
 
         public NSTableViewSource Source
@@ -45,22 +45,21 @@ namespace FTAnalyzer
             set => _tableView.SortDescriptors = value;
         }
 
-        public void PreparePrintView(CustomPrintPanel printPanel)
+        public void PreparePrintView()
         {
-            _printPanel = printPanel;
             _tableView.ReloadData();
             SetFrameSizes();
         }
 
         static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
-        public override void ViewWillDraw()
-        {
-            //ResizeColumns();
-            SetFrameSizes();
-            base.ViewWillDraw();
-            _printPanel.Refresh = true;
-        }
+        //public override void ViewWillDraw()
+        //{
+        //    //ResizeColumns();
+        //   // SetFrameSizes();
+        //    base.ViewWillDraw();
+        //    //_printPanel.Refresh();
+        //}
 
         void SetFrameSizes()
         {

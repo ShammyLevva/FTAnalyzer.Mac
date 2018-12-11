@@ -77,6 +77,7 @@ namespace FTAnalyzer.ViewControllers
                 WantsLayer = true,
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0),
+                //AutoresizesSubviews = true,
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
                 AllowsColumnResizing = true,
                 Target = Self,
@@ -92,7 +93,7 @@ namespace FTAnalyzer.ViewControllers
 
         static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
-        public void PreparePrintView(CustomPrintPanel printPanel) => _printView.PreparePrintView(printPanel);
+        public void PreparePrintView() => _printView.PreparePrintView();
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
