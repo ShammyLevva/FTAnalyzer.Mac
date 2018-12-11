@@ -50,7 +50,6 @@ namespace FTAnalyzer
         }
 
         ProgressController ProgressController { get; set; }
-        public NSView PrintView { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override void ViewDidLoad()
         {
