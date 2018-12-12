@@ -47,8 +47,10 @@ namespace FTAnalyzer
 
         public void PreparePrintView()
         {
-            _tableView.ReloadData();
+            ViewSizes(); 
+            //_tableView.ReloadData();
             SetFrameSizes();
+            ViewSizes();
         }
 
         static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
@@ -67,9 +69,14 @@ namespace FTAnalyzer
             _headerView.SetFrameSize(new CGSize(_tableView.Frame.Width, _headerRowSize));
             _headerView.SetFrameOrigin(new CGPoint(0, _tableView.Frame.Height));
             SetFrameSize(new CGSize(_tableView.Frame.Width, _tableView.Frame.Height + _headerRowSize));
+        }
+
+        private void ViewSizes()
+        {
             var head = _headerView.Frame;
             var body = _tableView.Frame;
             var overall = Frame;
+            var window = Window.Frame;
         }
 
         void ResizeColumns()

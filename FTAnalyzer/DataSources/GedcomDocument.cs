@@ -241,7 +241,14 @@ namespace FTAnalyzer
         {
             try
             {
-                viewController.PreparePrintView();
+                viewController.PrintView.Display();
+                var window = new NSWindow
+                {
+                    ContentViewController = viewController as NSViewController,
+                    ContentView = viewController.PrintView
+                };
+                window.Display();
+                //viewController.PreparePrintView();
                 var printOperation = NSPrintOperation.FromView(viewController.PrintView as NSView, PrintInfo);
                 //var printDelegate = new PrintDelegate();
                 //printOperation.RunOperationModal(viewController.PrintView.Window, printDelegate, new Selector("printOperationDidRun:success:contextInfo:"), IntPtr.Zero);
@@ -252,6 +259,7 @@ namespace FTAnalyzer
                                  NSPrintPanelOptions.ShowsPageSetupAccessory | NSPrintPanelOptions.ShowsScaling;
                 printOperation.RunOperation();
                 printOperation.CleanUpOperation();
+                window.Dispose();
             }
             catch (Exception e)
             {

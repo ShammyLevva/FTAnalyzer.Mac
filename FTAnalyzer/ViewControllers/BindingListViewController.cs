@@ -13,8 +13,8 @@ namespace FTAnalyzer.ViewControllers
 
         float _tableWidth;
         internal NSTableView _tableView;
-        internal TablePrintView _printView { get; }
-        internal string CountText { get; set; }
+        internal NSTableView _printView;
+         internal string CountText { get; set; }
 
         public NSView PrintView => _printView;
         public float scale = 0.75f;
@@ -24,7 +24,7 @@ namespace FTAnalyzer.ViewControllers
             Title = title;
             TooltipText = tooltip;
             View = SetupTableView();
-            _printView = new TablePrintView(GetPrintViewTable());
+            _printView = SetupPrintViewTable();
             UpdateTooltip();
         }
 
@@ -66,9 +66,8 @@ namespace FTAnalyzer.ViewControllers
             return scrollView;
         }
 
-        public NSTableView GetPrintViewTable()
+        public NSTableView SetupPrintViewTable()
         {
-            var layoutManager = new NSLayoutManager();
             var printViewDetails = new NSTableView
             {
                 Identifier = Title,
@@ -81,7 +80,16 @@ namespace FTAnalyzer.ViewControllers
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
                 AllowsColumnResizing = true,
                 Target = Self,
-                AutosaveName = "PrintView"
+                AutosaveName = "PrintView",
+                NeedsDisplay = true,
+                HeaderView = new NSTableHeaderView
+                 {
+                    TableView = _tableView,
+                    WantsLayer = true,
+                    Layer = NewLayer(),
+                    Bounds = new CGRect(0, 0, 0, 0),
+                    AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable
+                }
             };
             NSProcessInfo info = new NSProcessInfo();
             if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
@@ -93,7 +101,10 @@ namespace FTAnalyzer.ViewControllers
 
         static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
-        public void PreparePrintView() => _printView.PreparePrintView();
+        public void PreparePrintView()
+        {
+            var x = PrintView.Frame;
+        }
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
