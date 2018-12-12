@@ -24,7 +24,7 @@ namespace FTAnalyzer.ViewControllers
             Title = title;
             TooltipText = tooltip;
             View = SetupTableView();
-            _printView = SetupPrintViewTable();
+            _printView = SetupPrintView();
             UpdateTooltip();
         }
 
@@ -66,7 +66,7 @@ namespace FTAnalyzer.ViewControllers
             return scrollView;
         }
 
-        public NSTableView SetupPrintViewTable()
+        public NSTableView SetupPrintView()
         {
             var printViewDetails = new NSTableView
             {
@@ -76,15 +76,15 @@ namespace FTAnalyzer.ViewControllers
                 WantsLayer = true,
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0),
-                //AutoresizesSubviews = true,
+                AutoresizesSubviews = true,
                 AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
                 AllowsColumnResizing = true,
                 Target = Self,
                 AutosaveName = "PrintView",
                 NeedsDisplay = true,
+                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
                 HeaderView = new NSTableHeaderView
-                 {
-                    TableView = _tableView,
+                {
                     WantsLayer = true,
                     Layer = NewLayer(),
                     Bounds = new CGRect(0, 0, 0, 0),
@@ -93,7 +93,7 @@ namespace FTAnalyzer.ViewControllers
             };
             NSProcessInfo info = new NSProcessInfo();
             if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
-                printViewDetails.UsesAutomaticRowHeights = true; // only available in OSX 13.
+                printViewDetails.UsesAutomaticRowHeights = true; // only available in OSX 13 and above.
 
             AddTableColumns(printViewDetails, true);
             return printViewDetails;
@@ -103,7 +103,9 @@ namespace FTAnalyzer.ViewControllers
 
         public void PreparePrintView()
         {
-            var x = PrintView.Frame;
+           // var printview = _printView.Frame;
+            //var header = _printView.HeaderView.Frame;
+
         }
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
@@ -142,7 +144,7 @@ namespace FTAnalyzer.ViewControllers
                 var tableColumn = new NSTableColumn
                 {
                     Identifier = property.Name,
-                    Width = width,
+                    Width = printing ? width * scale : width,
                     Editable = false,
                     Hidden = false,
                     Title = columnTitle,

@@ -247,7 +247,7 @@ namespace FTAnalyzer
                     ContentView = viewController.PrintView
                 };
                 window.Display();
-                //viewController.PreparePrintView();
+                viewController.PreparePrintView();
                 var printOperation = NSPrintOperation.FromView(viewController.PrintView as NSView, PrintInfo);
                 //var printDelegate = new PrintDelegate();
                 //printOperation.RunOperationModal(viewController.PrintView.Window, printDelegate, new Selector("printOperationDidRun:success:contextInfo:"), IntPtr.Zero);
