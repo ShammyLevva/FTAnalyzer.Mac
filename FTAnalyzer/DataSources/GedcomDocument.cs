@@ -241,7 +241,6 @@ namespace FTAnalyzer
         {
             try
             {
-                viewController.PrintView.Display();
                 var window = new NSWindow
                 {
                     ContentViewController = viewController as NSViewController,
