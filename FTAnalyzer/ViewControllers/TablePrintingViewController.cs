@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AppKit;
 using CoreAnimation;
 using CoreGraphics;
@@ -9,25 +10,23 @@ namespace FTAnalyzer.ViewControllers
 {
     public class TablePrintingViewController : NSViewController
     {
+        Type _classType;
         float _tableWidth;
         NSTableView _printView;
-        readonly float scale = 0.65f;
+        //readonly float scale = 0.65f;
+        readonly Dictionary<string, float> _columnWidths;
         public NSView PrintView => View;
-        Type _classType;
 
         public TablePrintingViewController(IPrintViewController tableViewController)
         {
             Title = tableViewController.Title;
-            _classType = tableViewController.GetGenericType(); ;
+            _columnWidths = tableViewController.ColumnWidths();
+            _classType = tableViewController.GetGenericType();
             View = SetupView();
             _printView.Source = tableViewController.TableSource;
             _printView.SortDescriptors = tableViewController.SortDescriptors;
             _printView.ReloadData();
-            View.SetFrameSize(new CGSize(_printView.Frame.Width, _printView.Frame.Height));
-            //var x1 = View.Frame;
-            //var y1 = _printView.Frame;
-            //var window = new NSWindow { ContentView = View, ContentViewController = this, ViewsNeedDisplay = true };
-            //window.Display();
+            View.SetFrameSize(new CGSize(_printView.Frame.Width, _printView.Frame.Height + _printView.HeaderView.Frame.Height));
         }
 
         public NSScrollView SetupView()
@@ -35,25 +34,23 @@ namespace FTAnalyzer.ViewControllers
             _printView = new NSTableView
             {
                 Identifier = Title,
-                RowSizeStyle = NSTableViewRowSizeStyle.Default,
+                //RowSizeStyle = NSTableViewRowSizeStyle.Default,
                 Enabled = true,
                 UsesAlternatingRowBackgroundColors = true,
-                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
+                //ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
                 WantsLayer = true,
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0),
-                AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
-                AutoresizesSubviews = true,
-                AllowsColumnResizing = true,
+                //AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
+                //AutoresizesSubviews = true,
                 Target = Self,
-                AutosaveName = "PrintView",
-                NeedsDisplay = true
+                AutosaveName = "PrintView"
             };
             NSProcessInfo info = new NSProcessInfo();
             if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
                 _printView.UsesAutomaticRowHeights = true; // only available in OSX 13 and above.
 
-            AddTableColumns(_printView, true);
+            AddTableColumns(_printView);
             var scrollView = new NSScrollView
             {
                 DocumentView = _printView,
@@ -63,13 +60,14 @@ namespace FTAnalyzer.ViewControllers
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0)
             };
+            scrollView.ContentView.AutoresizesSubviews = true;
             scrollView.ContentView.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
             return scrollView;
         }
 
         static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
-        internal void AddTableColumns(NSTableView view, bool printing)
+        internal void AddTableColumns(NSTableView view)
         {
             _tableWidth = 0f;
             var properties = _classType.GetProperties();
@@ -77,21 +75,14 @@ namespace FTAnalyzer.ViewControllers
             {
                 float width = 100;
                 string columnTitle = property.Name;
-                ColumnDetail[] columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
-                if (columnDetail?.Length == 1)
-                {
-                    columnTitle = columnDetail[0].ColumnName;
-                    width = columnDetail[0].ColumnWidth;
-                }
                 var tableColumn = new NSTableColumn
                 {
                     Identifier = property.Name,
-                    Width = width * scale,
-                    MaxWidth = 1000,
+                    Width = _columnWidths[property.Name],
                     Editable = false,
                     Hidden = false,
                     Title = columnTitle,
-                    ResizingMask = NSTableColumnResizing.Autoresizing | NSTableColumnResizing.UserResizingMask
+                    //ResizingMask = NSTableColumnResizing.Autoresizing | NSTableColumnResizing.UserResizingMask
                 };
                 view.AddColumn(tableColumn);
                 _tableWidth += width;

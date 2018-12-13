@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AppKit;
 using CoreAnimation;
 using CoreGraphics;
@@ -16,7 +17,7 @@ namespace FTAnalyzer.ViewControllers
         internal string CountText { get; set; }
         public NSTableViewSource TableSource => _tableView.Source;
         public NSSortDescriptor[] SortDescriptors => _tableView.SortDescriptors;
-
+      
         public BindingListViewController(string title, string tooltip)
         {
             Title = title;
@@ -35,6 +36,7 @@ namespace FTAnalyzer.ViewControllers
                 RowSizeStyle = NSTableViewRowSizeStyle.Default,
                 Enabled = true,
                 UsesAlternatingRowBackgroundColors = true,
+                AutoresizesSubviews = true,
                 ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
                 WantsLayer = true,
                 Layer = NewLayer(),
@@ -65,6 +67,7 @@ namespace FTAnalyzer.ViewControllers
                 Bounds = new CGRect(0, 0, 0, 0)
             };
             scrollView.ContentView.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
+            scrollView.ContentView.AutoresizesSubviews = true;
             return scrollView;
         }
 
@@ -104,11 +107,11 @@ namespace FTAnalyzer.ViewControllers
                 var tableColumn = new NSTableColumn
                 {
                     Identifier = property.Name,
-                    Width = width,
+                    MinWidth = width,
                     Editable = false,
                     Hidden = false,
                     Title = columnTitle,
-                    ResizingMask = NSTableColumnResizing.UserResizingMask
+                    ResizingMask = NSTableColumnResizing.Autoresizing | NSTableColumnResizing.UserResizingMask,
                 };
                 view.AddColumn(tableColumn);
             }
@@ -206,6 +209,16 @@ namespace FTAnalyzer.ViewControllers
                     }
                 }
             }
+        }
+
+        public Dictionary<string, float> ColumnWidths()
+        {
+            var widths = new Dictionary<string, float>();
+            foreach (NSTableColumn column in _tableView.TableColumns())
+            {
+                widths.Add(column.Identifier, (float)column.Width);
+            }
+            return widths;
         }
 
         protected NSTableColumn GetColumnID(string identifier)

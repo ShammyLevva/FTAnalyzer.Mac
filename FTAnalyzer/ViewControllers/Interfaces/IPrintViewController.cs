@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AppKit;
 using Foundation;
 
@@ -10,5 +11,6 @@ namespace FTAnalyzer
         NSTableViewSource TableSource { get; }
         NSSortDescriptor[] SortDescriptors { get; }
         Type GetGenericType();
+        Dictionary<string, float> ColumnWidths();
     }
 }

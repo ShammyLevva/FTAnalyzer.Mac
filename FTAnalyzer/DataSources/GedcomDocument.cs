@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using AppKit;
+using CoreGraphics;
 using Foundation;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;
@@ -242,12 +243,12 @@ namespace FTAnalyzer
             try
             {
                 var printingViewController = new TablePrintingViewController(tableViewController);
-                var printOperation = NSPrintOperation.FromView(printingViewController.View, PrintInfo);
+                var printOperation = NSPrintOperation.FromView(printingViewController.PrintView, PrintInfo);
                 printOperation.ShowsPrintPanel = true;
                 printOperation.ShowsProgressPanel = true;
                 printOperation.CanSpawnSeparateThread = true;
                 printOperation.PrintPanel.Options = NSPrintPanelOptions.ShowsCopies | NSPrintPanelOptions.ShowsPageRange | NSPrintPanelOptions.ShowsPreview |
-                                 NSPrintPanelOptions.ShowsPageSetupAccessory | NSPrintPanelOptions.ShowsScaling;
+                                                    NSPrintPanelOptions.ShowsPageSetupAccessory | NSPrintPanelOptions.ShowsScaling;
                 printOperation.RunOperation();
                 printOperation.CleanUpOperation();
             }
