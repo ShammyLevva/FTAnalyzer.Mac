@@ -35,7 +35,7 @@ namespace FTAnalyzer.ViewControllers
                 RowSizeStyle = NSTableViewRowSizeStyle.Default,
                 Enabled = true,
                 UsesAlternatingRowBackgroundColors = true,
-                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
+                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
                 WantsLayer = true,
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0),
@@ -51,15 +51,20 @@ namespace FTAnalyzer.ViewControllers
                 Action = new ObjCRuntime.Selector("SetRootPersonSelector:")
             };
             AddTableColumns(_tableView);
+            NSProcessInfo info = new NSProcessInfo();
+            if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
+                _tableView.UsesAutomaticRowHeights = true; // only available in OSX 13 and above.AddTableColumns(_tableView);
             var scrollView = new NSScrollView
             {
                 DocumentView = _tableView,
                 HasVerticalScroller = true,
                 HasHorizontalScroller = true,
+                AutohidesScrollers = true,
                 WantsLayer = true,
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0)
             };
+            scrollView.ContentView.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
             return scrollView;
         }
 

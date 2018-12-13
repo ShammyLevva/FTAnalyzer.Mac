@@ -242,12 +242,6 @@ namespace FTAnalyzer
             try
             {
                 var printingViewController = new TablePrintingViewController(tableViewController);
-                //var window = new NSWindow
-                //{
-                //    ContentViewController = printingViewController,
-                //    ContentView = printingViewController.View
-                //};
-                //window.Display();
                 var printOperation = NSPrintOperation.FromView(printingViewController.View, PrintInfo);
                 printOperation.ShowsPrintPanel = true;
                 printOperation.ShowsProgressPanel = true;
@@ -256,7 +250,6 @@ namespace FTAnalyzer
                                  NSPrintPanelOptions.ShowsPageSetupAccessory | NSPrintPanelOptions.ShowsScaling;
                 printOperation.RunOperation();
                 printOperation.CleanUpOperation();
-                //window.Dispose();
             }
             catch (Exception e)
             {

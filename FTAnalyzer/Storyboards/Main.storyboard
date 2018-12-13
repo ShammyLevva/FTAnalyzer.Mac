@@ -434,7 +434,7 @@
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1016" y="-2129"/>
+            <point key="canvasLocation" x="-1257" y="-1898"/>
         </scene>
         <!--Preferences-->
         <scene sceneID="T6i-rt-7I2">
@@ -846,33 +846,6 @@
             </objects>
             <point key="canvasLocation" x="370" y="-822"/>
         </scene>
-        <!--FTAnalyzer Options-->
-        <scene sceneID="gCI-36-32f">
-            <objects>
-                <viewController title="FTAnalyzer Options" storyboardIdentifier="FTAnalyzerOptions" showSeguePresentationStyle="single" id="uwP-cT-TWV" customClass="PrintPanelViewController" sceneMemberID="viewController">
-                    <view key="view" id="HVU-Dm-HyG">
-                        <rect key="frame" x="0.0" y="0.0" width="233" height="98"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKF-Yh-qGH">
-                                <rect key="frame" x="18" y="50" width="212" height="28"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" selectable="YES" title="Additional options could go here" id="UI9-qC-52o">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
-                    <connections>
-                        <outlet property="LabelText" destination="aKF-Yh-qGH" id="Zwf-Ii-qgH"/>
-                    </connections>
-                </viewController>
-                <customObject id="1fe-Zv-eaa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="351.5" y="-2782"/>
-        </scene>
         <!--FTAnalyzerController-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
@@ -895,19 +868,6 @@
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="534" y="-2153"/>
-        </scene>
-        <!--Accessory View Controller-->
-        <scene sceneID="wmD-ZK-74x">
-            <objects>
-                <viewController storyboardIdentifier="AccessoryViewController" id="UaJ-Il-XJu" customClass="AccessoryViewController" sceneMemberID="viewController">
-                    <view key="view" id="TnG-UU-YFB">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="dKr-hu-1LV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="304" y="-1758"/>
         </scene>
         <!--GedcomDocumentController-->
         <scene sceneID="hIz-AP-VOD">
@@ -1034,7 +994,7 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="QM4-Vn-YqU"/>
             </objects>
-            <point key="canvasLocation" x="-692" y="-700"/>
+            <point key="canvasLocation" x="-932" y="-469"/>
         </scene>
         <!--ErrorsFixesController-->
         <scene sceneID="wv0-G7-qwd">

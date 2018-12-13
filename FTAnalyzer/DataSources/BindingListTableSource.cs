@@ -45,11 +45,12 @@ namespace FTAnalyzer.DataSources
                 {
                     Identifier = CellIdentifier,
                     BackgroundColor = NSColor.Clear,
+                    LineBreakMode = NSLineBreakMode.ByWordWrapping,
                     Bordered = false,
                     Selectable = false,
                     Editable = false,
                     Alignment = alignment,
-                    AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable
+                    AutoresizingMask = NSViewResizingMask.MinYMargin | NSViewResizingMask.WidthSizable
                 };
                 if (tableView.AutosaveName == "PrintView")
                     view.Font = NSFont.SystemFontOfSize(8);

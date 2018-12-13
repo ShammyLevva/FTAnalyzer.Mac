@@ -7,20 +7,14 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace FTAnalyzer.ViewControllers
+namespace FTAnalyzer.Storyboards
 {
 	[Register ("PrintPanelViewController")]
 	partial class PrintPanelViewController
 	{
-		[Outlet]
-		AppKit.NSTextField LabelText { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (LabelText != null) {
-				LabelText.Dispose ();
-				LabelText = null;
-			}
 		}
 	}
 }

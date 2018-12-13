@@ -46,6 +46,7 @@ namespace FTAnalyzer.ViewControllers
 
             _tableView.Source = new ColourCensusSource(Country, startColumnIndex, endColumnIndex, CensusProvider, list);
             _tableView.ReloadData();
+            _tableView.SelectionHighlightStyle = NSTableViewSelectionHighlightStyle.None;
             Title = $"Census Research Suggestions {list.Count} records listed.";
         }
 

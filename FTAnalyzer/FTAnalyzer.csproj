@@ -225,18 +225,11 @@
     </Compile>
     <Compile Include="ViewControllers\Interfaces\IPrintViewController.cs" />
     <Compile Include="Views\TablePrintView.cs" />
-    <Compile Include="Utilities\CustomPrintPanel.cs" />
-    <Compile Include="ViewControllers\PrintPanelViewController.cs" />
-    <Compile Include="ViewControllers\PrintPanelViewController.designer.cs">
+    <Compile Include="ViewControllers\TablePrintingViewController.cs" />
+    <Compile Include="Storyboards\PrintPanelViewController.cs" />
+    <Compile Include="Storyboards\PrintPanelViewController.designer.cs">
       <DependentUpon>PrintPanelViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Storyboards\AccessoryViewController.cs" />
-    <Compile Include="Storyboards\AccessoryViewController.designer.cs">
-      <DependentUpon>AccessoryViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Utilities\CustomPrintOperation.cs" />
-    <Compile Include="Utilities\PrintDelegate.cs" />
-    <Compile Include="ViewControllers\TablePrintingViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />
