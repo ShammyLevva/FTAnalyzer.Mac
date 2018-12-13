@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;
-using ObjCRuntime;
 
 namespace FTAnalyzer
 {
@@ -237,20 +237,18 @@ namespace FTAnalyzer
             }
         }
 
-        public void PrintDocument(IPrintViewController viewController)
+        public void PrintDocument(IPrintViewController tableViewController)
         {
             try
             {
-                var window = new NSWindow
-                {
-                    ContentViewController = viewController as NSViewController,
-                    ContentView = viewController.PrintView
-                };
-                window.Display();
-                viewController.PreparePrintView();
-                var printOperation = NSPrintOperation.FromView(viewController.PrintView as NSView, PrintInfo);
-                //var printDelegate = new PrintDelegate();
-                //printOperation.RunOperationModal(viewController.PrintView.Window, printDelegate, new Selector("printOperationDidRun:success:contextInfo:"), IntPtr.Zero);
+                var printingViewController = new TablePrintingViewController(tableViewController);
+                //var window = new NSWindow
+                //{
+                //    ContentViewController = printingViewController,
+                //    ContentView = printingViewController.View
+                //};
+                //window.Display();
+                var printOperation = NSPrintOperation.FromView(printingViewController.View, PrintInfo);
                 printOperation.ShowsPrintPanel = true;
                 printOperation.ShowsProgressPanel = true;
                 printOperation.CanSpawnSeparateThread = true;
@@ -258,7 +256,7 @@ namespace FTAnalyzer
                                  NSPrintPanelOptions.ShowsPageSetupAccessory | NSPrintPanelOptions.ShowsScaling;
                 printOperation.RunOperation();
                 printOperation.CleanUpOperation();
-                window.Dispose();
+                //window.Dispose();
             }
             catch (Exception e)
             {

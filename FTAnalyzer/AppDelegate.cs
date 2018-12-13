@@ -3,6 +3,7 @@ using System.Web;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
+using FTAnalyzer.ViewControllers;
 
 namespace FTAnalyzer
 {

@@ -1,4 +1,5 @@
-﻿using AppKit;
+﻿using System;
+using AppKit;
 using CoreAnimation;
 using CoreGraphics;
 using Foundation;
@@ -11,20 +12,16 @@ namespace FTAnalyzer.ViewControllers
     {
         public string TooltipText { get; set; }
 
-        float _tableWidth;
         internal NSTableView _tableView;
-        internal NSTableView _printView;
-         internal string CountText { get; set; }
-
-        public NSView PrintView => _printView;
-        public float scale = 0.75f;
+        internal string CountText { get; set; }
+        public NSTableViewSource TableSource => _tableView.Source;
+        public NSSortDescriptor[] SortDescriptors => _tableView.SortDescriptors;
 
         public BindingListViewController(string title, string tooltip)
         {
             Title = title;
             TooltipText = tooltip;
             View = SetupTableView();
-            _printView = SetupPrintView();
             UpdateTooltip();
         }
 
@@ -53,7 +50,7 @@ namespace FTAnalyzer.ViewControllers
                 DoubleAction = new ObjCRuntime.Selector("ViewDetailsSelector"),
                 Action = new ObjCRuntime.Selector("SetRootPersonSelector:")
             };
-            AddTableColumns(_tableView, false);
+            AddTableColumns(_tableView);
             var scrollView = new NSScrollView
             {
                 DocumentView = _tableView,
@@ -66,47 +63,7 @@ namespace FTAnalyzer.ViewControllers
             return scrollView;
         }
 
-        public NSTableView SetupPrintView()
-        {
-            var printViewDetails = new NSTableView
-            {
-                Identifier = Title,
-                Enabled = true,
-                UsesAlternatingRowBackgroundColors = true,
-                WantsLayer = true,
-                Layer = NewLayer(),
-                Bounds = new CGRect(0, 0, 0, 0),
-                AutoresizesSubviews = true,
-                AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
-                AllowsColumnResizing = true,
-                Target = Self,
-                AutosaveName = "PrintView",
-                NeedsDisplay = true,
-                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
-                HeaderView = new NSTableHeaderView
-                {
-                    WantsLayer = true,
-                    Layer = NewLayer(),
-                    Bounds = new CGRect(0, 0, 0, 0),
-                    AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable
-                }
-            };
-            NSProcessInfo info = new NSProcessInfo();
-            if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
-                printViewDetails.UsesAutomaticRowHeights = true; // only available in OSX 13 and above.
-
-            AddTableColumns(printViewDetails, true);
-            return printViewDetails;
-        }
-
         static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
-
-        public void PreparePrintView()
-        {
-           // var printview = _printView.Frame;
-            //var header = _printView.HeaderView.Frame;
-
-        }
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
@@ -124,13 +81,11 @@ namespace FTAnalyzer.ViewControllers
         {
             _tableView.Source = source;
             _tableView.ReloadData();
-            _printView.Source = source;
         }
 
-        void AddTableColumns(NSTableView view, bool printing)
+        internal void AddTableColumns(NSTableView view)
         {
-            _tableWidth = 0f;
-            var properties = typeof(T).GetProperties();
+            var properties = GetGenericType().GetProperties();
             foreach (var property in properties)
             {
                 float width = 100;
@@ -144,14 +99,13 @@ namespace FTAnalyzer.ViewControllers
                 var tableColumn = new NSTableColumn
                 {
                     Identifier = property.Name,
-                    Width = printing ? width * scale : width,
+                    Width = width,
                     Editable = false,
                     Hidden = false,
                     Title = columnTitle,
-                    ResizingMask = printing ? NSTableColumnResizing.Autoresizing : NSTableColumnResizing.UserResizingMask
+                    ResizingMask = NSTableColumnResizing.UserResizingMask
                 };
                 view.AddColumn(tableColumn);
-                _tableWidth += width;
             }
         }
 
@@ -277,7 +231,11 @@ namespace FTAnalyzer.ViewControllers
         {
             _tableView.SortDescriptors = columns;
             _tableView.ReloadData();
-            _printView.SortDescriptors = columns;
+        }
+
+        public Type GetGenericType()
+        {
+            return typeof(T);
         }
 
         #region Events

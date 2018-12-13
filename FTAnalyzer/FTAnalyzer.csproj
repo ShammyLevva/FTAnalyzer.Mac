@@ -236,6 +236,7 @@
     </Compile>
     <Compile Include="Utilities\CustomPrintOperation.cs" />
     <Compile Include="Utilities\PrintDelegate.cs" />
+    <Compile Include="ViewControllers\TablePrintingViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />

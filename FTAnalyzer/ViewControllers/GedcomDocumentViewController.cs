@@ -6,7 +6,7 @@ using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer
 {
-    public partial class GedcomDocumentViewController : NSViewController, IPrintViewController
+    public partial class GedcomDocumentViewController : NSViewController
     {
         AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
 
@@ -15,7 +15,6 @@ namespace FTAnalyzer
         public IProgress<int> Individuals { get; }
         public IProgress<int> Families { get; }
         public IProgress<int> Relationships { get; }
-        public NSView PrintView { get; set; }
 
         public GedcomDocumentViewController(IntPtr handle) : base(handle)
         {
@@ -31,14 +30,6 @@ namespace FTAnalyzer
             base.ViewDidLoad();
             // Do any additional setup after loading the view.
             _titleLabel.Font = NSFont.FromFontName("Kunstler Script", 72.0f);
-        }
-
-        public void PreparePrintView()
-        {
-            NSTextView view = new NSTextView();
-            PrintView.AddSubview(_statusTextView);
-            PrintView.SetFrameSize(PrintView.IntrinsicContentSize);
-            //panel.Refresh = true;
         }
 
         #region Computed Properties

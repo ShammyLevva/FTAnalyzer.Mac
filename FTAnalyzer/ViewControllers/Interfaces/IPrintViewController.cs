@@ -1,11 +1,14 @@
-﻿using AppKit;
-using FTAnalyzer.Utilities;
+﻿using System;
+using AppKit;
+using Foundation;
 
 namespace FTAnalyzer
 {
     public interface IPrintViewController
     {
-        NSView PrintView { get; }
-        void PreparePrintView();
+        string Title { get; }
+        NSTableViewSource TableSource { get; }
+        NSSortDescriptor[] SortDescriptors { get; }
+        Type GetGenericType();
     }
 }

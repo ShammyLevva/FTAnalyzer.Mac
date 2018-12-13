@@ -31,6 +31,8 @@ namespace FTAnalyzer.DataSources
         internal NSView GetFTAnalyzerGridCell(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
             var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
+            if (index < 0 || index > _properties.Length)
+                return null;
             var property = _properties[index];
             NSTextAlignment alignment = NSTextAlignment.Left;
             ColumnDetail[] x = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
