@@ -45,7 +45,7 @@ namespace FTAnalyzer.DataSources
                 {
                     Identifier = CellIdentifier,
                     BackgroundColor = NSColor.Clear,
-                    LineBreakMode = NSLineBreakMode.Clipping,
+                    //LineBreakMode = NSLineBreakMode.Clipping,
                     NeedsLayout = true,
                     Bordered = false,
                     Selectable = false,
@@ -55,8 +55,10 @@ namespace FTAnalyzer.DataSources
                 };
                 if (tableView.AutosaveName == "PrintView")
                     view.Font = NSFont.SystemFontOfSize(8);
+                var xx = new NSLayoutManager();
                 var a1 = view.LineBreakMode;
                 var a2 = view.AutoresizingMask;
+                var b1 = xx.DefaultLineHeightForFont(view.Font);
             }
             // Setup view based on the column selected
             if (row >= 0)

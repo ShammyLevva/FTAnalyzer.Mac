@@ -211,6 +211,15 @@ namespace FTAnalyzer.ViewControllers
             }
         }
 
+        public override void ViewWillLayout()
+        {
+            base.ViewWillLayout();
+            foreach (NSTableColumn column in _tableView.TableColumns())
+            {
+                //do something to size column
+            }
+        }
+
         public Dictionary<string, float> ColumnWidths()
         {
             var widths = new Dictionary<string, float>();

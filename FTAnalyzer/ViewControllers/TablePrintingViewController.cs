@@ -13,7 +13,7 @@ namespace FTAnalyzer.ViewControllers
         Type _classType;
         float _tableWidth;
         NSTableView _printView;
-        //readonly float scale = 0.65f;
+        readonly float scale = 10f/15f; // (8pt print font is size 10, 12pt screen font is size 15)
         readonly Dictionary<string, float> _columnWidths;
         public NSView PrintView => View;
 
@@ -46,6 +46,7 @@ namespace FTAnalyzer.ViewControllers
                 Target = Self,
                 AutosaveName = "PrintView"
             };
+            _printView.HeaderView.AutoresizingMask = NSViewResizingMask.WidthSizable;
             NSProcessInfo info = new NSProcessInfo();
             if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
                 _printView.UsesAutomaticRowHeights = true; // only available in OSX 13 and above.
@@ -78,7 +79,7 @@ namespace FTAnalyzer.ViewControllers
                 var tableColumn = new NSTableColumn
                 {
                     Identifier = property.Name,
-                    Width = _columnWidths[property.Name],
+                    Width = _columnWidths[property.Name] * scale,
                     Editable = false,
                     Hidden = false,
                     Title = columnTitle,
