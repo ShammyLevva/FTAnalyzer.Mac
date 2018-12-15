@@ -45,7 +45,7 @@ namespace FTAnalyzer.DataSources
                 {
                     Identifier = CellIdentifier,
                     BackgroundColor = NSColor.Clear,
-                    //LineBreakMode = NSLineBreakMode.Clipping,
+                    LineBreakMode = NSLineBreakMode.TruncatingTail,
                     NeedsLayout = true,
                     Bordered = false,
                     Selectable = false,
