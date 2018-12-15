@@ -137,7 +137,7 @@ namespace FTAnalyzer
             {
                 PrintInfo.Orientation = NSPrintingOrientation.Landscape;
                 PrintInfo.LeftMargin = 45;
-                PrintInfo.RightMargin = 45;
+                PrintInfo.RightMargin = 30;
                 PrintInfo.TopMargin = 30;
                 PrintInfo.BottomMargin = 30;
                 PrintInfo.HorizontalPagination = NSPrintingPaginationMode.Auto;

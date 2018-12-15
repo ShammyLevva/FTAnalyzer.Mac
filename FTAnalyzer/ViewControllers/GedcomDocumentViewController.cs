@@ -30,6 +30,7 @@ namespace FTAnalyzer
             base.ViewDidLoad();
             // Do any additional setup after loading the view.
             _titleLabel.Font = NSFont.FromFontName("Kunstler Script", 72.0f);
+            AppendMessage("Use the File menu to open a GEDCOM file copy of your tree. See website documentation on how to generate a GEDCOM if you are unsure.\n\n");
         }
 
         #region Computed Properties
