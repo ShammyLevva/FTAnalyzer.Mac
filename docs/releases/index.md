@@ -1,6 +1,6 @@
 ## FTAnalyzer.Mac Releases  
 
-At present the Mac version of the program is not complete enough to be allowed to appear in the Apple App Store so for now I need to put a Apple Developer signed package version on this website. 
+The Mac version of the program has been released on the Apple App Store however for beta versions I'll upload them here so beta testers can help eliminate bugs before launching on the app store.
 
 You can download a package zip file from the [releases page](https://github.com/ShammyLevva/FTAnalyzer.Mac/releases)
 
