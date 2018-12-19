@@ -77,6 +77,9 @@ namespace FTAnalyzer.Properties
         [DefaultSettingValue("True")]
         public bool SkipCensusReferences { get; set; }
 
+        [DefaultSettingValue("False")]
+        public bool SkipFixingLocations { get; set; }
+
         [DefaultSettingValue("True")]
         public bool HideIgnoredDuplicates { get; set; }
 

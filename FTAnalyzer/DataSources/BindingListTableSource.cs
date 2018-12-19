@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using AppKit;
+using CoreGraphics;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.DataSources
@@ -51,14 +52,11 @@ namespace FTAnalyzer.DataSources
                     Selectable = false,
                     Editable = false,
                     Alignment = alignment,
-                    AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable
+                    AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
+                    TranslatesAutoresizingMaskIntoConstraints = false
                 };
                 if (tableView.AutosaveName == "PrintView")
                     view.Font = NSFont.SystemFontOfSize(8);
-                var xx = new NSLayoutManager();
-                var a1 = view.LineBreakMode;
-                var a2 = view.AutoresizingMask;
-                var b1 = xx.DefaultLineHeightForFont(view.Font);
             }
             // Setup view based on the column selected
             if (row >= 0)
@@ -69,6 +67,8 @@ namespace FTAnalyzer.DataSources
             }
             else
                 view.StringValue = string.Empty;
+            if(view.Cell.CellSize.Width > view.Frame.Width)
+                view.SetFrameSize(view.Cell.CellSize);
             return view;
         }
 

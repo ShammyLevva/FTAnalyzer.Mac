@@ -16,8 +16,8 @@ namespace FTAnalyzer
             return (int)alert.RunModal();
         }
 
-        public static int ShowYesNo(string message) => ShowYesNo(message, "FTAnalyzer");
-        public static int ShowYesNo(string message, string title)
+        public static bool ShowYesNo(string message) => ShowYesNo(message, "FTAnalyzer");
+        public static bool ShowYesNo(string message, string title)
         {
             var alert = new NSAlert
             {
@@ -27,7 +27,7 @@ namespace FTAnalyzer
             };
             alert.AddButton("Yes");
             alert.AddButton("No");
-            return (int)alert.RunModal();
+            return (int)alert.RunModal() == Yes;
         }
         public static int Yes => 1000;
         public static int No => 1001;
