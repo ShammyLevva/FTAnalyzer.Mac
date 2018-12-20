@@ -170,9 +170,9 @@
     <Compile Include="ViewControllers\FactsViewController.designer.cs">
       <DependentUpon>FactsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\FTAnalyzerTabViewController.cs" />
-    <Compile Include="ViewControllers\FTAnalyzerTabViewController.designer.cs">
-	<DependentUpon>FTAnalyzerTabViewController.cs</DependentUpon>
+    <Compile Include="ViewControllers\FTAnalyzerViewController.cs" />
+    <Compile Include="ViewControllers\FTAnalyzerViewController.designer.cs">
+	<DependentUpon>FTAnalyzerViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\ProgressController.cs" />
     <Compile Include="ViewControllers\ProgressController.designer.cs">

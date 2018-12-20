@@ -10,7 +10,7 @@ using System.CodeDom.Compiler;
 namespace FTAnalyzer
 {
 	[Register ("FTAnalyzerTabViewController")]
-	partial class FTAnalyzerTabViewController
+	partial class FTAnalyzerViewController
 	{
 		[Outlet]
 		AppKit.NSTabViewItem ResearchSuggestions { get; set; }

@@ -12,6 +12,7 @@ namespace FTAnalyzer
     {
         bool _documentOpening;
         public GedcomDocument Document { get; set; }
+        public GedcomDocumentViewController DocumentViewController { get; set;  }
         NSWindow Window { get; set; }
         public NSViewController CurrentViewController { get; set; }
         public NSWindow CurrentWindow { get; set; }
