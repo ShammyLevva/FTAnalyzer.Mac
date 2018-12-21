@@ -97,9 +97,21 @@ namespace FTAnalyzer
 
         partial void PrintClicked(NSObject sender)
         {
-            var parentWindow = NSApplication.SharedApplication.KeyWindow;
-            if (CurrentViewController is IPrintViewController)
-                Document.PrintDocument(CurrentViewController as IPrintViewController);
+            var keyViewController = NSApplication.SharedApplication.KeyWindow.ContentViewController;
+            if (keyViewController is FTAnalyzerViewController)
+            {
+                if (CurrentViewController is IPrintViewController)
+                    Document.PrintDocument(CurrentViewController as IPrintViewController);
+                else
+                    UIHelpers.ShowMessage("Sorry Printing Not currently available for this view");
+
+            } else if(keyViewController is PeopleViewController)
+            {
+
+            } else if(keyViewController.GetType().ToString().StartsWith("FactsViewController", StringComparison.Ordinal))
+            {
+
+            }
             else
                 UIHelpers.ShowMessage("Sorry Printing Not currently available for this view");
         }

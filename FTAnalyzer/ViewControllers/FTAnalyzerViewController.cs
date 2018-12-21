@@ -43,33 +43,41 @@ namespace FTAnalyzer
         {
             if (App.Document == null)
                 return; // don't bother if we've not loaded a document yet
-            NSViewController viewController;
+            NSViewController viewController = null;
             switch (item.Label)
             {
                 case "Gedcom Stats":
-                    viewController = ChildViewControllers[0];
+                    if(ChildViewControllers.Length > 0)
+                        viewController = ChildViewControllers[0];
                     break;
                 case "Main Lists":
                     LoadMainLists(ProgressController);
-                    viewController = ChildViewControllers[1];
+                    if (ChildViewControllers.Length > 1)
+                        viewController = ChildViewControllers[1];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.MainListsEvent);
                     break;
                 case "Errors/Fixes":
                     LoadErrorsAndFixes(ProgressController);
-                    viewController = ChildViewControllers[2];
+                    if (ChildViewControllers.Length > 2)
+                        viewController = ChildViewControllers[2];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.ErrorsFixesEvent);
                     break;
                 case "Locations":
                     LoadLocations(ProgressController);
-                    viewController = ChildViewControllers[3];
+                    if (ChildViewControllers.Length > 3)
+                        viewController = ChildViewControllers[3];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.LocationTabViewed);
                     break;
                 default:
                     viewController = null;
                     break;
             }
-            if (viewController?.ChildViewControllers.Length > 0)
-                App.CurrentViewController = viewController.ChildViewControllers[0];
+            if (viewController != null)
+            {
+                var index = (viewController as NSTabViewController).SelectedTabViewItemIndex;
+                if (ChildViewControllers.Length > index)
+                    App.CurrentViewController = viewController.ChildViewControllers[index];
+            }
             else
                 App.CurrentViewController = null;
         }

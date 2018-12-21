@@ -17,6 +17,9 @@ namespace FTAnalyzer.Properties
         [DefaultSettingValue("True")]
         public bool RetryFailedLines { get; set; }
 
+        [DefaultSettingValue("True")]
+        public bool ConvertDiacritics { get; set; }
+
         public void Save() => SettingsBase.Save(Default, typeof(FileHandling));
     }
 }

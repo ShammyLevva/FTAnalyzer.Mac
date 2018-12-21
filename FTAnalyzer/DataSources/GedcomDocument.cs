@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 using AppKit;
-using CoreGraphics;
 using Foundation;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;

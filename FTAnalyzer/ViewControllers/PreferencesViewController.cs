@@ -25,7 +25,7 @@ namespace FTAnalyzer.ViewControllers
                     UseBurialDatesOutlet.Activated += UseBurialDatesOutlet_Activated;
                     AllowEmptyLocationsOutlet.Activated += AllowEmptyLocationsOutlet_Activated;
                     ShowDuplicateFactsOutlet.Activated += ShowDuplicateFactsOutlet_Activated;
-                    LooseBirthMinimumAgeOutlet.Activated += LooseBirthMinimumAgeOutlet_Activated;
+                    //LooseBirthMinimumAgeOutlet.Activated += LooseBirthMinimumAgeOutlet_Activated;
                     AliasinNameDisplayOutlet.Activated += AliasinNameDisplayOutlet_Activated; 
                     UseCountryFirstOutlet.Activated += UseCountryFirstOutlet_Activated;
                     ShowWorldEventsOutlet.Activated += ShowWorldEventsOutlet_Activated;
@@ -143,7 +143,7 @@ namespace FTAnalyzer.ViewControllers
             UseBurialDatesOutlet.State = GeneralSettings.Default.UseBurialDates ? NSCellStateValue.On : NSCellStateValue.Off;
             AllowEmptyLocationsOutlet.State = GeneralSettings.Default.AllowEmptyLocations ? NSCellStateValue.On : NSCellStateValue.Off;
             ShowDuplicateFactsOutlet.State = GeneralSettings.Default.MultipleFactForms ? NSCellStateValue.On : NSCellStateValue.Off;
-            LooseBirthMinimumAgeOutlet.IntValue = GeneralSettings.Default.MinParentalAge;
+            //LooseBirthMinimumAgeOutlet.IntValue = GeneralSettings.Default.MinParentalAge;
             AliasinNameDisplayOutlet.State = GeneralSettings.Default.ShowAliasInName ? NSCellStateValue.On : NSCellStateValue.Off;
             UseCountryFirstOutlet.State = GeneralSettings.Default.ReverseLocations ? NSCellStateValue.On : NSCellStateValue.Off;
             ShowWorldEventsOutlet.State = GeneralSettings.Default.ShowWorldEvents ? NSCellStateValue.On : NSCellStateValue.Off;
@@ -178,12 +178,12 @@ namespace FTAnalyzer.ViewControllers
             GeneralSettings.Default.Save();
         }
 
-        void LooseBirthMinimumAgeOutlet_Activated(object sender, EventArgs e)
-        {
-            GeneralSettings.Default.MinParentalAge = LooseBirthMinimumAgeOutlet.IntValue;
-            GeneralSettings.Default.Save();
-            GeneralSettings.Default.ReloadRequired = true;
-        }
+        //void LooseBirthMinimumAgeOutlet_Activated(object sender, EventArgs e)
+        //{
+        //    GeneralSettings.Default.MinParentalAge = LooseBirthMinimumAgeOutlet.IntValue;
+        //    GeneralSettings.Default.Save();
+        //    GeneralSettings.Default.ReloadRequired = true;
+        //}
 
         void AliasinNameDisplayOutlet_Activated(object sender, EventArgs e)
         {
