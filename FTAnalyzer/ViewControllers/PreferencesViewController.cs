@@ -18,6 +18,7 @@ namespace FTAnalyzer.ViewControllers
                 case "File Handling Preferences":
                     LoadWithFiltersOutlet.Activated += LoadWithFiltersOutlet_Activated;
                     RetryFailedLinesOutlet.Activated += RetryFailedLinesOutlet_Activated;
+                    ConvertDicriticsOutlet.Activated += ConvertDicriticsOutlet_Activated;
                     SetFileHandlingSettings();
                     break;
                 case "General Preferences":
@@ -32,7 +33,7 @@ namespace FTAnalyzer.ViewControllers
                     IgnoreUnknownFactTypeOutlet.Activated += IgnoreUnknownFactTypeOutlet_Activated;
                     FemaleUnknownOutlet.Activated += FemaleUnknownOutlet_Activated;
                     ShowMultiAncestorOutlet.Activated += ShowMultiAncestorOutlet_Activated;
-                    SkipCensusRefNotesOutlet.Activated += SkipCensusRefNotesOutlet_Activated;
+                    SkipFixingLocationsOutlet.Activated += SkipFixingLocationsOutlet_Activated;
                     SetGeneralSettings();
                     break;
                 case "Census Preferences":
@@ -43,6 +44,7 @@ namespace FTAnalyzer.ViewControllers
                     AutoCreateCensusFactsOutlet.Activated += AutoCreateCensusFactsOutlet_Activated;
                     AutoCreateCensusLocationsOutlet.Activated += AutoCreateCensusLocationsOutlet_Activated;
                     HideMissingCensusOutlet.Activated += HideMissingCensusOutlet_Activated;
+                    SkipCensusRefNotesOutlet.Activated += SkipCensusRefNotesOutlet_Activated;
                     SetCensusSettings();
                     break;
                 case "Non Gedcom Date Preferences":
@@ -129,6 +131,13 @@ namespace FTAnalyzer.ViewControllers
         void RetryFailedLinesOutlet_Activated(object sender, EventArgs e)
         {
             FileHandling.Default.RetryFailedLines = RetryFailedLinesOutlet.State == NSCellStateValue.On;
+            FileHandling.Default.Save();
+            GeneralSettings.Default.ReloadRequired = true;
+        }
+
+        void ConvertDicriticsOutlet_Activated(object sender, EventArgs e)
+        {
+            FileHandling.Default.ConvertDiacritics = ConvertDicriticsOutlet.State == NSCellStateValue.On;
             FileHandling.Default.Save();
             GeneralSettings.Default.ReloadRequired = true;
         }
@@ -227,6 +236,13 @@ namespace FTAnalyzer.ViewControllers
         {
             GeneralSettings.Default.SkipCensusReferences = SkipCensusRefNotesOutlet.State == NSCellStateValue.On;
             GeneralSettings.Default.Save();
+        }
+
+        void SkipFixingLocationsOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.SkipFixingLocations = SkipFixingLocationsOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+            GeneralSettings.Default.ReloadRequired = true;
         }
 
         #endregion

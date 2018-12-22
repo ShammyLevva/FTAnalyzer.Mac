@@ -88,6 +88,7 @@ namespace FTAnalyzer.ViewControllers
             {
                 NSTableColumn column = _tableView.TableColumns().GetValue(index) as NSTableColumn;
                 column.Hidden = false;
+                column.Width = 40;
             }
         }
 
