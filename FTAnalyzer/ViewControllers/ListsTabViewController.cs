@@ -23,10 +23,10 @@ namespace FTAnalyzer
                 case "MainListsController":
                     MainLists(item.Label);
                     break;
-                case "ErrorsFixesTabController":
+                case "ErrorsFixesController":
                     ErrorsFixes(item.Label);
                     break;
-                case "LocationsTabController":
+                case "LocationsController":
                     Locations(item.Label);
                     break;
             }
@@ -106,7 +106,7 @@ namespace FTAnalyzer
                         App.CurrentViewController = ChildViewControllers[1];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.RegionsTabEvent);
                     break;
-                case "SubRegions":
+                case "Sub-Regions":
                     if (ChildViewControllers.Length > 2)
                         App.CurrentViewController = ChildViewControllers[2];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.SubRegionsTabEvent);

@@ -645,7 +645,7 @@
                 </viewController>
                 <customObject id="711-VI-HHE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-959" y="-1153"/>
+            <point key="canvasLocation" x="-2199" y="-1274"/>
         </scene>
         <!--Census Preferences-->
         <scene sceneID="bau-3f-ZUy">
@@ -811,9 +811,8 @@
             <objects>
                 <tabViewController title="MainListsController" id="CGu-hu-FSh" customClass="ListsTabViewController" sceneMemberID="viewController">
                     <tabView key="tabView" type="noTabsNoBorder" id="AZ8-HA-aKK">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="481"/>
+                        <rect key="frame" x="900" y="-960" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="message"/>
                         <connections>
                             <outlet property="delegate" destination="CGu-hu-FSh" id="hVA-Jd-Fua"/>
                         </connections>
@@ -824,16 +823,15 @@
                 </tabViewController>
                 <customObject id="PPL-jb-iDV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1437" y="-1434"/>
+            <point key="canvasLocation" x="-11" y="-822"/>
         </scene>
         <!--LocationsController-->
         <scene sceneID="Zzx-ga-URe">
             <objects>
                 <tabViewController title="LocationsController" id="hKK-5N-IBj" customClass="ListsTabViewController" sceneMemberID="viewController">
                     <tabView key="tabView" type="noTabsNoBorder" id="0XS-vp-xrq">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="3375" y="-2250" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="message"/>
                         <connections>
                             <outlet property="delegate" destination="hKK-5N-IBj" id="0vd-gh-MhY"/>
                         </connections>
@@ -844,7 +842,7 @@
                 </tabViewController>
                 <customObject id="83d-t3-LF0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="370" y="-822"/>
+            <point key="canvasLocation" x="978" y="-822"/>
         </scene>
         <!--FTAnalyzerController-->
         <scene sceneID="R2V-B0-nI4">
@@ -994,15 +992,18 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="QM4-Vn-YqU"/>
             </objects>
-            <point key="canvasLocation" x="-932" y="-469"/>
+            <point key="canvasLocation" x="-769" y="-692"/>
         </scene>
         <!--ErrorsFixesController-->
         <scene sceneID="wv0-G7-qwd">
             <objects>
                 <tabViewController title="ErrorsFixesController" id="LHn-6f-ueJ" customClass="ListsTabViewController" sceneMemberID="viewController">
-                    <tabView key="tabView" type="noTabsNoBorder" id="OyJ-7a-5ku" userLabel="Tabless Tab View">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                    <tabView key="tabView" type="noTabsNoBorder" id="OyJ-7a-5ku">
+                        <rect key="frame" x="13950" y="-9300" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="LHn-6f-ueJ" id="GnC-Dx-xHf"/>
+                        </connections>
                     </tabView>
                     <connections>
                         <outlet property="tabView" destination="OyJ-7a-5ku" id="hKC-el-YiH"/>
@@ -1010,7 +1011,7 @@
                 </tabViewController>
                 <customObject id="gYe-vR-VI1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="-822"/>
+            <point key="canvasLocation" x="470" y="-822"/>
         </scene>
         <!--Research Suggestions-->
         <scene sceneID="OfS-jA-mgW">
@@ -1090,7 +1091,7 @@
                 </viewController>
                 <customObject id="vre-dl-FUg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376" y="-337"/>
+            <point key="canvasLocation" x="1669" y="-741"/>
         </scene>
         <!--Progress Display-->
         <scene sceneID="Xnb-O1-Qfk">

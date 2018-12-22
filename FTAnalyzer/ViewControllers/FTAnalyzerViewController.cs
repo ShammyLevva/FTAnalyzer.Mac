@@ -103,13 +103,15 @@ namespace FTAnalyzer
             documentViewController.ClearAllProgress();
             App.DocumentViewController = documentViewController;
 
+            SetupMainListsTabController();
+            SetupDataErrorsTabController();
+            SetupLocationsTabController();
+        }
+
+        void SetupMainListsTabController()
+        {
             var mainListsViewController = ChildViewControllers[1] as ListsTabViewController;
             RemoveOldTabs(mainListsViewController);
-
-            var errorsAndFixesTabViewController = ChildViewControllers[2] as ListsTabViewController;
-            RemoveOldTabs(errorsAndFixesTabViewController);
-            var locationsTabViewController = ChildViewControllers[3] as ListsTabViewController;
-            RemoveOldTabs(locationsTabViewController);
 
             individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals", "Double click to show a list of facts for the selected individual.");
             familiesViewController = new BindingListViewController<IDisplayFamily>("Families", "Double click to show a list of facts for the selected family.");
@@ -123,6 +125,18 @@ namespace FTAnalyzer
             mainListsViewController.AddChildViewController(occupationsViewController);
             mainListsViewController.AddChildViewController(factsViewController);
 
+            individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
+            individualsViewController.SetRootPersonClicked += SetRootPersonClicked;
+            familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
+            occupationsViewController.OccupationRowClicked += OccupationRowClicked;
+            sourcesViewController.SourceFactRowClicked += SourcesFactRowClicked;
+        }
+
+        void SetupDataErrorsTabController()
+        {
+            var errorsAndFixesTabViewController = ChildViewControllers[2] as ListsTabViewController;
+            RemoveOldTabs(errorsAndFixesTabViewController);
+
             dataErrorsViewController = new BindingListViewController<DataError>("Data Errors", "Double click to show Individual/Family with this error.");
             //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates", "Double click to show the facts for both the individual and their possible match.");
             looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>
@@ -134,6 +148,16 @@ namespace FTAnalyzer
             //errorsAndFixesTabViewController.AddChildViewController(duplicatesViewController);
             errorsAndFixesTabViewController.AddChildViewController(looseBirthsViewController);
             errorsAndFixesTabViewController.AddChildViewController(looseDeathsViewController);
+
+            dataErrorsViewController.DataErrorRowClicked += DataErrorRowClicked;
+            looseBirthsViewController.IndividualFactRowClicked += LooseBirthFactRowClicked;
+            looseDeathsViewController.IndividualFactRowClicked += LooseDeathFactRowClicked;
+        }
+
+        void SetupLocationsTabController()
+        {
+            var locationsTabViewController = ChildViewControllers[3] as ListsTabViewController;
+            RemoveOldTabs(locationsTabViewController);
 
             countriesViewController = new LocationViewController("Countries", "Double click to show all the individuals and families in that Country.");
             regionsViewController = new LocationViewController("Regions", "Double click to show all the individuals and families in that Region.");
@@ -147,14 +171,6 @@ namespace FTAnalyzer
             locationsTabViewController.AddChildViewController(addressesViewController);
             locationsTabViewController.AddChildViewController(placesViewController);
 
-            individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
-            individualsViewController.SetRootPersonClicked += SetRootPersonClicked;
-            familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
-            sourcesViewController.SourceFactRowClicked += SourcesFactRowClicked;
-            dataErrorsViewController.DataErrorRowClicked += DataErrorRowClicked;
-            looseBirthsViewController.IndividualFactRowClicked += LooseBirthFactRowClicked;
-            looseDeathsViewController.IndividualFactRowClicked += LooseDeathFactRowClicked;
-            occupationsViewController.OccupationRowClicked += OccupationRowClicked;
             countriesViewController.LocationRowClicked += LocationRowClicked;
             regionsViewController.LocationRowClicked += LocationRowClicked;
             subregionsViewController.LocationRowClicked += LocationRowClicked;

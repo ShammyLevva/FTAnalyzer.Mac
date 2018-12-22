@@ -98,6 +98,7 @@ namespace FTAnalyzer
         partial void PrintClicked(NSObject sender)
         {
             var keyViewController = NSApplication.SharedApplication.KeyWindow.ContentViewController;
+            var kvcType = keyViewController.ChildViewController[0].GetType().ToString();
             if (keyViewController is FTAnalyzerViewController)
             {
                 if (CurrentViewController is IPrintViewController)
@@ -108,7 +109,7 @@ namespace FTAnalyzer
             } else if(keyViewController is PeopleViewController)
             {
 
-            } else if(keyViewController.GetType().ToString().StartsWith("FactsViewController", StringComparison.Ordinal))
+            } else if(keyViewController is NSTabViewController)
             {
 
             }
