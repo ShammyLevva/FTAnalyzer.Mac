@@ -232,6 +232,10 @@
       <DependentUpon>PrintPanelViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\ExtensionMethods.cs" />
+    <Compile Include="ViewControllers\FactsWindowViewController.cs" />
+    <Compile Include="ViewControllers\FactsWindowViewController.designer.cs">
+      <DependentUpon>FactsWindowViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />
