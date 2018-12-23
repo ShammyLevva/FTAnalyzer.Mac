@@ -111,7 +111,7 @@ namespace FTAnalyzer
                     Document.PrintDocument(CurrentViewController as IPrintViewController);
                 else if(CurrentViewController is GedcomDocumentViewController)
                 {
-                    Console.WriteLine("Print gedcom details"); 
+                    ((GedcomDocumentViewController)CurrentViewController).Print(sender);
                 }
                 else
                     UIHelpers.ShowMessage("Sorry Printing Not currently available for this view");

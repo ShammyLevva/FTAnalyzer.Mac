@@ -911,19 +911,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="560"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdZ-sC-kTA">
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" allowsMagnification="YES" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdZ-sC-kTA">
                                 <rect key="frame" x="0.0" y="0.0" width="1000" height="456"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="dlj-ML-GjU">
-                                    <rect key="frame" x="1" y="1" width="983" height="454"/>
+                                    <rect key="frame" x="1" y="1" width="998" height="454"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" fieldEditor="YES" findStyle="panel" allowsNonContiguousLayout="YES" id="Xy3-RS-ZNY" userLabel="StatusTextView">
-                                            <rect key="frame" x="0.0" y="0.0" width="983" height="454"/>
+                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" fieldEditor="YES" findStyle="panel" allowsNonContiguousLayout="YES" id="Xy3-RS-ZNY" userLabel="StatusTextView" customClass="TextPrintView">
+                                            <rect key="frame" x="0.0" y="0.0" width="998" height="454"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="983" height="454"/>
+                                            <size key="minSize" width="998" height="454"/>
                                             <size key="maxSize" width="1000" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -933,7 +933,7 @@
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="FYz-bc-c9V">
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="FYz-bc-c9V">
                                     <rect key="frame" x="984" y="1" width="15" height="454"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>

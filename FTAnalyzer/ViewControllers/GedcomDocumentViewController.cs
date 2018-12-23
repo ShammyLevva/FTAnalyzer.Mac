@@ -1,8 +1,6 @@
 ﻿using System;
-
 using AppKit;
 using Foundation;
-using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer
 {
@@ -62,6 +60,36 @@ namespace FTAnalyzer
             //Relationships.Report(0);
         }
 
+        public void Print(NSObject sender)
+        {
+            try
+            {
+                var printInfo = new NSPrintInfo
+                {
+                    Orientation = NSPrintingOrientation.Landscape,
+                    LeftMargin = 45,
+                    RightMargin = 30,
+                    TopMargin = 30,
+                    BottomMargin = 30,
+                    HorizontalPagination = NSPrintingPaginationMode.Fit,
+                    VerticallyCentered = false,
+                    HorizontallyCentered = false
+                };
+                var printOperation = NSPrintOperation.FromView(_statusTextView, printInfo);
+                printOperation.ShowsPrintPanel = true;
+                printOperation.ShowsProgressPanel = true;
+                printOperation.CanSpawnSeparateThread = true;
+                printOperation.PrintPanel.Options = NSPrintPanelOptions.ShowsCopies | NSPrintPanelOptions.ShowsPageRange | NSPrintPanelOptions.ShowsPreview |
+                                                    NSPrintPanelOptions.ShowsPageSetupAccessory | NSPrintPanelOptions.ShowsScaling;
+                printOperation.RunOperation();
+                printOperation.CleanUpOperation();
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Sorry there was a problem printing.\nError was: {e.Message}");
+            }
+        }
+
         void AppendMessage(string message)
         {
             if (!NSThread.IsMain)
@@ -84,5 +112,6 @@ namespace FTAnalyzer
             }
             progressBar.DoubleValue = percent;
         }
+
     }
 }

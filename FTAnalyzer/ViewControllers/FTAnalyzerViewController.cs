@@ -47,6 +47,8 @@ namespace FTAnalyzer
             switch (item.Label)
             {
                 case "Gedcom Stats":
+                    if (ChildViewControllers.Length > 0)
+                        viewController = ChildViewControllers[0];
                     break;
                 case "Main Lists":
                     LoadMainLists(ProgressController);
@@ -70,9 +72,7 @@ namespace FTAnalyzer
                     viewController = null;
                     break;
             }
-            if (viewController is GedcomDocumentViewController)
-                App.CurrentViewController = viewController.ChildViewControllers[0];
-            else if (viewController != null)
+            if (viewController != null)
             {
                 var index = (viewController as NSTabViewController).SelectedTabViewItemIndex;
                 if (ChildViewControllers.Length > index)
@@ -102,6 +102,7 @@ namespace FTAnalyzer
             documentViewController = ChildViewControllers[0] as GedcomDocumentViewController;
             documentViewController.ClearAllProgress();
             App.DocumentViewController = documentViewController;
+            App.CurrentViewController = documentViewController;
 
             SetupMainListsTabController();
             SetupDataErrorsTabController();
