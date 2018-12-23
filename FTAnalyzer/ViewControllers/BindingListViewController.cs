@@ -108,7 +108,7 @@ namespace FTAnalyzer.ViewControllers
                 {
                     Identifier = property.Name,
                     MinWidth = width,
-                    Width = width,
+                  //  Width = width,
                     Editable = false,
                     Hidden = false,
                     Title = columnTitle,
