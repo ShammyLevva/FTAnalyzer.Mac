@@ -91,6 +91,11 @@ namespace FTAnalyzer.ViewControllers
             _tableView.ReloadData();
         }
 
+        internal CGSize GetViewSize()
+        {
+            return new CGSize(_tableView.Frame.Width, _tableView.Frame.Height + _tableView.HeaderView.Frame.Height);
+        }
+
         internal void AddTableColumns(NSTableView view)
         {
             var properties = GetGenericType().GetProperties();

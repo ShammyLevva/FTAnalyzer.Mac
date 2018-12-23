@@ -74,11 +74,14 @@ namespace FTAnalyzer
 
         public void CloseAllSubWindows()
         {
-            var storyboard = NSStoryboard.FromName("Facts", null);
-            foreach(NSWindow window in NSApplication.SharedApplication.Windows)
+            foreach(NSWindow openWindow in NSApplication.SharedApplication.Windows)
             {
-                if (window.Title.Length >= 5 && window.Title.Substring(0,5) == "Facts")
-                    window.Close();
+                if (openWindow.Title.StartsWith("Facts", StringComparison.Ordinal))
+                    openWindow.Close();
+                else if (openWindow.ContentViewController is PeopleViewController)
+                    openWindow.Close();
+                else if (openWindow.Title.StartsWith("Census Research", StringComparison.Ordinal))
+                    openWindow.Close();
             }
         }
 
@@ -116,10 +119,12 @@ namespace FTAnalyzer
                 else
                     UIHelpers.ShowMessage("Sorry Printing Not currently available for this view");
 
-            } else if(keyViewController is PeopleViewController)
+            } 
+            else if(keyViewController is PeopleViewController)
             {
-
-            } else if(keyViewController is FactsWindowViewController)
+                ((PeopleViewController)keyViewController).Print(sender);
+            } 
+            else if(keyViewController is FactsWindowViewController)
             {
                 if (keyViewController.ChildViewControllers.Length > 0)
                 {

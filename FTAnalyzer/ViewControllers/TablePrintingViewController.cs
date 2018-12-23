@@ -16,6 +16,8 @@ namespace FTAnalyzer.ViewControllers
         readonly float scale = 10f/15f; // (8pt print font is size 10, 12pt screen font is size 15)
         readonly Dictionary<string, float> _columnWidths;
         public NSView PrintView => View;
+        public nfloat TotalHeight => _printView.HeaderView.Frame.Height + _printView.Frame.Height;
+        public nfloat TotalWidth => _printView.Frame.Width;
 
         public TablePrintingViewController(IPrintViewController tableViewController)
         {

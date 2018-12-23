@@ -101,5 +101,48 @@ namespace FTAnalyzer
             });
         }
 
+        public void Print(NSObject sender)
+        {
+            try
+            {
+                var printInfo = new NSPrintInfo
+                {
+                    Orientation = NSPrintingOrientation.Landscape,
+                    LeftMargin = 45,
+                    RightMargin = 30,
+                    TopMargin = 30,
+                    BottomMargin = 30,
+                    HorizontalPagination = NSPrintingPaginationMode.Auto,
+                    VerticallyCentered = false,
+                    HorizontallyCentered = false
+                };
+                var printView = new NSView
+                {
+                    AutoresizesSubviews = true
+                };
+                var indPrintVC = new TablePrintingViewController(_individualsViewController);
+                var famPrintVC = new TablePrintingViewController(_familiesViewController);
+                indPrintVC.View.SetFrameOrigin(new CoreGraphics.CGPoint(0, famPrintVC.TotalHeight));
+                printView.AddSubview(indPrintVC.View);
+                printView.AddSubview(famPrintVC.View);
+
+                 var width = Math.Max(indPrintVC.TotalWidth, famPrintVC.TotalWidth);
+                var height = indPrintVC.TotalHeight + famPrintVC.TotalHeight;
+                printView.SetFrameSize(new CoreGraphics.CGSize(width, height));
+
+                var printOperation = NSPrintOperation.FromView(printView, printInfo);
+                printOperation.ShowsPrintPanel = true;
+                printOperation.ShowsProgressPanel = true;
+                printOperation.CanSpawnSeparateThread = true;
+                printOperation.PrintPanel.Options = NSPrintPanelOptions.ShowsCopies | NSPrintPanelOptions.ShowsPageRange | NSPrintPanelOptions.ShowsPreview |
+                                                    NSPrintPanelOptions.ShowsPageSetupAccessory | NSPrintPanelOptions.ShowsScaling;
+                printOperation.RunOperation();
+                printOperation.CleanUpOperation();
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Sorry there was a problem printing.\nError was: {e.Message}");
+            }
+        }
     }
 }
