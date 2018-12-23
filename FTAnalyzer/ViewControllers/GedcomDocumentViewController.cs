@@ -10,11 +10,11 @@ namespace FTAnalyzer
     {
         AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
 
-        public IProgress<string> Messages { get; }
-        public IProgress<int> Sources { get; }
-        public IProgress<int> Individuals { get; }
-        public IProgress<int> Families { get; }
-        public IProgress<int> Relationships { get; }
+        public IProgress<string> Messages { get; private set; }
+        public IProgress<int> Sources { get; private set; }
+        public IProgress<int> Individuals { get; private set; }
+        public IProgress<int> Families { get; private set; }
+        public IProgress<int> Relationships { get; private set; }
 
         public GedcomDocumentViewController(IntPtr handle) : base(handle)
         {
@@ -55,6 +55,11 @@ namespace FTAnalyzer
             _individualsProgress.DoubleValue = 0;
             _familiesProgress.DoubleValue = 0;
             _relationshipsProgress.DoubleValue = 0;
+            //Messages.Report(string.Empty);
+            //Sources.Report(0);
+            //Individuals.Report(0);
+            //Families.Report(0);
+            //Relationships.Report(0);
         }
 
         void AppendMessage(string message)

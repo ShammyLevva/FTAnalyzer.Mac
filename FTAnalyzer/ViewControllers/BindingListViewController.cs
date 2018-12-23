@@ -129,9 +129,9 @@ namespace FTAnalyzer.ViewControllers
             NSTableColumn column = GetColumnID("IndividualID");
             if (column != null)
             {
-                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTextField cell)
+                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
-                    string indID = cell.StringValue;
+                    string indID = cell.TextField.StringValue;
                     Individual ind = FamilyTree.Instance.GetIndividual(indID);
                     RaiseSetRootPersonClicked(ind);
                     return;
@@ -150,9 +150,9 @@ namespace FTAnalyzer.ViewControllers
             NSTableColumn column = GetColumnID("IndividualID");
             if (column != null)
             {
-                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTextField cell)
+                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
-                    string indID = cell.StringValue;
+                    string indID = cell.TextField.StringValue;
                     Individual ind = FamilyTree.Instance.GetIndividual(indID);
                     RaiseFactRowClicked(ind);
                     return;
@@ -161,9 +161,9 @@ namespace FTAnalyzer.ViewControllers
             column = GetColumnID("FamilyID");
             if (column != null)
             {
-                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTextField cell)
+                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
-                    string familyID = cell.StringValue;
+                    string familyID = cell.TextField.StringValue;
                     Family family = FamilyTree.Instance.GetFamily(familyID);
                     RaiseFactRowClicked(family);
                     return;
@@ -172,9 +172,9 @@ namespace FTAnalyzer.ViewControllers
             column = GetColumnID("SourceID");
             if (column != null)
             {
-                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTextField cell)
+                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
-                    string sourceID = cell.StringValue;
+                    string sourceID = cell.TextField.StringValue;
                     FactSource source = FamilyTree.Instance.GetSource(sourceID);
                     RaiseFactRowClicked(source);
                     return;
@@ -183,9 +183,9 @@ namespace FTAnalyzer.ViewControllers
             column = GetColumnID("Occupation");
             if (column != null)
             {
-                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTextField cell)
+                if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
-                    string occupation = cell.StringValue;
+                    string occupation = cell.TextField.StringValue;
                     People people = new People();
                     people.SetWorkers(occupation, FamilyTree.Instance.AllWorkers(occupation));
                     RaiseOccupationRowClicked(people);

@@ -41,19 +41,25 @@ namespace FTAnalyzer
                 Document.Close();
                 Document = null;
                 SetMenus(false);
-                Window.MakeKeyAndOrderFront(Self);
-                Window.PerformSelector(new ObjCRuntime.Selector("tabView:didSelectTabViewItem:"));
-                CloseAllFactsWindows();
+                ResetMainWindow();
+                CloseAllSubWindows();
                 _documentOpening = false;
             }
             return false;
+        }
+
+        private void ResetMainWindow()
+        {
+            Window.MakeKeyAndOrderFront(Self);
+            var controller = Window.ContentViewController as NSTabViewController;
+            controller.SelectedTabViewItemIndex = 0;
+            DocumentViewController.ClearAllProgress();
         }
 
         public void SetMenus(bool enabled)
         {
             PrintMenu.Enabled = enabled;
             PageSetupMenu.Enabled = enabled;
-            
         }
 
         public void ShowFacts(NSViewController factsViewController)
@@ -66,7 +72,7 @@ namespace FTAnalyzer
             factsWindow.ShowWindow(this);
         }
 
-        public void CloseAllFactsWindows()
+        public void CloseAllSubWindows()
         {
             var storyboard = NSStoryboard.FromName("Facts", null);
             foreach(NSWindow window in NSApplication.SharedApplication.Windows)

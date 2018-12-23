@@ -193,8 +193,11 @@ namespace FTAnalyzer
         {
             InvokeOnMainThread(() =>
             {
-                App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
-                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
+                if (individual != null)
+                {
+                    App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
+                    Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
+                }
             });
         }
 
@@ -202,8 +205,11 @@ namespace FTAnalyzer
         {
             InvokeOnMainThread(() =>
             {
-                App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family));
-                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsFamiliesEvent);
+                if (family != null)
+                {
+                    App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family));
+                    Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsFamiliesEvent);
+                }
             });
         }
 
@@ -211,16 +217,21 @@ namespace FTAnalyzer
         {
             InvokeOnMainThread(() =>
             {
-                App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for source: {source.ToString()}", source));
-                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsSourceEvent);
-            });
+                if (source != null)
+                {
+                    App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for source: {source.ToString()}", source));
+                    Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsSourceEvent);
+                }
+
+                });
         }
 
         void OccupationRowClicked(People people)
         {
             InvokeOnMainThread(() =>
             {
-                people.ShowWindow(App);
+                if(people != null)
+                    people.ShowWindow(App);
                 //Analytics.TrackAction(Analytics.Peo, Analytics.);
             });
         }
@@ -229,12 +240,12 @@ namespace FTAnalyzer
         {
             InvokeOnMainThread(() =>
             {
-                if (individual == null)
+                if (individual == null && family != null)
                 {
                     App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family));
                     Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsFamiliesEvent);
                 }
-                else
+                else if(individual != null && family == null)
                 {
                     App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
                     Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
@@ -246,7 +257,8 @@ namespace FTAnalyzer
         {
             InvokeOnMainThread(() =>
             {
-                people.ShowWindow(App);
+                if(people != null)
+                    people.ShowWindow(App);
                 //Analytics.TrackAction(Analytics.Peo, Analytics.);
             });
         }
@@ -255,8 +267,11 @@ namespace FTAnalyzer
         {
             InvokeOnMainThread(() =>
             {
-                App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
-                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.LooseBirthsEvent);
+                if (individual != null)
+                {
+                    App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
+                    Analytics.TrackAction(Analytics.FactsFormAction, Analytics.LooseBirthsEvent);
+                }
             });
         }
 
@@ -264,8 +279,11 @@ namespace FTAnalyzer
         {
             InvokeOnMainThread(() =>
             {
-                App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
-                Analytics.TrackAction(Analytics.FactsFormAction, Analytics.LooseDeathsEvent);
+                if (individual != null)
+                {
+                    App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
+                    Analytics.TrackAction(Analytics.FactsFormAction, Analytics.LooseDeathsEvent);
+                }
             });
         }
 
