@@ -17,8 +17,6 @@ namespace FTAnalyzer
         public NSViewController CurrentViewController { get; set; }
         public NSWindow CurrentWindow { get; set; }
 
-        //static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         public override void DidFinishLaunching(NSNotification notification)
         {
             // Insert code here to initialize your application
@@ -43,6 +41,8 @@ namespace FTAnalyzer
                 Document.Close();
                 Document = null;
                 SetMenus(false);
+                Window.MakeKeyAndOrderFront(Self);
+                Window.PerformSelector(new ObjCRuntime.Selector("tabView:didSelectTabViewItem:"));
                 CloseAllFactsWindows();
                 _documentOpening = false;
             }
@@ -53,6 +53,7 @@ namespace FTAnalyzer
         {
             PrintMenu.Enabled = enabled;
             PageSetupMenu.Enabled = enabled;
+            
         }
 
         public void ShowFacts(NSViewController factsViewController)

@@ -65,8 +65,9 @@ namespace FTAnalyzer.DataSources
                 {
                     { new NSString("textField"), textField }
                 };
-                cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat("H:|[textField]|", NSLayoutFormatOptions.None, null, views));
-                cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat("V:|[textField]|", NSLayoutFormatOptions.None, null, views));
+                cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat("H:|[textField]|", NSLayoutFormatOptions.AlignAllTop, null, views));
+                cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat("V:|[textField]|", NSLayoutFormatOptions.AlignAllTop, null, views));
+                NSLayoutConstraint.ActivateConstraints(cellView.Constraints);
             }
             // Setup view based on the column selected
             if (row >= 0)

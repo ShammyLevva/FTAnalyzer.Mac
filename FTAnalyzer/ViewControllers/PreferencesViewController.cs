@@ -18,7 +18,7 @@ namespace FTAnalyzer.ViewControllers
                 case "File Handling Preferences":
                     LoadWithFiltersOutlet.Activated += LoadWithFiltersOutlet_Activated;
                     RetryFailedLinesOutlet.Activated += RetryFailedLinesOutlet_Activated;
-                    ConvertDicriticsOutlet.Activated += ConvertDicriticsOutlet_Activated;
+                    ConvertDiacriticsOutlet.Activated += ConvertDicriticsOutlet_Activated;
                     SetFileHandlingSettings();
                     break;
                 case "General Preferences":
@@ -63,6 +63,7 @@ namespace FTAnalyzer.ViewControllers
             AutoCreateCensusFactsOutlet.State = GeneralSettings.Default.AutoCreateCensusFacts ? NSCellStateValue.On : NSCellStateValue.Off;
             AutoCreateCensusLocationsOutlet.State = GeneralSettings.Default.AddCreatedLocations ? NSCellStateValue.On : NSCellStateValue.Off;
             HideMissingCensusOutlet.State = GeneralSettings.Default.HidePeopleWithMissingTag ? NSCellStateValue.On : NSCellStateValue.Off;
+            SkipCensusRefNotesOutlet.State = GeneralSettings.Default.SkipCensusReferences ? NSCellStateValue.On : NSCellStateValue.Off;
         }
 
         void TreatResidenceasCensusOutlet_Activated(object sender, EventArgs e)
@@ -111,6 +112,13 @@ namespace FTAnalyzer.ViewControllers
             GeneralSettings.Default.HidePeopleWithMissingTag = HideMissingCensusOutlet.State == NSCellStateValue.On;
             GeneralSettings.Default.Save();
         }
+
+        void SkipCensusRefNotesOutlet_Activated(object sender, EventArgs e)
+        {
+            GeneralSettings.Default.SkipCensusReferences = SkipCensusRefNotesOutlet.State == NSCellStateValue.On;
+            GeneralSettings.Default.Save();
+        }
+
         #endregion
 
         #region File Handling
@@ -119,6 +127,7 @@ namespace FTAnalyzer.ViewControllers
         {
             LoadWithFiltersOutlet.State = FileHandling.Default.LoadWithFilters ? NSCellStateValue.On : NSCellStateValue.Off;
             RetryFailedLinesOutlet.State = FileHandling.Default.RetryFailedLines ? NSCellStateValue.On : NSCellStateValue.Off;
+            ConvertDiacriticsOutlet.State = FileHandling.Default.ConvertDiacritics ? NSCellStateValue.On : NSCellStateValue.Off;
         }
 
         void LoadWithFiltersOutlet_Activated(object sender, EventArgs e)
@@ -137,7 +146,7 @@ namespace FTAnalyzer.ViewControllers
 
         void ConvertDicriticsOutlet_Activated(object sender, EventArgs e)
         {
-            FileHandling.Default.ConvertDiacritics = ConvertDicriticsOutlet.State == NSCellStateValue.On;
+            FileHandling.Default.ConvertDiacritics = ConvertDiacriticsOutlet.State == NSCellStateValue.On;
             FileHandling.Default.Save();
             GeneralSettings.Default.ReloadRequired = true;
         }
@@ -159,10 +168,10 @@ namespace FTAnalyzer.ViewControllers
             IgnoreUnknownFactTypeOutlet.State = GeneralSettings.Default.IgnoreFactTypeWarnings ? NSCellStateValue.On : NSCellStateValue.Off;
             FemaleUnknownOutlet.State = GeneralSettings.Default.TreatFemaleSurnamesAsUnknown ? NSCellStateValue.On : NSCellStateValue.Off;
             ShowMultiAncestorOutlet.State = GeneralSettings.Default.ShowMultiAncestors ? NSCellStateValue.On : NSCellStateValue.Off;
-            SkipCensusRefNotesOutlet.State = GeneralSettings.Default.SkipCensusReferences ? NSCellStateValue.On : NSCellStateValue.Off;
+            SkipFixingLocationsOutlet.State = GeneralSettings.Default.SkipFixingLocations ? NSCellStateValue.On : NSCellStateValue.Off;
         }
 
-        void UseBaptismDatesOutlet_Activated(object sender, EventArgs e)
+            void UseBaptismDatesOutlet_Activated(object sender, EventArgs e)
         {
             GeneralSettings.Default.UseBaptismDates = UseBaptismDatesOutlet.State == NSCellStateValue.On;
             GeneralSettings.Default.Save();
@@ -229,12 +238,6 @@ namespace FTAnalyzer.ViewControllers
         void ShowMultiAncestorOutlet_Activated(object sender, EventArgs e)
         {
             GeneralSettings.Default.ShowMultiAncestors = ShowMultiAncestorOutlet.State == NSCellStateValue.On;
-            GeneralSettings.Default.Save();
-        }
-
-        void SkipCensusRefNotesOutlet_Activated(object sender, EventArgs e)
-        {
-            GeneralSettings.Default.SkipCensusReferences = SkipCensusRefNotesOutlet.State == NSCellStateValue.On;
             GeneralSettings.Default.Save();
         }
 

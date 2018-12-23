@@ -28,7 +28,7 @@ namespace FTAnalyzer.ViewControllers
 		AppKit.NSButton CompactCensusRefOutlet { get; set; }
 
 		[Outlet]
-		AppKit.NSButton ConvertDicriticsOutlet { get; set; }
+		AppKit.NSButton ConvertDiacriticsOutlet { get; set; }
 
 		[Outlet]
 		AppKit.NSButton FamilyCensusFactsOutlet { get; set; }
@@ -188,9 +188,9 @@ namespace FTAnalyzer.ViewControllers
 				UseCountryFirstOutlet = null;
 			}
 
-			if (ConvertDicriticsOutlet != null) {
-				ConvertDicriticsOutlet.Dispose ();
-				ConvertDicriticsOutlet = null;
+			if (ConvertDiacriticsOutlet != null) {
+				ConvertDiacriticsOutlet.Dispose ();
+				ConvertDiacriticsOutlet = null;
 			}
 
 			if (SkipFixingLocationsOutlet != null) {

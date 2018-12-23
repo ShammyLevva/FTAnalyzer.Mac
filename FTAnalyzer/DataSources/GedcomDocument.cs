@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
@@ -19,18 +20,24 @@ namespace FTAnalyzer
         {
             outError = NSError.FromDomain(NSError.OsStatusErrorDomain, -4);
 
-            InvokeOnMainThread(() =>
+            InvokeOnMainThread(async () =>
             {
-                var document = _familyTree.LoadTreeHeader(url.Path, App.DocumentViewController.Messages);
+                var outputText = App.DocumentViewController.Messages;
+                var sourcesProgress = App.DocumentViewController.Sources;
+                var individualsProgress = App.DocumentViewController.Individuals;
+                var familiesProgress = App.DocumentViewController.Families;
+                var relationshipProgress = App.DocumentViewController.Relationships;
+
+                var document = await Task.Run(() => _familyTree.LoadTreeHeader(url.Path, outputText));
                 if (document == null)
                     App.DocumentViewController.Messages.Report($"\n\nUnable to load file {url.Path}\n");
                 else
                 {
 
-                    _familyTree.LoadTreeSources(document, App.DocumentViewController.Sources, App.DocumentViewController.Messages);
-                    _familyTree.LoadTreeIndividuals(document, App.DocumentViewController.Individuals, App.DocumentViewController.Messages);
-                    _familyTree.LoadTreeFamilies(document, App.DocumentViewController.Families, App.DocumentViewController.Messages);
-                    _familyTree.LoadTreeRelationships(document, App.DocumentViewController.Relationships, App.DocumentViewController.Messages);
+                    await Task.Run(() => _familyTree.LoadTreeSources(document, sourcesProgress, outputText));
+                    await Task.Run(() => _familyTree.LoadTreeIndividuals(document, individualsProgress , outputText));
+                    await Task.Run(() => _familyTree.LoadTreeFamilies(document, familiesProgress, outputText));
+                    await Task.Run(() => _familyTree.LoadTreeRelationships(document, relationshipProgress, outputText));
 
                     App.DocumentViewController.Messages.Report($"\n\nFinished loading file {url.Path}\n");
 
@@ -44,7 +51,7 @@ namespace FTAnalyzer
                     PrintInfo.HorizontallyCentered = false;
                     App.Document = this;
                     App.SetMenus(true);
-                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.LoadGEDCOMEvent);
+                    await Analytics.TrackAction(Analytics.MainFormAction, Analytics.LoadGEDCOMEvent);
                     UIHelpers.ShowMessage($"Gedcom file {url.Path} loaded.", "FTAnalyzer");
                 }
             });
