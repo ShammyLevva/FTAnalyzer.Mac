@@ -1058,7 +1058,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" title="Census Suggestion Reports" translatesAutoresizingMaskIntoConstraints="NO" id="5Mh-tw-1Tb">
-                                <rect key="frame" x="-3" y="344" width="528" height="118"/>
+                                <rect key="frame" x="-3" y="296" width="528" height="118"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="Nzq-zM-T2B">
                                     <rect key="frame" x="3" y="3" width="522" height="100"/>
@@ -1111,12 +1111,40 @@
                                     </subviews>
                                 </view>
                             </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rui-S7-otb">
+                                <rect key="frame" x="18" y="425" width="206" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Selected Census Search Provider" id="sB0-95-9b8">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8Q-2o-gZW">
+                                <rect key="frame" x="248" y="420" width="252" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Find My Past" drawsBackground="YES" usesSingleLineMode="YES" numberOfVisibleItems="4" id="Pud-Sr-BGY">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Ancestry</string>
+                                        <string>Find My Past</string>
+                                        <string>FreeCEN</string>
+                                        <string>Family Search</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                                <connections>
+                                    <action selector="SearchProviderChanged:" target="9G0-dd-9dE" id="c72-mG-gwY"/>
+                                </connections>
+                            </comboBox>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="CanadianCensus" destination="mkk-MW-jXY" id="bwS-DF-qjT"/>
                         <outlet property="CanadianCensusClicked" destination="mkk-MW-jXY" id="E4Q-j7-EqC"/>
                         <outlet property="CanadianColourCensus" destination="mkk-MW-jXY" id="nSd-qp-3PD"/>
+                        <outlet property="CensusSearchProviderOutlet" destination="a8Q-2o-gZW" id="I7X-ie-uQT"/>
                         <outlet property="IrishCensus" destination="l8q-6h-UWy" id="aoA-o7-SNq"/>
                         <outlet property="IrishColourCensus" destination="l8q-6h-UWy" id="5Lk-Bk-joB"/>
                         <outlet property="UKCensus" destination="LrN-fi-2fs" id="Gx4-iT-GuL"/>

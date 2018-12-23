@@ -96,7 +96,7 @@ namespace FTAnalyzer.ViewControllers
             var properties = GetGenericType().GetProperties();
             foreach (var property in properties)
             {
-                float width = 100;
+                float width;
                 string columnTitle = property.Name;
                 ColumnDetail[] columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
                 if (columnDetail?.Length == 1)
@@ -104,10 +104,13 @@ namespace FTAnalyzer.ViewControllers
                     columnTitle = columnDetail[0].ColumnName;
                     width = columnDetail[0].ColumnWidth;
                 }
+                else
+                    width = 100;
                 var tableColumn = new NSTableColumn
                 {
                     Identifier = property.Name,
                     MinWidth = width,
+                    Width = width,
                     Editable = false,
                     Hidden = false,
                     Title = columnTitle,

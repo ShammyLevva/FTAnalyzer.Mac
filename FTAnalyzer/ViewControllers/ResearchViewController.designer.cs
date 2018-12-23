@@ -1,4 +1,4 @@
-﻿// WARNING
+// WARNING
 //
 // This file has been generated automatically by Visual Studio to store outlets and
 // actions made in the UI designer. If it is removed, they will be lost.
@@ -16,6 +16,9 @@ namespace FTAnalyzer.ViewControllers
 		AppKit.NSButton CanadianColourCensus { get; set; }
 
 		[Outlet]
+		AppKit.NSComboBox CensusSearchProviderOutlet { get; set; }
+
+		[Outlet]
 		AppKit.NSButton IrishColourCensus { get; set; }
 
 		[Outlet]
@@ -30,6 +33,9 @@ namespace FTAnalyzer.ViewControllers
 		[Action ("IrishCensusClicked:")]
 		partial void IrishCensusClicked (Foundation.NSObject sender);
 
+		[Action ("SearchProviderChanged:")]
+		partial void SearchProviderChanged (Foundation.NSObject sender);
+
 		[Action ("UKCensusClicked:")]
 		partial void UKCensusClicked (Foundation.NSObject sender);
 
@@ -38,9 +44,14 @@ namespace FTAnalyzer.ViewControllers
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (UKColourCensus != null) {
-				UKColourCensus.Dispose ();
-				UKColourCensus = null;
+			if (CanadianColourCensus != null) {
+				CanadianColourCensus.Dispose ();
+				CanadianColourCensus = null;
+			}
+
+			if (CensusSearchProviderOutlet != null) {
+				CensusSearchProviderOutlet.Dispose ();
+				CensusSearchProviderOutlet = null;
 			}
 
 			if (IrishColourCensus != null) {
@@ -48,14 +59,14 @@ namespace FTAnalyzer.ViewControllers
 				IrishColourCensus = null;
 			}
 
+			if (UKColourCensus != null) {
+				UKColourCensus.Dispose ();
+				UKColourCensus = null;
+			}
+
 			if (USColourCensus != null) {
 				USColourCensus.Dispose ();
 				USColourCensus = null;
-			}
-
-			if (CanadianColourCensus != null) {
-				CanadianColourCensus.Dispose ();
-				CanadianColourCensus = null;
 			}
 		}
 	}

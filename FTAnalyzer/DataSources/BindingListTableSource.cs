@@ -67,7 +67,7 @@ namespace FTAnalyzer.DataSources
             }
             else
                 view.StringValue = string.Empty;
-            if(view.Cell.CellSize.Width > view.Frame.Width)
+            if(tableView.AutosaveName != "ColourCensusView" && view.Cell.CellSize.Width > view.Frame.Width)
                 view.SetFrameSize(view.Cell.CellSize);
             return view;
         }

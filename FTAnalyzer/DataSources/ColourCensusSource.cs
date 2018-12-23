@@ -48,6 +48,7 @@ namespace FTAnalyzer.DataSources
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
             NSTextField textField = GetFTAnalyzerGridCell(tableView, tableColumn, row) as NSTextField;
+            
             var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
             var c1939index = Array.IndexOf(_fieldNames, "C1939");
             if (index >= StartIndex && index <= EndIndex)

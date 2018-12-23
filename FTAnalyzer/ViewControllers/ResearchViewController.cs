@@ -21,6 +21,9 @@ namespace FTAnalyzer.ViewControllers
         {
             base.ViewDidLoad();
             SetButtonsActive(App.Document != null);
+            var userDefaults = new NSUserDefaults();
+            var value = userDefaults.IntForKey("CensusProvider");
+            CensusSearchProviderOutlet.SelectItem(value);
         }
 
         public override void ViewDidAppear()
@@ -37,24 +40,19 @@ namespace FTAnalyzer.ViewControllers
             CanadianColourCensus.Enabled = active;
         }
 
-        partial void UKCensusClicked(NSObject sender)
-        {
-            DisplayColourCensus(Countries.UNITED_KINGDOM, sender);
-        }
+        partial void UKCensusClicked(NSObject sender) => DisplayColourCensus(Countries.UNITED_KINGDOM, sender);
 
-        partial void IrishCensusClicked(NSObject sender)
-        {
-            DisplayColourCensus(Countries.IRELAND, sender);
-        }
+        partial void IrishCensusClicked(NSObject sender) => DisplayColourCensus(Countries.IRELAND, sender);
 
-        partial void USCensusClicked(NSObject sender)
-        {
-            DisplayColourCensus(Countries.UNITED_STATES, sender);
-        }
+        partial void USCensusClicked(NSObject sender) => DisplayColourCensus(Countries.UNITED_STATES, sender);
 
-        partial void CanadianCensusClicked(NSObject sender)
+        partial void CanadianCensusClicked(NSObject sender) => DisplayColourCensus(Countries.CANADA, sender);
+
+        partial void SearchProviderChanged(NSObject sender)
         {
-            DisplayColourCensus(Countries.CANADA, sender);
+            var userDefaults = new NSUserDefaults();
+            userDefaults.SetInt(CensusSearchProviderOutlet.SelectedIndex, "CensusProvider");
+            userDefaults.Synchronize();
         }
 
         void DisplayColourCensus(string country, NSObject sender)
@@ -64,7 +62,7 @@ namespace FTAnalyzer.ViewControllers
             var ColourCensusWindow = storyboard.InstantiateControllerWithIdentifier("ColourCensusWindow") as NSWindowController;
             RelationTypes relationTypes = new RelationTypes();
             List<IDisplayColourCensus> list = FamilyTree.Instance.ColourCensus(country, relationTypes, string.Empty, null, false, false);
-            ColourCensusViewController colourCensusViewController = new ColourCensusViewController(country);
+            ColourCensusViewController colourCensusViewController = new ColourCensusViewController(country, (int)CensusSearchProviderOutlet.SelectedIndex);
             colourCensusViewController.RefreshDocumentView(new SortableBindingList<IDisplayColourCensus>(list));
             ColourCensusWindow.ContentViewController.AddChildViewController(colourCensusViewController);
             ColourCensusWindow.Window.Title = colourCensusViewController.Title;

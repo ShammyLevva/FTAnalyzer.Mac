@@ -14,24 +14,19 @@ namespace FTAnalyzer.ViewControllers
         public string Country { get; }
         int startColumnIndex;
         int endColumnIndex;
-        string CensusProvider { get; }
         int CensusProviderIndex { get; }
+        string CensusProvider { get; }
 
         public ColourCensusViewController(IntPtr handle) : base(string.Empty, string.Empty)
         {
         }
 
-        public ColourCensusViewController(string country) : base(string.Empty, string.Empty)
+        public ColourCensusViewController(string country, int providerIndex) : base(string.Empty, string.Empty)
         {
             Country = country;
-            CensusProvider = "Find My Past";
-            CensusProviderIndex = 1;
             SetColumns();
-            //string defaultProvider = (string)Application.UserAppDataRegistry.GetValue("Default Search Provider");
-            //if (defaultProvider == null)
-            //    defaultProvider = "FamilySearch";
-            //cbCensusSearchProvider.Text = defaultProvider;
-            //cbFilter.Text = "All Individuals";
+            CensusProviderIndex = providerIndex;
+            CensusProvider = FamilyTree.Instance.ProviderName(providerIndex);
         }
 
         public override void RefreshDocumentView(SortableBindingList<IDisplayColourCensus> list)
@@ -43,7 +38,7 @@ namespace FTAnalyzer.ViewControllers
             }
             CountText = $"Count: {list.Count}";
             UpdateTooltip();
-
+            _tableView.AutosaveName = "ColourCensusView";
             _tableView.Source = new ColourCensusSource(Country, startColumnIndex, endColumnIndex, CensusProvider, list);
             _tableView.ReloadData();
             _tableView.SelectionHighlightStyle = NSTableViewSelectionHighlightStyle.None;
@@ -89,6 +84,7 @@ namespace FTAnalyzer.ViewControllers
                 NSTableColumn column = _tableView.TableColumns().GetValue(index) as NSTableColumn;
                 column.Hidden = false;
                 column.Width = 40;
+                column.MaxWidth = 40;
             }
         }
 
