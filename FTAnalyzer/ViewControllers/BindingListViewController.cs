@@ -37,7 +37,7 @@ namespace FTAnalyzer.ViewControllers
                 Enabled = true,
                 UsesAlternatingRowBackgroundColors = true,
                 AutoresizesSubviews = true,
-                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.Sequential,
+                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
                 WantsLayer = true,
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0),
@@ -96,7 +96,7 @@ namespace FTAnalyzer.ViewControllers
             var properties = GetGenericType().GetProperties();
             foreach (var property in properties)
             {
-                float width;
+                float width = 100;
                 string columnTitle = property.Name;
                 ColumnDetail[] columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
                 if (columnDetail?.Length == 1)
@@ -104,8 +104,6 @@ namespace FTAnalyzer.ViewControllers
                     columnTitle = columnDetail[0].ColumnName;
                     width = columnDetail[0].ColumnWidth;
                 }
-                else
-                    width = 100;
                 var tableColumn = new NSTableColumn
                 {
                     Identifier = property.Name,

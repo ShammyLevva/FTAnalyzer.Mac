@@ -2,17 +2,16 @@
 using System.Linq;
 using System.Reflection;
 using AppKit;
-using CoreGraphics;
+using Foundation;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.DataSources
 {
     public class BindingListTableSource<T> : NSTableViewSource
     {
-        const string CellIdentifier = "TableView";
-
-        readonly SortableBindingList<T> _bindingList;
-        readonly PropertyInfo[] _properties;
+        internal const string CellIdentifier = "TableView";
+        internal readonly SortableBindingList<T> _bindingList;
+        internal readonly PropertyInfo[] _properties;
         internal readonly string[] _fieldNames;
  
         public BindingListTableSource(SortableBindingList<T> bindingList)
@@ -29,7 +28,7 @@ namespace FTAnalyzer.DataSources
             return GetFTAnalyzerGridCell(tableView, tableColumn, row);
         }
 
-        internal NSView GetFTAnalyzerGridCell(NSTableView tableView, NSTableColumn tableColumn, nint row)
+        NSView GetFTAnalyzerGridCell(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
             var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
             if (index < 0 || index > _properties.Length)
@@ -40,11 +39,10 @@ namespace FTAnalyzer.DataSources
             if (x?.Length == 1)
                 alignment = x[0].Alignment;
 
-            if (!(tableView.MakeView(CellIdentifier, this) is NSTextField view))
+            if (!(tableView.MakeView(CellIdentifier, this) is NSTableCellView cellView))
             {
-                view = new NSTextField
+                var textField = new NSTextField
                 {
-                    Identifier = CellIdentifier,
                     BackgroundColor = NSColor.Clear,
                     LineBreakMode = NSLineBreakMode.TruncatingTail,
                     NeedsLayout = true,
@@ -56,20 +54,32 @@ namespace FTAnalyzer.DataSources
                     TranslatesAutoresizingMaskIntoConstraints = false
                 };
                 if (tableView.AutosaveName == "PrintView")
-                    view.Font = NSFont.SystemFontOfSize(8);
+                    textField.Font = NSFont.SystemFontOfSize(8);
+                cellView = new NSTableCellView
+                {
+                    Identifier = CellIdentifier,
+                    TextField = textField
+                };
+                cellView.AddSubview(textField);
+                var views = new NSMutableDictionary
+                {
+                    { new NSString("textField"), textField }
+                };
+                cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat("H:|[textField]|", NSLayoutFormatOptions.None, null, views));
+                cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat("V:|[textField]|", NSLayoutFormatOptions.None, null, views));
             }
             // Setup view based on the column selected
             if (row >= 0)
             {
                 var item = _bindingList[(int)row];
                 var propertyValue = _properties[index].GetValue(item);
-                view.StringValue = propertyValue == null ? string.Empty : propertyValue.ToString();
+                cellView.TextField.StringValue = propertyValue == null ? string.Empty : propertyValue.ToString();
             }
             else
-                view.StringValue = string.Empty;
-            if(tableView.AutosaveName != "ColourCensusView" && view.Cell.CellSize.Width > view.Frame.Width)
-                view.SetFrameSize(view.Cell.CellSize);
-            return view;
+                cellView.TextField.StringValue = string.Empty;
+            //if(tableView.AutosaveName != "ColourCensusView" && cellView.TextField.Cell.CellSize.Width > cellView.TextField.Frame.Width)
+                //cellView.TextField.SetFrameSize(cellView.TextField.Cell.CellSize);
+            return cellView;
         }
 
         public object GetRowObject(nint row) => _bindingList[(int)row];

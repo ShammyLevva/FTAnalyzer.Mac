@@ -72,7 +72,9 @@ namespace FTAnalyzer
                     viewController = null;
                     break;
             }
-            if (viewController != null)
+            if (viewController is GedcomDocumentViewController)
+                App.CurrentViewController = viewController;
+            else if (viewController != null)
             {
                 var index = (viewController as NSTabViewController).SelectedTabViewItemIndex;
                 if (ChildViewControllers.Length > index)
