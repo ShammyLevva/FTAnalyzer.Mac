@@ -6,10 +6,11 @@ using CoreGraphics;
 using Foundation;
 using FTAnalyzer.DataSources;
 using FTAnalyzer.Utilities;
+using ObjCRuntime;
 
 namespace FTAnalyzer.ViewControllers
 {
-    public class BindingListViewController<T> : NSViewController, IPrintViewController
+    public class BindingListViewController<T> : NSViewController, IPrintViewController where T : IColumnComparer<T>
     {
         public string TooltipText { get; set; }
 
@@ -46,11 +47,12 @@ namespace FTAnalyzer.ViewControllers
                 AllowsColumnResizing = true,
                 AllowsColumnSelection = false,
                 AllowsColumnReordering = false,
+                SortDescriptors = new NSSortDescriptor[] { },
                 AutosaveName = Title,
                 AutosaveTableColumns = true,
                 Target = Self,
-                DoubleAction = new ObjCRuntime.Selector("ViewDetailsSelector"),
-                Action = new ObjCRuntime.Selector("SetRootPersonSelector:")
+                DoubleAction = new Selector("ViewDetailsSelector"),
+                Action = new Selector("SetRootPersonSelector:")
             };
             AddTableColumns(_tableView);
             NSProcessInfo info = new NSProcessInfo();
@@ -113,7 +115,7 @@ namespace FTAnalyzer.ViewControllers
                 {
                     Identifier = property.Name,
                     MinWidth = width,
-                  //  Width = width,
+                    SortDescriptorPrototype = new NSSortDescriptor(property.Name, true), 
                     Editable = false,
                     Hidden = false,
                     Title = columnTitle,

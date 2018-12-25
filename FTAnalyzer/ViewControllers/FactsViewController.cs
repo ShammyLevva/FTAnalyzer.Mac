@@ -7,7 +7,7 @@ using FTAnalyzer.DataSources;
 
 namespace FTAnalyzer
 {
-    public partial class FactsViewController<T>: BindingListViewController<T>, IPrintViewController
+    public partial class FactsViewController<T>: BindingListViewController<T>, IPrintViewController where T : IColumnComparer<T>
 	{
         readonly SortableBindingList<IDisplayFact> facts;
 

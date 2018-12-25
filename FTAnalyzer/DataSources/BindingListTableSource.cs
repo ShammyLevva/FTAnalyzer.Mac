@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using AppKit;
@@ -7,7 +8,7 @@ using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.DataSources
 {
-    public class BindingListTableSource<T> : NSTableViewSource
+    public class BindingListTableSource<T> : NSTableViewSource where T : IColumnComparer<T>
     {
         internal const string CellIdentifier = "TableView";
         internal readonly SortableBindingList<T> _bindingList;
@@ -78,52 +79,30 @@ namespace FTAnalyzer.DataSources
             }
             else
                 cellView.TextField.StringValue = string.Empty;
-            //if(tableView.AutosaveName != "ColourCensusView" && cellView.TextField.Cell.CellSize.Width > cellView.TextField.Frame.Width)
-                //cellView.TextField.SetFrameSize(cellView.TextField.Cell.CellSize);
             return cellView;
         }
 
         public object GetRowObject(nint row) => _bindingList[(int)row];
 
-        //public void Sort(string key, bool ascending)
-        //{
+        void Sort(string key, bool ascending)
+        {
+            if (_bindingList.Any()) // only sort if array contains something
+            {
+                var comparer = _bindingList.First().GetComparer(key, ascending);
+                if (comparer != null)
+                    _bindingList.Sort(comparer);
+            }
+        }
 
-        //    // Take action based on key
-        //    switch (key)
-        //    {
-        //        case "Forename":
-        //            if (ascending)
-        //                Products.Sort((x, y) => x.Title.CompareTo(y.Title));
-        //            else
-        //                Products.Sort((x, y) => -1 * x.Title.CompareTo(y.Title));
-        //            break;
-        //        case "Description":
-        //            if (ascending)
-        //                Products.Sort((x, y) => x.Description.CompareTo(y.Description));
-        //            else
-        //                Products.Sort((x, y) => -1 * x.Description.CompareTo(y.Description));
-        //            break;
-        //    }
-
-        //}
-
-        //public override void SortDescriptorsChanged(NSTableView tableView, NSSortDescriptor[] oldDescriptors)
-        //{
-        //    // Sort the data
-        //    if (oldDescriptors.Length > 0)
-        //    {
-        //        // Update sort
-        //        Sort(oldDescriptors[0].Key, oldDescriptors[0].Ascending);
-        //    }
-        //    else
-        //    {
-        //        // Grab current descriptors and update sort
-        //        NSSortDescriptor[] tbSort = tableView.SortDescriptors;
-        //        Sort(tbSort[0].Key, tbSort[0].Ascending);
-        //    }
-
-        //    // Refresh table
-        //    tableView.ReloadData();
-        //}
+        public override void SortDescriptorsChanged(NSTableView tableView, NSSortDescriptor[] oldDescriptors)
+        {
+            // Grab current descriptors and update sort
+            NSSortDescriptor[] tbSort = tableView.SortDescriptors;
+            if (tbSort.Length > 0)
+            {
+                Sort(tbSort[0].Key, tbSort[0].Ascending);
+                tableView.ReloadData();
+            }
+        }
     }
 }
