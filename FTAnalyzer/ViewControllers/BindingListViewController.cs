@@ -66,10 +66,16 @@ namespace FTAnalyzer.ViewControllers
                 AutohidesScrollers = true,
                 WantsLayer = true,
                 Layer = NewLayer(),
-                Bounds = new CGRect(0, 0, 0, 0)
+                Bounds = new CGRect(0, 0, 0, 0),
+                AutoresizesSubviews = true,
+                TranslatesAutoresizingMaskIntoConstraints = false,
+                ContentView = new NSClipView
+                {
+                    AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
+                    AutoresizesSubviews = true
+                }
             };
-            scrollView.ContentView.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
-            scrollView.ContentView.AutoresizesSubviews = true;
+            scrollView.ContentView.AddSubview(_tableView);
             return scrollView;
         }
 

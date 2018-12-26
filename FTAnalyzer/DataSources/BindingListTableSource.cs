@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using AppKit;
@@ -46,20 +45,23 @@ namespace FTAnalyzer.DataSources
                 {
                     BackgroundColor = NSColor.Clear,
                     LineBreakMode = NSLineBreakMode.TruncatingTail,
-                    NeedsLayout = true,
                     Bordered = false,
                     Selectable = false,
                     Editable = false,
                     Alignment = alignment,
-                    AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
-                    TranslatesAutoresizingMaskIntoConstraints = false
-                };
+                    AutoresizingMask = NSViewResizingMask.MinYMargin | NSViewResizingMask.WidthSizable,
+                    AutoresizesSubviews = true,
+                    TranslatesAutoresizingMaskIntoConstraints = false,
+                    AllowsDefaultTighteningForTruncation = true,
+               };
                 if (tableView.AutosaveName == "PrintView")
                     textField.Font = NSFont.SystemFontOfSize(8);
                 cellView = new NSTableCellView
                 {
                     Identifier = CellIdentifier,
-                    TextField = textField
+                    TextField = textField,
+                    AutoresizesSubviews = true,
+                    AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable
                 };
                 cellView.AddSubview(textField);
                 var views = new NSMutableDictionary

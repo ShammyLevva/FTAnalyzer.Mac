@@ -68,12 +68,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="I18N" />
     <Reference Include="I18N.West" />
-    <Reference Include="GoogleAnalyticsTracker.Core">
-      <HintPath>..\packages\GoogleAnalyticsTracker.Core.4.6.7\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="GoogleAnalyticsTracker.Simple">
-      <HintPath>..\packages\GoogleAnalyticsTracker.Simple.4.6.7\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Simple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Security.AccessControl">
       <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\netstandard2.0\System.Security.AccessControl.dll</HintPath>
     </Reference>
@@ -85,6 +79,12 @@
     </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.8.11\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleAnalyticsTracker.Core">
+      <HintPath>..\packages\GoogleAnalyticsTracker.Core.4.6.8\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleAnalyticsTracker.Simple">
+      <HintPath>..\packages\GoogleAnalyticsTracker.Simple.4.6.8\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Simple.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
