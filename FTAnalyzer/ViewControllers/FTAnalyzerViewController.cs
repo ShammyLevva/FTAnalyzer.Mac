@@ -341,7 +341,7 @@ namespace FTAnalyzer
                     progressController.ProgressBar = 0;
                     progressController.ProgressText = "Loading Data Errors. Please Wait";
                     // Flatten the data error groups into a single list until filtering implemented.
-                    var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
+                    var errors = new SortableBindingList<DataError>(_familyTree.AllDataErrors);
                     dataErrorsViewController.RefreshDocumentView(errors);
                     progressController.ProgressBar = 25;
                     //duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using AppKit;
 using Foundation;
+using FTAnalyzer.Exports;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer
@@ -37,16 +38,16 @@ namespace FTAnalyzer
 
         public override bool OpenFile(NSApplication sender, string filename)
         {
+            _documentOpening = true;
             if (Document != null)
             {
-                _documentOpening = true;
                 Document.Close();
                 Document = null;
-                SetMenus(false);
-                ResetMainWindow();
-                CloseAllSubWindows();
-                _documentOpening = false;
             }
+            SetMenus(false);
+            ResetMainWindow();
+            CloseAllSubWindows();
+            _documentOpening = false;
             return false;
         }
 
@@ -62,6 +63,15 @@ namespace FTAnalyzer
         {
             PrintMenu.Enabled = enabled;
             PageSetupMenu.Enabled = enabled;
+            ExportIndividualsMenu.Enabled = enabled;
+            ExportFamiliesMenu.Enabled = enabled;
+            ExportFactsMenu.Enabled = enabled;
+            ExportLocationsMenu.Enabled = enabled;
+            ExportSourcesMenu.Enabled = enabled;
+            ExportDataErrorsMenu.Enabled = enabled;
+            ExportLooseBirthsMenu.Enabled = enabled;
+            ExportLooseDeathsMenu.Enabled = enabled;
+            ExportDNAGedcomMenu.Enabled = enabled;
         }
 
         public void ShowFacts(NSViewController factsViewController)
@@ -111,6 +121,8 @@ namespace FTAnalyzer
         {
             try
             {
+                if (Document == null)
+                    return;
                 ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
                 DataTable dt = convertor.ToDataTable(new List<IExportIndividual>(FamilyTree.Instance.AllIndividuals));
                 ExportToExcel.Export(dt);
@@ -125,6 +137,8 @@ namespace FTAnalyzer
         {
             try
             {
+                if (Document == null)
+                    return;
                 ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
                 DataTable dt = convertor.ToDataTable(new List<IDisplayFamily>(FamilyTree.Instance.AllDisplayFamilies));
                 ExportToExcel.Export(dt);
@@ -140,6 +154,8 @@ namespace FTAnalyzer
         {
             try
             {
+                if (Document == null)
+                    return;
                 ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
                 DataTable dt = convertor.ToDataTable(new List<ExportFact>(FamilyTree.Instance.AllExportFacts));
                 ExportToExcel.Export(dt);
@@ -153,17 +169,28 @@ namespace FTAnalyzer
 
         partial void ExportLocations(NSObject sender)
         {
-            throw new NotImplementedException();
+            if (Document == null)
+                return;
+            ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+            DataTable dt = convertor.ToDataTable(new List<IDisplayLocation>(FamilyTree.Instance.AllDisplayPlaces));
+            ExportToExcel.Export(dt);
+            Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLocationsEvent);
         }
 
         partial void ExportSources(NSObject sender)
         {
-            throw new NotImplementedException();
+            ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+            DataTable dt = convertor.ToDataTable(new List<IDisplaySource>(FamilyTree.Instance.AllSources));
+            ExportToExcel.Export(dt);
+            Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportSourcesEvent);
         }
 
         partial void ExportDataErrors(NSObject sender)
         {
-            throw new NotImplementedException();
+            ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+            DataTable dt = convertor.ToDataTable(new List<DataError>(FamilyTree.Instance.AllDataErrors));
+            ExportToExcel.Export(dt);
+            Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportDataErrorsEvent);
         }
 
         partial void ExportLooseBirths(NSObject sender)
@@ -188,7 +215,8 @@ namespace FTAnalyzer
 
         partial void ExportDNAGedcom(NSObject sender)
         {
-            throw new NotImplementedException();
+            if(Document != null)
+                DNA_GEDCOM.Export();
         }
 
         partial void PrintClicked(NSObject sender)

@@ -66,7 +66,8 @@ namespace FTAnalyzer.DataSources
                 {
                     { new NSString("textField"), textField }
                 };
-                cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat("H:|[textField]|", NSLayoutFormatOptions.AlignAllTop, null, views));
+                var width = tableColumn.Width;
+                cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat($"H:|[textField({width}@750)]|", NSLayoutFormatOptions.AlignAllTop, null, views));
                 cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat("V:|[textField]|", NSLayoutFormatOptions.AlignAllTop, null, views));
                 NSLayoutConstraint.ActivateConstraints(cellView.Constraints);
             }

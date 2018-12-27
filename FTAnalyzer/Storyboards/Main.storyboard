@@ -102,58 +102,58 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Export" id="IhQ-ne-Cbh">
                                     <items>
-                                        <menuItem title="Individuals to Excel" id="fjn-tB-xoG">
+                                        <menuItem title="Individuals to Excel" enabled="NO" id="fjn-tB-xoG">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="ExportIndividuals:" target="Voe-Tx-rLC" id="W0k-dr-fXh"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Families to Excel" id="7Od-Zz-VZN">
+                                        <menuItem title="Families to Excel" enabled="NO" id="7Od-Zz-VZN">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="ExportFamilies:" target="Voe-Tx-rLC" id="giQ-3m-IR5"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Facts to Excel" id="81d-ii-3rM">
+                                        <menuItem title="Facts to Excel" enabled="NO" id="81d-ii-3rM">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="ExportFacts:" target="Voe-Tx-rLC" id="c0E-3G-aH2"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Locations to Excel" id="HMh-d7-KP6">
+                                        <menuItem title="Locations to Excel" enabled="NO" id="HMh-d7-KP6">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="ExportLocations:" target="Voe-Tx-rLC" id="UDe-pY-Dze"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Sources to Excel" id="QWn-UZ-kDq">
+                                        <menuItem title="Sources to Excel" enabled="NO" id="QWn-UZ-kDq">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="ExportSources:" target="Voe-Tx-rLC" id="EJ2-XE-EFm"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="nW8-av-pyX"/>
-                                        <menuItem title="Data Errors to Excel" id="hSO-uk-2TQ">
+                                        <menuItem title="Data Errors to Excel" enabled="NO" id="hSO-uk-2TQ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="ExportDataErrors:" target="Voe-Tx-rLC" id="AWb-II-6yc"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="WIp-E2-5v0"/>
-                                        <menuItem title="Loose Births to Excel" id="VPj-uz-e2G">
+                                        <menuItem title="Loose Births to Excel" enabled="NO" id="VPj-uz-e2G">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="ExportLooseBirths:" target="Voe-Tx-rLC" id="JPC-W6-MK4"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Loose Deaths to Excel" id="P0q-aZ-Mk2">
+                                        <menuItem title="Loose Deaths to Excel" enabled="NO" id="P0q-aZ-Mk2">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="ExportLooseDeaths:" target="Voe-Tx-rLC" id="HhE-O6-Gk5"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="IPh-Xj-2Cp"/>
-                                        <menuItem title="Minimalist DNA GEDCOM Tree" id="KuJ-jx-hXL">
+                                        <menuItem title="Minimalist DNA GEDCOM Tree" enabled="NO" id="KuJ-jx-hXL">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="ExportDNAGedcom:" target="Voe-Tx-rLC" id="kOu-p5-0Q1"/>
@@ -492,6 +492,16 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
                     <connections>
+                        <outlet property="ExportDNAGedcom" destination="KuJ-jx-hXL" id="bOd-7T-UAA"/>
+                        <outlet property="ExportDNAGedcomMenu" destination="KuJ-jx-hXL" id="WjP-0W-0bW"/>
+                        <outlet property="ExportDataErrorsMenu" destination="hSO-uk-2TQ" id="6nT-Kn-84i"/>
+                        <outlet property="ExportFactsMenu" destination="81d-ii-3rM" id="zHe-Q4-3G9"/>
+                        <outlet property="ExportFamiliesMenu" destination="7Od-Zz-VZN" id="npP-cN-3Uz"/>
+                        <outlet property="ExportIndividualsMenu" destination="fjn-tB-xoG" id="vMh-yH-KwS"/>
+                        <outlet property="ExportLocationsMenu" destination="HMh-d7-KP6" id="6kw-SW-3aB"/>
+                        <outlet property="ExportLooseBirthsMenu" destination="VPj-uz-e2G" id="Upq-jJ-HK3"/>
+                        <outlet property="ExportLooseDeathsMenu" destination="P0q-aZ-Mk2" id="1NS-KX-zK0"/>
+                        <outlet property="ExportSourcesMenu" destination="QWn-UZ-kDq" id="V6S-jH-VhP"/>
                         <outlet property="PageSetupMenu" destination="qIS-W8-SiK" id="dOE-wZ-p97"/>
                         <outlet property="PrintMenu" destination="aTl-1u-JFS" id="jDS-Su-G8R"/>
                     </connections>

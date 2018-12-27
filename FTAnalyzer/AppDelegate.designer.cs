@@ -12,6 +12,33 @@ namespace FTAnalyzer
 	partial class AppDelegate
 	{
 		[Outlet]
+		AppKit.NSMenuItem ExportDataErrorsMenu { get; set; }
+
+		[Outlet]
+		AppKit.NSMenuItem ExportDNAGedcomMenu { get; set; }
+
+		[Outlet]
+		AppKit.NSMenuItem ExportFactsMenu { get; set; }
+
+		[Outlet]
+		AppKit.NSMenuItem ExportFamiliesMenu { get; set; }
+
+		[Outlet]
+		AppKit.NSMenuItem ExportIndividualsMenu { get; set; }
+
+		[Outlet]
+		AppKit.NSMenuItem ExportLocationsMenu { get; set; }
+
+		[Outlet]
+		AppKit.NSMenuItem ExportLooseBirthsMenu { get; set; }
+
+		[Outlet]
+		AppKit.NSMenuItem ExportLooseDeathsMenu { get; set; }
+
+		[Outlet]
+		AppKit.NSMenuItem ExportSourcesMenu { get; set; }
+
+		[Outlet]
 		AppKit.NSMenuItem PageSetupMenu { get; set; }
 
 		[Outlet]
@@ -81,6 +108,51 @@ namespace FTAnalyzer
 			if (PrintMenu != null) {
 				PrintMenu.Dispose ();
 				PrintMenu = null;
+			}
+
+			if (ExportIndividualsMenu != null) {
+				ExportIndividualsMenu.Dispose ();
+				ExportIndividualsMenu = null;
+			}
+
+			if (ExportFamiliesMenu != null) {
+				ExportFamiliesMenu.Dispose ();
+				ExportFamiliesMenu = null;
+			}
+
+			if (ExportFactsMenu != null) {
+				ExportFactsMenu.Dispose ();
+				ExportFactsMenu = null;
+			}
+
+			if (ExportLocationsMenu != null) {
+				ExportLocationsMenu.Dispose ();
+				ExportLocationsMenu = null;
+			}
+
+			if (ExportSourcesMenu != null) {
+				ExportSourcesMenu.Dispose ();
+				ExportSourcesMenu = null;
+			}
+
+			if (ExportDataErrorsMenu != null) {
+				ExportDataErrorsMenu.Dispose ();
+				ExportDataErrorsMenu = null;
+			}
+
+			if (ExportLooseBirthsMenu != null) {
+				ExportLooseBirthsMenu.Dispose ();
+				ExportLooseBirthsMenu = null;
+			}
+
+			if (ExportLooseDeathsMenu != null) {
+				ExportLooseDeathsMenu.Dispose ();
+				ExportLooseDeathsMenu = null;
+			}
+
+			if (ExportDNAGedcomMenu != null) {
+				ExportDNAGedcomMenu.Dispose ();
+				ExportDNAGedcomMenu = null;
 			}
 		}
 	}
