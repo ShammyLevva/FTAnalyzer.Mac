@@ -86,6 +86,7 @@
     <Reference Include="GoogleAnalyticsTracker.Simple">
       <HintPath>..\packages\GoogleAnalyticsTracker.Simple.4.6.8\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Simple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -240,6 +241,7 @@
     <Compile Include="Views\TextPrintView.designer.cs">
       <DependentUpon>TextPrintView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\ListtoDataTableConvertor.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />

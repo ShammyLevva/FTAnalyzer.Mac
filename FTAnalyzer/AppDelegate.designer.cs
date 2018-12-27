@@ -17,6 +17,33 @@ namespace FTAnalyzer
 		[Outlet]
 		AppKit.NSMenuItem PrintMenu { get; set; }
 
+		[Action ("ExportDataErrors:")]
+		partial void ExportDataErrors (Foundation.NSObject sender);
+
+		[Action ("ExportDNAGedcom:")]
+		partial void ExportDNAGedcom (Foundation.NSObject sender);
+
+		[Action ("ExportFacts:")]
+		partial void ExportFacts (Foundation.NSObject sender);
+
+		[Action ("ExportFamilies:")]
+		partial void ExportFamilies (Foundation.NSObject sender);
+
+		[Action ("ExportIndividuals:")]
+		partial void ExportIndividuals (Foundation.NSObject sender);
+
+		[Action ("ExportLocations:")]
+		partial void ExportLocations (Foundation.NSObject sender);
+
+		[Action ("ExportLooseBirths:")]
+		partial void ExportLooseBirths (Foundation.NSObject sender);
+
+		[Action ("ExportLooseDeaths:")]
+		partial void ExportLooseDeaths (Foundation.NSObject sender);
+
+		[Action ("ExportSources:")]
+		partial void ExportSources (Foundation.NSObject sender);
+
 		[Action ("Options:")]
 		partial void Options (Foundation.NSObject sender);
 

@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Web;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
-using FTAnalyzer.ViewControllers;
 
 namespace FTAnalyzer
 {
@@ -103,6 +105,90 @@ namespace FTAnalyzer
             }
             catch (Exception e) 
                 { Console.WriteLine(e.Message); }
+        }
+
+        partial void ExportIndividuals(NSObject sender)
+        {
+            try
+            {
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<IExportIndividual>(FamilyTree.Instance.AllIndividuals));
+                ExportToExcel.Export(dt);
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportIndEvent);
+            } catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Individuals: {e.Message}");
+            }
+        }
+
+        partial void ExportFamilies(NSObject sender)
+        {
+            try
+            {
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<IDisplayFamily>(FamilyTree.Instance.AllDisplayFamilies));
+                ExportToExcel.Export(dt);
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportFamEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Individuals: {e.Message}");
+            }
+        }
+
+        partial void ExportFacts(NSObject sender)
+        {
+            try
+            {
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<ExportFact>(FamilyTree.Instance.AllExportFacts));
+                ExportToExcel.Export(dt);
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportFactsEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Individuals: {e.Message}");
+            }
+        }
+
+        partial void ExportLocations(NSObject sender)
+        {
+            throw new NotImplementedException();
+        }
+
+        partial void ExportSources(NSObject sender)
+        {
+            throw new NotImplementedException();
+        }
+
+        partial void ExportDataErrors(NSObject sender)
+        {
+            throw new NotImplementedException();
+        }
+
+        partial void ExportLooseBirths(NSObject sender)
+        {
+            ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+            List<IDisplayLooseBirth> list = FamilyTree.Instance.LooseBirths().ToList();
+            list.Sort(new LooseBirthComparer());
+            DataTable dt = convertor.ToDataTable(list);
+            ExportToExcel.Export(dt);
+            Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLooseBirthsEvent);
+        }
+
+        partial void ExportLooseDeaths(NSObject sender)
+        {
+            ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+            List<IDisplayLooseDeath> list = FamilyTree.Instance.LooseDeaths().ToList();
+            list.Sort(new LooseDeathComparer());
+            DataTable dt = convertor.ToDataTable(list);
+            ExportToExcel.Export(dt);
+            Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLooseDeathsEvent);
+        }
+
+        partial void ExportDNAGedcom(NSObject sender)
+        {
+            throw new NotImplementedException();
         }
 
         partial void PrintClicked(NSObject sender)

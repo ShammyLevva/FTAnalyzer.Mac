@@ -98,6 +98,70 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Export" id="eiF-za-1TK">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Export" id="IhQ-ne-Cbh">
+                                    <items>
+                                        <menuItem title="Individuals to Excel" id="fjn-tB-xoG">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportIndividuals:" target="Voe-Tx-rLC" id="W0k-dr-fXh"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Families to Excel" id="7Od-Zz-VZN">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportFamilies:" target="Voe-Tx-rLC" id="giQ-3m-IR5"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Facts to Excel" id="81d-ii-3rM">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportFacts:" target="Voe-Tx-rLC" id="c0E-3G-aH2"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Locations to Excel" id="HMh-d7-KP6">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportLocations:" target="Voe-Tx-rLC" id="UDe-pY-Dze"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Sources to Excel" id="QWn-UZ-kDq">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportSources:" target="Voe-Tx-rLC" id="EJ2-XE-EFm"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="nW8-av-pyX"/>
+                                        <menuItem title="Data Errors to Excel" id="hSO-uk-2TQ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportDataErrors:" target="Voe-Tx-rLC" id="AWb-II-6yc"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="WIp-E2-5v0"/>
+                                        <menuItem title="Loose Births to Excel" id="VPj-uz-e2G">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportLooseBirths:" target="Voe-Tx-rLC" id="JPC-W6-MK4"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Loose Deaths to Excel" id="P0q-aZ-Mk2">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportLooseDeaths:" target="Voe-Tx-rLC" id="HhE-O6-Gk5"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="IPh-Xj-2Cp"/>
+                                        <menuItem title="Minimalist DNA GEDCOM Tree" id="KuJ-jx-hXL">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportDNAGedcom:" target="Voe-Tx-rLC" id="kOu-p5-0Q1"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Format" hidden="YES" enabled="NO" id="jxT-CU-nIS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Format" id="GEO-Iw-cKr">
@@ -433,6 +497,13 @@
                     </connections>
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="WR6-GA-mNe">
+                    <items>
+                        <menuItem title="Set as Root Person" id="Lta-2x-VXh" userLabel="Set as Root Person">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="-1105" y="-2222"/>
         </scene>

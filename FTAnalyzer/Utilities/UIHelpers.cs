@@ -31,5 +31,6 @@ namespace FTAnalyzer
         }
         public static int Yes => 1000;
         public static int No => 1001;
+        public static int Cancel => (int) NSModalResponse.Cancel;
     }
 }

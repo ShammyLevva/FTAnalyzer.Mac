@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 using AppKit;
@@ -102,6 +103,23 @@ namespace FTAnalyzer.DataSources
                 Sort(tbSort[0].Key, tbSort[0].Ascending);
                 tableView.ReloadData();
             }
+        }
+
+        public DataTable GetDataTable()
+        {
+            DataTable dataTable = new DataTable(typeof(T).Name);
+            foreach (string fieldName in _fieldNames)
+                dataTable.Columns.Add(fieldName);
+            foreach (T item in _bindingList)
+            {
+                var values = new object[dataTable.Columns.Count];
+                for (int i = 0; i < _properties.Length; i++)
+                {
+                    values[i] = _properties[i].GetValue(item, null);
+                }
+                dataTable.Rows.Add(values);
+            }
+            return dataTable;
         }
     }
 }
