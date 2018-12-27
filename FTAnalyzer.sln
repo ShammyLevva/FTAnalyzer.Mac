@@ -1,6 +1,6 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTAnalyzer", "FTAnalyzer\FTAnalyzer.csproj", "{EE106C3A-38A4-4962-A747-8D5D17AE3039}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FTAnalyzer.Shared", "..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.shproj", "{89621EBE-2416-4E13-BF69-F1C145908518}"
@@ -65,7 +65,7 @@ Global
 		$6.BracePositions = SemiExpanded
 		$6.FormatOnPaste = True
 		$6.scope = text/x-json
-		description = Analyzer the depths of your family tree with a native Mac OS App.
+		description = Analyse the depths of your family tree with a native Mac OS App.
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4DA751DE-22B5-46EB-AB21-449C1F46DD6B} = {22E07357-4110-408A-A878-9D1F33440731}
