@@ -27,7 +27,7 @@ namespace FTAnalyzer
             Window.MakeKeyAndOrderFront(Self);
             Window.Title = $"FTAnalyzer {Version} - Family Tree Analyzer";
             Window.Delegate = new MainWindowDelegate();
-            SetMenus(false);
+            ResetDocument();
             CheckWebVersion();
         }
 
@@ -36,8 +36,13 @@ namespace FTAnalyzer
             return !_documentOpening;
         }
 
-        public override bool OpenFile(NSApplication sender, string filename)
+        public void ResetDocument()
         {
+            if (!NSThread.IsMain)
+            {
+                InvokeOnMainThread(ResetDocument);
+                return;
+            }
             _documentOpening = true;
             if (Document != null)
             {
@@ -48,7 +53,6 @@ namespace FTAnalyzer
             ResetMainWindow();
             CloseAllSubWindows();
             _documentOpening = false;
-            return false;
         }
 
         void ResetMainWindow()

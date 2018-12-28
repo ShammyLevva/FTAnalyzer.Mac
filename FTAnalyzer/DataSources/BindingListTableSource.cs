@@ -24,10 +24,7 @@ namespace FTAnalyzer.DataSources
 
         public override nint GetRowCount(NSTableView tableView) => _bindingList.Count;
 
-        public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
-        {
-            return GetFTAnalyzerGridCell(tableView, tableColumn, row);
-        }
+        public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row) => GetFTAnalyzerGridCell(tableView, tableColumn, row);
 
         NSView GetFTAnalyzerGridCell(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
@@ -36,10 +33,13 @@ namespace FTAnalyzer.DataSources
                 return null;
             var property = _properties[index];
             NSTextAlignment alignment = NSTextAlignment.Left;
+            var width = tableColumn.Width;
             ColumnDetail[] x = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
             if (x?.Length == 1)
+            {
                 alignment = x[0].Alignment;
-
+                width = x[0].ColumnWidth;
+            }
             if (!(tableView.MakeView(CellIdentifier, this) is NSTableCellView cellView))
             {
                 var textField = new NSTextField
@@ -66,7 +66,6 @@ namespace FTAnalyzer.DataSources
                 {
                     { new NSString("textField"), textField }
                 };
-                var width = tableColumn.Width;
                 cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat($"H:|[textField({width}@750)]|", NSLayoutFormatOptions.AlignAllTop, null, views));
                 cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat("V:|[textField]|", NSLayoutFormatOptions.AlignAllTop, null, views));
                 NSLayoutConstraint.ActivateConstraints(cellView.Constraints);

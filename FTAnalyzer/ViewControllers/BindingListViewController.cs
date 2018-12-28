@@ -88,6 +88,7 @@ namespace FTAnalyzer.ViewControllers
                 {
                     Identifier = property.Name,
                     MinWidth = width,
+                    Width = width,
                     SortDescriptorPrototype = new NSSortDescriptor(property.Name, true), 
                     Editable = false,
                     Hidden = false,
