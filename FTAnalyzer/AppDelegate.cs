@@ -51,7 +51,7 @@ namespace FTAnalyzer
             return false;
         }
 
-        private void ResetMainWindow()
+        void ResetMainWindow()
         {
             Window.MakeKeyAndOrderFront(Self);
             var controller = Window.ContentViewController as NSTabViewController;
