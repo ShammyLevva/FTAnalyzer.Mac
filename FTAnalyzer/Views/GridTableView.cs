@@ -38,7 +38,6 @@ namespace FTAnalyzer.Views
             var emptyMenu = new NSMenu();
             emptyMenu.PopUpMenu(null, new CGPoint(0, 0), this); 
             return emptyMenu;
-
         }
     }
 }
