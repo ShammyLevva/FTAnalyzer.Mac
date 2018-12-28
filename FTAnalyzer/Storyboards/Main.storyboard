@@ -884,7 +884,7 @@
         <!--MainTabController-->
         <scene sceneID="pXS-AW-A6S">
             <objects>
-                <tabViewController title="MainTabController" showSeguePresentationStyle="single" selectedTabViewItemIndex="0" id="kye-gt-91O" customClass="FTAnalyzerTabViewController" sceneMemberID="viewController">
+                <tabViewController title="MainTabController" showSeguePresentationStyle="single" selectedTabViewItemIndex="0" id="kye-gt-91O" customClass="FTAnalyzerViewController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Gedcom Stats" id="5KQ-md-UQl"/>
                         <tabViewItem label="Main Lists" id="nnU-Eq-ulZ"/>
@@ -928,14 +928,18 @@
                         </connections>
                     </tabView>
                     <connections>
+                        <outlet property="SetRootPersonMenu" destination="Lta-2x-VXh" id="ltF-Fr-WEF"/>
                         <outlet property="tabView" destination="AZ8-HA-aKK" id="MVt-4g-Cue"/>
                     </connections>
                 </tabViewController>
                 <customObject id="PPL-jb-iDV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <menu title="Update Root" showsStateColumn="NO" id="WR6-GA-mNe">
+                <menu title="Update Root" id="WR6-GA-mNe">
                     <items>
                         <menuItem title="Set as Root Person" id="Lta-2x-VXh" userLabel="Set as Root Person">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="SetRootPersonClicked:" target="CGu-hu-FSh" id="kxJ-MK-H2o"/>
+                            </connections>
                         </menuItem>
                     </items>
                 </menu>

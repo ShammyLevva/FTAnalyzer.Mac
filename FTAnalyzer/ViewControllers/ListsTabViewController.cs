@@ -2,6 +2,7 @@
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
+using FTAnalyzer.ViewControllers;
 
 namespace FTAnalyzer
 {
@@ -13,9 +14,29 @@ namespace FTAnalyzer
         {
         }
 
+        partial void SetRootPersonClicked(NSObject sender)
+        {
+            if (ChildViewControllers[0] is BindingListViewController<IDisplayIndividual> controller)
+            {
+                Individual ind = controller.GetSelectedPerson();
+                var outputText = new Progress<string>(App.DocumentViewController.AppendMessage);
+                FamilyTree.Instance.UpdateRootIndividual(ind.IndividualID, null, outputText);
+                if (ParentViewController is FTAnalyzerViewController FTAnalyzer)
+                {
+                    App.CloseAllSubWindows();
+                    FTAnalyzer.RefreshLists();
+                    UIHelpers.ShowMessage($"Root Person changed to {ind.Name}");
+                }
+                else
+                    UIHelpers.ShowMessage("Problem refreshing lists after setting root person");
+            }
+        }
+
         [Export("tabView:didSelectTabViewItem:")]
         public override void DidSelect(NSTabView tabView, NSTabViewItem item)
         {
+            if(SetRootPersonMenu != null)
+                SetRootPersonMenu.Enabled = false;
             if (App.Document == null)
                 return; // don't bother if we've not loaded a document yet
             switch (Title)
@@ -40,6 +61,8 @@ namespace FTAnalyzer
                 case "Individuals":
                     if(ChildViewControllers.Length > 0)
                         App.CurrentViewController = ChildViewControllers[0];
+                    if (SetRootPersonMenu != null)
+                        SetRootPersonMenu.Enabled = true; // only enable on Individuals tab
                     Analytics.TrackAction(Analytics.MainListsAction, Analytics.IndividualsTabEvent);
                     break;
                 case "Families":

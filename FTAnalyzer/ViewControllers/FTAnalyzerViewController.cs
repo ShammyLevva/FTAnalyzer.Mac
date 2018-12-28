@@ -108,10 +108,20 @@ namespace FTAnalyzer
             documentViewController.ClearAllProgress();
             App.DocumentViewController = documentViewController;
             App.CurrentViewController = documentViewController;
-
             SetupMainListsTabController();
             SetupDataErrorsTabController();
             SetupLocationsTabController();
+        }
+
+        public void RefreshLists()
+        {
+            MainListsLoaded = false; // forces refresh on LoadMainLists
+            LoadMainLists(ProgressController);
+            if(ErrorsAndFixesLoaded)
+            {
+                ErrorsAndFixesLoaded = false;
+                LoadErrorsAndFixes(ProgressController);
+            }
         }
 
         void SetupMainListsTabController()
@@ -132,7 +142,6 @@ namespace FTAnalyzer
             mainListsViewController.AddChildViewController(factsViewController);
 
             individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
-            individualsViewController.SetRootPersonClicked += SetRootPersonClicked;
             familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
             occupationsViewController.OccupationRowClicked += OccupationRowClicked;
             sourcesViewController.SourceFactRowClicked += SourcesFactRowClicked;
@@ -182,17 +191,6 @@ namespace FTAnalyzer
             subregionsViewController.LocationRowClicked += LocationRowClicked;
             addressesViewController.LocationRowClicked += LocationRowClicked;
             placesViewController.LocationRowClicked += LocationRowClicked;
-        }
-
-        void SetRootPersonClicked(Individual individual)
-        {
-            InvokeOnMainThread(() =>
-            {
-                // need to check that user right clicked and that they are happy to proceed with setting this root person before calling update root individual
-                //FamilyTree.Instance.UpdateRootIndividual(individual.IndividualID, null, null);
-                //Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
-            });
-
         }
 
         void IndividualsFactRowClicked(Individual individual)

@@ -52,7 +52,6 @@ namespace FTAnalyzer.ViewControllers
                 AutosaveTableColumns = true,
                 Target = Self,
                 DoubleAction = new Selector("ViewDetailsSelector"),
-                Action = new Selector("SetRootPersonSelector:")
             };
             AddTableColumns(_tableView);
             NSProcessInfo info = new NSProcessInfo();
@@ -125,14 +124,8 @@ namespace FTAnalyzer.ViewControllers
             }
         }
 
-        [Export("SetRootPersonSelector")]
-        public void SetRootPersonSelector()
+        public Individual GetSelectedPerson()
         {
-            if (!NSThread.IsMain)
-            {
-                InvokeOnMainThread(SetRootPersonSelector);
-                return;
-            }
             NSTableColumn column = GetColumnID("IndividualID");
             if (column != null)
             {
@@ -140,10 +133,10 @@ namespace FTAnalyzer.ViewControllers
                 {
                     string indID = cell.TextField.StringValue;
                     Individual ind = FamilyTree.Instance.GetIndividual(indID);
-                    RaiseSetRootPersonClicked(ind);
-                    return;
+                    return ind;
                 }
             }
+            return null;
         }
 
         [Export("ViewDetailsSelector")]
