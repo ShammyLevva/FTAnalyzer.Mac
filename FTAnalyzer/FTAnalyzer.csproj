@@ -228,10 +228,6 @@
     <Compile Include="ViewControllers\Interfaces\IPrintViewController.cs" />
     <Compile Include="Views\TablePrintView.cs" />
     <Compile Include="ViewControllers\TablePrintingViewController.cs" />
-    <Compile Include="Storyboards\PrintPanelViewController.cs" />
-    <Compile Include="Storyboards\PrintPanelViewController.designer.cs">
-      <DependentUpon>PrintPanelViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utilities\ExtensionMethods.cs" />
     <Compile Include="ViewControllers\FactsWindowViewController.cs" />
     <Compile Include="ViewControllers\FactsWindowViewController.designer.cs">
@@ -242,6 +238,7 @@
       <DependentUpon>TextPrintView.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\ListtoDataTableConvertor.cs" />
+    <Compile Include="Views\GridTableView.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />

@@ -6,7 +6,7 @@ using CoreGraphics;
 using Foundation;
 using FTAnalyzer.DataSources;
 using FTAnalyzer.Utilities;
-using ObjCRuntime;
+using FTAnalyzer.Views;
 
 namespace FTAnalyzer.ViewControllers
 {
@@ -31,28 +31,7 @@ namespace FTAnalyzer.ViewControllers
 
         NSScrollView SetupTableView()
         {
-            _tableView = new NSTableView
-            {
-                Identifier = Title,
-                RowSizeStyle = NSTableViewRowSizeStyle.Default,
-                Enabled = true,
-                UsesAlternatingRowBackgroundColors = true,
-                AutoresizesSubviews = true,
-                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
-                WantsLayer = true,
-                Layer = NewLayer(),
-                Bounds = new CGRect(0, 0, 0, 0),
-                AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
-                AllowsMultipleSelection = false,
-                AllowsColumnResizing = true,
-                AllowsColumnSelection = false,
-                AllowsColumnReordering = false,
-                SortDescriptors = new NSSortDescriptor[] { },
-                AutosaveName = Title,
-                AutosaveTableColumns = true,
-                Target = Self,
-                DoubleAction = new Selector("ViewDetailsSelector"),
-            };
+            _tableView = new GridTableView(Title, Self);
             AddTableColumns(_tableView);
             NSProcessInfo info = new NSProcessInfo();
             if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
@@ -64,15 +43,13 @@ namespace FTAnalyzer.ViewControllers
                 HasHorizontalScroller = true,
                 AutohidesScrollers = true,
                 WantsLayer = true,
-                Layer = NewLayer(),
+                Layer = new CALayer { Bounds = new CGRect(0, 0, 0, 0) },
                 Bounds = new CGRect(0, 0, 0, 0)
             };
             scrollView.ContentView.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
             scrollView.ContentView.AutoresizesSubviews = true;
             return scrollView;
         }
-
-        static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
@@ -92,17 +69,14 @@ namespace FTAnalyzer.ViewControllers
             _tableView.ReloadData();
         }
 
-        internal CGSize GetViewSize()
-        {
-            return new CGSize(_tableView.Frame.Width, _tableView.Frame.Height + _tableView.HeaderView.Frame.Height);
-        }
+        internal CGSize GetViewSize() => new CGSize(_tableView.Frame.Width, _tableView.Frame.Height + _tableView.HeaderView.Frame.Height);
 
         internal void AddTableColumns(NSTableView view)
         {
             var properties = GetGenericType().GetProperties();
             foreach (var property in properties)
             {
-                float width = 100;
+                float width = 40;
                 string columnTitle = property.Name;
                 ColumnDetail[] columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
                 if (columnDetail?.Length == 1)

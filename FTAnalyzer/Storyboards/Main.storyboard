@@ -928,7 +928,7 @@
                         </connections>
                     </tabView>
                     <connections>
-                        <outlet property="SetRootPersonMenu" destination="Lta-2x-VXh" id="ltF-Fr-WEF"/>
+                        <outlet property="SetRootPersonMenu" destination="WR6-GA-mNe" id="6GV-uW-wbe"/>
                         <outlet property="tabView" destination="AZ8-HA-aKK" id="MVt-4g-Cue"/>
                     </connections>
                 </tabViewController>

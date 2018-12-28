@@ -13,13 +13,21 @@ namespace FTAnalyzer
 	partial class ListsTabViewController
 	{
 		[Outlet]
-		AppKit.NSMenuItem SetRootPersonMenu { get; set; }
+		AppKit.NSMenu SetRootPersonMenu { get; set; }
+
+		[Outlet]
+		AppKit.NSMenuItem SetRootPersonMenuItem { get; set; }
 
 		[Action ("SetRootPersonClicked:")]
 		partial void SetRootPersonClicked (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (SetRootPersonMenuItem != null) {
+				SetRootPersonMenuItem.Dispose ();
+				SetRootPersonMenuItem = null;
+			}
+
 			if (SetRootPersonMenu != null) {
 				SetRootPersonMenu.Dispose ();
 				SetRootPersonMenu = null;
