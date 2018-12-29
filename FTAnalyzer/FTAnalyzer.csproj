@@ -64,7 +64,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Mac" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="I18N" />
     <Reference Include="I18N.West" />
@@ -81,12 +80,10 @@
       <HintPath>..\packages\GoogleAnalyticsTracker.Simple.4.6.8\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Simple.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.8.11\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
-    </Reference>
     <Reference Include="System.Security.AccessControl">
       <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\netstandard2.0\System.Security.AccessControl.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
