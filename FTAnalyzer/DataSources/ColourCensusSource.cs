@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AppKit;
 using FTAnalyzer.Utilities;
+using FTAnalyzer.ViewControllers;
 using static FTAnalyzer.ColourValues;
 
 namespace FTAnalyzer.DataSources
@@ -45,30 +46,17 @@ namespace FTAnalyzer.DataSources
             styles.Add(8, knownMissing);
         }
 
-        void SetTextField(NSTextField view, NSTableColumn tableColumn, nint row)
-        {
-            // Setup view based on the column selected
-            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
-            if (row >= 0)
-            {
-                var item = _bindingList[(int)row];
-                var propertyValue = _properties[index].GetValue(item);
-                if (index >= StartIndex && index <= EndIndex)
-                    view.IntValue = (int)propertyValue;
-                else
-                    view.StringValue = propertyValue == null ? string.Empty : propertyValue.ToString();
-            }
-            else
-                view.StringValue = string.Empty;
-        }
-
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
+            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
+            Console.WriteLine($"Index: {index}, Column: {tableColumn.Title}, Hidden: {tableColumn.Hidden}, Header: {tableColumn.HeaderCell.Title}");
+            if ((index >= ColourCensusViewController.CensusColumnsStart && index < StartIndex) ||
+                (index > EndIndex && index <= ColourCensusViewController.CensusColumnsEnd)) // if we are asking for columns that aren't part of this country's Census return null
+                return null;
             NSTableCellView cellView = GetFTAnalyzerGridCell(tableView, tableColumn, row);
             SetTextField(cellView.TextField, tableColumn, row);
             var textField = cellView.TextField;
             
-            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
             var c1939index = Array.IndexOf(_fieldNames, "C1939");
             if (index >= StartIndex && index <= EndIndex)
             {
@@ -84,8 +72,8 @@ namespace FTAnalyzer.DataSources
                         textField.TextColor = styles[(int)CensusColour.NO_CENSUS];
                         textField.ToolTip = index == c1939index
                             ? CensusProvider.Equals("Find My Past")
-                            ? $"No census information entered. {SearchTooltip}"
-                                : $"No census information entered. No search on {CensusProvider} available."
+                                ? $"No National Register information entered. {SearchTooltip}"
+                                : $"No National Register information entered. No search on {CensusProvider} available."
                             : $"No census information entered. {SearchTooltip}";
                         break;
                     case (int)CensusColour.CENSUS_PRESENT_LC_MISSING:
@@ -126,6 +114,23 @@ namespace FTAnalyzer.DataSources
                 }
             }
             return cellView;
+        }
+
+        void SetTextField(NSTextField view, NSTableColumn tableColumn, nint row)
+        {
+            // Setup view based on the column selected
+            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
+            if (row >= 0)
+            {
+                var item = _bindingList[(int)row];
+                var propertyValue = _properties[index].GetValue(item);
+                if (index >= ColourCensusViewController.CensusColumnsStart && index <= ColourCensusViewController.CensusColumnsEnd)
+                    view.IntValue = (int)propertyValue;
+                else
+                    view.StringValue = propertyValue == null ? string.Empty : propertyValue.ToString();
+            }
+            else
+                view.StringValue = string.Empty;
         }
     }
 }
