@@ -48,6 +48,7 @@ namespace FTAnalyzer.ViewControllers
             };
             scrollView.ContentView.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
             scrollView.ContentView.AutoresizesSubviews = true;
+            scrollView.ScrollRectToVisible(new CGRect(0, 0, 0, 0));
             return scrollView;
         }
 

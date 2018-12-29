@@ -57,7 +57,6 @@ namespace FTAnalyzer.ViewControllers
 
         void DisplayColourCensus(string country, NSObject sender)
         {
-            Console.WriteLine(sender);
             var storyboard = NSStoryboard.FromName("ColourCensus", null);
             var ColourCensusWindow = storyboard.InstantiateControllerWithIdentifier("ColourCensusWindow") as NSWindowController;
             RelationTypes relationTypes = new RelationTypes();

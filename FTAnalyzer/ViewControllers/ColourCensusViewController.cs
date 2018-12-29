@@ -37,7 +37,8 @@ namespace FTAnalyzer.ViewControllers
             }
             CountText = $"Count: {list.Count}";
             UpdateTooltip();
-            _tableView.AutosaveName = "ColourCensusView";
+            _tableView.AutosaveName = string.Empty; // don't autosave as screws up different countries
+            _tableView.AutosaveTableColumns = false;
             _tableView.Source = new ColourCensusSource(Country, startColumnIndex, endColumnIndex, CensusProvider, list);
             _tableView.ReloadData();
             _tableView.SelectionHighlightStyle = NSTableViewSelectionHighlightStyle.None;
@@ -46,13 +47,6 @@ namespace FTAnalyzer.ViewControllers
 
         void SetColumns()
         {
-            // make all census columns hidden
-            for (int index = CensusColumnsStart; index <= CensusColumnsEnd; index++)
-            {
-                NSTableColumn column = _tableView.TableColumns().GetValue(index) as NSTableColumn;
-                column.Hidden = true;
-            }
-
             if (Country.Equals(Countries.UNITED_STATES))
             {
                 startColumnIndex = GetColumnIndex("US1790");
@@ -78,16 +72,21 @@ namespace FTAnalyzer.ViewControllers
                 // cbFilter.Items[5] = "Outside UK (Dark Grey)";
             }
             else
-            {
                 Console.WriteLine("We have a problem.");
-            }
-            //// show those columns that should be visible for the country in use
-            for (int index = startColumnIndex; index <= endColumnIndex; index++)
+
+            for (int index = CensusColumnsStart; index <= CensusColumnsEnd; index++)
             {
                 NSTableColumn column = _tableView.TableColumns().GetValue(index) as NSTableColumn;
-                column.Hidden = false;
-                column.MaxWidth = 40;
-                column.HeaderCell.Alignment = NSTextAlignment.Center;
+                if (index >= startColumnIndex && index <= endColumnIndex)
+                {
+                    column.Hidden = false;
+                    column.Width = 40;
+                    column.MinWidth = 40;
+                    column.MaxWidth = 40;
+                    column.HeaderCell.Alignment = NSTextAlignment.Center;
+                }
+                else
+                    column.Hidden = true;
             }
         }
 
