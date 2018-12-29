@@ -45,37 +45,10 @@ namespace FTAnalyzer.DataSources
             styles.Add(8, knownMissing);
         }
 
-        NSTextField GetTextField(NSTableView tableView, NSTableColumn tableColumn, nint row)
+        void SetTextField(NSTextField view, NSTableColumn tableColumn, nint row)
         {
-            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
-            if (index < 0 || index > _properties.Length)
-                return null;
-            if (index >= StartIndex && index <= EndIndex)
-                Console.WriteLine("Colour Column.");
-            var property = _properties[index];
-            NSTextAlignment alignment = NSTextAlignment.Left;
-            ColumnDetail[] x = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
-            if (x?.Length == 1)
-                alignment = x[0].Alignment;
-
-            if (!(tableView.MakeView(CellIdentifier, this) is NSTextField view))
-            {
-                view = new NSTextField
-                {
-                    Identifier = CellIdentifier,
-                    BackgroundColor = NSColor.Clear,
-                    LineBreakMode = NSLineBreakMode.TruncatingTail,
-                    Bordered = false,
-                    Selectable = false,
-                    Editable = false,
-                    Alignment = alignment,
-                    AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
-                    TranslatesAutoresizingMaskIntoConstraints = false
-                };
-                if (tableView.AutosaveName == "PrintView")
-                    view.Font = NSFont.SystemFontOfSize(8);
-            }
             // Setup view based on the column selected
+            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
             if (row >= 0)
             {
                 var item = _bindingList[(int)row];
@@ -87,12 +60,13 @@ namespace FTAnalyzer.DataSources
             }
             else
                 view.StringValue = string.Empty;
-            return view;
         }
 
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
-            NSTextField textField = GetTextField(tableView, tableColumn, row) as NSTextField;
+            NSTableCellView cellView = GetFTAnalyzerGridCell(tableView, tableColumn, row);
+            SetTextField(cellView.TextField, tableColumn, row);
+            var textField = cellView.TextField;
             
             var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
             var c1939index = Array.IndexOf(_fieldNames, "C1939");
@@ -151,7 +125,7 @@ namespace FTAnalyzer.DataSources
                         break;
                 }
             }
-            return textField;
+            return cellView;
         }
     }
 }

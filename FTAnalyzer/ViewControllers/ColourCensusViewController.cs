@@ -21,7 +21,7 @@ namespace FTAnalyzer.ViewControllers
         {
         }
 
-        public ColourCensusViewController(string country, int providerIndex) : base(string.Empty, string.Empty)
+        public ColourCensusViewController(string country, int providerIndex) : base("Census Research Suggestions", string.Empty)
         {
             Country = country;
             SetColumns();

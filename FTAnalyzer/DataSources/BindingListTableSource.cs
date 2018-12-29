@@ -24,9 +24,15 @@ namespace FTAnalyzer.DataSources
 
         public override nint GetRowCount(NSTableView tableView) => _bindingList.Count;
 
-        public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row) => GetFTAnalyzerGridCell(tableView, tableColumn, row);
+        public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
+        {
+            NSTableCellView cellview = GetFTAnalyzerGridCell(tableView, tableColumn, row);
+            if(cellview != null)
+                SetCellView(cellview, tableColumn, row);
+            return cellview;
+        }
 
-        NSView GetFTAnalyzerGridCell(NSTableView tableView, NSTableColumn tableColumn, nint row)
+        internal NSTableCellView GetFTAnalyzerGridCell(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
             var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
             if (index < 0 || index > _properties.Length)
@@ -70,7 +76,13 @@ namespace FTAnalyzer.DataSources
                 cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat("V:|[textField]|", NSLayoutFormatOptions.AlignAllTop, null, views));
                 NSLayoutConstraint.ActivateConstraints(cellView.Constraints);
             }
-            // Setup view based on the column selected
+            return cellView;
+        }
+
+        void SetCellView(NSTableCellView cellView, NSTableColumn tableColumn, nint row)
+        {
+            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
+            // Set cell view content based on the column selected
             if (row >= 0)
             {
                 var item = _bindingList[(int)row];
@@ -79,7 +91,6 @@ namespace FTAnalyzer.DataSources
             }
             else
                 cellView.TextField.StringValue = string.Empty;
-            return cellView;
         }
 
         public object GetRowObject(nint row) => _bindingList[(int)row];
