@@ -135,7 +135,6 @@
     <Folder Include="Resources\Fonts\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="DataSources\" />
-    <Folder Include="Properties\" />
     <Folder Include="Storyboards\" />
     <Folder Include="ViewControllers\Controls\" />
     <Folder Include="Assets.xcassets\GeneralSettingsIcon.imageset\" />
@@ -164,7 +163,6 @@
     <Compile Include="ViewControllers\BindingListViewController.cs" />
     <Compile Include="DataSources\BindingListTableSource.cs" />
     <Compile Include="Utilities\UIHelpers.cs" />
-    <Compile Include="Properties\Settings.cs" />
     <Compile Include="ViewControllers\FactsViewController.cs" />
     <Compile Include="ViewControllers\FactsViewController.designer.cs">
       <DependentUpon>FactsViewController.cs</DependentUpon>
@@ -204,20 +202,6 @@
     <Compile Include="DataSources\ColourCensusSource.cs" />
     <Compile Include="Utilities\Color.cs" />
     <Compile Include="Utilities\ReplaceViewSegue.cs" />
-    <Compile Include="Properties\DefaultSettingValueAttribute.cs" />
-    <Compile Include="Properties\FileHandling.cs">
-      <DependentUpon>..\..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\Properties\FileHandling.settings</DependentUpon>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Properties\GeneralSettings.cs">
-      <DependentUpon>..\..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\Properties\GeneralSettings.settings</DependentUpon>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Properties\NonGedcomDate.cs">
-      <DependentUpon>..\..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\Properties\NonGedcomDate.settings</DependentUpon>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Properties\SettingsBase.cs" />
     <Compile Include="ViewControllers\PreferencesViewController.cs" />
     <Compile Include="ViewControllers\PreferencesViewController.designer.cs">
       <DependentUpon>PreferencesViewController.cs</DependentUpon>
@@ -247,7 +231,9 @@
     <BundleResource Include="Resources\Fonts\Kunstler.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\FTAnalyzer.entitlements" />
   </ItemGroup>
+  <Import Project="..\..\Shared.Mac-iOS\Shared.Mac-iOS.projitems" Label="Shared" Condition="Exists('..\..\Shared.Mac-iOS\Shared.Mac-iOS.projitems')" />
   <Import Project="..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems" Label="Shared" Condition="Exists('..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

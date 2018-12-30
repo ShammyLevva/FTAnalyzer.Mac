@@ -13,6 +13,8 @@
 			<array>
 				<string>ged</string>
 			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>HighResLogo</string>
 			<key>CFBundleTypeName</key>
 			<string>GEDCOM</string>
 			<key>CFBundleTypeRole</key>
@@ -38,7 +40,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>10.11</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Alexander Bisset © 2018</string>
+	<string>Alexander Bisset © 2018-2019</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
@@ -46,6 +48,6 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleVersion</key>
-	<string>21</string>
+	<string>26</string>
 </dict>
 </plist>

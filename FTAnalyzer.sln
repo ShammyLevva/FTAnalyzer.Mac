@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "releases", "releases", "{5D
 		docs\releases\index.md = docs\releases\index.md
 	EndProjectSection
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared.Mac-iOS", "..\Shared.Mac-iOS\Shared.Mac-iOS.shproj", "{194B93F9-9227-4701-8193-970154D9F379}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
