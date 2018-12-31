@@ -129,7 +129,7 @@ namespace FTAnalyzer
                     return;
                 ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
                 DataTable dt = convertor.ToDataTable(new List<IExportIndividual>(FamilyTree.Instance.AllIndividuals));
-                ExportToExcel.Export(dt);
+                ExportToExcel.Export(dt, "Individuals");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportIndEvent);
             } catch (Exception e)
             {
@@ -145,7 +145,7 @@ namespace FTAnalyzer
                     return;
                 ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
                 DataTable dt = convertor.ToDataTable(new List<IDisplayFamily>(FamilyTree.Instance.AllDisplayFamilies));
-                ExportToExcel.Export(dt);
+                ExportToExcel.Export(dt, "Families");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportFamEvent);
             }
             catch (Exception e)
@@ -162,7 +162,7 @@ namespace FTAnalyzer
                     return;
                 ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
                 DataTable dt = convertor.ToDataTable(new List<ExportFact>(FamilyTree.Instance.AllExportFacts));
-                ExportToExcel.Export(dt);
+                ExportToExcel.Export(dt, "Facts");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportFactsEvent);
             }
             catch (Exception e)
@@ -177,43 +177,51 @@ namespace FTAnalyzer
                 return;
             ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
             DataTable dt = convertor.ToDataTable(new List<IDisplayLocation>(FamilyTree.Instance.AllDisplayPlaces));
-            ExportToExcel.Export(dt);
+            ExportToExcel.Export(dt, "Locations");
             Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLocationsEvent);
         }
 
         partial void ExportSources(NSObject sender)
         {
+            if (Document == null)
+                return;
             ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
             DataTable dt = convertor.ToDataTable(new List<IDisplaySource>(FamilyTree.Instance.AllSources));
-            ExportToExcel.Export(dt);
+            ExportToExcel.Export(dt, "Sources");
             Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportSourcesEvent);
         }
 
         partial void ExportDataErrors(NSObject sender)
         {
+            if (Document == null)
+                return;
             ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
             DataTable dt = convertor.ToDataTable(new List<DataError>(FamilyTree.Instance.AllDataErrors));
-            ExportToExcel.Export(dt);
+            ExportToExcel.Export(dt, "DataErrors");
             Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportDataErrorsEvent);
         }
 
         partial void ExportLooseBirths(NSObject sender)
         {
+            if (Document == null)
+                return;
             ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
             List<IDisplayLooseBirth> list = FamilyTree.Instance.LooseBirths().ToList();
             list.Sort(new LooseBirthComparer());
             DataTable dt = convertor.ToDataTable(list);
-            ExportToExcel.Export(dt);
+            ExportToExcel.Export(dt, "LooseBirths");
             Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLooseBirthsEvent);
         }
 
         partial void ExportLooseDeaths(NSObject sender)
         {
+            if (Document == null)
+                return;
             ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
             List<IDisplayLooseDeath> list = FamilyTree.Instance.LooseDeaths().ToList();
             list.Sort(new LooseDeathComparer());
             DataTable dt = convertor.ToDataTable(list);
-            ExportToExcel.Export(dt);
+            ExportToExcel.Export(dt, "LooseDeaths");
             Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLooseDeathsEvent);
         }
 
@@ -225,6 +233,8 @@ namespace FTAnalyzer
 
         partial void PrintClicked(NSObject sender)
         {
+            if (Document == null)
+                return;
             var keyViewController = NSApplication.SharedApplication.KeyWindow.ContentViewController;
             if (keyViewController is FTAnalyzerViewController)
             {
