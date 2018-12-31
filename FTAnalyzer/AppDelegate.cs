@@ -107,7 +107,7 @@ namespace FTAnalyzer
             {
                 var version = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString();
                 var build = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleVersion").ToString();
-                return $"v{version}.{build}";
+                return $"v{version} (Build {build})";
             }
         }
 
@@ -126,7 +126,10 @@ namespace FTAnalyzer
             try
             {
                 if (Document == null)
+                {
+                    NoDocumentLoaded();
                     return;
+                }
                 ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
                 DataTable dt = convertor.ToDataTable(new List<IExportIndividual>(FamilyTree.Instance.AllIndividuals));
                 ExportToExcel.Export(dt, "Individuals");
@@ -142,7 +145,10 @@ namespace FTAnalyzer
             try
             {
                 if (Document == null)
+                {
+                    NoDocumentLoaded();
                     return;
+                }
                 ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
                 DataTable dt = convertor.ToDataTable(new List<IDisplayFamily>(FamilyTree.Instance.AllDisplayFamilies));
                 ExportToExcel.Export(dt, "Families");
@@ -150,7 +156,7 @@ namespace FTAnalyzer
             }
             catch (Exception e)
             {
-                UIHelpers.ShowMessage($"Problem exporting Individuals: {e.Message}");
+                UIHelpers.ShowMessage($"Problem exporting Families: {e.Message}");
             }
         }
 
@@ -159,7 +165,10 @@ namespace FTAnalyzer
             try
             {
                 if (Document == null)
+                {
+                    NoDocumentLoaded();
                     return;
+                }
                 ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
                 DataTable dt = convertor.ToDataTable(new List<ExportFact>(FamilyTree.Instance.AllExportFacts));
                 ExportToExcel.Export(dt, "Facts");
@@ -167,62 +176,112 @@ namespace FTAnalyzer
             }
             catch (Exception e)
             {
-                UIHelpers.ShowMessage($"Problem exporting Individuals: {e.Message}");
+                UIHelpers.ShowMessage($"Problem exporting Facts: {e.Message}");
             }
         }
 
         partial void ExportLocations(NSObject sender)
         {
-            if (Document == null)
-                return;
-            ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
-            DataTable dt = convertor.ToDataTable(new List<IDisplayLocation>(FamilyTree.Instance.AllDisplayPlaces));
-            ExportToExcel.Export(dt, "Locations");
-            Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLocationsEvent);
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<IDisplayLocation>(FamilyTree.Instance.AllDisplayPlaces));
+                ExportToExcel.Export(dt, "Locations");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLocationsEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Locations: {e.Message}");
+            }
         }
 
         partial void ExportSources(NSObject sender)
         {
-            if (Document == null)
-                return;
-            ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
-            DataTable dt = convertor.ToDataTable(new List<IDisplaySource>(FamilyTree.Instance.AllSources));
-            ExportToExcel.Export(dt, "Sources");
-            Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportSourcesEvent);
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<IDisplaySource>(FamilyTree.Instance.AllSources));
+                ExportToExcel.Export(dt, "Sources");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportSourcesEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Sources: {e.Message}");
+            }
         }
 
         partial void ExportDataErrors(NSObject sender)
         {
-            if (Document == null)
-                return;
-            ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
-            DataTable dt = convertor.ToDataTable(new List<DataError>(FamilyTree.Instance.AllDataErrors));
-            ExportToExcel.Export(dt, "DataErrors");
-            Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportDataErrorsEvent);
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<DataError>(FamilyTree.Instance.AllDataErrors));
+                ExportToExcel.Export(dt, "DataErrors");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportDataErrorsEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting DataErrors: {e.Message}");
+            }
         }
 
         partial void ExportLooseBirths(NSObject sender)
         {
-            if (Document == null)
-                return;
-            ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
-            List<IDisplayLooseBirth> list = FamilyTree.Instance.LooseBirths().ToList();
-            list.Sort(new LooseBirthComparer());
-            DataTable dt = convertor.ToDataTable(list);
-            ExportToExcel.Export(dt, "LooseBirths");
-            Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLooseBirthsEvent);
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                List<IDisplayLooseBirth> list = FamilyTree.Instance.LooseBirths().ToList();
+                list.Sort(new LooseBirthComparer());
+                DataTable dt = convertor.ToDataTable(list);
+                ExportToExcel.Export(dt, "LooseBirths");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLooseBirthsEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Loose Births: {e.Message}");
+            }
         }
 
         partial void ExportLooseDeaths(NSObject sender)
         {
-            if (Document == null)
-                return;
-            ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
-            List<IDisplayLooseDeath> list = FamilyTree.Instance.LooseDeaths().ToList();
-            list.Sort(new LooseDeathComparer());
-            DataTable dt = convertor.ToDataTable(list);
-            ExportToExcel.Export(dt, "LooseDeaths");
-            Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLooseDeathsEvent);
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                List<IDisplayLooseDeath> list = FamilyTree.Instance.LooseDeaths().ToList();
+                list.Sort(new LooseDeathComparer());
+                DataTable dt = convertor.ToDataTable(list);
+                ExportToExcel.Export(dt, "LooseDeaths");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLooseDeathsEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Loose Deaths: {e.Message}");
+            }
         }
 
         partial void ExportDNAGedcom(NSObject sender)
@@ -234,7 +293,10 @@ namespace FTAnalyzer
         partial void PrintClicked(NSObject sender)
         {
             if (Document == null)
+            {
+                NoDocumentLoaded();
                 return;
+            }
             var keyViewController = NSApplication.SharedApplication.KeyWindow.ContentViewController;
             if (keyViewController is FTAnalyzerViewController)
             {
@@ -308,6 +370,8 @@ namespace FTAnalyzer
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.WhatsNewEvent);
             HttpUtility.VisitWebsite("http://mac.ftanalyzer.com/Whats%20New%20in%20this%20Release");
         }
+
+        void NoDocumentLoaded() => UIHelpers.ShowMessage("No document currently loaded.");
     }
 
     class MainWindowDelegate : NSWindowDelegate
