@@ -15,16 +15,18 @@ namespace FTAnalyzer.ViewControllers
         int endColumnIndex;
         int CensusProviderIndex { get; }
         string CensusProvider { get; }
+        string CensusRegion { get; }
 
         public ColourCensusViewController(IntPtr handle) : base(string.Empty, string.Empty)
         {
         }
 
-        public ColourCensusViewController(string country, int providerIndex) : base("Census Research Suggestions", string.Empty)
+        public ColourCensusViewController(string country, int providerIndex, string censusRegion) : base("Census Research Suggestions", string.Empty)
         {
             Country = country;
             SetColumns();
             CensusProviderIndex = providerIndex;
+            CensusRegion = censusRegion;
             CensusProvider = FamilyTree.Instance.ProviderName(providerIndex);
         }
 
@@ -123,7 +125,7 @@ namespace FTAnalyzer.ViewControllers
                     try
                     {
                         var ft = FamilyTree.Instance;
-                        ft.SearchCensus(censusCountry, censusYear, ft.GetIndividual(person.IndividualID), CensusProviderIndex);
+                        ft.SearchCensus(censusCountry, censusYear, ft.GetIndividual(person.IndividualID), CensusProviderIndex, CensusRegion);
                     }
                     catch (CensusSearchException ex)
                     {

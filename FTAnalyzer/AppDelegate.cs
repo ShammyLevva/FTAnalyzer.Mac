@@ -288,6 +288,8 @@ namespace FTAnalyzer
         {
             if(Document != null)
                 DNA_GEDCOM.Export();
+            else
+                NoDocumentLoaded();
         }
 
         partial void PrintClicked(NSObject sender)

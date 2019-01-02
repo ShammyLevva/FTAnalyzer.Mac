@@ -16,6 +16,9 @@ namespace FTAnalyzer.ViewControllers
 		AppKit.NSButton CanadianColourCensus { get; set; }
 
 		[Outlet]
+		AppKit.NSComboBox CensusRegionOutlet { get; set; }
+
+		[Outlet]
 		AppKit.NSComboBox CensusSearchProviderOutlet { get; set; }
 
 		[Outlet]
@@ -29,6 +32,9 @@ namespace FTAnalyzer.ViewControllers
 
 		[Action ("CanadianCensusClicked:")]
 		partial void CanadianCensusClicked (Foundation.NSObject sender);
+
+		[Action ("CensusRegionChanged:")]
+		partial void CensusRegionChanged (Foundation.NSObject sender);
 
 		[Action ("IrishCensusClicked:")]
 		partial void IrishCensusClicked (Foundation.NSObject sender);
@@ -47,6 +53,11 @@ namespace FTAnalyzer.ViewControllers
 			if (CanadianColourCensus != null) {
 				CanadianColourCensus.Dispose ();
 				CanadianColourCensus = null;
+			}
+
+			if (CensusRegionOutlet != null) {
+				CensusRegionOutlet.Dispose ();
+				CensusRegionOutlet = null;
 			}
 
 			if (CensusSearchProviderOutlet != null) {

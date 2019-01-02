@@ -24,7 +24,7 @@
     <WarningLevel>4</WarningLevel>
     <IncludeMonoRuntime>false</IncludeMonoRuntime>
     <UseSGen>false</UseSGen>
-    <HttpClientHandler>HttpClientHandler</HttpClientHandler>
+    <HttpClientHandler>NSUrlSessionHandler</HttpClientHandler>
     <LinkMode>None</LinkMode>
     <XamMacArch>x86_64</XamMacArch>
     <PlatformTarget>x64</PlatformTarget>
@@ -32,32 +32,33 @@
     <CodeSigningKey>Developer ID Application: Alexander Bisset (6VNT57GLU7)</CodeSigningKey>
     <EnablePackageSigning>true</EnablePackageSigning>
     <PackageSigningKey>3rd Party Mac Developer Installer: Alexander Bisset (6VNT57GLU7)</PackageSigningKey>
-    <AOTMode>None</AOTMode>
+    <AOTMode>Core</AOTMode>
     <CodeSignEntitlements>Entitlements.plist</CodeSignEntitlements>
     <CodeSignResourceRules></CodeSignResourceRules>
     <MonoBundlingExtraArgs>--linkplatform</MonoBundlingExtraArgs>
     <LangVersion>Latest</LangVersion>
+    <CodeSignProvision>Automatic</CodeSignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <DefineConstants></DefineConstants>
     <WarningLevel>4</WarningLevel>
     <IncludeMonoRuntime>false</IncludeMonoRuntime>
     <UseSGen>false</UseSGen>
-    <HttpClientHandler>HttpClientHandler</HttpClientHandler>
-    <LinkMode>None</LinkMode>
+    <HttpClientHandler>NSUrlSessionHandler</HttpClientHandler>
+    <LinkMode>Full</LinkMode>
     <XamMacArch></XamMacArch>
     <PlatformTarget>x64</PlatformTarget>
     <AOTMode>None</AOTMode>
-    <EnableCodeSigning>false</EnableCodeSigning>
+    <EnableCodeSigning>true</EnableCodeSigning>
     <CodeSigningKey>3rd Party Mac Developer Application: Alexander Bisset (6VNT57GLU7)</CodeSigningKey>
     <CodeSignProvision>Family Tree Analyzer Mac App Store</CodeSignProvision>
     <EnablePackageSigning>true</EnablePackageSigning>
     <PackageSigningKey>3rd Party Mac Developer Installer: Alexander Bisset (6VNT57GLU7)</PackageSigningKey>
     <I18n>west</I18n>
     <CodeSignEntitlements>Entitlements.plist</CodeSignEntitlements>
-    <MonoBundlingExtraArgs>--linkplatform </MonoBundlingExtraArgs>
+    <MonoBundlingExtraArgs>--linkplatform</MonoBundlingExtraArgs>
     <LangVersion>Latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
