@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using AppKit;
 using Foundation;
@@ -29,8 +30,8 @@ namespace FTAnalyzer
                 var individualsProgress = App.DocumentViewController.Individuals;
                 var familiesProgress = App.DocumentViewController.Families;
                 var relationshipProgress = App.DocumentViewController.Relationships;
-
-                var document = await Task.Run(() => _familyTree.LoadTreeHeader(url.Path, outputText));
+                var stream = new FileStream(url.Path, FileMode.Open, FileAccess.Read);
+                var document = await Task.Run(() => _familyTree.LoadTreeHeader(url.Path, stream, outputText));
                 if (document == null)
                     App.DocumentViewController.Messages.Report($"\n\nUnable to load file {url.Path}\n");
                 else
