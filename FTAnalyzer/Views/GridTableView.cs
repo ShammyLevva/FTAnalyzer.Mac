@@ -29,6 +29,7 @@ namespace FTAnalyzer.Views
             AutosaveTableColumns = true;
             Target = target;
             DoubleAction = new ObjCRuntime.Selector("ViewDetailsSelector");
+            HeaderView.AutoresizingMask = NSViewResizingMask.WidthSizable;
         }
 
         public override NSMenu MenuForEvent(NSEvent theEvent)
