@@ -6,7 +6,7 @@
 //
 using Foundation;
 
-namespace FTAnalyzer
+namespace FTAnalyzer.ViewControllers
 {
     [Register ("GedcomDocumentController")]
     partial class GedcomDocumentViewController

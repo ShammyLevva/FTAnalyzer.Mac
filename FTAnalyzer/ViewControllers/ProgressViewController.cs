@@ -2,7 +2,7 @@
 using AppKit;
 using Foundation;
 
-namespace FTAnalyzer
+namespace FTAnalyzer.ViewControllers
 {
     public partial class ProgressViewController : NSViewController
 	{

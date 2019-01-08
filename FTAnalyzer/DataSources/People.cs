@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
+using FTAnalyzer.ViewControllers;
 
 namespace FTAnalyzer
 {

@@ -7,6 +7,7 @@ using AppKit;
 using Foundation;
 using FTAnalyzer.Exports;
 using FTAnalyzer.Utilities;
+using FTAnalyzer.ViewControllers;
 
 namespace FTAnalyzer
 {
@@ -315,8 +316,8 @@ namespace FTAnalyzer
             else if(keyViewController is PeopleViewController)
             {
                 ((PeopleViewController)keyViewController).Print(sender);
-            } 
-            else if(keyViewController is FactsWindowViewController)
+            }
+            else if (keyViewController is FactsWindowViewController)
             {
                 if (keyViewController.ChildViewControllers.Length > 0)
                 {
@@ -325,6 +326,11 @@ namespace FTAnalyzer
                 }
                 else
                     UIHelpers.ShowMessage("Sorry unknown problem with printing facts report");
+            }
+            else if (keyViewController is NSTabViewController)
+            {
+                if (keyViewController.ChildViewControllers.Length == 1 && keyViewController.ChildViewControllers[0] is ColourCensusViewController)
+                    Document.PrintDocument(keyViewController.ChildViewControllers[0] as IPrintViewController);
             }
             else
                 UIHelpers.ShowMessage("Sorry Printing Not currently available for this view");

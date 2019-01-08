@@ -1,11 +1,10 @@
-﻿using Foundation;
-using FTAnalyzer.ViewControllers;
-using FTAnalyzer.Utilities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Foundation;
 using FTAnalyzer.DataSources;
+using FTAnalyzer.Utilities;
 
-namespace FTAnalyzer
+namespace FTAnalyzer.ViewControllers
 {
     public partial class FactsViewController<T>: BindingListViewController<T>, IPrintViewController where T : IColumnComparer<T>
 	{

@@ -12,5 +12,6 @@ namespace FTAnalyzer
         NSSortDescriptor[] SortDescriptors { get; }
         Type GetGenericType();
         Dictionary<string, float> ColumnWidths();
+        Dictionary<string, bool>  ColumnVisibility();
     }
 }

@@ -15,6 +15,7 @@ namespace FTAnalyzer.ViewControllers
         NSTableView _printView;
         readonly float scale = 10f/15f; // (8pt print font is size 10, 12pt screen font is size 15)
         readonly Dictionary<string, float> _columnWidths;
+        readonly Dictionary<string, bool> _columnVisibility;
         public NSView PrintView => View;
         public nfloat TotalHeight => _printView.HeaderView.Frame.Height + _printView.Frame.Height;
         public nfloat TotalWidth => _printView.Frame.Width;
@@ -23,6 +24,7 @@ namespace FTAnalyzer.ViewControllers
         {
             Title = tableViewController.Title;
             _columnWidths = tableViewController.ColumnWidths();
+            _columnVisibility = tableViewController.ColumnVisibility();
             _classType = tableViewController.GetGenericType();
             View = SetupView();
             _printView.Source = tableViewController.TableSource;
@@ -83,7 +85,7 @@ namespace FTAnalyzer.ViewControllers
                     Identifier = property.Name,
                     Width = _columnWidths[property.Name] * scale,
                     Editable = false,
-                    Hidden = false,
+                    Hidden = _columnVisibility[property.Name],
                     Title = columnTitle,
                     //ResizingMask = NSTableColumnResizing.Autoresizing | NSTableColumnResizing.UserResizingMask
                 };

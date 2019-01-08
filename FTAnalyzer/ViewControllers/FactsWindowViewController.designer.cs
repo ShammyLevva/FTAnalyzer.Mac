@@ -7,7 +7,7 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace FTAnalyzer
+namespace FTAnalyzer.ViewControllers
 {
 	[Register ("FactsWindowViewController")]
 	partial class FactsWindowViewController

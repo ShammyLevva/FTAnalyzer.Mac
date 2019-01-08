@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
-using FTAnalyzer.ViewControllers;
 
-namespace FTAnalyzer
+namespace FTAnalyzer.ViewControllers
 {
     public partial class FTAnalyzerViewController : NSTabViewController
     {

@@ -5,7 +5,7 @@ using System;
 using Foundation;
 using AppKit;
 
-namespace FTAnalyzer
+namespace FTAnalyzer.ViewControllers
 {
 	public partial class FactsWindowViewController : NSTabViewController
 	{

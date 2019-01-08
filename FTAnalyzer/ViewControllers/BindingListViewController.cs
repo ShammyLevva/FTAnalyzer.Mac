@@ -207,7 +207,17 @@ namespace FTAnalyzer.ViewControllers
             return widths;
         }
 
-        protected NSTableColumn GetColumnID(string identifier)
+        public Dictionary<string, bool> ColumnVisibility()
+        {
+            var widths = new Dictionary<string, bool>();
+            foreach (NSTableColumn column in _tableView.TableColumns())
+            {
+                widths.Add(column.Identifier, column.Hidden);
+            }
+            return widths;
+        }
+
+                protected NSTableColumn GetColumnID(string identifier)
         {
             int count = 0;
             foreach (NSTableColumn column in _tableView.TableColumns())
