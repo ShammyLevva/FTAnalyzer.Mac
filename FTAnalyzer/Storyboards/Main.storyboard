@@ -442,7 +442,7 @@
                                         <menuItem title="Online Guides to Using FTAnalyzer" id="BrV-63-D5S">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="ViewOnlineGUides:" target="Voe-Tx-rLC" id="n8o-qt-7yR"/>
+                                                <action selector="ViewOnlineGuides:" target="Voe-Tx-rLC" id="Shk-rO-lR6"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Report an Issue" id="YVC-Ml-gaT">

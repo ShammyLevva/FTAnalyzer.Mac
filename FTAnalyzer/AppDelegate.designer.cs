@@ -100,24 +100,14 @@ namespace FTAnalyzer
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (PageSetupMenu != null) {
-				PageSetupMenu.Dispose ();
-				PageSetupMenu = null;
+			if (ExportDataErrorsMenu != null) {
+				ExportDataErrorsMenu.Dispose ();
+				ExportDataErrorsMenu = null;
 			}
 
-			if (PrintMenu != null) {
-				PrintMenu.Dispose ();
-				PrintMenu = null;
-			}
-
-			if (ExportIndividualsMenu != null) {
-				ExportIndividualsMenu.Dispose ();
-				ExportIndividualsMenu = null;
-			}
-
-			if (ExportFamiliesMenu != null) {
-				ExportFamiliesMenu.Dispose ();
-				ExportFamiliesMenu = null;
+			if (ExportDNAGedcomMenu != null) {
+				ExportDNAGedcomMenu.Dispose ();
+				ExportDNAGedcomMenu = null;
 			}
 
 			if (ExportFactsMenu != null) {
@@ -125,19 +115,19 @@ namespace FTAnalyzer
 				ExportFactsMenu = null;
 			}
 
+			if (ExportFamiliesMenu != null) {
+				ExportFamiliesMenu.Dispose ();
+				ExportFamiliesMenu = null;
+			}
+
+			if (ExportIndividualsMenu != null) {
+				ExportIndividualsMenu.Dispose ();
+				ExportIndividualsMenu = null;
+			}
+
 			if (ExportLocationsMenu != null) {
 				ExportLocationsMenu.Dispose ();
 				ExportLocationsMenu = null;
-			}
-
-			if (ExportSourcesMenu != null) {
-				ExportSourcesMenu.Dispose ();
-				ExportSourcesMenu = null;
-			}
-
-			if (ExportDataErrorsMenu != null) {
-				ExportDataErrorsMenu.Dispose ();
-				ExportDataErrorsMenu = null;
 			}
 
 			if (ExportLooseBirthsMenu != null) {
@@ -150,9 +140,19 @@ namespace FTAnalyzer
 				ExportLooseDeathsMenu = null;
 			}
 
-			if (ExportDNAGedcomMenu != null) {
-				ExportDNAGedcomMenu.Dispose ();
-				ExportDNAGedcomMenu = null;
+			if (ExportSourcesMenu != null) {
+				ExportSourcesMenu.Dispose ();
+				ExportSourcesMenu = null;
+			}
+
+			if (PageSetupMenu != null) {
+				PageSetupMenu.Dispose ();
+				PageSetupMenu = null;
+			}
+
+			if (PrintMenu != null) {
+				PrintMenu.Dispose ();
+				PrintMenu = null;
 			}
 		}
 	}
