@@ -5,7 +5,7 @@ using System;
 using Foundation;
 using AppKit;
 
-namespace FTAnalyzer.Storyboards
+namespace FTAnalyzer
 {
 	public partial class LCReportsViewController : NSViewController
 	{

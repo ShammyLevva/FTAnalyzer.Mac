@@ -7,7 +7,7 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace FTAnalyzer.Storyboards
+namespace FTAnalyzer
 {
 	[Register ("LCReportsViewController")]
 	partial class LCReportsViewController
