@@ -884,13 +884,14 @@
         <!--MainTabController-->
         <scene sceneID="pXS-AW-A6S">
             <objects>
-                <tabViewController title="MainTabController" showSeguePresentationStyle="single" selectedTabViewItemIndex="0" id="kye-gt-91O" customClass="FTAnalyzerViewController" sceneMemberID="viewController">
+                <tabViewController title="MainTabController" showSeguePresentationStyle="single" selectedTabViewItemIndex="5" id="kye-gt-91O" customClass="FTAnalyzerViewController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Gedcom Stats" id="5KQ-md-UQl"/>
                         <tabViewItem label="Main Lists" id="nnU-Eq-ulZ"/>
                         <tabViewItem label="Errors/Fixes" id="CSJ-Bf-v81"/>
                         <tabViewItem label="Locations" id="DMe-j4-sWE"/>
                         <tabViewItem label="Research Suggestions" id="87P-3v-hw9"/>
+                        <tabViewItem id="viY-4U-d6K"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions"/>
                     <tabView key="tabView" type="noTabsNoBorder" id="y8i-E2-aTc">
@@ -909,6 +910,7 @@
                         <segue destination="LHn-6f-ueJ" kind="relationship" relationship="tabItems" id="7ye-AF-inL"/>
                         <segue destination="hKK-5N-IBj" kind="relationship" relationship="tabItems" id="yC9-7z-Zo3"/>
                         <segue destination="9G0-dd-9dE" kind="relationship" relationship="tabItems" id="sUc-P6-wtB"/>
+                        <segue destination="5cS-xa-1r7" kind="relationship" relationship="tabItems" id="8wX-lf-V6T"/>
                     </connections>
                 </tabViewController>
                 <customObject id="4Wv-cV-nU2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1323,6 +1325,58 @@
                 <customObject id="3QT-Zp-Z6t" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1054" y="-2599.5"/>
+        </scene>
+        <!--Lost Cousins-->
+        <scene sceneID="1Fr-nE-YZm">
+            <objects>
+                <tabViewController title="Lost Cousins" selectedTabViewItemIndex="2" id="5cS-xa-1r7" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="KAA-xR-TqL"/>
+                        <tabViewItem identifier="" id="Zcp-uR-dSU"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="MpI-qF-htj">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="5cS-xa-1r7" id="zLc-C6-Jq7"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="MpI-qF-htj" id="rDD-1p-MXf"/>
+                        <segue destination="X3L-w0-Ccz" kind="relationship" relationship="tabItems" id="W68-hh-zr4"/>
+                        <segue destination="MJc-N3-gLT" kind="relationship" relationship="tabItems" id="KFu-t8-1nr"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="KsB-uC-xqu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1457" y="-1552"/>
+        </scene>
+        <!--Reports-->
+        <scene sceneID="gWt-KC-b63">
+            <objects>
+                <viewController title="Reports" id="X3L-w0-Ccz" customClass="LCReportsViewController" sceneMemberID="viewController">
+                    <view key="view" id="x1C-R9-DGb">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="QL4-e4-kJV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1983" y="-1850"/>
+        </scene>
+        <!--Updates-->
+        <scene sceneID="ugR-eP-V50">
+            <objects>
+                <viewController title="Updates" id="MJc-N3-gLT" customClass="LCUpdatesViewController" sceneMemberID="viewController">
+                    <view key="view" id="fwf-aU-Omq">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="eNu-oC-QiZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1983" y="-1478"/>
         </scene>
     </scenes>
     <resources>

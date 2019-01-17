@@ -231,12 +231,21 @@
     </Compile>
     <Compile Include="Utilities\ListtoDataTableConvertor.cs" />
     <Compile Include="Views\GridTableView.cs" />
+    <Compile Include="ViewControllers\LCReportsViewController.cs" />
+    <Compile Include="ViewControllers\LCReportsViewController.designer.cs">
+      <DependentUpon>LCReportsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\LCUpdatesViewController.cs" />
+    <Compile Include="ViewControllers\LCUpdatesViewController.designer.cs">
+      <DependentUpon>LCUpdatesViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />
     <InterfaceDefinition Include="Storyboards\Main.storyboard" />
     <InterfaceDefinition Include="Storyboards\People.storyboard" />
     <InterfaceDefinition Include="Storyboards\ColourCensus.storyboard" />
+    <InterfaceDefinition Include="Storyboards\Census.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\Kunstler.ttf">
