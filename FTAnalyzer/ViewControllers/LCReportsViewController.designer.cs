@@ -13,6 +13,9 @@ namespace FTAnalyzer
 	partial class LCReportsViewController
 	{
 		[Outlet]
+		FTAnalyzer.RelationshipTypesView RelationshipTypesOutlet { get; set; }
+
+		[Outlet]
 		AppKit.NSScrollView ReportsTextbox { get; set; }
 		
 		void ReleaseDesignerOutlets ()
@@ -20,6 +23,11 @@ namespace FTAnalyzer
 			if (ReportsTextbox != null) {
 				ReportsTextbox.Dispose ();
 				ReportsTextbox = null;
+			}
+
+			if (RelationshipTypesOutlet != null) {
+				RelationshipTypesOutlet.Dispose ();
+				RelationshipTypesOutlet = null;
 			}
 		}
 	}

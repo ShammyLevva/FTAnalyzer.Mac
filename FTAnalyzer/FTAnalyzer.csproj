@@ -240,6 +240,10 @@
     <Compile Include="ViewControllers\LCUpdatesViewController.designer.cs">
       <DependentUpon>LCUpdatesViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\RelationshipTypesView.cs" />
+    <Compile Include="Views\RelationshipTypesView.designer.cs">
+      <DependentUpon>RelationshipTypesView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />
