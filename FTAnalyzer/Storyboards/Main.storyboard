@@ -755,8 +755,16 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WE5-ve-pAq">
+                                <rect key="frame" x="18" y="344" width="374" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Convert Residence Facts w/census ref to Census Facts (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0TY-TN-Y5z">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aT-dQ-VWn">
-                                <rect key="frame" x="18" y="344" width="294" height="18"/>
+                                <rect key="frame" x="18" y="324" width="294" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Tolerate Slightly Inaccurate Census Dates (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9aA-mc-OJE">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -764,7 +772,7 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mvt-Va-I72">
-                                <rect key="frame" x="18" y="324" width="225" height="18"/>
+                                <rect key="frame" x="18" y="304" width="225" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Use Compact Census References" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="20R-Ry-vXX">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -772,7 +780,7 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cR2-N7-zKE">
-                                <rect key="frame" x="18" y="284" width="343" height="18"/>
+                                <rect key="frame" x="18" y="264" width="343" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Auto Create Census Events from Notes &amp; Sources (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SW9-Ma-OWJ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -780,7 +788,7 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fts-cP-3ci">
-                                <rect key="frame" x="18" y="264" width="363" height="18"/>
+                                <rect key="frame" x="18" y="244" width="363" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Add Auto Created Census Locations to Locations List (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="klz-uE-jvW">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -788,7 +796,7 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2C9-p8-R4W">
-                                <rect key="frame" x="18" y="244" width="296" height="18"/>
+                                <rect key="frame" x="18" y="224" width="296" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Hide People Tagged As Missing From Census" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Nh0-8o-Edi">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -796,7 +804,7 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xkx-ok-UWd">
-                                <rect key="frame" x="18" y="304" width="302" height="18"/>
+                                <rect key="frame" x="18" y="284" width="302" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Family Census Facts Apply To Only Parents (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uVx-T9-sQc">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -804,7 +812,7 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s9X-Uf-yf7">
-                                <rect key="frame" x="18" y="224" width="322" height="18"/>
+                                <rect key="frame" x="18" y="204" width="322" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Skip checking for Census References in notes etc" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ohe-oq-J1A">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -817,6 +825,7 @@
                         <outlet property="AutoCreateCensusFactsOutlet" destination="cR2-N7-zKE" id="oo0-Nx-CaL"/>
                         <outlet property="AutoCreateCensusLocationsOutlet" destination="fts-cP-3ci" id="b4d-Xw-R1H"/>
                         <outlet property="CompactCensusRefOutlet" destination="mvt-Va-I72" id="SWx-vF-GcF"/>
+                        <outlet property="ConvertResidenceFactsOutlet" destination="WE5-ve-pAq" id="804-Wy-kNb"/>
                         <outlet property="FamilyCensusFactsOutlet" destination="xkx-ok-UWd" id="SI6-4E-Ax0"/>
                         <outlet property="HideMissingCensusOutlet" destination="2C9-p8-R4W" id="gEG-kH-YOr"/>
                         <outlet property="SkipCensusRefNotesOutlet" destination="s9X-Uf-yf7" id="onh-of-cvb"/>
@@ -884,14 +893,13 @@
         <!--MainTabController-->
         <scene sceneID="pXS-AW-A6S">
             <objects>
-                <tabViewController title="MainTabController" showSeguePresentationStyle="single" selectedTabViewItemIndex="5" id="kye-gt-91O" customClass="FTAnalyzerViewController" sceneMemberID="viewController">
+                <tabViewController title="MainTabController" showSeguePresentationStyle="single" selectedTabViewItemIndex="0" id="kye-gt-91O" customClass="FTAnalyzerViewController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Gedcom Stats" id="5KQ-md-UQl"/>
                         <tabViewItem label="Main Lists" id="nnU-Eq-ulZ"/>
                         <tabViewItem label="Errors/Fixes" id="CSJ-Bf-v81"/>
                         <tabViewItem label="Locations" id="DMe-j4-sWE"/>
                         <tabViewItem label="Research Suggestions" id="87P-3v-hw9"/>
-                        <tabViewItem id="viY-4U-d6K"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions"/>
                     <tabView key="tabView" type="noTabsNoBorder" id="y8i-E2-aTc">
@@ -903,14 +911,12 @@
                         </connections>
                     </tabView>
                     <connections>
-                        <outlet property="ResearchSuggestions" destination="87P-3v-hw9" id="TQZ-aL-HsB"/>
                         <outlet property="tabView" destination="y8i-E2-aTc" id="kRK-As-Ijj"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="tabItems" id="yse-z5-huH"/>
                         <segue destination="CGu-hu-FSh" kind="relationship" relationship="tabItems" id="MhZ-U1-MmU"/>
                         <segue destination="LHn-6f-ueJ" kind="relationship" relationship="tabItems" id="7ye-AF-inL"/>
                         <segue destination="hKK-5N-IBj" kind="relationship" relationship="tabItems" id="yC9-7z-Zo3"/>
                         <segue destination="9G0-dd-9dE" kind="relationship" relationship="tabItems" id="sUc-P6-wtB"/>
-                        <segue destination="5cS-xa-1r7" kind="relationship" relationship="tabItems" id="8wX-lf-V6T"/>
                     </connections>
                 </tabViewController>
                 <customObject id="4Wv-cV-nU2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1326,10 +1332,10 @@
             </objects>
             <point key="canvasLocation" x="1054" y="-2599.5"/>
         </scene>
-        <!--Lost Cousins-->
+        <!--LostCousinsController-->
         <scene sceneID="1Fr-nE-YZm">
             <objects>
-                <tabViewController title="Lost Cousins" selectedTabViewItemIndex="2" id="5cS-xa-1r7" sceneMemberID="viewController">
+                <tabViewController title="Lost Cousins" selectedTabViewItemIndex="2" id="5cS-xa-1r7" userLabel="LostCousinsController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="KAA-xR-TqL"/>
                         <tabViewItem identifier="" id="Zcp-uR-dSU"/>
@@ -1357,26 +1363,182 @@
             <objects>
                 <viewController title="Reports" id="X3L-w0-Ccz" customClass="LCReportsViewController" sceneMemberID="viewController">
                     <view key="view" id="x1C-R9-DGb">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="511" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brG-JX-g67">
+                                <rect key="frame" x="251" y="80" width="240" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Oel-mK-XWn">
+                                    <rect key="frame" x="0.0" y="0.0" width="225" height="200"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView ambiguous="YES" verticallyResizable="YES" usesFontPanel="YES" usesInspectorBar="YES" findStyle="bar" allowsDocumentBackgroundColorChange="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Pcf-BW-p8C">
+                                            <rect key="frame" x="0.0" y="0.0" width="225" height="200"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <size key="minSize" width="225" height="200"/>
+                                            <size key="maxSize" width="240" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="bfw-oe-Ri2">
+                                    <rect key="frame" x="225" y="0.0" width="15" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
                     </view>
+                    <connections>
+                        <outlet property="ReportsTextbox" destination="brG-JX-g67" id="Ipp-bG-bF8"/>
+                    </connections>
                 </viewController>
                 <customObject id="QL4-e4-kJV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1983" y="-1850"/>
+            <point key="canvasLocation" x="2013.5" y="-1850"/>
         </scene>
         <!--Updates-->
         <scene sceneID="ugR-eP-V50">
             <objects>
                 <viewController title="Updates" id="MJc-N3-gLT" customClass="LCUpdatesViewController" sceneMemberID="viewController">
                     <view key="view" id="fwf-aU-Omq">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="972" height="597"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viB-kp-vpV">
+                                <rect key="frame" x="446" y="383" width="506" height="194"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="6Lz-LY-tPi">
+                                    <rect key="frame" x="0.0" y="0.0" width="491" height="194"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView ambiguous="YES" verticallyResizable="YES" usesFontPanel="YES" usesInspectorBar="YES" findStyle="bar" allowsDocumentBackgroundColorChange="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Wag-Il-i8h">
+                                            <rect key="frame" x="0.0" y="0.0" width="491" height="194"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <size key="minSize" width="491" height="194"/>
+                                            <size key="maxSize" width="511" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Ry0-PN-wVu">
+                                    <rect key="frame" x="491" y="0.0" width="15" height="194"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <box fixedFrame="YES" title="Login to Lost Cousins" translatesAutoresizingMaskIntoConstraints="NO" id="HeX-M4-e9L">
+                                <rect key="frame" x="17" y="442" width="424" height="135"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <view key="contentView" id="I8H-WE-7f5">
+                                    <rect key="frame" x="3" y="3" width="418" height="114"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qhZ-LK-kX3">
+                                            <rect key="frame" x="136" y="72" width="262" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="31v-cs-Mze">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uXL-Lb-eGg">
+                                            <rect key="frame" x="20" y="74" width="90" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Email Address" id="33x-uK-PQc">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1s-3X-2Yf">
+                                            <rect key="frame" x="20" y="34" width="63" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Password" id="aAn-bL-tEO">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8At-Jt-Axc">
+                                            <rect key="frame" x="136" y="34" width="168" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="frc-Ry-tkj">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <allowedInputSourceLocales>
+                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                </allowedInputSourceLocales>
+                                            </secureTextFieldCell>
+                                        </secureTextField>
+                                    </subviews>
+                                </view>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxS-1O-GLc">
+                                <rect key="frame" x="199" y="422" width="61" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EeE-XS-J0d">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="ConfirmRootPersonChecked:" target="MJc-N3-gLT" id="aEw-hW-7oW"/>
+                                </connections>
+                            </button>
+                            <scrollView fixedFrame="YES" borderType="groove" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ud-7w-m7m">
+                                <rect key="frame" x="20" y="0.0" width="932" height="363"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="nTu-fa-xIB">
+                                    <rect key="frame" x="2" y="2" width="913" height="359"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView ambiguous="YES" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="FDi-Xg-YeF">
+                                            <rect key="frame" x="0.0" y="0.0" width="913" height="359"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="913" height="359"/>
+                                            <size key="maxSize" width="932" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="HKr-sj-AbH">
+                                    <rect key="frame" x="915" y="2" width="15" height="359"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCU-d0-xRp">
+                                <rect key="frame" x="131" y="376" width="219" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Update Lost Cousins Website" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XoK-Xr-j7S">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="UpdateWebsiteClicked:" target="MJc-N3-gLT" id="EXD-l3-STi"/>
+                                </connections>
+                            </button>
+                        </subviews>
                     </view>
+                    <connections>
+                        <outlet property="ConfirmRootPerson" destination="wxS-1O-GLc" id="953-oc-bd1"/>
+                        <outlet property="EmailAddressField" destination="qhZ-LK-kX3" id="GUw-pS-Yx7"/>
+                        <outlet property="LostCousinsUpdateButton" destination="mCU-d0-xRp" id="Ild-6g-TyQ"/>
+                        <outlet property="OutputTextbox" destination="viB-kp-vpV" id="hzK-JC-uAa"/>
+                        <outlet property="PasswordField" destination="8At-Jt-Axc" id="GG5-mH-7Dk"/>
+                        <outlet property="UpdateResultTextbox" destination="6ud-7w-m7m" id="zm9-Oc-lOk"/>
+                    </connections>
                 </viewController>
                 <customObject id="eNu-oC-QiZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1983" y="-1478"/>
+            <point key="canvasLocation" x="2244" y="-1329.5"/>
         </scene>
     </scenes>
     <resources>

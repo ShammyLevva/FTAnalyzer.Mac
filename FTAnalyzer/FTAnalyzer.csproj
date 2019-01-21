@@ -89,12 +89,13 @@
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.109.2\lib\netstandard2.0\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.8.12\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\packages\HtmlAgilityPack.1.8.13\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Services" />
     <Reference Include="DotNetZip">
       <HintPath>..\packages\DotNetZip.1.13.0\lib\netstandard2.0\DotNetZip.dll</HintPath>
     </Reference>
+    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -251,7 +252,6 @@
     <BundleResource Include="Resources\Fonts\Kunstler.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
-    <BundleResource Include="Resources\FTAnalyzer.entitlements" />
   </ItemGroup>
   <Import Project="..\..\Shared.Mac-iOS\Shared.Mac-iOS.projitems" Label="Shared" Condition="Exists('..\..\Shared.Mac-iOS\Shared.Mac-iOS.projitems')" />
   <Import Project="..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems" Label="Shared" Condition="Exists('..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems')" />

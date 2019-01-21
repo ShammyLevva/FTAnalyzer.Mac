@@ -9,186 +9,194 @@ using System.CodeDom.Compiler;
 
 namespace FTAnalyzer.ViewControllers
 {
-    [Register ("PreferencesViewController")]
-    partial class PreferencesViewController
-    {
-        [Outlet]
-        AppKit.NSButton AliasinNameDisplayOutlet { get; set; }
+	[Register ("PreferencesViewController")]
+	partial class PreferencesViewController
+	{
+		[Outlet]
+		AppKit.NSButton AliasinNameDisplayOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton AllowEmptyLocationsOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton AllowEmptyLocationsOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton AutoCreateCensusFactsOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton AutoCreateCensusFactsOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton AutoCreateCensusLocationsOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton AutoCreateCensusLocationsOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton CompactCensusRefOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton CompactCensusRefOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton ConvertDiacriticsOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton ConvertDiacriticsOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton FamilyCensusFactsOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton ConvertResidenceFactsOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton FemaleUnknownOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton FamilyCensusFactsOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton HideMissingCensusOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton FemaleUnknownOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton IgnoreUnknownFactTypeOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton HideMissingCensusOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton LoadWithFiltersOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton IgnoreUnknownFactTypeOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton RetryFailedLinesOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton LoadWithFiltersOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton ShowDuplicateFactsOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton RetryFailedLinesOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton ShowMultiAncestorOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton ShowDuplicateFactsOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton ShowWorldEventsOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton ShowMultiAncestorOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton SkipCensusRefNotesOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton ShowWorldEventsOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton SkipFixingLocationsOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton SkipCensusRefNotesOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton SlightlyInaccurateOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton SkipFixingLocationsOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton TreatResidenceasCensusOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton SlightlyInaccurateOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton UseBaptismDatesOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton TreatResidenceasCensusOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton UseBurialDatesOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton UseBaptismDatesOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton UseCountryFirstOutlet { get; set; }
-        
-        void ReleaseDesignerOutlets ()
-        {
-            if (AliasinNameDisplayOutlet != null) {
-                AliasinNameDisplayOutlet.Dispose ();
-                AliasinNameDisplayOutlet = null;
-            }
+		[Outlet]
+		AppKit.NSButton UseBurialDatesOutlet { get; set; }
 
-            if (AllowEmptyLocationsOutlet != null) {
-                AllowEmptyLocationsOutlet.Dispose ();
-                AllowEmptyLocationsOutlet = null;
-            }
+		[Outlet]
+		AppKit.NSButton UseCountryFirstOutlet { get; set; }
+		
+		void ReleaseDesignerOutlets ()
+		{
+			if (AliasinNameDisplayOutlet != null) {
+				AliasinNameDisplayOutlet.Dispose ();
+				AliasinNameDisplayOutlet = null;
+			}
 
-            if (AutoCreateCensusFactsOutlet != null) {
-                AutoCreateCensusFactsOutlet.Dispose ();
-                AutoCreateCensusFactsOutlet = null;
-            }
+			if (AllowEmptyLocationsOutlet != null) {
+				AllowEmptyLocationsOutlet.Dispose ();
+				AllowEmptyLocationsOutlet = null;
+			}
 
-            if (AutoCreateCensusLocationsOutlet != null) {
-                AutoCreateCensusLocationsOutlet.Dispose ();
-                AutoCreateCensusLocationsOutlet = null;
-            }
+			if (AutoCreateCensusFactsOutlet != null) {
+				AutoCreateCensusFactsOutlet.Dispose ();
+				AutoCreateCensusFactsOutlet = null;
+			}
 
-            if (CompactCensusRefOutlet != null) {
-                CompactCensusRefOutlet.Dispose ();
-                CompactCensusRefOutlet = null;
-            }
+			if (AutoCreateCensusLocationsOutlet != null) {
+				AutoCreateCensusLocationsOutlet.Dispose ();
+				AutoCreateCensusLocationsOutlet = null;
+			}
 
-            if (FamilyCensusFactsOutlet != null) {
-                FamilyCensusFactsOutlet.Dispose ();
-                FamilyCensusFactsOutlet = null;
-            }
+			if (CompactCensusRefOutlet != null) {
+				CompactCensusRefOutlet.Dispose ();
+				CompactCensusRefOutlet = null;
+			}
 
-            if (FemaleUnknownOutlet != null) {
-                FemaleUnknownOutlet.Dispose ();
-                FemaleUnknownOutlet = null;
-            }
+			if (ConvertDiacriticsOutlet != null) {
+				ConvertDiacriticsOutlet.Dispose ();
+				ConvertDiacriticsOutlet = null;
+			}
 
-            if (HideMissingCensusOutlet != null) {
-                HideMissingCensusOutlet.Dispose ();
-                HideMissingCensusOutlet = null;
-            }
+			if (FamilyCensusFactsOutlet != null) {
+				FamilyCensusFactsOutlet.Dispose ();
+				FamilyCensusFactsOutlet = null;
+			}
 
-            if (IgnoreUnknownFactTypeOutlet != null) {
-                IgnoreUnknownFactTypeOutlet.Dispose ();
-                IgnoreUnknownFactTypeOutlet = null;
-            }
+			if (FemaleUnknownOutlet != null) {
+				FemaleUnknownOutlet.Dispose ();
+				FemaleUnknownOutlet = null;
+			}
 
-            if (LoadWithFiltersOutlet != null) {
-                LoadWithFiltersOutlet.Dispose ();
-                LoadWithFiltersOutlet = null;
-            }
+			if (HideMissingCensusOutlet != null) {
+				HideMissingCensusOutlet.Dispose ();
+				HideMissingCensusOutlet = null;
+			}
 
-            if (RetryFailedLinesOutlet != null) {
-                RetryFailedLinesOutlet.Dispose ();
-                RetryFailedLinesOutlet = null;
-            }
+			if (IgnoreUnknownFactTypeOutlet != null) {
+				IgnoreUnknownFactTypeOutlet.Dispose ();
+				IgnoreUnknownFactTypeOutlet = null;
+			}
 
-            if (ShowDuplicateFactsOutlet != null) {
-                ShowDuplicateFactsOutlet.Dispose ();
-                ShowDuplicateFactsOutlet = null;
-            }
+			if (LoadWithFiltersOutlet != null) {
+				LoadWithFiltersOutlet.Dispose ();
+				LoadWithFiltersOutlet = null;
+			}
 
-            if (ShowMultiAncestorOutlet != null) {
-                ShowMultiAncestorOutlet.Dispose ();
-                ShowMultiAncestorOutlet = null;
-            }
+			if (RetryFailedLinesOutlet != null) {
+				RetryFailedLinesOutlet.Dispose ();
+				RetryFailedLinesOutlet = null;
+			}
 
-            if (ShowWorldEventsOutlet != null) {
-                ShowWorldEventsOutlet.Dispose ();
-                ShowWorldEventsOutlet = null;
-            }
+			if (ShowDuplicateFactsOutlet != null) {
+				ShowDuplicateFactsOutlet.Dispose ();
+				ShowDuplicateFactsOutlet = null;
+			}
 
-            if (SkipCensusRefNotesOutlet != null) {
-                SkipCensusRefNotesOutlet.Dispose ();
-                SkipCensusRefNotesOutlet = null;
-            }
+			if (ShowMultiAncestorOutlet != null) {
+				ShowMultiAncestorOutlet.Dispose ();
+				ShowMultiAncestorOutlet = null;
+			}
 
-            if (SkipFixingLocationsOutlet != null) {
-                SkipFixingLocationsOutlet.Dispose ();
-                SkipFixingLocationsOutlet = null;
-            }
+			if (ShowWorldEventsOutlet != null) {
+				ShowWorldEventsOutlet.Dispose ();
+				ShowWorldEventsOutlet = null;
+			}
 
-            if (SlightlyInaccurateOutlet != null) {
-                SlightlyInaccurateOutlet.Dispose ();
-                SlightlyInaccurateOutlet = null;
-            }
+			if (SkipCensusRefNotesOutlet != null) {
+				SkipCensusRefNotesOutlet.Dispose ();
+				SkipCensusRefNotesOutlet = null;
+			}
 
-            if (TreatResidenceasCensusOutlet != null) {
-                TreatResidenceasCensusOutlet.Dispose ();
-                TreatResidenceasCensusOutlet = null;
-            }
+			if (SkipFixingLocationsOutlet != null) {
+				SkipFixingLocationsOutlet.Dispose ();
+				SkipFixingLocationsOutlet = null;
+			}
 
-            if (UseBaptismDatesOutlet != null) {
-                UseBaptismDatesOutlet.Dispose ();
-                UseBaptismDatesOutlet = null;
-            }
+			if (SlightlyInaccurateOutlet != null) {
+				SlightlyInaccurateOutlet.Dispose ();
+				SlightlyInaccurateOutlet = null;
+			}
 
-            if (UseBurialDatesOutlet != null) {
-                UseBurialDatesOutlet.Dispose ();
-                UseBurialDatesOutlet = null;
-            }
+			if (TreatResidenceasCensusOutlet != null) {
+				TreatResidenceasCensusOutlet.Dispose ();
+				TreatResidenceasCensusOutlet = null;
+			}
 
-            if (UseCountryFirstOutlet != null) {
-                UseCountryFirstOutlet.Dispose ();
-                UseCountryFirstOutlet = null;
-            }
+			if (UseBaptismDatesOutlet != null) {
+				UseBaptismDatesOutlet.Dispose ();
+				UseBaptismDatesOutlet = null;
+			}
 
-            if (ConvertDiacriticsOutlet != null) {
-                ConvertDiacriticsOutlet.Dispose ();
-                ConvertDiacriticsOutlet = null;
-            }
-        }
-    }
+			if (UseBurialDatesOutlet != null) {
+				UseBurialDatesOutlet.Dispose ();
+				UseBurialDatesOutlet = null;
+			}
+
+			if (UseCountryFirstOutlet != null) {
+				UseCountryFirstOutlet.Dispose ();
+				UseCountryFirstOutlet = null;
+			}
+
+			if (ConvertResidenceFactsOutlet != null) {
+				ConvertResidenceFactsOutlet.Dispose ();
+				ConvertResidenceFactsOutlet = null;
+			}
+		}
+	}
 }

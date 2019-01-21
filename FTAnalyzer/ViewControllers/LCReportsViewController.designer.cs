@@ -12,9 +12,15 @@ namespace FTAnalyzer
 	[Register ("LCReportsViewController")]
 	partial class LCReportsViewController
 	{
+		[Outlet]
+		AppKit.NSScrollView ReportsTextbox { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (ReportsTextbox != null) {
+				ReportsTextbox.Dispose ();
+				ReportsTextbox = null;
+			}
 		}
 	}
 }
