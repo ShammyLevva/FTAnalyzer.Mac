@@ -79,9 +79,13 @@ namespace FTAnalyzer
 
         public void UpdateLostCousinsReport()
         {
-            Predicate<Individual> relationFilter = RelationshipTypesOutlet.BuildFilter<Individual>(x => x.RelationType);
-            string reportText = FamilyTree.Instance.UpdateLostCousinsReport(relationFilter);
-            ReportsTextBox.Value = reportText;
+            InvokeOnMainThread(() =>
+            {
+                Predicate<Individual> relationFilter = RelationshipTypesOutlet.BuildFilter<Individual>(x => x.RelationType);
+                string reportText = FamilyTree.Instance.UpdateLostCousinsReport(relationFilter);
+                ReportsTextBox.Value = reportText;
+                var newtext = ReportsTextBox.String;
+            });
         }
 
         public RelationshipTypesView RelationshipTypes => RelationshipTypesOutlet;

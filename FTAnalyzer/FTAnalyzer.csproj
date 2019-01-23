@@ -96,6 +96,7 @@
       <HintPath>..\packages\DotNetZip.1.13.0\lib\netstandard2.0\DotNetZip.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
+    <Reference Include="Mono.Data.Sqlite" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />

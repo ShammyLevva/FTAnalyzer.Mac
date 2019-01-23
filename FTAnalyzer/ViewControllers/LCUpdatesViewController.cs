@@ -14,9 +14,12 @@ namespace FTAnalyzer
 
         public void UpdateLostCousinsReport(RelationshipTypesView relationshipTypes)
         {
-            Predicate<CensusIndividual> relationFilter = relationshipTypes.BuildFilter<CensusIndividual>(x => x.RelationType, true);
-            LCUpdates = new List<CensusIndividual>();
-            StatsTextbox.Value = FamilyTree.Instance.LCOutput(LCUpdates, relationFilter);
+            InvokeOnMainThread(() =>
+            {
+                Predicate<CensusIndividual> relationFilter = relationshipTypes.BuildFilter<CensusIndividual>(x => x.RelationType, true);
+                LCUpdates = new List<CensusIndividual>();
+                StatsTextbox.Value = FamilyTree.Instance.LCOutput(LCUpdates, relationFilter);
+            });
         }
     }
 }
