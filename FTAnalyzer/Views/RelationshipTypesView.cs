@@ -4,6 +4,8 @@ using System;
 
 using Foundation;
 using AppKit;
+using System.Collections.Generic;
+using FTAnalyzer.Filters;
 
 namespace FTAnalyzer
 {
@@ -12,5 +14,30 @@ namespace FTAnalyzer
 		public RelationshipTypesView (IntPtr handle) : base (handle)
 		{
 		}
-	}
+
+        public Predicate<T> BuildFilter<T>(Func<T, int> relationType, bool excludeUnknown = false)
+        {
+
+            List<Predicate<T>> relationFilters = new List<Predicate<T>>();
+            InvokeOnMainThread(() =>
+            {
+                if (BloodOutlet.State == NSCellStateValue.On)
+                    relationFilters.Add(FilterUtils.IntFilter(relationType, Individual.BLOOD));
+                if (DirectOutlet.State == NSCellStateValue.On)
+                    relationFilters.Add(FilterUtils.IntFilter(relationType, Individual.DIRECT));
+                if (MarriageOutlet.State == NSCellStateValue.On)
+                    relationFilters.Add(FilterUtils.IntFilter(relationType, Individual.MARRIAGE));
+                if (MarriedDBOutlet.State == NSCellStateValue.On)
+                    relationFilters.Add(FilterUtils.IntFilter(relationType, Individual.MARRIEDTODB));
+                if (DescendantsOutlet.State == NSCellStateValue.On)
+                    relationFilters.Add(FilterUtils.IntFilter(relationType, Individual.DESCENDANT));
+                if (LinkedOutlet.State == NSCellStateValue.On)
+                    relationFilters.Add(FilterUtils.IntFilter(relationType, Individual.LINKED));
+                if (UnknownOutlet.State == NSCellStateValue.On && !excludeUnknown)
+                    relationFilters.Add(FilterUtils.IntFilter(relationType, Individual.UNKNOWN));
+            }); 
+            return FilterUtils.OrFilter(relationFilters);
+        }
+
+    }
 }

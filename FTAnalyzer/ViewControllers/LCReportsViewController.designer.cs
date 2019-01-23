@@ -9,50 +9,58 @@ using System.CodeDom.Compiler;
 
 namespace FTAnalyzer
 {
-    [Register ("LCReportsViewController")]
-    partial class LCReportsViewController
-    {
-        [Outlet]
-        FTAnalyzer.RelationshipTypesView RelationshipTypesOutlet { get; set; }
+	[Register ("LCReportsViewController")]
+	partial class LCReportsViewController
+	{
+		[Outlet]
+		RelationshipTypesView RelationshipTypesOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSScrollView ReportsTextbox { get; set; }
+		[Outlet]
+		AppKit.NSTextView ReportsTextBox { get; set; }
 
-        [Action ("Canada1880CensusClicked:")]
-        partial void Canada1880CensusClicked (Foundation.NSObject sender);
+		[Outlet]
+		AppKit.NSButton ShowAlreadyEnteredOutlet { get; set; }
 
-        [Action ("EW1841CensusClicked:")]
-        partial void EW1841CensusClicked (Foundation.NSObject sender);
+		[Action ("Canada1880CensusClicked:")]
+		partial void Canada1880CensusClicked (Foundation.NSObject sender);
 
-        [Action ("EW1881CensusClicked:")]
-        partial void EW1881CensusClicked (Foundation.NSObject sender);
+		[Action ("EW1841CensusClicked:")]
+		partial void EW1841CensusClicked (Foundation.NSObject sender);
 
-        [Action ("EW1911CensusClicked:")]
-        partial void EW1911CensusClicked (Foundation.NSObject sender);
+		[Action ("EW1881CensusClicked:")]
+		partial void EW1881CensusClicked (Foundation.NSObject sender);
 
-        [Action ("Ireland1911CensusClicked:")]
-        partial void Ireland1911CensusClicked (Foundation.NSObject sender);
+		[Action ("EW1911CensusClicked:")]
+		partial void EW1911CensusClicked (Foundation.NSObject sender);
 
-        [Action ("Scotland1881CensusClicked:")]
-        partial void Scotland1881CensusClicked (Foundation.NSObject sender);
+		[Action ("Ireland1911CensusClicked:")]
+		partial void Ireland1911CensusClicked (Foundation.NSObject sender);
 
-        [Action ("US1880CensusClicked:")]
-        partial void US1880CensusClicked (Foundation.NSObject sender);
+		[Action ("Scotland1881CensusClicked:")]
+		partial void Scotland1881CensusClicked (Foundation.NSObject sender);
 
-        [Action ("US1940CensusClicked:")]
-        partial void US1940CensusClicked (Foundation.NSObject sender);
-        
-        void ReleaseDesignerOutlets ()
-        {
-            if (RelationshipTypesOutlet != null) {
-                RelationshipTypesOutlet.Dispose ();
-                RelationshipTypesOutlet = null;
-            }
+		[Action ("US1880CensusClicked:")]
+		partial void US1880CensusClicked (Foundation.NSObject sender);
 
-            if (ReportsTextbox != null) {
-                ReportsTextbox.Dispose ();
-                ReportsTextbox = null;
-            }
-        }
-    }
+		[Action ("US1940CensusClicked:")]
+		partial void US1940CensusClicked (Foundation.NSObject sender);
+		
+		void ReleaseDesignerOutlets ()
+		{
+			if (ReportsTextBox != null) {
+				ReportsTextBox.Dispose ();
+				ReportsTextBox = null;
+			}
+
+			if (RelationshipTypesOutlet != null) {
+				RelationshipTypesOutlet.Dispose ();
+				RelationshipTypesOutlet = null;
+			}
+
+			if (ShowAlreadyEnteredOutlet != null) {
+				ShowAlreadyEnteredOutlet.Dispose ();
+				ShowAlreadyEnteredOutlet = null;
+			}
+		}
+	}
 }

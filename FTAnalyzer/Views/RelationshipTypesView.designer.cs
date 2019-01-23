@@ -35,24 +35,9 @@ namespace FTAnalyzer
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (DirectOutlet != null) {
-				DirectOutlet.Dispose ();
-				DirectOutlet = null;
-			}
-
 			if (BloodOutlet != null) {
 				BloodOutlet.Dispose ();
 				BloodOutlet = null;
-			}
-
-			if (MarriedDBOutlet != null) {
-				MarriedDBOutlet.Dispose ();
-				MarriedDBOutlet = null;
-			}
-
-			if (MarriageOutlet != null) {
-				MarriageOutlet.Dispose ();
-				MarriageOutlet = null;
 			}
 
 			if (DescendantsOutlet != null) {
@@ -60,9 +45,24 @@ namespace FTAnalyzer
 				DescendantsOutlet = null;
 			}
 
+			if (DirectOutlet != null) {
+				DirectOutlet.Dispose ();
+				DirectOutlet = null;
+			}
+
 			if (LinkedOutlet != null) {
 				LinkedOutlet.Dispose ();
 				LinkedOutlet = null;
+			}
+
+			if (MarriageOutlet != null) {
+				MarriageOutlet.Dispose ();
+				MarriageOutlet = null;
+			}
+
+			if (MarriedDBOutlet != null) {
+				MarriedDBOutlet.Dispose ();
+				MarriedDBOutlet = null;
 			}
 
 			if (UnknownOutlet != null) {

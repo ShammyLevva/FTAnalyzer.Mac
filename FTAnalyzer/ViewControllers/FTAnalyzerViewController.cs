@@ -28,6 +28,9 @@ namespace FTAnalyzer.ViewControllers
         LocationViewController addressesViewController;
         LocationViewController placesViewController;
 
+        LCReportsViewController lCReportsViewController;
+        LCUpdatesViewController lCUpdatesViewController;
+
         bool MainListsLoaded { get; set; }
         bool ErrorsAndFixesLoaded { get; set; }
         bool LocationsLoaded { get; set; }
@@ -65,6 +68,12 @@ namespace FTAnalyzer.ViewControllers
                     if (ChildViewControllers.Length > 3)
                         viewController = ChildViewControllers[3];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.LocationTabViewed);
+                    break;
+                case "Lost Cousins":
+                    UpdateLostCousinsReport(ProgressController);
+                    if (ChildViewControllers.Length > 5)
+                        viewController = ChildViewControllers[5];
+                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.LostCousinsTabEvent);
                     break;
                 default:
                     viewController = null;
@@ -109,6 +118,7 @@ namespace FTAnalyzer.ViewControllers
             SetupMainListsTabController();
             SetupDataErrorsTabController();
             SetupLocationsTabController();
+            SetupLostCousinsTabController();
         }
 
         public void RefreshLists()
@@ -191,6 +201,12 @@ namespace FTAnalyzer.ViewControllers
             placesViewController.LocationRowClicked += LocationRowClicked;
         }
 
+        void SetupLostCousinsTabController()
+        {
+            lCReportsViewController = ChildViewControllers[5].ChildViewControllers[0] as LCReportsViewController;
+            lCUpdatesViewController = ChildViewControllers[5].ChildViewControllers[0] as LCUpdatesViewController;
+        }
+
         void IndividualsFactRowClicked(Individual individual)
         {
             InvokeOnMainThread(() =>
@@ -224,8 +240,7 @@ namespace FTAnalyzer.ViewControllers
                     App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for source: {source.ToString()}", source));
                     Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsSourceEvent);
                 }
-
-                });
+            });
         }
 
         void OccupationRowClicked(People people)
@@ -381,6 +396,22 @@ namespace FTAnalyzer.ViewControllers
                     InvokeOnMainThread(progressController.Close);
                 });
             }
+        }
+
+        void UpdateLostCousinsReport(ProgressController progressController)
+        {
+            Task.Run(() =>
+            {
+                InvokeOnMainThread(() => progressController.ShowWindow(this));
+                progressController.ProgressText = "Loading Census Statistics";
+                progressController.ProgressBar = 0;
+                lCReportsViewController.UpdateLostCousinsReport();
+                progressController.ProgressBar = 50;
+                progressController.ProgressText = "Loading Lost Cousins Statistics";
+                lCUpdatesViewController.UpdateLostCousinsReport(lCReportsViewController.RelationshipTypes);
+                progressController.ProgressBar = 100;
+                InvokeOnMainThread(progressController.Close);
+            });
         }
     }
 }

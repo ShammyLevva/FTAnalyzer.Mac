@@ -22,10 +22,10 @@ namespace FTAnalyzer
 		AppKit.NSButton LostCousinsUpdateButton { get; set; }
 
 		[Outlet]
-		AppKit.NSScrollView OutputTextbox { get; set; }
+		AppKit.NSSecureTextField PasswordField { get; set; }
 
 		[Outlet]
-		AppKit.NSSecureTextField PasswordField { get; set; }
+		AppKit.NSTextView StatsTextbox { get; set; }
 
 		[Outlet]
 		AppKit.NSScrollView UpdateResultTextbox { get; set; }
@@ -38,24 +38,12 @@ namespace FTAnalyzer
 
 		[Action ("UpdateWebsiteClicked:")]
 		partial void UpdateWebsiteClicked (Foundation.NSObject sender);
+
+		[Action ("ViewPotentialClicked:")]
+		partial void ViewPotentialClicked (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (OutputTextbox != null) {
-				OutputTextbox.Dispose ();
-				OutputTextbox = null;
-			}
-
-			if (UpdateResultTextbox != null) {
-				UpdateResultTextbox.Dispose ();
-				UpdateResultTextbox = null;
-			}
-
-			if (LostCousinsUpdateButton != null) {
-				LostCousinsUpdateButton.Dispose ();
-				LostCousinsUpdateButton = null;
-			}
-
 			if (ConfirmRootPerson != null) {
 				ConfirmRootPerson.Dispose ();
 				ConfirmRootPerson = null;
@@ -66,9 +54,24 @@ namespace FTAnalyzer
 				EmailAddressField = null;
 			}
 
+			if (LostCousinsUpdateButton != null) {
+				LostCousinsUpdateButton.Dispose ();
+				LostCousinsUpdateButton = null;
+			}
+
+			if (StatsTextbox != null) {
+				StatsTextbox.Dispose ();
+				StatsTextbox = null;
+			}
+
 			if (PasswordField != null) {
 				PasswordField.Dispose ();
 				PasswordField = null;
+			}
+
+			if (UpdateResultTextbox != null) {
+				UpdateResultTextbox.Dispose ();
+				UpdateResultTextbox = null;
 			}
 		}
 	}

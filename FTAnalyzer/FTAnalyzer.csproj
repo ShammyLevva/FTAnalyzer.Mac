@@ -244,6 +244,11 @@
     <Compile Include="Views\RelationshipTypesView.designer.cs">
       <DependentUpon>RelationshipTypesView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\CensusViewController.cs" />
+    <Compile Include="ViewControllers\CensusViewController.designer.cs">
+      <DependentUpon>CensusViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSources\Census.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />

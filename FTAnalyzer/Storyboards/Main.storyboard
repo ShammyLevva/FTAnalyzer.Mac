@@ -1368,31 +1368,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="972" height="579"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brG-JX-g67">
-                                <rect key="frame" x="533" y="0.0" width="439" height="579"/>
+                            <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brG-JX-g67">
+                                <rect key="frame" x="553" y="0.0" width="419" height="579"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Oel-mK-XWn">
-                                    <rect key="frame" x="0.0" y="0.0" width="424" height="579"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="419" height="579"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" allowsDocumentBackgroundColorChange="YES" textCompletion="NO" id="Pcf-BW-p8C">
-                                            <rect key="frame" x="0.0" y="0.0" width="424" height="579"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="419" height="579"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <size key="minSize" width="424" height="579"/>
+                                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="419" height="579"/>
                                             <size key="maxSize" width="492" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="bfw-oe-Ri2">
-                                    <rect key="frame" x="424" y="0.0" width="15" height="579"/>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="bfw-oe-Ri2">
+                                    <rect key="frame" x="-100" y="-100" width="15" height="579"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5go-DY-q7p" customClass="RelationshipTypesView">
-                                <rect key="frame" x="0.0" y="469" width="384" height="110"/>
+                                <rect key="frame" x="20" y="469" width="384" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <box fixedFrame="YES" title="Relationship Types" translatesAutoresizingMaskIntoConstraints="NO" id="foo-pc-KgV">
@@ -1402,6 +1402,14 @@
                                             <rect key="frame" x="3" y="3" width="384" height="93"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqO-Lw-0yh">
+                                                    <rect key="frame" x="18" y="68" width="59" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Direct" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gBY-Qy-jgs">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nAN-wr-Kvb">
                                                     <rect key="frame" x="18" y="40" width="57" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1421,7 +1429,7 @@
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y5L-bg-1LY">
                                                     <rect key="frame" x="113" y="68" width="144" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Related by Marriage" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ly7-V1-Cn5">
+                                                    <buttonCell key="cell" type="check" title="Related by Marriage" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ly7-V1-Cn5">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -1434,26 +1442,18 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                 </button>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BmU-R8-Y5I">
-                                                    <rect key="frame" x="283" y="68" width="79" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Unknown" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="GWA-4L-rND">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MvG-Kp-BXe">
                                                     <rect key="frame" x="224" y="13" width="138" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Linked by Marriage" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="18s-jS-YVN">
+                                                    <buttonCell key="cell" type="check" title="Linked by Marriage" bezelStyle="regularSquare" imagePosition="left" inset="2" id="18s-jS-YVN">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                 </button>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqO-Lw-0yh">
-                                                    <rect key="frame" x="18" y="68" width="59" height="18"/>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BmU-R8-Y5I">
+                                                    <rect key="frame" x="283" y="68" width="79" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Direct" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gBY-Qy-jgs">
+                                                    <buttonCell key="cell" type="check" title="Unknown" bezelStyle="regularSquare" imagePosition="left" inset="2" id="GWA-4L-rND">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -1464,11 +1464,18 @@
                                     </box>
                                 </subviews>
                                 <connections>
+                                    <outlet property="BloodOutlet" destination="nAN-wr-Kvb" id="tO4-fA-ndQ"/>
+                                    <outlet property="DescendantsOutlet" destination="Rd8-dG-RYx" id="50K-C3-Bhm"/>
                                     <outlet property="Direct" destination="eqO-Lw-0yh" id="l0d-pf-ahp"/>
+                                    <outlet property="DirectOutlet" destination="eqO-Lw-0yh" id="rDp-d4-Bja"/>
+                                    <outlet property="LinkedOutlet" destination="MvG-Kp-BXe" id="uFx-Ez-2lw"/>
+                                    <outlet property="MarriageOutlet" destination="Y5L-bg-1LY" id="5J4-oD-hag"/>
+                                    <outlet property="MarriedDBOutlet" destination="Q35-49-Mhl" id="6Vt-Lu-TCv"/>
+                                    <outlet property="UnknownOutlet" destination="BmU-R8-Y5I" id="iLO-jf-R4f"/>
                                 </connections>
                             </customView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAb-IP-sUa" userLabel="1881 England and Wales Census">
-                                <rect key="frame" x="-6" y="415" width="223" height="32"/>
+                                <rect key="frame" x="14" y="421" width="223" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="1881 England &amp; Wales Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NFC-vT-q7f">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1479,7 +1486,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FhT-2B-jjY">
-                                <rect key="frame" x="-6" y="382" width="222" height="32"/>
+                                <rect key="frame" x="14" y="388" width="222" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="1841 England &amp; Wales Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fxt-dp-QNP">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1490,7 +1497,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RNp-ar-CS0">
-                                <rect key="frame" x="-6" y="349" width="220" height="32"/>
+                                <rect key="frame" x="14" y="355" width="220" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="1911 England &amp; Wales Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ml1-27-IYJ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1501,7 +1508,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KMy-nk-g8M">
-                                <rect key="frame" x="214" y="415" width="176" height="32"/>
+                                <rect key="frame" x="234" y="421" width="176" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="  1881 Scotland Census" bezelStyle="rounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rre-eX-bIV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1512,7 +1519,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTG-4Q-peT">
-                                <rect key="frame" x="214" y="382" width="176" height="32"/>
+                                <rect key="frame" x="234" y="388" width="176" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="  1911 Ireland Census" bezelStyle="rounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WGA-uL-Yd3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1523,7 +1530,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zZA-qM-sWW">
-                                <rect key="frame" x="214" y="349" width="176" height="32"/>
+                                <rect key="frame" x="234" y="355" width="176" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="  1880 Canada Census" bezelStyle="rounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M5x-6m-AIk">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1534,7 +1541,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Qc-nB-cVC">
-                                <rect key="frame" x="390" y="382" width="141" height="32"/>
+                                <rect key="frame" x="410" y="388" width="141" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="1880 US Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="583-Ml-nhm">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1545,7 +1552,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qIl-3Z-T2a">
-                                <rect key="frame" x="390" y="349" width="141" height="32"/>
+                                <rect key="frame" x="410" y="355" width="141" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="1940 US Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bpJ-5x-ZpL">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1555,12 +1562,22 @@
                                     <action selector="US1940CensusClicked:" target="X3L-w0-Ccz" id="g8R-qz-awA"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CMt-XO-G06">
+                                <rect key="frame" x="18" y="326" width="524" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show already entered to Lost Cousins (unticked = show those to yet to be entered)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="hLV-IV-0Ax">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="EW1841CensusClicked" destination="FhT-2B-jjY" id="sgH-1v-HHy"/>
                         <outlet property="RelationshipTypesOutlet" destination="5go-DY-q7p" id="sYr-RU-ByV"/>
+                        <outlet property="ReportsTextBox" destination="Pcf-BW-p8C" id="oEJ-De-5fc"/>
                         <outlet property="ReportsTextbox" destination="brG-JX-g67" id="Ipp-bG-bF8"/>
+                        <outlet property="ShowAlreadyEnteredOutlet" destination="CMt-XO-G06" id="Fa6-x7-QCn"/>
                     </connections>
                 </viewController>
                 <customObject id="QL4-e4-kJV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1571,19 +1588,19 @@
         <scene sceneID="ugR-eP-V50">
             <objects>
                 <viewController title="Updates" id="MJc-N3-gLT" customClass="LCUpdatesViewController" sceneMemberID="viewController">
-                    <view key="view" id="fwf-aU-Omq">
-                        <rect key="frame" x="0.0" y="0.0" width="972" height="597"/>
+                    <view key="view" wantsLayer="YES" id="fwf-aU-Omq">
+                        <rect key="frame" x="0.0" y="0.0" width="972" height="567"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" title="Login to Lost Cousins" translatesAutoresizingMaskIntoConstraints="NO" id="HeX-M4-e9L">
-                                <rect key="frame" x="-3" y="462" width="424" height="135"/>
+                                <rect key="frame" x="17" y="432" width="455" height="135"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <view key="contentView" id="I8H-WE-7f5">
-                                    <rect key="frame" x="3" y="3" width="418" height="114"/>
+                                    <rect key="frame" x="3" y="3" width="449" height="114"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qhZ-LK-kX3">
-                                            <rect key="frame" x="136" y="72" width="262" height="22"/>
+                                            <rect key="frame" x="136" y="72" width="293" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="31v-cs-Mze">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -1621,14 +1638,22 @@
                                                 </allowedInputSourceLocales>
                                             </secureTextFieldCell>
                                         </secureTextField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CO8-jW-7JY">
+                                            <rect key="frame" x="358" y="13" width="74" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QBX-e1-6Xz">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxS-1O-GLc">
-                                <rect key="frame" x="179" y="442" width="61" height="18"/>
+                                <rect key="frame" x="435" y="405" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EeE-XS-J0d">
+                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="trailing" alignment="right" inset="2" id="EeE-XS-J0d">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1638,7 +1663,7 @@
                             </button>
                             <scrollView fixedFrame="YES" borderType="groove" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ud-7w-m7m">
                                 <rect key="frame" x="0.0" y="0.0" width="972" height="363"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="nTu-fa-xIB">
                                     <rect key="frame" x="2" y="2" width="953" height="359"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1647,22 +1672,49 @@
                                             <rect key="frame" x="0.0" y="0.0" width="953" height="359"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="953" height="359"/>
                                             <size key="maxSize" width="972" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
                                 </clipView>
+                                <shadow key="shadow">
+                                    <size key="offset" width="3" height="3"/>
+                                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </shadow>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="HKr-sj-AbH">
                                     <rect key="frame" x="955" y="2" width="15" height="359"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viB-kp-vpV" userLabel="Stats Textbox">
+                                <rect key="frame" x="477" y="383" width="495" height="184"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="6Lz-LY-tPi">
+                                    <rect key="frame" x="0.0" y="0.0" width="495" height="184"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" allowsDocumentBackgroundColorChange="YES" textCompletion="NO" id="Wag-Il-i8h">
+                                            <rect key="frame" x="0.0" y="0.0" width="495" height="184"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="495" height="184"/>
+                                            <size key="maxSize" width="511" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ry0-PN-wVu">
+                                    <rect key="frame" x="-100" y="-100" width="15" height="194"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCU-d0-xRp">
-                                <rect key="frame" x="205" y="406" width="219" height="32"/>
+                                <rect key="frame" x="256" y="376" width="219" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Update Lost Cousins Website" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XoK-Xr-j7S">
+                                <buttonCell key="cell" type="push" title="Update Lost Cousins Website" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XoK-Xr-j7S">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1671,36 +1723,16 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="onp-lu-a0y">
-                                <rect key="frame" x="-6" y="406" width="81" height="32"/>
+                                <rect key="frame" x="14" y="376" width="242" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNl-BJ-X1Q">
+                                <buttonCell key="cell" type="push" title="View Potential Records to Upload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNl-BJ-X1Q">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="ViewPotentialClicked:" target="MJc-N3-gLT" id="qkk-x9-wZ5"/>
+                                </connections>
                             </button>
-                            <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viB-kp-vpV">
-                                <rect key="frame" x="466" y="403" width="506" height="194"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
-                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="6Lz-LY-tPi">
-                                    <rect key="frame" x="0.0" y="0.0" width="491" height="194"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" allowsDocumentBackgroundColorChange="YES" textCompletion="NO" id="Wag-Il-i8h">
-                                            <rect key="frame" x="0.0" y="0.0" width="491" height="194"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <size key="minSize" width="491" height="194"/>
-                                            <size key="maxSize" width="511" height="10000000"/>
-                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                        </textView>
-                                    </subviews>
-                                </clipView>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Ry0-PN-wVu">
-                                    <rect key="frame" x="491" y="0.0" width="15" height="194"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
                         </subviews>
                     </view>
                     <connections>
@@ -1709,12 +1741,14 @@
                         <outlet property="LostCousinsUpdateButton" destination="mCU-d0-xRp" id="Ild-6g-TyQ"/>
                         <outlet property="OutputTextbox" destination="viB-kp-vpV" id="hzK-JC-uAa"/>
                         <outlet property="PasswordField" destination="8At-Jt-Axc" id="GG5-mH-7Dk"/>
+                        <outlet property="StatsTextbox" destination="Wag-Il-i8h" id="EDN-iQ-Ni5"/>
                         <outlet property="UpdateResultTextbox" destination="6ud-7w-m7m" id="zm9-Oc-lOk"/>
+                        <outlet property="ViewPotentialClicked" destination="onp-lu-a0y" id="Ur1-Eg-dSZ"/>
                     </connections>
                 </viewController>
                 <customObject id="eNu-oC-QiZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2244" y="-1329.5"/>
+            <point key="canvasLocation" x="2244" y="-1344.5"/>
         </scene>
     </scenes>
     <resources>
