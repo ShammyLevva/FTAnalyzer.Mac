@@ -204,7 +204,7 @@ namespace FTAnalyzer.ViewControllers
         void SetupLostCousinsTabController()
         {
             lCReportsViewController = ChildViewControllers[5].ChildViewControllers[0] as LCReportsViewController;
-            lCUpdatesViewController = ChildViewControllers[5].ChildViewControllers[0] as LCUpdatesViewController;
+            lCUpdatesViewController = ChildViewControllers[5].ChildViewControllers[1] as LCUpdatesViewController;
         }
 
         void IndividualsFactRowClicked(Individual individual)

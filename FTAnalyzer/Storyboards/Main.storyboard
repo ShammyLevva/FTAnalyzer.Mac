@@ -1593,14 +1593,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" title="Login to Lost Cousins" translatesAutoresizingMaskIntoConstraints="NO" id="HeX-M4-e9L">
-                                <rect key="frame" x="17" y="432" width="455" height="135"/>
+                                <rect key="frame" x="17" y="432" width="509" height="135"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <view key="contentView" id="I8H-WE-7f5">
-                                    <rect key="frame" x="3" y="3" width="449" height="114"/>
+                                    <rect key="frame" x="3" y="3" width="503" height="114"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qhZ-LK-kX3">
-                                            <rect key="frame" x="136" y="72" width="293" height="22"/>
+                                            <rect key="frame" x="136" y="72" width="347" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="31v-cs-Mze">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -1639,7 +1639,7 @@
                                             </secureTextFieldCell>
                                         </secureTextField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CO8-jW-7JY">
-                                            <rect key="frame" x="358" y="13" width="74" height="32"/>
+                                            <rect key="frame" x="415" y="13" width="74" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QBX-e1-6Xz">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1651,7 +1651,7 @@
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxS-1O-GLc">
-                                <rect key="frame" x="435" y="405" width="25" height="25"/>
+                                <rect key="frame" x="435" y="405" width="90" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="trailing" alignment="right" inset="2" id="EeE-XS-J0d">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1689,18 +1689,18 @@
                                 </scroller>
                             </scrollView>
                             <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viB-kp-vpV" userLabel="Stats Textbox">
-                                <rect key="frame" x="477" y="383" width="495" height="184"/>
+                                <rect key="frame" x="531" y="383" width="441" height="184"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="6Lz-LY-tPi">
-                                    <rect key="frame" x="0.0" y="0.0" width="495" height="184"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="441" height="184"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" allowsDocumentBackgroundColorChange="YES" textCompletion="NO" id="Wag-Il-i8h">
-                                            <rect key="frame" x="0.0" y="0.0" width="495" height="184"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="441" height="184"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="495" height="184"/>
+                                            <size key="minSize" width="441" height="184"/>
                                             <size key="maxSize" width="511" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -1712,25 +1712,36 @@
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCU-d0-xRp">
-                                <rect key="frame" x="256" y="376" width="219" height="32"/>
+                                <rect key="frame" x="337" y="376" width="192" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Update Lost Cousins Website" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XoK-Xr-j7S">
+                                <buttonCell key="cell" type="push" title="Update Lost Cousins site" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XoK-Xr-j7S">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="UpdateWebsiteClicked:" target="MJc-N3-gLT" id="EXD-l3-STi"/>
+                                    <action selector="LostCousinsUpdateClicked:" target="MJc-N3-gLT" id="Dj7-wk-XdD"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="onp-lu-a0y">
-                                <rect key="frame" x="14" y="376" width="242" height="32"/>
+                                <rect key="frame" x="14" y="376" width="180" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="View Potential Records to Upload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNl-BJ-X1Q">
+                                <buttonCell key="cell" type="push" title="View Potential Uploads" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNl-BJ-X1Q">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="ViewPotentialClicked:" target="MJc-N3-gLT" id="qkk-x9-wZ5"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ya-fC-NRi">
+                                <rect key="frame" x="195" y="376" width="142" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="View Invalid Refs" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Va-AV-vjX">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="ViewInvalidClicked:" target="MJc-N3-gLT" id="0ey-Ix-CIi"/>
                                 </connections>
                             </button>
                         </subviews>

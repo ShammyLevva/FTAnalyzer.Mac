@@ -36,8 +36,8 @@ namespace FTAnalyzer
 		[Action ("LostCousinsUpdateClicked:")]
 		partial void LostCousinsUpdateClicked (Foundation.NSObject sender);
 
-		[Action ("UpdateWebsiteClicked:")]
-		partial void UpdateWebsiteClicked (Foundation.NSObject sender);
+		[Action ("ViewInvalidClicked:")]
+		partial void ViewInvalidClicked (Foundation.NSObject sender);
 
 		[Action ("ViewPotentialClicked:")]
 		partial void ViewPotentialClicked (Foundation.NSObject sender);
@@ -59,14 +59,14 @@ namespace FTAnalyzer
 				LostCousinsUpdateButton = null;
 			}
 
-			if (StatsTextbox != null) {
-				StatsTextbox.Dispose ();
-				StatsTextbox = null;
-			}
-
 			if (PasswordField != null) {
 				PasswordField.Dispose ();
 				PasswordField = null;
+			}
+
+			if (StatsTextbox != null) {
+				StatsTextbox.Dispose ();
+				StatsTextbox = null;
 			}
 
 			if (UpdateResultTextbox != null) {

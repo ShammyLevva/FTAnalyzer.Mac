@@ -7,6 +7,7 @@ namespace FTAnalyzer
     public partial class LCUpdatesViewController : NSViewController
 	{
         List<CensusIndividual> LCUpdates;
+        List<CensusIndividual> LCInvalidRef;
 
 		public LCUpdatesViewController (IntPtr handle) : base (handle)
 		{
@@ -18,7 +19,9 @@ namespace FTAnalyzer
             {
                 Predicate<CensusIndividual> relationFilter = relationshipTypes.BuildFilter<CensusIndividual>(x => x.RelationType, true);
                 LCUpdates = new List<CensusIndividual>();
-                StatsTextbox.Value = FamilyTree.Instance.LCOutput(LCUpdates, relationFilter);
+                LCInvalidRef = new List<CensusIndividual>();
+                string reportText = FamilyTree.Instance.LCOutput(LCUpdates, LCInvalidRef, relationFilter);
+                StatsTextbox.Value = reportText;
             });
         }
     }
