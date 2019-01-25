@@ -9,9 +9,15 @@ namespace FTAnalyzer
         List<CensusIndividual> LCUpdates;
         List<CensusIndividual> LCInvalidRef;
 
-		public LCUpdatesViewController (IntPtr handle) : base (handle)
+        public LCUpdatesViewController (IntPtr handle) : base (handle)
 		{
 		}
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            StatsTextbox.Value = "";
+        }
 
         public void UpdateLostCousinsReport(RelationshipTypesView relationshipTypes)
         {

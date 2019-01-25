@@ -16,6 +16,12 @@ namespace FTAnalyzer
         {
         }
 
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            ReportsTextBox.Value = "";
+        }
+
         partial void EW1841CensusClicked(NSObject sender)
         {
             string reportTitle = "1841 England & Wales Census Records on file";

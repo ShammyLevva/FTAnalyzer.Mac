@@ -205,6 +205,8 @@ namespace FTAnalyzer.ViewControllers
         {
             lCReportsViewController = ChildViewControllers[5].ChildViewControllers[0] as LCReportsViewController;
             lCUpdatesViewController = ChildViewControllers[5].ChildViewControllers[1] as LCUpdatesViewController;
+            lCReportsViewController.LoadView();
+            lCUpdatesViewController.LoadView();
         }
 
         void IndividualsFactRowClicked(Individual individual)
