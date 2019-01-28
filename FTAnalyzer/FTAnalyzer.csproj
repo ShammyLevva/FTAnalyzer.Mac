@@ -85,11 +85,8 @@
       <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\netstandard2.0\System.Security.AccessControl.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\packages\System.Data.SQLite.Core.1.0.109.2\lib\netstandard2.0\System.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.8.13\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\packages\HtmlAgilityPack.1.8.14\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Services" />
     <Reference Include="DotNetZip">
@@ -250,13 +247,14 @@
       <DependentUpon>CensusViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSources\Census.cs" />
+    <Compile Include="DataSources\CensusSource.cs" />
+    <Compile Include="Utilities\DatabaseHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />
     <InterfaceDefinition Include="Storyboards\Main.storyboard" />
     <InterfaceDefinition Include="Storyboards\People.storyboard" />
     <InterfaceDefinition Include="Storyboards\ColourCensus.storyboard" />
-    <InterfaceDefinition Include="Storyboards\Census.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\Kunstler.ttf">

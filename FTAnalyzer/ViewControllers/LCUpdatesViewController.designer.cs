@@ -19,6 +19,9 @@ namespace FTAnalyzer
 		AppKit.NSTextField EmailAddressField { get; set; }
 
 		[Outlet]
+		AppKit.NSButton LoginButtonOutlet { get; set; }
+
+		[Outlet]
 		AppKit.NSButton LostCousinsUpdateButton { get; set; }
 
 		[Outlet]
@@ -33,6 +36,9 @@ namespace FTAnalyzer
 		[Action ("ConfirmRootPersonChecked:")]
 		partial void ConfirmRootPersonChecked (Foundation.NSObject sender);
 
+		[Action ("LoginButtonClicked:")]
+		partial void LoginButtonClicked (Foundation.NSObject sender);
+
 		[Action ("LostCousinsUpdateClicked:")]
 		partial void LostCousinsUpdateClicked (Foundation.NSObject sender);
 
@@ -44,6 +50,11 @@ namespace FTAnalyzer
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (LoginButtonOutlet != null) {
+				LoginButtonOutlet.Dispose ();
+				LoginButtonOutlet = null;
+			}
+
 			if (ConfirmRootPerson != null) {
 				ConfirmRootPerson.Dispose ();
 				ConfirmRootPerson = null;

@@ -7,6 +7,7 @@ using AppKit;
 using FTAnalyzer.DataSources;
 using System.Threading.Tasks;
 using FTAnalyzer.Utilities;
+using FTAnalyzer.ViewControllers;
 
 namespace FTAnalyzer
 {
@@ -83,17 +84,33 @@ namespace FTAnalyzer
             Task.Run(() => Analytics.TrackActionAsync(Analytics.LostCousinsAction, Analytics.LCReportYearEvent, censusDate.BestYear.ToString()));
         }
 
-        public void UpdateLostCousinsReport()
+        public void UpdateLostCousinsReport(ProgressController progressController)
         {
+            IProgress<int> progress = new Progress<int>(percent => SetProgress(progressController, percent));
             InvokeOnMainThread(() =>
             {
                 Predicate<Individual> relationFilter = RelationshipTypesOutlet.BuildFilter<Individual>(x => x.RelationType);
-                string reportText = FamilyTree.Instance.UpdateLostCousinsReport(relationFilter);
+                string reportText = FamilyTree.Instance.UpdateLostCousinsReport(relationFilter, progress);
                 ReportsTextBox.Value = reportText;
                 var newtext = ReportsTextBox.String;
             });
         }
 
         public RelationshipTypesView RelationshipTypes => RelationshipTypesOutlet;
+
+        void SetProgress(ProgressController progressController, int percent)
+        {
+            if (!NSThread.IsMain)
+            {
+                InvokeOnMainThread(() => SetProgress(progressController, percent));
+                return;
+            }
+            progressController.ProgressBar = percent;
+        }
+
+        public void Clear()
+        {
+            ReportsTextBox.Value = string.Empty;
+        }
     }
 }

@@ -1317,7 +1317,7 @@
                             <textField canDrawConcurrently="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LUu-Cm-9rX">
                                 <rect key="frame" x="-2" y="54" width="454" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="center" title="Label" id="5bR-Cr-Zbg">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="center" id="5bR-Cr-Zbg">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1645,6 +1645,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="LoginButtonClicked:" target="MJc-N3-gLT" id="TIp-98-lch"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </view>
@@ -1749,6 +1752,7 @@
                     <connections>
                         <outlet property="ConfirmRootPerson" destination="wxS-1O-GLc" id="953-oc-bd1"/>
                         <outlet property="EmailAddressField" destination="qhZ-LK-kX3" id="GUw-pS-Yx7"/>
+                        <outlet property="LoginButtonOutlet" destination="CO8-jW-7JY" id="TRx-Pl-OJR"/>
                         <outlet property="LostCousinsUpdateButton" destination="mCU-d0-xRp" id="Ild-6g-TyQ"/>
                         <outlet property="OutputTextbox" destination="viB-kp-vpV" id="hzK-JC-uAa"/>
                         <outlet property="PasswordField" destination="8At-Jt-Axc" id="GG5-mH-7Dk"/>

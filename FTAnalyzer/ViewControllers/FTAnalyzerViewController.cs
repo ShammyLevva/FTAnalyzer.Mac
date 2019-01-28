@@ -129,6 +129,8 @@ namespace FTAnalyzer.ViewControllers
             {
                 ErrorsAndFixesLoaded = false;
                 LoadErrorsAndFixes(ProgressController);
+                lCReportsViewController.Clear();
+                lCUpdatesViewController.Clear();
             }
         }
 
@@ -407,10 +409,10 @@ namespace FTAnalyzer.ViewControllers
                 InvokeOnMainThread(() => progressController.ShowWindow(this));
                 progressController.ProgressText = "Loading Census Statistics";
                 progressController.ProgressBar = 0;
-                lCReportsViewController.UpdateLostCousinsReport();
+                lCReportsViewController.UpdateLostCousinsReport(progressController);
                 progressController.ProgressBar = 50;
                 progressController.ProgressText = "Loading Lost Cousins Statistics";
-                lCUpdatesViewController.UpdateLostCousinsReport(lCReportsViewController.RelationshipTypes);
+                lCUpdatesViewController.UpdateLostCousinsReport(lCReportsViewController.RelationshipTypes, progressController);
                 progressController.ProgressBar = 100;
                 InvokeOnMainThread(progressController.Close);
             });

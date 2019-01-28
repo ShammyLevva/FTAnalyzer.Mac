@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using AppKit;
-using Foundation;
 using FTAnalyzer.Filters;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;
@@ -17,20 +16,21 @@ namespace FTAnalyzer.DataSources
         public CensusDate CensusDate { get; private set; }
         public int RecordCount { get; private set; }
         public bool LostCousins { get; private set; }
-        string censusCountry;
-        bool CensusDone;
+        string _censusCountry;
+        bool _censusDone;
+        int CensusProviderIndex { get; }
+        string CensusProvider { get; }
 
         public Census(CensusDate censusDate, bool censusDone)
         {
             LostCousins = false;
             CensusDate = censusDate;
-            censusCountry = CensusDate.Country;
             RecordCount = 0;
-            CensusDone = censusDone;
-            var storyboard = NSStoryboard.FromName("Census", null);
-            censusWindow = storyboard.InstantiateControllerWithIdentifier("CensusWindow") as NSWindowController;
+            _censusCountry = CensusDate.Country;
+            _censusDone = censusDone;
+            var storyboard = NSStoryboard.FromName("ColourCensus", null);
+            censusWindow = storyboard.InstantiateControllerWithIdentifier("ColourCensusWindow") as NSWindowController;
             censusWindow.Window.SetFrame(new CoreGraphics.CGRect(300, 300, 800, 500), true);
-            censusView = censusWindow.ContentViewController as CensusViewController;
             //string defaultProvider = (string)Application.UserAppDataRegistry.GetValue("Default Search Provider");
             //if (defaultProvider == null)
             //    defaultProvider = "FamilySearch";
@@ -90,14 +90,20 @@ namespace FTAnalyzer.DataSources
             censusWindow.ShowWindow(App);
         }
 
-
         void SetupDataGridView(bool censusDone, List<CensusIndividual> individuals)
         {
-            censusView.LoadCensusIndividuals(new SortableBindingList<IDisplayCensus>(individuals));
-            //int numIndividuals = (from x in individuals select x.IndividualID).Distinct().Count();
-            //int numFamilies = (from x in individuals select x.FamilyID).Distinct().Count();
-
-            //tsRecords.Text = $"{individuals.Count} Rows containing {numIndividuals} Individuals and {numFamilies} Families. {CensusProviderText()}";
+            censusView = new CensusViewController(new IntPtr());
+            censusView.RefreshDocumentView(new SortableBindingList<IDisplayCensus>(individuals));
+            censusView.SortIndividuals();
+            censusWindow.ContentViewController.AddChildViewController(censusView);
+            int numIndividuals = (from x in individuals select x.IndividualID).Distinct().Count();
+            int numFamilies = (from x in individuals select x.FamilyID).Distinct().Count();
+            censusView.TooltipText = $"{individuals.Count} Rows containing {numIndividuals} Individuals and {numFamilies} Families."; // {CensusProviderText()}";
         }
+
+        string CensusProviderText() => CensusDate.VALUATIONROLLS.Contains(CensusDate)
+            ? string.Empty
+            : $"Double click to search {CensusProvider} for this person's census record. Shift Double click to display their facts.";
+
     }
 }

@@ -18,7 +18,7 @@ namespace FTAnalyzer.ViewControllers
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            ProgressText.StringValue = "empty text";
+            ProgressText.StringValue = string.Empty;
             ProgressBar.DoubleValue = 0;
         }
 

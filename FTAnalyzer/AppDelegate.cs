@@ -28,6 +28,7 @@ namespace FTAnalyzer
             Window.MakeKeyAndOrderFront(Self);
             Window.Title = $"FTAnalyzer {Version} - Family Tree Analyzer";
             Window.Delegate = new MainWindowDelegate();
+            DatabaseHelper.Instance.CheckDatabaseVersion(ProgramVersion);
             ResetDocument();
             CheckWebVersion();
         }
@@ -109,6 +110,16 @@ namespace FTAnalyzer
                 var version = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString();
                 var build = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleVersion").ToString();
                 return $"v{version} (Build {build})";
+            }
+        }
+
+        public Version ProgramVersion
+        {
+            get
+            {
+                var version = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString();
+                var build = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleVersion").ToString();
+                return new Version($"{version}.{build}");
             }
         }
 
