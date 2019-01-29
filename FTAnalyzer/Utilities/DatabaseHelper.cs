@@ -26,13 +26,13 @@ namespace FTAnalyzer.Utilities
         #region Constructor/Destructor
         DatabaseHelper()
         {
-            DatabasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library", "Databases");
+            DatabasePath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             CurrentFilename = Path.Combine(DatabasePath, "FTA-RestoreTemp.s3db");
             CheckDatabaseConnection();
             InstanceConnection = new SqliteConnection(connectionString);
         }
 
-        public static DatabaseHelper Instance => instance ?? new DatabaseHelper();
+        public static DatabaseHelper Instance => instance = instance ?? new DatabaseHelper();
 
         protected virtual void Dispose(bool disposing)
         {
