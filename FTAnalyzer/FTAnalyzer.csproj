@@ -90,7 +90,7 @@
     </Reference>
     <Reference Include="System.Web.Services" />
     <Reference Include="DotNetZip">
-      <HintPath>..\packages\DotNetZip.1.13.0\lib\netstandard2.0\DotNetZip.dll</HintPath>
+      <HintPath>..\packages\DotNetZip.1.13.2\lib\netstandard2.0\DotNetZip.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="Mono.Data.Sqlite" />
