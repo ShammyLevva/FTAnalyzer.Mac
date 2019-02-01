@@ -492,8 +492,7 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
                     <connections>
-                        <outlet property="ExportDNAGedcom" destination="KuJ-jx-hXL" id="bOd-7T-UAA"/>
-                        <outlet property="ExportDNAGedcomMenu" destination="KuJ-jx-hXL" id="WjP-0W-0bW"/>
+                        <outlet property="ExportDNAGedcomMenu" destination="KuJ-jx-hXL" id="QhY-Q6-3oX"/>
                         <outlet property="ExportDataErrorsMenu" destination="hSO-uk-2TQ" id="6nT-Kn-84i"/>
                         <outlet property="ExportFactsMenu" destination="81d-ii-3rM" id="zHe-Q4-3G9"/>
                         <outlet property="ExportFamiliesMenu" destination="7Od-Zz-VZN" id="npP-cN-3Uz"/>
@@ -1263,22 +1262,17 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="CanadianCensus" destination="mkk-MW-jXY" id="bwS-DF-qjT"/>
-                        <outlet property="CanadianCensusClicked" destination="mkk-MW-jXY" id="E4Q-j7-EqC"/>
                         <outlet property="CanadianColourCensus" destination="mkk-MW-jXY" id="nSd-qp-3PD"/>
                         <outlet property="CensusRegionOutlet" destination="EBl-Vd-fgp" id="Kau-7K-gE8"/>
                         <outlet property="CensusSearchProviderOutlet" destination="a8Q-2o-gZW" id="I7X-ie-uQT"/>
-                        <outlet property="IrishCensus" destination="l8q-6h-UWy" id="aoA-o7-SNq"/>
                         <outlet property="IrishColourCensus" destination="l8q-6h-UWy" id="5Lk-Bk-joB"/>
-                        <outlet property="UKCensus" destination="LrN-fi-2fs" id="Gx4-iT-GuL"/>
                         <outlet property="UKColourCensus" destination="LrN-fi-2fs" id="LVP-mR-6wU"/>
-                        <outlet property="USCensus" destination="OU7-gh-vqs" id="pVS-uG-DWi"/>
                         <outlet property="USColourCensus" destination="OU7-gh-vqs" id="gh4-CM-QAP"/>
                     </connections>
                 </viewController>
                 <customObject id="vre-dl-FUg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1669" y="-741"/>
+            <point key="canvasLocation" x="1658" y="-741"/>
         </scene>
         <!--Progress Display-->
         <scene sceneID="Xnb-O1-Qfk">
@@ -1337,10 +1331,11 @@
         <!--LostCousinsController-->
         <scene sceneID="1Fr-nE-YZm">
             <objects>
-                <tabViewController title="Lost Cousins" selectedTabViewItemIndex="0" id="5cS-xa-1r7" userLabel="LostCousinsController" sceneMemberID="viewController">
+                <tabViewController title="Lost Cousins" selectedTabViewItemIndex="2" id="5cS-xa-1r7" userLabel="LostCousinsController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="KAA-xR-TqL"/>
                         <tabViewItem identifier="" id="Zcp-uR-dSU"/>
+                        <tabViewItem id="0ei-ph-2zH"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="MpI-qF-htj">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -1354,11 +1349,25 @@
                         <outlet property="tabView" destination="MpI-qF-htj" id="rDD-1p-MXf"/>
                         <segue destination="X3L-w0-Ccz" kind="relationship" relationship="tabItems" id="W68-hh-zr4"/>
                         <segue destination="MJc-N3-gLT" kind="relationship" relationship="tabItems" id="KFu-t8-1nr"/>
+                        <segue destination="9ie-0U-dJt" kind="relationship" relationship="tabItems" id="5pr-Dc-48Q"/>
                     </connections>
                 </tabViewController>
                 <customObject id="KsB-uC-xqu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1457" y="-1552"/>
+        </scene>
+        <!--Verification-->
+        <scene sceneID="lYv-Nj-f9C">
+            <objects>
+                <viewController title="Verification" id="9ie-0U-dJt" customClass="LCVerifyViewController" sceneMemberID="viewController">
+                    <view key="view" id="PCD-CF-oul">
+                        <rect key="frame" x="0.0" y="0.0" width="972" height="567"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="JGp-Ns-0fN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="-1131"/>
         </scene>
         <!--Reports-->
         <scene sceneID="gWt-KC-b63">
@@ -1573,16 +1582,14 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="EW1841CensusClicked" destination="FhT-2B-jjY" id="sgH-1v-HHy"/>
                         <outlet property="RelationshipTypesOutlet" destination="5go-DY-q7p" id="sYr-RU-ByV"/>
                         <outlet property="ReportsTextBox" destination="Pcf-BW-p8C" id="oEJ-De-5fc"/>
-                        <outlet property="ReportsTextbox" destination="brG-JX-g67" id="Ipp-bG-bF8"/>
                         <outlet property="ShowAlreadyEnteredOutlet" destination="CMt-XO-G06" id="Fa6-x7-QCn"/>
                     </connections>
                 </viewController>
                 <customObject id="QL4-e4-kJV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2244" y="-1976.5"/>
+            <point key="canvasLocation" x="2279" y="-2405"/>
         </scene>
         <!--Updates-->
         <scene sceneID="ugR-eP-V50">
@@ -1656,7 +1663,7 @@
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxS-1O-GLc">
                                 <rect key="frame" x="435" y="405" width="90" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="trailing" alignment="right" inset="2" id="EeE-XS-J0d">
+                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="right" alignment="right" inset="2" id="EeE-XS-J0d">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1754,16 +1761,14 @@
                         <outlet property="EmailAddressField" destination="qhZ-LK-kX3" id="GUw-pS-Yx7"/>
                         <outlet property="LoginButtonOutlet" destination="CO8-jW-7JY" id="TRx-Pl-OJR"/>
                         <outlet property="LostCousinsUpdateButton" destination="mCU-d0-xRp" id="Ild-6g-TyQ"/>
-                        <outlet property="OutputTextbox" destination="viB-kp-vpV" id="hzK-JC-uAa"/>
                         <outlet property="PasswordField" destination="8At-Jt-Axc" id="GG5-mH-7Dk"/>
                         <outlet property="StatsTextbox" destination="Wag-Il-i8h" id="EDN-iQ-Ni5"/>
                         <outlet property="UpdateResultTextbox" destination="6ud-7w-m7m" id="zm9-Oc-lOk"/>
-                        <outlet property="ViewPotentialClicked" destination="onp-lu-a0y" id="Ur1-Eg-dSZ"/>
                     </connections>
                 </viewController>
                 <customObject id="eNu-oC-QiZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2244" y="-1344.5"/>
+            <point key="canvasLocation" x="2279" y="-1762"/>
         </scene>
     </scenes>
     <resources>

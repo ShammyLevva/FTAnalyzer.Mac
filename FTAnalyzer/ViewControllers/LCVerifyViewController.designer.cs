@@ -7,10 +7,10 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace FTAnalyzer.Storyboards
+namespace FTAnalyzer.ViewControllers
 {
-	[Register ("FTAnalyzerTabViewController")]
-	partial class FTAnalyzerTabViewController
+	[Register ("LCVerifyViewController")]
+	partial class LCVerifyViewController
 	{
 		
 		void ReleaseDesignerOutlets ()

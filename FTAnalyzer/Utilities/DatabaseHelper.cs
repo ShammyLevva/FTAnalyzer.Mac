@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace FTAnalyzer.Utilities
 {
@@ -18,6 +19,8 @@ namespace FTAnalyzer.Utilities
                 public string DatabaseFile { get; private set; }
         public string CurrentFilename { get; private set; }
         public string DatabasePath { get; private set; }
+        string EmptyFile;
+        string ResourcePath;
         static DatabaseHelper instance;
         static string connectionString;
         static SqliteConnection InstanceConnection { get; set; }
@@ -27,6 +30,7 @@ namespace FTAnalyzer.Utilities
         DatabaseHelper()
         {
             DatabasePath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            ResourcePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location), @"../Resources");
             CurrentFilename = Path.Combine(DatabasePath, "FTA-RestoreTemp.s3db");
             CheckDatabaseConnection();
             InstanceConnection = new SqliteConnection(connectionString);
@@ -66,14 +70,18 @@ namespace FTAnalyzer.Utilities
                     string path = DatabasePath;
                     if (!Directory.Exists(path))
                         Directory.CreateDirectory(path);
-                    var emptyfile = NSBundle.MainBundle.PathForResource("Geocodes-Empty", "s3db");
-                    File.Copy(emptyfile, DatabaseFile);
+                    EmptyFile = Path.Combine(ResourcePath, "Geocodes-Empty.s3db");
+                    File.Copy(EmptyFile, DatabaseFile);
                 }
                 connectionString = $"Data Source={DatabaseFile};Version=3;";
             }
+            catch(ArgumentNullException)
+            {
+                UIHelpers.ShowMessage($"Couldn't find Empty Database in Resources Directory at {EmptyFile}");
+            }
             catch (Exception ex)
             {
-                UIHelpers.ShowMessage($"Error opening database. Error is :{ex.Message}", "FTAnalyzer");
+                UIHelpers.ShowMessage($"Error opening database. Error is :{ex.Message}.\n\nDatabaseFile:{DatabaseFile}\nEmptyFile:{EmptyFile}", "FTAnalyzer");
             }
         }
         #endregion

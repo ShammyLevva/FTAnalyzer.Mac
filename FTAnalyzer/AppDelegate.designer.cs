@@ -71,9 +71,6 @@ namespace FTAnalyzer
 		[Action ("ExportSources:")]
 		partial void ExportSources (Foundation.NSObject sender);
 
-		[Action ("Options:")]
-		partial void Options (Foundation.NSObject sender);
-
 		[Action ("PrintClicked:")]
 		partial void PrintClicked (Foundation.NSObject sender);
 
