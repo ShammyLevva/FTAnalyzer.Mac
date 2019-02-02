@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using AppKit;
 using Foundation;
 using FTAnalyzer.DataSources;
 using FTAnalyzer.Exports;
 using FTAnalyzer.Utilities;
+using Security;
 
 namespace FTAnalyzer.ViewControllers
 {
@@ -28,12 +30,16 @@ namespace FTAnalyzer.ViewControllers
             var userDefaults = new NSUserDefaults();
             string email = userDefaults.StringForKey("LostCousinsEmail");
             EmailAddressField.StringValue = string.IsNullOrEmpty(email) ? string.Empty : email;
+            if (UseKeychainOutlet.State == NSCellStateValue.On)
+                GetPasswordFromKeychain();
+            EmailAddressField.Changed += (sender, e) => { ClearLogin(); };
+            PasswordField.Changed += (sender, e) => { ClearLogin(); };
         }
 
         public override void ViewDidAppear()
         {
             base.ViewDidAppear();
-            ConfirmRootPerson.Title = $"Confirm {FamilyTree.Instance.RootPerson} as root Person";
+            ConfirmRootPerson.Title = $"Confirm {FamilyTree.Instance.RootPerson} as root person";
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.LostCousinsTabEvent);
         }
 
@@ -52,6 +58,20 @@ namespace FTAnalyzer.ViewControllers
                 string reportText = FamilyTree.Instance.LCOutput(LCUpdates, LCInvalidReferences, relationFilter, progress);
                 StatsTextbox.Value = reportText;
             });
+        }
+
+        void GetPasswordFromKeychain()
+        {
+            if (UseKeychainOutlet.State == NSCellStateValue.On)
+            {
+                var code = SecKeyChain.FindInternetPassword("lostcousins.com", EmailAddressField.StringValue, out byte[] password);
+                var code2 = SecKeyChain.FindInternetPassword("www.lostcousins.com", EmailAddressField.StringValue, out byte[] password2);
+                if (code == SecStatusCode.Success)
+                {
+                    var passwordString = Encoding.UTF8.GetString(password);
+                    PasswordField.StringValue = passwordString;
+                }
+            }
         }
 
         void SetProgress(ProgressController progressController, int percent)
@@ -118,6 +138,8 @@ namespace FTAnalyzer.ViewControllers
             LoginButtonOutlet.Enabled = true;
             LostCousinsUpdateButton.Hidden = true;
         }
+
+        partial void UseKeychainChecked(NSObject sender) => GetPasswordFromKeychain();
 
         partial void ConfirmRootPersonChecked(NSObject sender)
         {

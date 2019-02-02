@@ -9,81 +9,92 @@ using System.CodeDom.Compiler;
 
 namespace FTAnalyzer.ViewControllers
 {
-    [Register ("LCUpdatesViewController")]
-    partial class LCUpdatesViewController
-    {
-        [Outlet]
-        AppKit.NSButton ConfirmRootPerson { get; set; }
+	[Register ("LCUpdatesViewController")]
+	partial class LCUpdatesViewController
+	{
+		[Outlet]
+		AppKit.NSButton ConfirmRootPerson { get; set; }
 
-        [Outlet]
-        AppKit.NSTextField EmailAddressField { get; set; }
+		[Outlet]
+		AppKit.NSTextField EmailAddressField { get; set; }
 
-        [Outlet]
-        AppKit.NSButton LoginButtonOutlet { get; set; }
+		[Outlet]
+		AppKit.NSButton LoginButtonOutlet { get; set; }
 
-        [Outlet]
-        AppKit.NSButton LostCousinsUpdateButton { get; set; }
+		[Outlet]
+		AppKit.NSButton LostCousinsUpdateButton { get; set; }
 
-        [Outlet]
-        AppKit.NSSecureTextField PasswordField { get; set; }
+		[Outlet]
+		AppKit.NSSecureTextField PasswordField { get; set; }
 
-        [Outlet]
-        AppKit.NSTextView StatsTextbox { get; set; }
+		[Outlet]
+		AppKit.NSTextView StatsTextbox { get; set; }
 
-        [Outlet]
-        AppKit.NSTextView UpdateResultsTextbox { get; set; }
+		[Outlet]
+		AppKit.NSTextView UpdateResultsTextbox { get; set; }
 
-        [Action ("ConfirmRootPersonChecked:")]
-        partial void ConfirmRootPersonChecked (Foundation.NSObject sender);
+		[Outlet]
+		AppKit.NSButton UseKeychainOutlet { get; set; }
 
-        [Action ("LoginButtonClicked:")]
-        partial void LoginButtonClicked (Foundation.NSObject sender);
+		[Action ("ConfirmRootPersonChecked:")]
+		partial void ConfirmRootPersonChecked (Foundation.NSObject sender);
 
-        [Action ("LostCousinsUpdateClicked:")]
-        partial void LostCousinsUpdateClicked (Foundation.NSObject sender);
+		[Action ("LoginButtonClicked:")]
+		partial void LoginButtonClicked (Foundation.NSObject sender);
 
-        [Action ("ViewInvalidClicked:")]
-        partial void ViewInvalidClicked (Foundation.NSObject sender);
+		[Action ("LostCousinsUpdateClicked:")]
+		partial void LostCousinsUpdateClicked (Foundation.NSObject sender);
 
-        [Action ("ViewPotentialClicked:")]
-        partial void ViewPotentialClicked (Foundation.NSObject sender);
-        
-        void ReleaseDesignerOutlets ()
-        {
-            if (ConfirmRootPerson != null) {
-                ConfirmRootPerson.Dispose ();
-                ConfirmRootPerson = null;
-            }
+		[Action ("UseKeychainChecked:")]
+		partial void UseKeychainChecked (Foundation.NSObject sender);
 
-            if (EmailAddressField != null) {
-                EmailAddressField.Dispose ();
-                EmailAddressField = null;
-            }
+		[Action ("ViewInvalidClicked:")]
+		partial void ViewInvalidClicked (Foundation.NSObject sender);
 
-            if (LoginButtonOutlet != null) {
-                LoginButtonOutlet.Dispose ();
-                LoginButtonOutlet = null;
-            }
+		[Action ("ViewPotentialClicked:")]
+		partial void ViewPotentialClicked (Foundation.NSObject sender);
+		
+		void ReleaseDesignerOutlets ()
+		{
+			if (UseKeychainOutlet != null) {
+				UseKeychainOutlet.Dispose ();
+				UseKeychainOutlet = null;
+			}
 
-            if (LostCousinsUpdateButton != null) {
-                LostCousinsUpdateButton.Dispose ();
-                LostCousinsUpdateButton = null;
-            }
+			if (ConfirmRootPerson != null) {
+				ConfirmRootPerson.Dispose ();
+				ConfirmRootPerson = null;
+			}
 
-            if (PasswordField != null) {
-                PasswordField.Dispose ();
-                PasswordField = null;
-            }
+			if (EmailAddressField != null) {
+				EmailAddressField.Dispose ();
+				EmailAddressField = null;
+			}
 
-            if (StatsTextbox != null) {
-                StatsTextbox.Dispose ();
-                StatsTextbox = null;
-            }
+			if (LoginButtonOutlet != null) {
+				LoginButtonOutlet.Dispose ();
+				LoginButtonOutlet = null;
+			}
 
-            if (UpdateResultsTextbox != null) {
-                UpdateResultsTextbox.Dispose ();
-                UpdateResultsTextbox = null;
-            }
-        }
-    }
+			if (LostCousinsUpdateButton != null) {
+				LostCousinsUpdateButton.Dispose ();
+				LostCousinsUpdateButton = null;
+			}
+
+			if (PasswordField != null) {
+				PasswordField.Dispose ();
+				PasswordField = null;
+			}
+
+			if (StatsTextbox != null) {
+				StatsTextbox.Dispose ();
+				StatsTextbox = null;
+			}
+
+			if (UpdateResultsTextbox != null) {
+				UpdateResultsTextbox.Dispose ();
+				UpdateResultsTextbox = null;
+			}
+		}
+	}
 }
