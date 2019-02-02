@@ -110,7 +110,7 @@ namespace FTAnalyzer.Utilities
             {
                 if (InstanceConnection.State != ConnectionState.Open)
                     InstanceConnection.Open();
-                using (SqliteCommand cmd = new SqliteCommand("select Database from versions", InstanceConnection))
+                using (SqliteCommand cmd = new SqliteCommand("select Database from versions where platform='Mac'", InstanceConnection))
                 {
                     db = (string)cmd.ExecuteScalar();
                 }
