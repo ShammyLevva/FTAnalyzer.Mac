@@ -1,8 +1,5 @@
 ﻿using System;
-<<<<<<< HEAD
-=======
 using System.Data;
->>>>>>> LostCousins
 using System.Linq;
 using System.Reflection;
 using AppKit;

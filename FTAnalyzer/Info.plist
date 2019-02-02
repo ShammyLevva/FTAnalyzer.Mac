@@ -48,10 +48,6 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleVersion</key>
-<<<<<<< HEAD
-	<string>19</string>
-=======
 	<string>42</string>
->>>>>>> LostCousins
 </dict>
 </plist>

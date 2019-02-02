@@ -43,26 +43,12 @@ namespace FTAnalyzer.ViewControllers
                 HasHorizontalScroller = true,
                 AutohidesScrollers = true,
                 WantsLayer = true,
-<<<<<<< HEAD
-                Layer = NewLayer(),
-                Bounds = new CGRect(0, 0, 0, 0),
-                AutoresizesSubviews = true,
-                TranslatesAutoresizingMaskIntoConstraints = false,
-                ContentView = new NSClipView
-                {
-                    AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
-                    AutoresizesSubviews = true
-                }
-            };
-            scrollView.ContentView.AddSubview(_tableView);
-=======
                 Layer = new CALayer { Bounds = new CGRect(0, 0, 0, 0) },
                 Bounds = new CGRect(0, 0, 0, 0)
             };
             scrollView.ContentView.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
             scrollView.ContentView.AutoresizesSubviews = true;
             scrollView.ScrollRectToVisible(new CGRect(0, 0, 0, 0));
->>>>>>> LostCousins
             return scrollView;
         }
 
