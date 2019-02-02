@@ -28,6 +28,11 @@ namespace FTAnalyzer.ViewControllers
             var userDefaults = new NSUserDefaults();
             string email = userDefaults.StringForKey("LostCousinsEmail");
             EmailAddressField.StringValue = string.IsNullOrEmpty(email) ? string.Empty : email;
+        }
+
+        public override void ViewDidAppear()
+        {
+            base.ViewDidAppear();
             ConfirmRootPerson.Title = $"Confirm {FamilyTree.Instance.RootPerson} as root Person";
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.LostCousinsTabEvent);
         }
@@ -73,13 +78,12 @@ namespace FTAnalyzer.ViewControllers
             bool websiteAvailable = ExportToLostCousins.CheckLostCousinsLogin(EmailAddressField.StringValue, PasswordField.StringValue);
             LoginButtonOutlet.BezelColor = websiteAvailable ? Color.LightGreen : Color.Red;
             LoginButtonOutlet.Enabled = !websiteAvailable;
-            LostCousinsUpdateButton.Enabled = websiteAvailable;
+            LostCousinsUpdateButton.Enabled = websiteAvailable && ConfirmRootPerson.State == NSCellStateValue.On;
             LostCousinsUpdateButton.Hidden = !websiteAvailable;
             if (websiteAvailable)
                 UIHelpers.ShowMessage("Lost Cousins login succeeded.");
             else
                 UIHelpers.ShowMessage("Unable to login to Lost Cousins website. Check email/password and try again.");
-
         }
 
         async partial void LostCousinsUpdateClicked(NSObject sender)

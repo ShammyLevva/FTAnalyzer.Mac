@@ -1331,7 +1331,7 @@
         <!--LostCousinsController-->
         <scene sceneID="1Fr-nE-YZm">
             <objects>
-                <tabViewController title="Lost Cousins" selectedTabViewItemIndex="2" id="5cS-xa-1r7" userLabel="LostCousinsController" sceneMemberID="viewController">
+                <tabViewController title="Lost Cousins" selectedTabViewItemIndex="0" id="5cS-xa-1r7" userLabel="LostCousinsController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="KAA-xR-TqL"/>
                         <tabViewItem identifier="" id="Zcp-uR-dSU"/>
@@ -1363,6 +1363,17 @@
                     <view key="view" id="PCD-CF-oul">
                         <rect key="frame" x="0.0" y="0.0" width="972" height="567"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d4n-pw-7c3">
+                                <rect key="frame" x="60" y="518" width="132" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Not Yet Implemented" id="5iN-dd-Rg9">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
                     </view>
                 </viewController>
                 <customObject id="JGp-Ns-0fN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1661,7 +1672,7 @@
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxS-1O-GLc">
-                                <rect key="frame" x="435" y="405" width="90" height="25"/>
+                                <rect key="frame" x="18" y="405" width="507" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="right" alignment="right" inset="2" id="EeE-XS-J0d">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1768,7 +1779,7 @@
                 </viewController>
                 <customObject id="eNu-oC-QiZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2279" y="-1762"/>
+            <point key="canvasLocation" x="2279" y="-1762.5"/>
         </scene>
     </scenes>
     <resources>
