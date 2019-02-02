@@ -1721,7 +1721,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCU-d0-xRp">
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCU-d0-xRp">
                                 <rect key="frame" x="337" y="376" width="192" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Update Lost Cousins site" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XoK-Xr-j7S">
@@ -1763,7 +1763,7 @@
                         <outlet property="LostCousinsUpdateButton" destination="mCU-d0-xRp" id="Ild-6g-TyQ"/>
                         <outlet property="PasswordField" destination="8At-Jt-Axc" id="GG5-mH-7Dk"/>
                         <outlet property="StatsTextbox" destination="Wag-Il-i8h" id="EDN-iQ-Ni5"/>
-                        <outlet property="UpdateResultTextbox" destination="6ud-7w-m7m" id="zm9-Oc-lOk"/>
+                        <outlet property="UpdateResultsTextbox" destination="FDi-Xg-YeF" id="jpl-9b-UZw"/>
                     </connections>
                 </viewController>
                 <customObject id="eNu-oC-QiZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

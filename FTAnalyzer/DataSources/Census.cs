@@ -77,11 +77,11 @@ namespace FTAnalyzer.DataSources
             SetupDataGridView(true, individuals);
         }
 
-        public void SetupLCPotentials(List<CensusIndividual> potentials)
+        public void SetupLCupdateList(List<CensusIndividual> listItems)
         {
             LostCousins = true;
-            RecordCount = potentials.Count;
-            SetupDataGridView(true, potentials);
+            RecordCount = listItems.Count;
+            SetupDataGridView(true, listItems);
         }
 
         public void ShowWindow(string title)

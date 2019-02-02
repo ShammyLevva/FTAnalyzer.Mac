@@ -17,7 +17,7 @@ namespace FTAnalyzer.ViewControllers
         BindingListViewController<IDisplayOccupation> occupationsViewController;
         BindingListViewController<IDisplayFact> factsViewController;
 
-        BindingListViewController<DataError> dataErrorsViewController;
+        BindingListViewController<IDisplayDataError> dataErrorsViewController;
         //BindingListViewController<IDisplayDuplicateIndividual> duplicatesViewController = null;
         BindingListViewController<IDisplayLooseBirth> looseBirthsViewController;
         BindingListViewController<IDisplayLooseDeath> looseDeathsViewController;
@@ -162,7 +162,7 @@ namespace FTAnalyzer.ViewControllers
             var errorsAndFixesTabViewController = ChildViewControllers[2] as ListsTabViewController;
             RemoveOldTabs(errorsAndFixesTabViewController);
 
-            dataErrorsViewController = new BindingListViewController<DataError>("Data Errors", "Double click to show Individual/Family with this error.");
+            dataErrorsViewController = new BindingListViewController<IDisplayDataError>("Data Errors", "Double click to show Individual/Family with this error.");
             //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates", "Double click to show the facts for both the individual and their possible match.");
             looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>
                 ("Loose Births", "List of Births where you could limit the date range.\nDouble click to show a list of facts for the selected individual.");
@@ -356,7 +356,7 @@ namespace FTAnalyzer.ViewControllers
                     progressController.ProgressBar = 0;
                     progressController.ProgressText = "Loading Data Errors. Please Wait";
                     // Flatten the data error groups into a single list until filtering implemented.
-                    var errors = new SortableBindingList<DataError>(_familyTree.AllDataErrors);
+                    var errors = new SortableBindingList<IDisplayDataError>(_familyTree.AllDataErrors);
                     dataErrorsViewController.RefreshDocumentView(errors);
                     progressController.ProgressBar = 25;
                     //duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
@@ -412,7 +412,7 @@ namespace FTAnalyzer.ViewControllers
                 lCReportsViewController.UpdateLostCousinsReport(progressController);
                 progressController.ProgressBar = 50;
                 progressController.ProgressText = "Loading Lost Cousins Statistics";
-                lCUpdatesViewController.UpdateLostCousinsReport(lCReportsViewController.RelationshipTypes, progressController);
+                lCUpdatesViewController.UpdateLostCousinsReport(lCReportsViewController.RelationshipTypes, progressController, lCReportsViewController);
                 progressController.ProgressBar = 100;
                 InvokeOnMainThread(progressController.Close);
             });

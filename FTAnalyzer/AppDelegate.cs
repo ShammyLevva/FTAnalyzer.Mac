@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Web;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Exports;
@@ -242,7 +241,7 @@ namespace FTAnalyzer
                     return;
                 }
                 ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
-                DataTable dt = convertor.ToDataTable(new List<DataError>(FamilyTree.Instance.AllDataErrors));
+                DataTable dt = convertor.ToDataTable(new List<IDisplayDataError>(FamilyTree.Instance.AllDataErrors));
                 ExportToExcel.Export(dt, "DataErrors");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportDataErrorsEvent);
             }

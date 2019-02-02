@@ -171,7 +171,7 @@ namespace FTAnalyzer.ViewControllers
             column = GetColumnID("ErrorType");
             if (column != null)
             {
-                var source = _tableView.Source as BindingListTableSource<DataError>;
+                var source = _tableView.Source as BindingListTableSource<IDisplayDataError>;
                 if (source.GetRowObject(_tableView.SelectedRow) is DataError error)
                 {
                     if (error.IsFamily == "Yes")
