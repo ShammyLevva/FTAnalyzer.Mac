@@ -2,7 +2,7 @@
 using AppKit;
 using Foundation;
 
-namespace FTAnalyzer
+namespace FTAnalyzer.ViewControllers
 {
     public partial class GedcomDocumentViewController : NSViewController
     {
@@ -31,14 +31,6 @@ namespace FTAnalyzer
             AppendMessage("Use the File menu to open a GEDCOM file copy of your tree. See website documentation on how to generate a GEDCOM if you are unsure.\n\n");
         }
 
-        #region Computed Properties
-        /// <summary>
-        /// Returns the delegate of the current running application
-        /// </summary>
-        /// <value>The this app.</value>
-        public AppDelegate ThisApp => (AppDelegate)NSApplication.SharedApplication.Delegate;
-        #endregion
-
         public override NSObject RepresentedObject => base.RepresentedObject;
 
         public void ClearAllProgress()
@@ -53,11 +45,6 @@ namespace FTAnalyzer
             _individualsProgress.DoubleValue = 0;
             _familiesProgress.DoubleValue = 0;
             _relationshipsProgress.DoubleValue = 0;
-            //Messages.Report(string.Empty);
-            //Sources.Report(0);
-            //Individuals.Report(0);
-            //Families.Report(0);
-            //Relationships.Report(0);
         }
 
         public void Print(NSObject sender)
@@ -90,7 +77,7 @@ namespace FTAnalyzer
             }
         }
 
-        void AppendMessage(string message)
+        public void AppendMessage(string message)
         {
             if (!NSThread.IsMain)
             {
@@ -112,6 +99,5 @@ namespace FTAnalyzer
             }
             progressBar.DoubleValue = percent;
         }
-
     }
 }

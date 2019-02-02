@@ -7,10 +7,10 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace FTAnalyzer.Storyboards
+namespace FTAnalyzer.ViewControllers
 {
-	[Register ("PrintPanelViewController")]
-	partial class PrintPanelViewController
+	[Register ("CensusViewController")]
+	partial class CensusViewController
 	{
 		
 		void ReleaseDesignerOutlets ()

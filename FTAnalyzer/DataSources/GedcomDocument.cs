@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using AppKit;
 using Foundation;
@@ -10,7 +11,7 @@ namespace FTAnalyzer
     [Register("GedcomDocument")]
     public class GedcomDocument : NSDocument
     {
-        AppDelegate App => (AppDelegate) NSApplication.SharedApplication.Delegate;
+        AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
         readonly FamilyTree _familyTree = FamilyTree.Instance;
 
         [Export("canConcurrentlyReadDocumentsOfType:")]
@@ -22,20 +23,22 @@ namespace FTAnalyzer
 
             InvokeOnMainThread(async () =>
             {
+                if (App.Document != null)
+                    App.ResetDocument();
                 var outputText = App.DocumentViewController.Messages;
                 var sourcesProgress = App.DocumentViewController.Sources;
                 var individualsProgress = App.DocumentViewController.Individuals;
                 var familiesProgress = App.DocumentViewController.Families;
                 var relationshipProgress = App.DocumentViewController.Relationships;
-
-                var document = await Task.Run(() => _familyTree.LoadTreeHeader(url.Path, outputText));
+                var stream = new FileStream(url.Path, FileMode.Open, FileAccess.Read);
+                var document = await Task.Run(() => _familyTree.LoadTreeHeader(url.Path, stream, outputText));
                 if (document == null)
                     App.DocumentViewController.Messages.Report($"\n\nUnable to load file {url.Path}\n");
                 else
                 {
 
                     await Task.Run(() => _familyTree.LoadTreeSources(document, sourcesProgress, outputText));
-                    await Task.Run(() => _familyTree.LoadTreeIndividuals(document, individualsProgress , outputText));
+                    await Task.Run(() => _familyTree.LoadTreeIndividuals(document, individualsProgress, outputText));
                     await Task.Run(() => _familyTree.LoadTreeFamilies(document, familiesProgress, outputText));
                     await Task.Run(() => _familyTree.LoadTreeRelationships(document, relationshipProgress, outputText));
 
@@ -81,12 +84,20 @@ namespace FTAnalyzer
 
         #region Events
         public delegate void DocumentModifiedDelegate(GedcomDocument document);
+        public delegate void DocumentLoadRequestDelegate();
         public event DocumentModifiedDelegate DocumentModified;
+        public event DocumentLoadRequestDelegate DocumentLoadRequest;
 
         internal void RaiseDocumentModified(GedcomDocument document)
         {
             // Inform caller
             DocumentModified?.Invoke(document);
+        }
+        internal void RaiseDocumentLoadRequest()
+        {
+            // Inform caller
+            DocumentLoadRequest?.Invoke();
+
         }
         #endregion
     }

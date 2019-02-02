@@ -1,4 +1,8 @@
 ﻿using System;
+<<<<<<< HEAD
+=======
+using System.Data;
+>>>>>>> LostCousins
 using System.Linq;
 using System.Reflection;
 using AppKit;
@@ -25,20 +29,26 @@ namespace FTAnalyzer.DataSources
 
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
-            return GetFTAnalyzerGridCell(tableView, tableColumn, row);
+            NSTableCellView cellview = GetFTAnalyzerGridCell(tableView, tableColumn, row);
+            if(cellview != null)
+                SetCellView(cellview, tableColumn, row);
+            return cellview;
         }
 
-        NSView GetFTAnalyzerGridCell(NSTableView tableView, NSTableColumn tableColumn, nint row)
+        internal NSTableCellView GetFTAnalyzerGridCell(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
             var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
             if (index < 0 || index > _properties.Length)
                 return null;
             var property = _properties[index];
             NSTextAlignment alignment = NSTextAlignment.Left;
+            var width = tableColumn.Width;
             ColumnDetail[] x = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
             if (x?.Length == 1)
+            {
                 alignment = x[0].Alignment;
-
+                width = x[0].ColumnWidth;
+            }
             if (!(tableView.MakeView(CellIdentifier, this) is NSTableCellView cellView))
             {
                 var textField = new NSTextField
@@ -68,11 +78,17 @@ namespace FTAnalyzer.DataSources
                 {
                     { new NSString("textField"), textField }
                 };
-                cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat("H:|[textField]|", NSLayoutFormatOptions.AlignAllTop, null, views));
+                cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat($"H:|[textField({width}@750)]|", NSLayoutFormatOptions.AlignAllTop, null, views));
                 cellView.AddConstraints(NSLayoutConstraint.FromVisualFormat("V:|[textField]|", NSLayoutFormatOptions.AlignAllTop, null, views));
                 NSLayoutConstraint.ActivateConstraints(cellView.Constraints);
             }
-            // Setup view based on the column selected
+            return cellView;
+        }
+
+        void SetCellView(NSTableCellView cellView, NSTableColumn tableColumn, nint row)
+        {
+            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
+            // Set cell view content based on the column selected
             if (row >= 0)
             {
                 var item = _bindingList[(int)row];
@@ -81,7 +97,6 @@ namespace FTAnalyzer.DataSources
             }
             else
                 cellView.TextField.StringValue = string.Empty;
-            return cellView;
         }
 
         public object GetRowObject(nint row) => _bindingList[(int)row];
@@ -105,6 +120,23 @@ namespace FTAnalyzer.DataSources
                 Sort(tbSort[0].Key, tbSort[0].Ascending);
                 tableView.ReloadData();
             }
+        }
+
+        public DataTable GetDataTable()
+        {
+            DataTable dataTable = new DataTable(typeof(T).Name);
+            foreach (string fieldName in _fieldNames)
+                dataTable.Columns.Add(fieldName);
+            foreach (T item in _bindingList)
+            {
+                var values = new object[dataTable.Columns.Count];
+                for (int i = 0; i < _properties.Length; i++)
+                {
+                    values[i] = _properties[i].GetValue(item, null);
+                }
+                dataTable.Rows.Add(values);
+            }
+            return dataTable;
         }
     }
 }

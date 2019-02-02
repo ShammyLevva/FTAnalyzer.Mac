@@ -1,7 +1,7 @@
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <ProjectGuid>{EE106C3A-38A4-4962-A747-8D5D17AE3039}</ProjectGuid>
     <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
@@ -15,7 +15,7 @@
     <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +24,7 @@
     <WarningLevel>4</WarningLevel>
     <IncludeMonoRuntime>false</IncludeMonoRuntime>
     <UseSGen>false</UseSGen>
-    <HttpClientHandler>HttpClientHandler</HttpClientHandler>
+    <HttpClientHandler>NSUrlSessionHandler</HttpClientHandler>
     <LinkMode>None</LinkMode>
     <XamMacArch>x86_64</XamMacArch>
     <PlatformTarget>x64</PlatformTarget>
@@ -32,53 +32,49 @@
     <CodeSigningKey>Developer ID Application: Alexander Bisset (6VNT57GLU7)</CodeSigningKey>
     <EnablePackageSigning>true</EnablePackageSigning>
     <PackageSigningKey>3rd Party Mac Developer Installer: Alexander Bisset (6VNT57GLU7)</PackageSigningKey>
-    <AOTMode>None</AOTMode>
+    <AOTMode>Core</AOTMode>
     <CodeSignEntitlements>Entitlements.plist</CodeSignEntitlements>
     <CodeSignResourceRules></CodeSignResourceRules>
     <MonoBundlingExtraArgs>--linkplatform</MonoBundlingExtraArgs>
     <LangVersion>Latest</LangVersion>
+    <CodeSignProvision>Automatic</CodeSignProvision>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Optimize>false</Optimize>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <DefineConstants></DefineConstants>
     <WarningLevel>4</WarningLevel>
     <IncludeMonoRuntime>false</IncludeMonoRuntime>
     <UseSGen>false</UseSGen>
-    <HttpClientHandler>HttpClientHandler</HttpClientHandler>
-    <LinkMode>None</LinkMode>
+    <HttpClientHandler>NSUrlSessionHandler</HttpClientHandler>
+    <LinkMode>Full</LinkMode>
     <XamMacArch></XamMacArch>
     <PlatformTarget>x64</PlatformTarget>
     <AOTMode>None</AOTMode>
-    <EnableCodeSigning>false</EnableCodeSigning>
-    <CodeSigningKey>3rd Party Mac Developer Application: Alexander Bisset (6VNT57GLU7)</CodeSigningKey>
-    <CodeSignProvision>Family Tree Analyzer Mac App Store</CodeSignProvision>
+    <EnableCodeSigning>true</EnableCodeSigning>
+    <CodeSigningKey>Developer ID Application: Alexander Bisset (6VNT57GLU7)</CodeSigningKey>
+    <CodeSignProvision>Automatic</CodeSignProvision>
     <EnablePackageSigning>true</EnablePackageSigning>
     <PackageSigningKey>3rd Party Mac Developer Installer: Alexander Bisset (6VNT57GLU7)</PackageSigningKey>
     <I18n>west</I18n>
     <CodeSignEntitlements>Entitlements.plist</CodeSignEntitlements>
-    <MonoBundlingExtraArgs>--linkplatform </MonoBundlingExtraArgs>
+    <MonoBundlingExtraArgs>--linkplatform</MonoBundlingExtraArgs>
     <LangVersion>Latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Mac" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="I18N" />
     <Reference Include="I18N.West" />
-    <Reference Include="System.Security.AccessControl">
-      <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\netstandard2.0\System.Security.AccessControl.dll</HintPath>
-    </Reference>
+<<<<<<< HEAD
+=======
     <Reference Include="System.Security.Permissions">
       <HintPath>..\packages\System.Security.Permissions.4.5.0\lib\netstandard2.0\System.Security.Permissions.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Principal.Windows">
       <HintPath>..\packages\System.Security.Principal.Windows.4.5.1\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
-    </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.8.11\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="GoogleAnalyticsTracker.Core">
       <HintPath>..\packages\GoogleAnalyticsTracker.Core.4.6.8\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Core.dll</HintPath>
@@ -86,6 +82,30 @@
     <Reference Include="GoogleAnalyticsTracker.Simple">
       <HintPath>..\packages\GoogleAnalyticsTracker.Simple.4.6.8\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Simple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data" />
+>>>>>>> LostCousins
+    <Reference Include="System.Security.AccessControl">
+      <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\netstandard2.0\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.14\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="DotNetZip">
+      <HintPath>..\packages\DotNetZip.1.13.2\lib\netstandard2.0\DotNetZip.dll</HintPath>
+    </Reference>
+<<<<<<< HEAD
+    <Reference Include="GoogleAnalyticsTracker.Core">
+      <HintPath>..\packages\GoogleAnalyticsTracker.Core.4.6.8\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleAnalyticsTracker.Simple">
+      <HintPath>..\packages\GoogleAnalyticsTracker.Simple.4.6.8\lib\portable45-net45+win8+wpa81\GoogleAnalyticsTracker.Simple.dll</HintPath>
+    </Reference>
+=======
+    <Reference Include="System.Numerics" />
+    <Reference Include="Mono.Data.Sqlite" />
+>>>>>>> LostCousins
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -137,7 +157,6 @@
     <Folder Include="Resources\Fonts\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="DataSources\" />
-    <Folder Include="Properties\" />
     <Folder Include="Storyboards\" />
     <Folder Include="ViewControllers\Controls\" />
     <Folder Include="Assets.xcassets\GeneralSettingsIcon.imageset\" />
@@ -166,7 +185,6 @@
     <Compile Include="ViewControllers\BindingListViewController.cs" />
     <Compile Include="DataSources\BindingListTableSource.cs" />
     <Compile Include="Utilities\UIHelpers.cs" />
-    <Compile Include="Properties\Settings.cs" />
     <Compile Include="ViewControllers\FactsViewController.cs" />
     <Compile Include="ViewControllers\FactsViewController.designer.cs">
       <DependentUpon>FactsViewController.cs</DependentUpon>
@@ -206,20 +224,6 @@
     <Compile Include="DataSources\ColourCensusSource.cs" />
     <Compile Include="Utilities\Color.cs" />
     <Compile Include="Utilities\ReplaceViewSegue.cs" />
-    <Compile Include="Properties\DefaultSettingValueAttribute.cs" />
-    <Compile Include="Properties\FileHandling.cs">
-      <DependentUpon>..\..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\Properties\FileHandling.settings</DependentUpon>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Properties\GeneralSettings.cs">
-      <DependentUpon>..\..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\Properties\GeneralSettings.settings</DependentUpon>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Properties\NonGedcomDate.cs">
-      <DependentUpon>..\..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\Properties\NonGedcomDate.settings</DependentUpon>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Properties\SettingsBase.cs" />
     <Compile Include="ViewControllers\PreferencesViewController.cs" />
     <Compile Include="ViewControllers\PreferencesViewController.designer.cs">
       <DependentUpon>PreferencesViewController.cs</DependentUpon>
@@ -227,10 +231,6 @@
     <Compile Include="ViewControllers\Interfaces\IPrintViewController.cs" />
     <Compile Include="Views\TablePrintView.cs" />
     <Compile Include="ViewControllers\TablePrintingViewController.cs" />
-    <Compile Include="Storyboards\PrintPanelViewController.cs" />
-    <Compile Include="Storyboards\PrintPanelViewController.designer.cs">
-      <DependentUpon>PrintPanelViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utilities\ExtensionMethods.cs" />
     <Compile Include="ViewControllers\FactsWindowViewController.cs" />
     <Compile Include="ViewControllers\FactsWindowViewController.designer.cs">
@@ -239,6 +239,31 @@
     <Compile Include="Views\TextPrintView.cs" />
     <Compile Include="Views\TextPrintView.designer.cs">
       <DependentUpon>TextPrintView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\ListtoDataTableConvertor.cs" />
+    <Compile Include="Views\GridTableView.cs" />
+    <Compile Include="ViewControllers\LCReportsViewController.cs" />
+    <Compile Include="ViewControllers\LCReportsViewController.designer.cs">
+      <DependentUpon>LCReportsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\LCUpdatesViewController.cs" />
+    <Compile Include="ViewControllers\LCUpdatesViewController.designer.cs">
+      <DependentUpon>LCUpdatesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RelationshipTypesView.cs" />
+    <Compile Include="Views\RelationshipTypesView.designer.cs">
+      <DependentUpon>RelationshipTypesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CensusViewController.cs" />
+    <Compile Include="ViewControllers\CensusViewController.designer.cs">
+      <DependentUpon>CensusViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSources\Census.cs" />
+    <Compile Include="DataSources\CensusSource.cs" />
+    <Compile Include="Utilities\DatabaseHelper.cs" />
+    <Compile Include="ViewControllers\LCVerifyViewController.cs" />
+    <Compile Include="ViewControllers\LCVerifyViewController.designer.cs">
+      <DependentUpon>LCVerifyViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +277,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
   </ItemGroup>
+  <Import Project="..\..\Shared.Mac-iOS\Shared.Mac-iOS.projitems" Label="Shared" Condition="Exists('..\..\Shared.Mac-iOS\Shared.Mac-iOS.projitems')" />
   <Import Project="..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems" Label="Shared" Condition="Exists('..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

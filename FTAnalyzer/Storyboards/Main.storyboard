@@ -98,6 +98,70 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Export" id="eiF-za-1TK">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Export" id="IhQ-ne-Cbh">
+                                    <items>
+                                        <menuItem title="Individuals to Excel" enabled="NO" id="fjn-tB-xoG">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportIndividuals:" target="Voe-Tx-rLC" id="W0k-dr-fXh"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Families to Excel" enabled="NO" id="7Od-Zz-VZN">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportFamilies:" target="Voe-Tx-rLC" id="giQ-3m-IR5"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Facts to Excel" enabled="NO" id="81d-ii-3rM">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportFacts:" target="Voe-Tx-rLC" id="c0E-3G-aH2"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Locations to Excel" enabled="NO" id="HMh-d7-KP6">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportLocations:" target="Voe-Tx-rLC" id="UDe-pY-Dze"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Sources to Excel" enabled="NO" id="QWn-UZ-kDq">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportSources:" target="Voe-Tx-rLC" id="EJ2-XE-EFm"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="nW8-av-pyX"/>
+                                        <menuItem title="Data Errors to Excel" enabled="NO" id="hSO-uk-2TQ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportDataErrors:" target="Voe-Tx-rLC" id="AWb-II-6yc"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="WIp-E2-5v0"/>
+                                        <menuItem title="Loose Births to Excel" enabled="NO" id="VPj-uz-e2G">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportLooseBirths:" target="Voe-Tx-rLC" id="JPC-W6-MK4"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Loose Deaths to Excel" enabled="NO" id="P0q-aZ-Mk2">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportLooseDeaths:" target="Voe-Tx-rLC" id="HhE-O6-Gk5"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="IPh-Xj-2Cp"/>
+                                        <menuItem title="Minimalist DNA GEDCOM Tree" enabled="NO" id="KuJ-jx-hXL">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="ExportDNAGedcom:" target="Voe-Tx-rLC" id="kOu-p5-0Q1"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Format" hidden="YES" enabled="NO" id="jxT-CU-nIS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Format" id="GEO-Iw-cKr">
@@ -378,7 +442,7 @@
                                         <menuItem title="Online Guides to Using FTAnalyzer" id="BrV-63-D5S">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="ViewOnlineGUides:" target="Voe-Tx-rLC" id="n8o-qt-7yR"/>
+                                                <action selector="ViewOnlineGuides:" target="Voe-Tx-rLC" id="Shk-rO-lR6"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Report an Issue" id="YVC-Ml-gaT">
@@ -428,13 +492,22 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
                     <connections>
+                        <outlet property="ExportDNAGedcomMenu" destination="KuJ-jx-hXL" id="QhY-Q6-3oX"/>
+                        <outlet property="ExportDataErrorsMenu" destination="hSO-uk-2TQ" id="6nT-Kn-84i"/>
+                        <outlet property="ExportFactsMenu" destination="81d-ii-3rM" id="zHe-Q4-3G9"/>
+                        <outlet property="ExportFamiliesMenu" destination="7Od-Zz-VZN" id="npP-cN-3Uz"/>
+                        <outlet property="ExportIndividualsMenu" destination="fjn-tB-xoG" id="vMh-yH-KwS"/>
+                        <outlet property="ExportLocationsMenu" destination="HMh-d7-KP6" id="6kw-SW-3aB"/>
+                        <outlet property="ExportLooseBirthsMenu" destination="VPj-uz-e2G" id="Upq-jJ-HK3"/>
+                        <outlet property="ExportLooseDeathsMenu" destination="P0q-aZ-Mk2" id="1NS-KX-zK0"/>
+                        <outlet property="ExportSourcesMenu" destination="QWn-UZ-kDq" id="V6S-jH-VhP"/>
                         <outlet property="PageSetupMenu" destination="qIS-W8-SiK" id="dOE-wZ-p97"/>
                         <outlet property="PrintMenu" destination="aTl-1u-JFS" id="jDS-Su-G8R"/>
                     </connections>
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1105" y="-2222"/>
+            <point key="canvasLocation" x="-1105" y="-2378"/>
         </scene>
         <!--Preferences-->
         <scene sceneID="T6i-rt-7I2">
@@ -488,16 +561,58 @@
                 <customObject id="di3-0Z-y33" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="tDQ-yT-H9d"/>
             </objects>
-            <point key="canvasLocation" x="-1105" y="-1709"/>
+            <point key="canvasLocation" x="-1105" y="-1900"/>
         </scene>
         <!--General Preferences-->
         <scene sceneID="biv-YI-7jk">
             <objects>
-                <viewController title="General Preferences" storyboardIdentifier="GeneralSettings" id="jvD-3R-R44" customClass="PreferencesViewController" sceneMemberID="viewController">
+                <viewController title="General Preferences" storyboardIdentifier="GeneralSettings" showSeguePresentationStyle="single" id="jvD-3R-R44" customClass="PreferencesViewController" sceneMemberID="viewController">
                     <view key="view" id="L7k-BB-ZCe">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zyd-eI-5QH">
+                                <rect key="frame" x="48" y="97" width="273" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show Duplicates Facts in Separate Forms" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="vwZ-Hn-gse">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ShY-8P-fMl">
+                                <rect key="frame" x="48" y="77" width="292" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show World Events on the &quot;On This Day&quot; tab" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="GNg-KD-H6A">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-T3-bbB">
+                                <rect key="frame" x="18" y="20" width="257" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="(*) This option requires a GEDCOM reload" id="9tm-yK-wv1">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXx-Yv-Vsf">
+                                <rect key="frame" x="48" y="117" width="168" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Hide Ignored Duplicates" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="4BS-w0-fAJ">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVw-kQ-8Eu">
+                                <rect key="frame" x="48" y="54" width="265" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Loose Birth Minimum Parental Age (*)" id="Whg-0e-dXv">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UVE-uL-yt0">
                                 <rect key="frame" x="18" y="364" width="302" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -522,14 +637,6 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zyd-eI-5QH">
-                                <rect key="frame" x="48" y="97" width="273" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Show Duplicates Facts in Separate Forms" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="vwZ-Hn-gse">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dbs-yZ-8km">
                                 <rect key="frame" x="18" y="304" width="186" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -542,14 +649,6 @@
                                 <rect key="frame" x="18" y="284" width="239" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Files use Country First Locations (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="isX-TA-l4l">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ShY-8P-fMl">
-                                <rect key="frame" x="48" y="77" width="292" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Show World Events on the &quot;On This Day&quot; tab" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="GNg-KD-H6A">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -586,32 +685,6 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-T3-bbB">
-                                <rect key="frame" x="18" y="20" width="257" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="(*) This option requires a GEDCOM reload" id="9tm-yK-wv1">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXx-Yv-Vsf">
-                                <rect key="frame" x="48" y="117" width="168" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Hide Ignored Duplicates" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="4BS-w0-fAJ">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVw-kQ-8Eu">
-                                <rect key="frame" x="48" y="54" width="265" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Loose Birth Minimum Parental Age (*)" id="Whg-0e-dXv">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -631,12 +704,12 @@
                 </viewController>
                 <customObject id="Gl1-WP-HcV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-432" y="-1953"/>
+            <point key="canvasLocation" x="-1893" y="-1261"/>
         </scene>
         <!--Non-Gedcom Date Preferences-->
         <scene sceneID="xcw-tQ-f6N">
             <objects>
-                <viewController title="Non-Gedcom Date Preferences" storyboardIdentifier="NonGedcomDates" id="hhO-71-oac" userLabel="Non-Gedcom Date Preferences" customClass="PreferencesViewController" sceneMemberID="viewController">
+                <viewController title="Non-Gedcom Date Preferences" storyboardIdentifier="NonGedcomDates" showSeguePresentationStyle="single" id="hhO-71-oac" userLabel="Non-Gedcom Date Preferences" customClass="PreferencesViewController" sceneMemberID="viewController">
                     <view key="view" id="YT7-uf-R9v">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -654,64 +727,16 @@
                 </viewController>
                 <customObject id="711-VI-HHE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1709" y="-1295"/>
+            <point key="canvasLocation" x="-374" y="-1261"/>
         </scene>
         <!--Census Preferences-->
         <scene sceneID="bau-3f-ZUy">
             <objects>
-                <viewController title="Census Preferences" id="FjQ-fP-Lxf" customClass="PreferencesViewController" sceneMemberID="viewController">
+                <viewController title="Census Preferences" showSeguePresentationStyle="single" id="FjQ-fP-Lxf" customClass="PreferencesViewController" sceneMemberID="viewController">
                     <view key="view" id="N7s-Pk-ukc">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRi-MY-bgg">
-                                <rect key="frame" x="18" y="375" width="279" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Treat Residence Facts As Census Facts (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="KJg-td-gsG">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aT-dQ-VWn">
-                                <rect key="frame" x="18" y="355" width="294" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Tolerate Slightly Inaccurate Census Dates (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9aA-mc-OJE">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mvt-Va-I72">
-                                <rect key="frame" x="18" y="335" width="225" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Use Compact Census References" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="20R-Ry-vXX">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cR2-N7-zKE">
-                                <rect key="frame" x="18" y="295" width="343" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Auto Create Census Events from Notes &amp; Sources (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SW9-Ma-OWJ">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fts-cP-3ci">
-                                <rect key="frame" x="18" y="275" width="363" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Add Auto Created Census Locations to Locations List (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="klz-uE-jvW">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2C9-p8-R4W">
-                                <rect key="frame" x="18" y="255" width="296" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Hide People Tagged As Missing From Census" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Nh0-8o-Edi">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1TB-pP-GfQ">
                                 <rect key="frame" x="20" y="20" width="257" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -721,8 +746,64 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRi-MY-bgg">
+                                <rect key="frame" x="18" y="364" width="279" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Treat Residence Facts As Census Facts (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="KJg-td-gsG">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WE5-ve-pAq">
+                                <rect key="frame" x="18" y="344" width="374" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Convert Residence Facts w/census ref to Census Facts (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0TY-TN-Y5z">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aT-dQ-VWn">
+                                <rect key="frame" x="18" y="324" width="294" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Tolerate Slightly Inaccurate Census Dates (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9aA-mc-OJE">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mvt-Va-I72">
+                                <rect key="frame" x="18" y="304" width="225" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Use Compact Census References" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="20R-Ry-vXX">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cR2-N7-zKE">
+                                <rect key="frame" x="18" y="264" width="343" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Auto Create Census Events from Notes &amp; Sources (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SW9-Ma-OWJ">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fts-cP-3ci">
+                                <rect key="frame" x="18" y="244" width="363" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Add Auto Created Census Locations to Locations List (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="klz-uE-jvW">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2C9-p8-R4W">
+                                <rect key="frame" x="18" y="224" width="296" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Hide People Tagged As Missing From Census" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Nh0-8o-Edi">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xkx-ok-UWd">
-                                <rect key="frame" x="18" y="315" width="302" height="18"/>
+                                <rect key="frame" x="18" y="284" width="302" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Family Census Facts Apply To Only Parents (*)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uVx-T9-sQc">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -730,7 +811,7 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s9X-Uf-yf7">
-                                <rect key="frame" x="18" y="235" width="322" height="18"/>
+                                <rect key="frame" x="18" y="204" width="322" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Skip checking for Census References in notes etc" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ohe-oq-J1A">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -742,26 +823,36 @@
                     <connections>
                         <outlet property="AutoCreateCensusFactsOutlet" destination="cR2-N7-zKE" id="oo0-Nx-CaL"/>
                         <outlet property="AutoCreateCensusLocationsOutlet" destination="fts-cP-3ci" id="b4d-Xw-R1H"/>
-                        <outlet property="AutoCreateCensusOutlet" destination="cR2-N7-zKE" id="xqe-4y-mRC"/>
                         <outlet property="CompactCensusRefOutlet" destination="mvt-Va-I72" id="SWx-vF-GcF"/>
+                        <outlet property="ConvertResidenceFactsOutlet" destination="WE5-ve-pAq" id="804-Wy-kNb"/>
                         <outlet property="FamilyCensusFactsOutlet" destination="xkx-ok-UWd" id="SI6-4E-Ax0"/>
                         <outlet property="HideMissingCensusOutlet" destination="2C9-p8-R4W" id="gEG-kH-YOr"/>
+                        <outlet property="SkipCensusRefNotesOutlet" destination="s9X-Uf-yf7" id="onh-of-cvb"/>
                         <outlet property="SlightlyInaccurateOutlet" destination="6aT-dQ-VWn" id="rV3-3s-6eK"/>
                         <outlet property="TreatResidenceasCensusOutlet" destination="dRi-MY-bgg" id="7xg-RC-Qrj"/>
                     </connections>
                 </viewController>
                 <customObject id="jix-aT-STf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1678" y="-1794"/>
+            <point key="canvasLocation" x="-1382" y="-1261"/>
         </scene>
         <!--File Handling Preferences-->
         <scene sceneID="2Q0-mP-Xrg">
             <objects>
-                <viewController title="File Handling Preferences" storyboardIdentifier="FileHandling" id="XUW-QQ-7UG" userLabel="File Handling Preferences" customClass="PreferencesViewController" sceneMemberID="viewController">
+                <viewController title="File Handling Preferences" showSeguePresentationStyle="single" id="XUW-QQ-7UG" customClass="PreferencesViewController" sceneMemberID="viewController">
                     <view key="view" id="CeH-Gl-fa9">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fv8-7E-0TU">
+                                <rect key="frame" x="18" y="20" width="257" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="(*) This option requires a GEDCOM reload" id="2q7-Bz-1Hq">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AEW-Pf-cTe">
                                 <rect key="frame" x="18" y="364" width="308" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -778,15 +869,6 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fv8-7E-0TU">
-                                <rect key="frame" x="18" y="20" width="257" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="(*) This option requires a GEDCOM reload" id="2q7-Bz-1Hq">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AaE-yK-efb">
                                 <rect key="frame" x="18" y="324" width="387" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -798,26 +880,26 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="ConvertDiacriticsOutlet" destination="CeH-Gl-fa9" id="4kl-Yb-7vU"/>
-                        <outlet property="ConvertDicriticsOutlet" destination="AaE-yK-efb" id="V36-FW-Rms"/>
+                        <outlet property="ConvertDiacriticsOutlet" destination="AaE-yK-efb" id="wM4-7J-KQD"/>
                         <outlet property="LoadWithFiltersOutlet" destination="AEW-Pf-cTe" id="LXT-oQ-NCm"/>
                         <outlet property="RetryFailedLinesOutlet" destination="JA8-7y-Fse" id="2GN-uT-2dG"/>
                     </connections>
                 </viewController>
                 <customObject id="T7Q-eG-oFq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-432" y="-1493"/>
+            <point key="canvasLocation" x="-876" y="-1261"/>
         </scene>
         <!--MainTabController-->
         <scene sceneID="pXS-AW-A6S">
             <objects>
-                <tabViewController title="MainTabController" showSeguePresentationStyle="single" selectedTabViewItemIndex="0" id="kye-gt-91O" customClass="FTAnalyzerTabViewController" sceneMemberID="viewController">
+                <tabViewController title="MainTabController" showSeguePresentationStyle="single" selectedTabViewItemIndex="0" id="kye-gt-91O" customClass="FTAnalyzerViewController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Gedcom Stats" id="5KQ-md-UQl"/>
                         <tabViewItem label="Main Lists" id="nnU-Eq-ulZ"/>
                         <tabViewItem label="Errors/Fixes" id="CSJ-Bf-v81"/>
                         <tabViewItem label="Locations" id="DMe-j4-sWE"/>
                         <tabViewItem label="Research Suggestions" id="87P-3v-hw9"/>
+                        <tabViewItem id="XgX-Nz-QHB"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions"/>
                     <tabView key="tabView" type="noTabsNoBorder" id="y8i-E2-aTc">
@@ -829,13 +911,13 @@
                         </connections>
                     </tabView>
                     <connections>
-                        <outlet property="ResearchSuggestions" destination="87P-3v-hw9" id="TQZ-aL-HsB"/>
                         <outlet property="tabView" destination="y8i-E2-aTc" id="kRK-As-Ijj"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="tabItems" id="yse-z5-huH"/>
                         <segue destination="CGu-hu-FSh" kind="relationship" relationship="tabItems" id="MhZ-U1-MmU"/>
                         <segue destination="LHn-6f-ueJ" kind="relationship" relationship="tabItems" id="7ye-AF-inL"/>
                         <segue destination="hKK-5N-IBj" kind="relationship" relationship="tabItems" id="yC9-7z-Zo3"/>
                         <segue destination="9G0-dd-9dE" kind="relationship" relationship="tabItems" id="sUc-P6-wtB"/>
+                        <segue destination="5cS-xa-1r7" kind="relationship" relationship="tabItems" id="1GR-QX-c23"/>
                     </connections>
                 </tabViewController>
                 <customObject id="4Wv-cV-nU2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -851,13 +933,25 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="delegate" destination="CGu-hu-FSh" id="hVA-Jd-Fua"/>
+                            <outlet property="menu" destination="WR6-GA-mNe" id="xr2-ab-i5R"/>
                         </connections>
                     </tabView>
                     <connections>
+                        <outlet property="SetRootPersonMenu" destination="WR6-GA-mNe" id="6GV-uW-wbe"/>
                         <outlet property="tabView" destination="AZ8-HA-aKK" id="MVt-4g-Cue"/>
                     </connections>
                 </tabViewController>
                 <customObject id="PPL-jb-iDV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu title="Update Root" id="WR6-GA-mNe">
+                    <items>
+                        <menuItem title="Set as Root Person" id="Lta-2x-VXh" userLabel="Set as Root Person">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="SetRootPersonClicked:" target="CGu-hu-FSh" id="kxJ-MK-H2o"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="-11" y="-822"/>
         </scene>
@@ -1058,7 +1152,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" title="Census Suggestion Reports" translatesAutoresizingMaskIntoConstraints="NO" id="5Mh-tw-1Tb">
-                                <rect key="frame" x="-3" y="296" width="528" height="118"/>
+                                <rect key="frame" x="17" y="289" width="528" height="118"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="Nzq-zM-T2B">
                                     <rect key="frame" x="3" y="3" width="522" height="100"/>
@@ -1112,16 +1206,16 @@
                                 </view>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rui-S7-otb">
-                                <rect key="frame" x="18" y="425" width="206" height="17"/>
+                                <rect key="frame" x="18" y="425" width="158" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Selected Census Search Provider" id="sB0-95-9b8">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Selected Search Provider" id="sB0-95-9b8">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8Q-2o-gZW">
-                                <rect key="frame" x="248" y="420" width="252" height="26"/>
+                                <rect key="frame" x="182" y="421" width="199" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Find My Past" drawsBackground="YES" usesSingleLineMode="YES" numberOfVisibleItems="4" id="Pud-Sr-BGY">
                                     <font key="font" metaFont="system"/>
@@ -1138,24 +1232,47 @@
                                     <action selector="SearchProviderChanged:" target="9G0-dd-9dE" id="c72-mG-gwY"/>
                                 </connections>
                             </comboBox>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EBl-Vd-fgp">
+                                <rect key="frame" x="440" y="421" width="99" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title=".co.uk" drawsBackground="YES" numberOfVisibleItems="5" id="8Dm-NT-AHD">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>.com</string>
+                                        <string>.co.uk</string>
+                                        <string>.ca</string>
+                                        <string>.com.au</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                                <connections>
+                                    <action selector="CensusRegionChanged:" target="9G0-dd-9dE" id="8AP-CJ-WVe"/>
+                                </connections>
+                            </comboBox>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GNQ-ji-T7R">
+                                <rect key="frame" x="384" y="426" width="50" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Region:" id="j8u-0d-UKB">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="CanadianCensus" destination="mkk-MW-jXY" id="bwS-DF-qjT"/>
-                        <outlet property="CanadianCensusClicked" destination="mkk-MW-jXY" id="E4Q-j7-EqC"/>
                         <outlet property="CanadianColourCensus" destination="mkk-MW-jXY" id="nSd-qp-3PD"/>
+                        <outlet property="CensusRegionOutlet" destination="EBl-Vd-fgp" id="Kau-7K-gE8"/>
                         <outlet property="CensusSearchProviderOutlet" destination="a8Q-2o-gZW" id="I7X-ie-uQT"/>
-                        <outlet property="IrishCensus" destination="l8q-6h-UWy" id="aoA-o7-SNq"/>
                         <outlet property="IrishColourCensus" destination="l8q-6h-UWy" id="5Lk-Bk-joB"/>
-                        <outlet property="UKCensus" destination="LrN-fi-2fs" id="Gx4-iT-GuL"/>
                         <outlet property="UKColourCensus" destination="LrN-fi-2fs" id="LVP-mR-6wU"/>
-                        <outlet property="USCensus" destination="OU7-gh-vqs" id="pVS-uG-DWi"/>
                         <outlet property="USColourCensus" destination="OU7-gh-vqs" id="gh4-CM-QAP"/>
                     </connections>
                 </viewController>
                 <customObject id="vre-dl-FUg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1669" y="-741"/>
+            <point key="canvasLocation" x="1658" y="-741"/>
         </scene>
         <!--Progress Display-->
         <scene sceneID="Xnb-O1-Qfk">
@@ -1194,7 +1311,7 @@
                             <textField canDrawConcurrently="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LUu-Cm-9rX">
                                 <rect key="frame" x="-2" y="54" width="454" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="center" title="Label" id="5bR-Cr-Zbg">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="center" id="5bR-Cr-Zbg">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1210,6 +1327,459 @@
                 <customObject id="3QT-Zp-Z6t" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1054" y="-2599.5"/>
+        </scene>
+        <!--LostCousinsController-->
+        <scene sceneID="1Fr-nE-YZm">
+            <objects>
+                <tabViewController title="Lost Cousins" selectedTabViewItemIndex="0" id="5cS-xa-1r7" userLabel="LostCousinsController" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="KAA-xR-TqL"/>
+                        <tabViewItem identifier="" id="Zcp-uR-dSU"/>
+                        <tabViewItem id="0ei-ph-2zH"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="MpI-qF-htj">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="5cS-xa-1r7" id="zLc-C6-Jq7"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="MpI-qF-htj" id="rDD-1p-MXf"/>
+                        <segue destination="X3L-w0-Ccz" kind="relationship" relationship="tabItems" id="W68-hh-zr4"/>
+                        <segue destination="MJc-N3-gLT" kind="relationship" relationship="tabItems" id="KFu-t8-1nr"/>
+                        <segue destination="9ie-0U-dJt" kind="relationship" relationship="tabItems" id="5pr-Dc-48Q"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="KsB-uC-xqu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1457" y="-1552"/>
+        </scene>
+        <!--Verification-->
+        <scene sceneID="lYv-Nj-f9C">
+            <objects>
+                <viewController title="Verification" id="9ie-0U-dJt" customClass="LCVerifyViewController" sceneMemberID="viewController">
+                    <view key="view" id="PCD-CF-oul">
+                        <rect key="frame" x="0.0" y="0.0" width="972" height="567"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d4n-pw-7c3">
+                                <rect key="frame" x="60" y="518" width="132" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Not Yet Implemented" id="5iN-dd-Rg9">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="JGp-Ns-0fN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="-1131"/>
+        </scene>
+        <!--Reports-->
+        <scene sceneID="gWt-KC-b63">
+            <objects>
+                <viewController title="Reports" id="X3L-w0-Ccz" customClass="LCReportsViewController" sceneMemberID="viewController">
+                    <view key="view" id="x1C-R9-DGb">
+                        <rect key="frame" x="0.0" y="0.0" width="972" height="579"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brG-JX-g67">
+                                <rect key="frame" x="553" y="0.0" width="419" height="579"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Oel-mK-XWn">
+                                    <rect key="frame" x="0.0" y="0.0" width="419" height="579"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" allowsDocumentBackgroundColorChange="YES" textCompletion="NO" id="Pcf-BW-p8C">
+                                            <rect key="frame" x="0.0" y="0.0" width="419" height="579"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="419" height="579"/>
+                                            <size key="maxSize" width="492" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="bfw-oe-Ri2">
+                                    <rect key="frame" x="-100" y="-100" width="15" height="579"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5go-DY-q7p" customClass="RelationshipTypesView">
+                                <rect key="frame" x="20" y="469" width="384" height="110"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <box fixedFrame="YES" title="Relationship Types" translatesAutoresizingMaskIntoConstraints="NO" id="foo-pc-KgV">
+                                        <rect key="frame" x="-3" y="-4" width="390" height="114"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <view key="contentView" id="8lV-V3-NjG">
+                                            <rect key="frame" x="3" y="3" width="384" height="93"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqO-Lw-0yh">
+                                                    <rect key="frame" x="18" y="68" width="59" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Direct" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gBY-Qy-jgs">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nAN-wr-Kvb">
+                                                    <rect key="frame" x="18" y="40" width="57" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Blood" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="NkS-Wr-Ktn">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q35-49-Mhl">
+                                                    <rect key="frame" x="18" y="13" width="164" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Married to Direct/Blood" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="QO8-g0-ENa">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y5L-bg-1LY">
+                                                    <rect key="frame" x="113" y="68" width="144" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Related by Marriage" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ly7-V1-Cn5">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rd8-dG-RYx">
+                                                    <rect key="frame" x="113" y="40" width="102" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Descendants" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="lwG-6n-oY8">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MvG-Kp-BXe">
+                                                    <rect key="frame" x="224" y="13" width="138" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Linked by Marriage" bezelStyle="regularSquare" imagePosition="left" inset="2" id="18s-jS-YVN">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BmU-R8-Y5I">
+                                                    <rect key="frame" x="283" y="68" width="79" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Unknown" bezelStyle="regularSquare" imagePosition="left" inset="2" id="GWA-4L-rND">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                </button>
+                                            </subviews>
+                                        </view>
+                                        <font key="titleFont" metaFont="system"/>
+                                    </box>
+                                </subviews>
+                                <connections>
+                                    <outlet property="BloodOutlet" destination="nAN-wr-Kvb" id="tO4-fA-ndQ"/>
+                                    <outlet property="DescendantsOutlet" destination="Rd8-dG-RYx" id="50K-C3-Bhm"/>
+                                    <outlet property="Direct" destination="eqO-Lw-0yh" id="l0d-pf-ahp"/>
+                                    <outlet property="DirectOutlet" destination="eqO-Lw-0yh" id="rDp-d4-Bja"/>
+                                    <outlet property="LinkedOutlet" destination="MvG-Kp-BXe" id="uFx-Ez-2lw"/>
+                                    <outlet property="MarriageOutlet" destination="Y5L-bg-1LY" id="5J4-oD-hag"/>
+                                    <outlet property="MarriedDBOutlet" destination="Q35-49-Mhl" id="6Vt-Lu-TCv"/>
+                                    <outlet property="UnknownOutlet" destination="BmU-R8-Y5I" id="iLO-jf-R4f"/>
+                                </connections>
+                            </customView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAb-IP-sUa" userLabel="1881 England and Wales Census">
+                                <rect key="frame" x="14" y="421" width="223" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="1881 England &amp; Wales Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NFC-vT-q7f">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="EW1881CensusClicked:" target="X3L-w0-Ccz" id="X5e-mp-4SQ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FhT-2B-jjY">
+                                <rect key="frame" x="14" y="388" width="222" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="1841 England &amp; Wales Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fxt-dp-QNP">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="EW1841CensusClicked:" target="X3L-w0-Ccz" id="2va-g1-VQe"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RNp-ar-CS0">
+                                <rect key="frame" x="14" y="355" width="220" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="1911 England &amp; Wales Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ml1-27-IYJ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="EW1911CensusClicked:" target="X3L-w0-Ccz" id="sN4-1Y-R0p"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KMy-nk-g8M">
+                                <rect key="frame" x="234" y="421" width="176" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="  1881 Scotland Census" bezelStyle="rounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rre-eX-bIV">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="Scotland1881CensusClicked:" target="X3L-w0-Ccz" id="pon-io-o70"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTG-4Q-peT">
+                                <rect key="frame" x="234" y="388" width="176" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="  1911 Ireland Census" bezelStyle="rounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WGA-uL-Yd3">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="Ireland1911CensusClicked:" target="X3L-w0-Ccz" id="QRT-vn-HZu"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zZA-qM-sWW">
+                                <rect key="frame" x="234" y="355" width="176" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="  1880 Canada Census" bezelStyle="rounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M5x-6m-AIk">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="Canada1880CensusClicked:" target="X3L-w0-Ccz" id="x1e-LG-hgz"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Qc-nB-cVC">
+                                <rect key="frame" x="410" y="388" width="141" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="1880 US Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="583-Ml-nhm">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="US1880CensusClicked:" target="X3L-w0-Ccz" id="7or-g3-BEm"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qIl-3Z-T2a">
+                                <rect key="frame" x="410" y="355" width="141" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="1940 US Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bpJ-5x-ZpL">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="US1940CensusClicked:" target="X3L-w0-Ccz" id="g8R-qz-awA"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CMt-XO-G06">
+                                <rect key="frame" x="18" y="326" width="524" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show already entered to Lost Cousins (unticked = show those to yet to be entered)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="hLV-IV-0Ax">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="RelationshipTypesOutlet" destination="5go-DY-q7p" id="sYr-RU-ByV"/>
+                        <outlet property="ReportsTextBox" destination="Pcf-BW-p8C" id="oEJ-De-5fc"/>
+                        <outlet property="ShowAlreadyEnteredOutlet" destination="CMt-XO-G06" id="Fa6-x7-QCn"/>
+                    </connections>
+                </viewController>
+                <customObject id="QL4-e4-kJV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="-2405"/>
+        </scene>
+        <!--Updates-->
+        <scene sceneID="ugR-eP-V50">
+            <objects>
+                <viewController title="Updates" id="MJc-N3-gLT" customClass="LCUpdatesViewController" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="fwf-aU-Omq">
+                        <rect key="frame" x="0.0" y="0.0" width="972" height="567"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box fixedFrame="YES" title="Login to Lost Cousins" translatesAutoresizingMaskIntoConstraints="NO" id="HeX-M4-e9L">
+                                <rect key="frame" x="17" y="432" width="509" height="135"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <view key="contentView" id="I8H-WE-7f5">
+                                    <rect key="frame" x="3" y="3" width="503" height="114"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qhZ-LK-kX3">
+                                            <rect key="frame" x="136" y="72" width="347" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="31v-cs-Mze">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uXL-Lb-eGg">
+                                            <rect key="frame" x="20" y="74" width="90" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Email Address" id="33x-uK-PQc">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1s-3X-2Yf">
+                                            <rect key="frame" x="20" y="34" width="63" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Password" id="aAn-bL-tEO">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8At-Jt-Axc">
+                                            <rect key="frame" x="136" y="34" width="168" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="frc-Ry-tkj">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <allowedInputSourceLocales>
+                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                </allowedInputSourceLocales>
+                                            </secureTextFieldCell>
+                                        </secureTextField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CO8-jW-7JY">
+                                            <rect key="frame" x="415" y="13" width="74" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QBX-e1-6Xz">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="LoginButtonClicked:" target="MJc-N3-gLT" id="TIp-98-lch"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxS-1O-GLc">
+                                <rect key="frame" x="18" y="405" width="507" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="right" alignment="right" inset="2" id="EeE-XS-J0d">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="ConfirmRootPersonChecked:" target="MJc-N3-gLT" id="aEw-hW-7oW"/>
+                                </connections>
+                            </button>
+                            <scrollView fixedFrame="YES" borderType="groove" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ud-7w-m7m">
+                                <rect key="frame" x="0.0" y="0.0" width="972" height="363"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="nTu-fa-xIB">
+                                    <rect key="frame" x="2" y="2" width="953" height="359"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" allowsDocumentBackgroundColorChange="YES" textCompletion="NO" id="FDi-Xg-YeF">
+                                            <rect key="frame" x="0.0" y="0.0" width="953" height="359"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="953" height="359"/>
+                                            <size key="maxSize" width="972" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <shadow key="shadow">
+                                    <size key="offset" width="3" height="3"/>
+                                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </shadow>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="HKr-sj-AbH">
+                                    <rect key="frame" x="955" y="2" width="15" height="359"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viB-kp-vpV" userLabel="Stats Textbox">
+                                <rect key="frame" x="531" y="383" width="441" height="184"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="6Lz-LY-tPi">
+                                    <rect key="frame" x="0.0" y="0.0" width="441" height="184"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" allowsDocumentBackgroundColorChange="YES" textCompletion="NO" id="Wag-Il-i8h">
+                                            <rect key="frame" x="0.0" y="0.0" width="441" height="184"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="441" height="184"/>
+                                            <size key="maxSize" width="511" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ry0-PN-wVu">
+                                    <rect key="frame" x="-100" y="-100" width="15" height="194"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCU-d0-xRp">
+                                <rect key="frame" x="337" y="376" width="192" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Update Lost Cousins site" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XoK-Xr-j7S">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="LostCousinsUpdateClicked:" target="MJc-N3-gLT" id="Dj7-wk-XdD"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="onp-lu-a0y">
+                                <rect key="frame" x="14" y="376" width="180" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="View Potential Uploads" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNl-BJ-X1Q">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="ViewPotentialClicked:" target="MJc-N3-gLT" id="qkk-x9-wZ5"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ya-fC-NRi">
+                                <rect key="frame" x="195" y="376" width="142" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="View Invalid Refs" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Va-AV-vjX">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="ViewInvalidClicked:" target="MJc-N3-gLT" id="0ey-Ix-CIi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="ConfirmRootPerson" destination="wxS-1O-GLc" id="953-oc-bd1"/>
+                        <outlet property="EmailAddressField" destination="qhZ-LK-kX3" id="GUw-pS-Yx7"/>
+                        <outlet property="LoginButtonOutlet" destination="CO8-jW-7JY" id="TRx-Pl-OJR"/>
+                        <outlet property="LostCousinsUpdateButton" destination="mCU-d0-xRp" id="Ild-6g-TyQ"/>
+                        <outlet property="PasswordField" destination="8At-Jt-Axc" id="GG5-mH-7Dk"/>
+                        <outlet property="StatsTextbox" destination="Wag-Il-i8h" id="EDN-iQ-Ni5"/>
+                        <outlet property="UpdateResultsTextbox" destination="FDi-Xg-YeF" id="jpl-9b-UZw"/>
+                    </connections>
+                </viewController>
+                <customObject id="eNu-oC-QiZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="-1762.5"/>
         </scene>
     </scenes>
     <resources>

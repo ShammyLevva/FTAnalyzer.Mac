@@ -6,7 +6,7 @@ using CoreGraphics;
 using Foundation;
 using FTAnalyzer.DataSources;
 using FTAnalyzer.Utilities;
-using ObjCRuntime;
+using FTAnalyzer.Views;
 
 namespace FTAnalyzer.ViewControllers
 {
@@ -31,29 +31,7 @@ namespace FTAnalyzer.ViewControllers
 
         NSScrollView SetupTableView()
         {
-            _tableView = new NSTableView
-            {
-                Identifier = Title,
-                RowSizeStyle = NSTableViewRowSizeStyle.Default,
-                Enabled = true,
-                UsesAlternatingRowBackgroundColors = true,
-                AutoresizesSubviews = true,
-                ColumnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.None,
-                WantsLayer = true,
-                Layer = NewLayer(),
-                Bounds = new CGRect(0, 0, 0, 0),
-                AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable,
-                AllowsMultipleSelection = false,
-                AllowsColumnResizing = true,
-                AllowsColumnSelection = false,
-                AllowsColumnReordering = false,
-                SortDescriptors = new NSSortDescriptor[] { },
-                AutosaveName = Title,
-                AutosaveTableColumns = true,
-                Target = Self,
-                DoubleAction = new Selector("ViewDetailsSelector"),
-                Action = new Selector("SetRootPersonSelector:")
-            };
+            _tableView = new GridTableView(Title, Self);
             AddTableColumns(_tableView);
             NSProcessInfo info = new NSProcessInfo();
             if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
@@ -65,6 +43,7 @@ namespace FTAnalyzer.ViewControllers
                 HasHorizontalScroller = true,
                 AutohidesScrollers = true,
                 WantsLayer = true,
+<<<<<<< HEAD
                 Layer = NewLayer(),
                 Bounds = new CGRect(0, 0, 0, 0),
                 AutoresizesSubviews = true,
@@ -76,10 +55,16 @@ namespace FTAnalyzer.ViewControllers
                 }
             };
             scrollView.ContentView.AddSubview(_tableView);
+=======
+                Layer = new CALayer { Bounds = new CGRect(0, 0, 0, 0) },
+                Bounds = new CGRect(0, 0, 0, 0)
+            };
+            scrollView.ContentView.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
+            scrollView.ContentView.AutoresizesSubviews = true;
+            scrollView.ScrollRectToVisible(new CGRect(0, 0, 0, 0));
+>>>>>>> LostCousins
             return scrollView;
         }
-
-        static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
 
         public virtual void RefreshDocumentView(SortableBindingList<T> list)
         {
@@ -99,17 +84,14 @@ namespace FTAnalyzer.ViewControllers
             _tableView.ReloadData();
         }
 
-        internal CGSize GetViewSize()
-        {
-            return new CGSize(_tableView.Frame.Width, _tableView.Frame.Height + _tableView.HeaderView.Frame.Height);
-        }
+        internal CGSize GetViewSize() => new CGSize(_tableView.Frame.Width, _tableView.Frame.Height + _tableView.HeaderView.Frame.Height);
 
         internal void AddTableColumns(NSTableView view)
         {
             var properties = GetGenericType().GetProperties();
             foreach (var property in properties)
             {
-                float width = 100;
+                float width = 40;
                 string columnTitle = property.Name;
                 ColumnDetail[] columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
                 if (columnDetail?.Length == 1)
@@ -121,6 +103,7 @@ namespace FTAnalyzer.ViewControllers
                 {
                     Identifier = property.Name,
                     MinWidth = width,
+                    Width = width,
                     SortDescriptorPrototype = new NSSortDescriptor(property.Name, true), 
                     Editable = false,
                     Hidden = false,
@@ -131,14 +114,8 @@ namespace FTAnalyzer.ViewControllers
             }
         }
 
-        [Export("SetRootPersonSelector")]
-        public void SetRootPersonSelector()
+        public Individual GetSelectedPerson()
         {
-            if (!NSThread.IsMain)
-            {
-                InvokeOnMainThread(SetRootPersonSelector);
-                return;
-            }
             NSTableColumn column = GetColumnID("IndividualID");
             if (column != null)
             {
@@ -146,10 +123,10 @@ namespace FTAnalyzer.ViewControllers
                 {
                     string indID = cell.TextField.StringValue;
                     Individual ind = FamilyTree.Instance.GetIndividual(indID);
-                    RaiseSetRootPersonClicked(ind);
-                    return;
+                    return ind;
                 }
             }
+            return null;
         }
 
         [Export("ViewDetailsSelector")]
@@ -208,7 +185,7 @@ namespace FTAnalyzer.ViewControllers
             column = GetColumnID("ErrorType");
             if (column != null)
             {
-                var source = _tableView.Source as BindingListTableSource<DataError>;
+                var source = _tableView.Source as BindingListTableSource<IDisplayDataError>;
                 if (source.GetRowObject(_tableView.SelectedRow) is DataError error)
                 {
                     if (error.IsFamily == "Yes")
@@ -244,7 +221,17 @@ namespace FTAnalyzer.ViewControllers
             return widths;
         }
 
-        protected NSTableColumn GetColumnID(string identifier)
+        public Dictionary<string, bool> ColumnVisibility()
+        {
+            var widths = new Dictionary<string, bool>();
+            foreach (NSTableColumn column in _tableView.TableColumns())
+            {
+                widths.Add(column.Identifier, column.Hidden);
+            }
+            return widths;
+        }
+
+                protected NSTableColumn GetColumnID(string identifier)
         {
             int count = 0;
             foreach (NSTableColumn column in _tableView.TableColumns())

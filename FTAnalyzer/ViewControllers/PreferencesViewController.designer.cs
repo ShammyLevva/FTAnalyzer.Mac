@@ -31,6 +31,9 @@ namespace FTAnalyzer.ViewControllers
 		AppKit.NSButton ConvertDiacriticsOutlet { get; set; }
 
 		[Outlet]
+		AppKit.NSButton ConvertResidenceFactsOutlet { get; set; }
+
+		[Outlet]
 		AppKit.NSButton FamilyCensusFactsOutlet { get; set; }
 
 		[Outlet]
@@ -44,9 +47,6 @@ namespace FTAnalyzer.ViewControllers
 
 		[Outlet]
 		AppKit.NSButton LoadWithFiltersOutlet { get; set; }
-
-		[Outlet]
-		AppKit.NSPopUpButton LooseBirthMinimumAgeOutlet { get; set; }
 
 		[Outlet]
 		AppKit.NSButton RetryFailedLinesOutlet { get; set; }
@@ -108,6 +108,11 @@ namespace FTAnalyzer.ViewControllers
 				CompactCensusRefOutlet = null;
 			}
 
+			if (ConvertDiacriticsOutlet != null) {
+				ConvertDiacriticsOutlet.Dispose ();
+				ConvertDiacriticsOutlet = null;
+			}
+
 			if (FamilyCensusFactsOutlet != null) {
 				FamilyCensusFactsOutlet.Dispose ();
 				FamilyCensusFactsOutlet = null;
@@ -131,11 +136,6 @@ namespace FTAnalyzer.ViewControllers
 			if (LoadWithFiltersOutlet != null) {
 				LoadWithFiltersOutlet.Dispose ();
 				LoadWithFiltersOutlet = null;
-			}
-
-			if (LooseBirthMinimumAgeOutlet != null) {
-				LooseBirthMinimumAgeOutlet.Dispose ();
-				LooseBirthMinimumAgeOutlet = null;
 			}
 
 			if (RetryFailedLinesOutlet != null) {
@@ -163,6 +163,11 @@ namespace FTAnalyzer.ViewControllers
 				SkipCensusRefNotesOutlet = null;
 			}
 
+			if (SkipFixingLocationsOutlet != null) {
+				SkipFixingLocationsOutlet.Dispose ();
+				SkipFixingLocationsOutlet = null;
+			}
+
 			if (SlightlyInaccurateOutlet != null) {
 				SlightlyInaccurateOutlet.Dispose ();
 				SlightlyInaccurateOutlet = null;
@@ -188,14 +193,9 @@ namespace FTAnalyzer.ViewControllers
 				UseCountryFirstOutlet = null;
 			}
 
-			if (ConvertDiacriticsOutlet != null) {
-				ConvertDiacriticsOutlet.Dispose ();
-				ConvertDiacriticsOutlet = null;
-			}
-
-			if (SkipFixingLocationsOutlet != null) {
-				SkipFixingLocationsOutlet.Dispose ();
-				SkipFixingLocationsOutlet = null;
+			if (ConvertResidenceFactsOutlet != null) {
+				ConvertResidenceFactsOutlet.Dispose ();
+				ConvertResidenceFactsOutlet = null;
 			}
 		}
 	}

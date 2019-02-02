@@ -57,12 +57,11 @@ namespace FTAnalyzer.ViewControllers
 
         void DisplayColourCensus(string country, NSObject sender)
         {
-            Console.WriteLine(sender);
             var storyboard = NSStoryboard.FromName("ColourCensus", null);
             var ColourCensusWindow = storyboard.InstantiateControllerWithIdentifier("ColourCensusWindow") as NSWindowController;
             RelationTypes relationTypes = new RelationTypes();
             List<IDisplayColourCensus> list = FamilyTree.Instance.ColourCensus(country, relationTypes, string.Empty, null, false, false);
-            ColourCensusViewController colourCensusViewController = new ColourCensusViewController(country, (int)CensusSearchProviderOutlet.SelectedIndex);
+            ColourCensusViewController colourCensusViewController = new ColourCensusViewController(country, (int)CensusSearchProviderOutlet.SelectedIndex, CensusRegionOutlet.StringValue);
             colourCensusViewController.RefreshDocumentView(new SortableBindingList<IDisplayColourCensus>(list));
             ColourCensusWindow.ContentViewController.AddChildViewController(colourCensusViewController);
             ColourCensusWindow.Window.Title = colourCensusViewController.Title;

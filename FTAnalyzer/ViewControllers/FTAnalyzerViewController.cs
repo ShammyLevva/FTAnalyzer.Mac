@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Utilities;
-using FTAnalyzer.ViewControllers;
 
-namespace FTAnalyzer
+namespace FTAnalyzer.ViewControllers
 {
     public partial class FTAnalyzerViewController : NSTabViewController
     {
@@ -19,7 +17,7 @@ namespace FTAnalyzer
         BindingListViewController<IDisplayOccupation> occupationsViewController;
         BindingListViewController<IDisplayFact> factsViewController;
 
-        BindingListViewController<DataError> dataErrorsViewController;
+        BindingListViewController<IDisplayDataError> dataErrorsViewController;
         //BindingListViewController<IDisplayDuplicateIndividual> duplicatesViewController = null;
         BindingListViewController<IDisplayLooseBirth> looseBirthsViewController;
         BindingListViewController<IDisplayLooseDeath> looseDeathsViewController;
@@ -29,6 +27,9 @@ namespace FTAnalyzer
         LocationViewController subregionsViewController;
         LocationViewController addressesViewController;
         LocationViewController placesViewController;
+
+        LCReportsViewController lCReportsViewController;
+        LCUpdatesViewController lCUpdatesViewController;
 
         bool MainListsLoaded { get; set; }
         bool ErrorsAndFixesLoaded { get; set; }
@@ -67,6 +68,12 @@ namespace FTAnalyzer
                     if (ChildViewControllers.Length > 3)
                         viewController = ChildViewControllers[3];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.LocationTabViewed);
+                    break;
+                case "Lost Cousins":
+                    UpdateLostCousinsReport(ProgressController);
+                    if (ChildViewControllers.Length > 5)
+                        viewController = ChildViewControllers[5];
+                    Analytics.TrackAction(Analytics.MainFormAction, Analytics.LostCousinsTabEvent);
                     break;
                 default:
                     viewController = null;
@@ -108,10 +115,23 @@ namespace FTAnalyzer
             documentViewController.ClearAllProgress();
             App.DocumentViewController = documentViewController;
             App.CurrentViewController = documentViewController;
-
             SetupMainListsTabController();
             SetupDataErrorsTabController();
             SetupLocationsTabController();
+            SetupLostCousinsTabController();
+        }
+
+        public void RefreshLists()
+        {
+            MainListsLoaded = false; // forces refresh on LoadMainLists
+            LoadMainLists(ProgressController);
+            if(ErrorsAndFixesLoaded)
+            {
+                ErrorsAndFixesLoaded = false;
+                LoadErrorsAndFixes(ProgressController);
+                lCReportsViewController.Clear();
+                lCUpdatesViewController.Clear();
+            }
         }
 
         void SetupMainListsTabController()
@@ -132,7 +152,6 @@ namespace FTAnalyzer
             mainListsViewController.AddChildViewController(factsViewController);
 
             individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
-            individualsViewController.SetRootPersonClicked += SetRootPersonClicked;
             familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
             occupationsViewController.OccupationRowClicked += OccupationRowClicked;
             sourcesViewController.SourceFactRowClicked += SourcesFactRowClicked;
@@ -143,7 +162,7 @@ namespace FTAnalyzer
             var errorsAndFixesTabViewController = ChildViewControllers[2] as ListsTabViewController;
             RemoveOldTabs(errorsAndFixesTabViewController);
 
-            dataErrorsViewController = new BindingListViewController<DataError>("Data Errors", "Double click to show Individual/Family with this error.");
+            dataErrorsViewController = new BindingListViewController<IDisplayDataError>("Data Errors", "Double click to show Individual/Family with this error.");
             //duplicatesViewController = new BindingListViewController<IDisplayDuplicateIndividual>("Duplicates", "Double click to show the facts for both the individual and their possible match.");
             looseBirthsViewController = new BindingListViewController<IDisplayLooseBirth>
                 ("Loose Births", "List of Births where you could limit the date range.\nDouble click to show a list of facts for the selected individual.");
@@ -184,15 +203,12 @@ namespace FTAnalyzer
             placesViewController.LocationRowClicked += LocationRowClicked;
         }
 
-        void SetRootPersonClicked(Individual individual)
+        void SetupLostCousinsTabController()
         {
-            InvokeOnMainThread(() =>
-            {
-                // need to check that user right clicked and that they are happy to proceed with setting this root person before calling update root individual
-                //FamilyTree.Instance.UpdateRootIndividual(individual.IndividualID, null, null);
-                //Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
-            });
-
+            lCReportsViewController = ChildViewControllers[5].ChildViewControllers[0] as LCReportsViewController;
+            lCUpdatesViewController = ChildViewControllers[5].ChildViewControllers[1] as LCUpdatesViewController;
+            lCReportsViewController.LoadView();
+            lCUpdatesViewController.LoadView();
         }
 
         void IndividualsFactRowClicked(Individual individual)
@@ -228,8 +244,7 @@ namespace FTAnalyzer
                     App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for source: {source.ToString()}", source));
                     Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsSourceEvent);
                 }
-
-                });
+            });
         }
 
         void OccupationRowClicked(People people)
@@ -341,7 +356,7 @@ namespace FTAnalyzer
                     progressController.ProgressBar = 0;
                     progressController.ProgressText = "Loading Data Errors. Please Wait";
                     // Flatten the data error groups into a single list until filtering implemented.
-                    var errors = new SortableBindingList<DataError>(_familyTree.DataErrorTypes.SelectMany(dg => dg.Errors));
+                    var errors = new SortableBindingList<IDisplayDataError>(_familyTree.AllDataErrors);
                     dataErrorsViewController.RefreshDocumentView(errors);
                     progressController.ProgressBar = 25;
                     //duplicatesViewController.RefreshDocumentView(new SortableBindingList<IDisplayDuplicateIndividual>());
@@ -385,6 +400,22 @@ namespace FTAnalyzer
                     InvokeOnMainThread(progressController.Close);
                 });
             }
+        }
+
+        void UpdateLostCousinsReport(ProgressController progressController)
+        {
+            Task.Run(() =>
+            {
+                InvokeOnMainThread(() => progressController.ShowWindow(this));
+                progressController.ProgressText = "Loading Census Statistics";
+                progressController.ProgressBar = 0;
+                lCReportsViewController.UpdateLostCousinsReport(progressController);
+                progressController.ProgressBar = 50;
+                progressController.ProgressText = "Loading Lost Cousins Statistics";
+                lCUpdatesViewController.UpdateLostCousinsReport(lCReportsViewController.RelationshipTypes, progressController, lCReportsViewController);
+                progressController.ProgressBar = 100;
+                InvokeOnMainThread(progressController.Close);
+            });
         }
     }
 }

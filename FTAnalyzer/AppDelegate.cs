@@ -1,7 +1,10 @@
 using System;
-using System.Web;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using AppKit;
 using Foundation;
+using FTAnalyzer.Exports;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;
 
@@ -24,7 +27,8 @@ namespace FTAnalyzer
             Window.MakeKeyAndOrderFront(Self);
             Window.Title = $"FTAnalyzer {Version} - Family Tree Analyzer";
             Window.Delegate = new MainWindowDelegate();
-            SetMenus(false);
+            DatabaseHelper.Instance.CheckDatabaseVersion(ProgramVersion);
+            ResetDocument();
             CheckWebVersion();
         }
 
@@ -33,22 +37,26 @@ namespace FTAnalyzer
             return !_documentOpening;
         }
 
-        public override bool OpenFile(NSApplication sender, string filename)
+        public void ResetDocument()
         {
+            if (!NSThread.IsMain)
+            {
+                InvokeOnMainThread(ResetDocument);
+                return;
+            }
+            _documentOpening = true;
             if (Document != null)
             {
-                _documentOpening = true;
                 Document.Close();
                 Document = null;
-                SetMenus(false);
-                ResetMainWindow();
-                CloseAllSubWindows();
-                _documentOpening = false;
             }
-            return false;
+            SetMenus(false);
+            ResetMainWindow();
+            CloseAllSubWindows();
+            _documentOpening = false;
         }
 
-        private void ResetMainWindow()
+        void ResetMainWindow()
         {
             Window.MakeKeyAndOrderFront(Self);
             var controller = Window.ContentViewController as NSTabViewController;
@@ -60,6 +68,15 @@ namespace FTAnalyzer
         {
             PrintMenu.Enabled = enabled;
             PageSetupMenu.Enabled = enabled;
+            ExportIndividualsMenu.Enabled = enabled;
+            ExportFamiliesMenu.Enabled = enabled;
+            ExportFactsMenu.Enabled = enabled;
+            ExportLocationsMenu.Enabled = enabled;
+            ExportSourcesMenu.Enabled = enabled;
+            ExportDataErrorsMenu.Enabled = enabled;
+            ExportLooseBirthsMenu.Enabled = enabled;
+            ExportLooseDeathsMenu.Enabled = enabled;
+            ExportDNAGedcomMenu.Enabled = enabled;
         }
 
         public void ShowFacts(NSViewController factsViewController)
@@ -91,7 +108,17 @@ namespace FTAnalyzer
             {
                 var version = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString();
                 var build = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleVersion").ToString();
-                return $"v{version}.{build}";
+                return $"v{version} (Build {build})";
+            }
+        }
+
+        public Version ProgramVersion
+        {
+            get
+            {
+                var version = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString();
+                var build = NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleVersion").ToString();
+                return new Version($"{version}.{build}");
             }
         }
 
@@ -105,8 +132,184 @@ namespace FTAnalyzer
                 { Console.WriteLine(e.Message); }
         }
 
+        partial void ExportIndividuals(NSObject sender)
+        {
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<IExportIndividual>(FamilyTree.Instance.AllIndividuals));
+                ExportToExcel.Export(dt, "Individuals");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportIndEvent);
+            } catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Individuals: {e.Message}");
+            }
+        }
+
+        partial void ExportFamilies(NSObject sender)
+        {
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<IDisplayFamily>(FamilyTree.Instance.AllDisplayFamilies));
+                ExportToExcel.Export(dt, "Families");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportFamEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Families: {e.Message}");
+            }
+        }
+
+        partial void ExportFacts(NSObject sender)
+        {
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<ExportFact>(FamilyTree.Instance.AllExportFacts));
+                ExportToExcel.Export(dt, "Facts");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportFactsEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Facts: {e.Message}");
+            }
+        }
+
+        partial void ExportLocations(NSObject sender)
+        {
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<IDisplayLocation>(FamilyTree.Instance.AllDisplayPlaces));
+                ExportToExcel.Export(dt, "Locations");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLocationsEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Locations: {e.Message}");
+            }
+        }
+
+        partial void ExportSources(NSObject sender)
+        {
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<IDisplaySource>(FamilyTree.Instance.AllSources));
+                ExportToExcel.Export(dt, "Sources");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportSourcesEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Sources: {e.Message}");
+            }
+        }
+
+        partial void ExportDataErrors(NSObject sender)
+        {
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<IDisplayDataError>(FamilyTree.Instance.AllDataErrors));
+                ExportToExcel.Export(dt, "DataErrors");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportDataErrorsEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting DataErrors: {e.Message}");
+            }
+        }
+
+        partial void ExportLooseBirths(NSObject sender)
+        {
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                List<IDisplayLooseBirth> list = FamilyTree.Instance.LooseBirths().ToList();
+                list.Sort(new LooseBirthComparer());
+                DataTable dt = convertor.ToDataTable(list);
+                ExportToExcel.Export(dt, "LooseBirths");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLooseBirthsEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Loose Births: {e.Message}");
+            }
+        }
+
+        partial void ExportLooseDeaths(NSObject sender)
+        {
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                List<IDisplayLooseDeath> list = FamilyTree.Instance.LooseDeaths().ToList();
+                list.Sort(new LooseDeathComparer());
+                DataTable dt = convertor.ToDataTable(list);
+                ExportToExcel.Export(dt, "LooseDeaths");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLooseDeathsEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Loose Deaths: {e.Message}");
+            }
+        }
+
+        partial void ExportDNAGedcom(NSObject sender)
+        {
+            if(Document != null)
+                DNA_GEDCOM.Export();
+            else
+                NoDocumentLoaded();
+        }
+
         partial void PrintClicked(NSObject sender)
         {
+            if (Document == null)
+            {
+                NoDocumentLoaded();
+                return;
+            }
             var keyViewController = NSApplication.SharedApplication.KeyWindow.ContentViewController;
             if (keyViewController is FTAnalyzerViewController)
             {
@@ -123,8 +326,8 @@ namespace FTAnalyzer
             else if(keyViewController is PeopleViewController)
             {
                 ((PeopleViewController)keyViewController).Print(sender);
-            } 
-            else if(keyViewController is FactsWindowViewController)
+            }
+            else if (keyViewController is FactsWindowViewController)
             {
                 if (keyViewController.ChildViewControllers.Length > 0)
                 {
@@ -134,6 +337,11 @@ namespace FTAnalyzer
                 else
                     UIHelpers.ShowMessage("Sorry unknown problem with printing facts report");
             }
+            else if (keyViewController is NSTabViewController)
+            {
+                if (keyViewController.ChildViewControllers.Length == 1 && keyViewController.ChildViewControllers[0] is ColourCensusViewController)
+                    Document.PrintDocument(keyViewController.ChildViewControllers[0] as IPrintViewController);
+            }
             else
                 UIHelpers.ShowMessage("Sorry Printing Not currently available for this view");
         }
@@ -141,45 +349,47 @@ namespace FTAnalyzer
         partial void ViewOnlineManual(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.OnlineManualEvent);
-            HttpUtility.VisitWebsite("http://www.ftanalyzer.com");
+            SpecialMethods.VisitWebsite("http://www.ftanalyzer.com");
         }
 
         partial void ViewOnlineGuides(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.OnlineGuideEvent);
-            HttpUtility.VisitWebsite("http://www.ftanalyzer.com/guides");
+            SpecialMethods.VisitWebsite("http://www.ftanalyzer.com/guides");
         }
 
         partial void ReportIssue(NSObject sender)
         {
             UIHelpers.ShowMessage("Please note this is a early development version if you find a crashing bug please report it.\nOtherwise assume I'll get round to fixing things later.\nYou may find it more useful to raise issue at the Facebook User Group.");
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.ReportIssueEvent);
-            HttpUtility.VisitWebsite("https://github.com/ShammyLevva/FTAnalyzer.Mac/issues");
+            SpecialMethods.VisitWebsite("https://github.com/ShammyLevva/FTAnalyzer.Mac/issues");
         }
 
         partial void VisitFacebookSupport(NSObject sender)
         {
-            HttpUtility.VisitWebsite("https://www.facebook.com/ftanalyzer");
+            SpecialMethods.VisitWebsite("https://www.facebook.com/ftanalyzer");
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.FacebookSupportEvent);
         }
 
         partial void VisitFacebookUserGroup(NSObject sender)
         {
-            HttpUtility.VisitWebsite("https://www.facebook.com/groups/ftanalyzer");
+            SpecialMethods.VisitWebsite("https://www.facebook.com/groups/ftanalyzer");
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.FacebookUsersEvent);
         }
 
         partial void VisitPrivacyPolicy(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.PrivacyEvent);
-            HttpUtility.VisitWebsite("http://www.ftanalyzer.com/privacy");
+            SpecialMethods.VisitWebsite("http://www.ftanalyzer.com/privacy");
         }
 
         partial void VisitWhatsNew(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.WhatsNewEvent);
-            HttpUtility.VisitWebsite("http://mac.ftanalyzer.com/Whats%20New%20in%20this%20Release");
+            SpecialMethods.VisitWebsite("http://mac.ftanalyzer.com/Whats%20New%20in%20this%20Release");
         }
+
+        void NoDocumentLoaded() => UIHelpers.ShowMessage("No document currently loaded.");
     }
 
     class MainWindowDelegate : NSWindowDelegate

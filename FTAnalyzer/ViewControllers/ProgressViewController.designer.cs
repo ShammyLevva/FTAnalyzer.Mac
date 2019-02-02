@@ -8,7 +8,7 @@ using AppKit;
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace FTAnalyzer
+namespace FTAnalyzer.ViewControllers
 {
 	[Register ("ProgressViewController")]
 	partial class ProgressViewController

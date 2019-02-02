@@ -2,7 +2,7 @@
 using AppKit;
 using Foundation;
 
-namespace FTAnalyzer
+namespace FTAnalyzer.ViewControllers
 {
     public partial class ProgressViewController : NSViewController
 	{
@@ -18,7 +18,7 @@ namespace FTAnalyzer
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            ProgressText.StringValue = "empty text";
+            ProgressText.StringValue = string.Empty;
             ProgressBar.DoubleValue = 0;
         }
 

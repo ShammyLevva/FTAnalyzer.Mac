@@ -25,7 +25,7 @@
                 </windowController>
                 <customObject id="igf-RY-G6K" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="358" y="-228"/>
+            <point key="canvasLocation" x="358" y="-281"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="Cpg-dy-emq">

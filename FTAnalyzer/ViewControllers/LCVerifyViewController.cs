@@ -7,9 +7,9 @@ using AppKit;
 
 namespace FTAnalyzer.ViewControllers
 {
-	public partial class FactsWindowViewController : NSTabViewController
+	public partial class LCVerifyViewController : NSViewController
 	{
-		public FactsWindowViewController (IntPtr handle) : base (handle)
+		public LCVerifyViewController (IntPtr handle) : base (handle)
 		{
 		}
 	}

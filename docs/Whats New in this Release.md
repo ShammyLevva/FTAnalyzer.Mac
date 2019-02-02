@@ -1,7 +1,14 @@
-#### Version 1.0.6.0, 7th December 2018 ####
+#### Version 1.1.0 (Build 33), 9th January 2018 ####
 **Updates**  
 Added support for options panels  
 Worked on printing now prints but formatting is still odd  
+Added printing support for all grids  
+Fixed column width options  
+Added Sorting of columns by clicking header  
+Added Export to CSV for use in Numbers/Excel etc  
+Added export of cut down tree for uploading to DNA sites.  
+Fixed issues with Research Suggestions for Irish/American/Canadian census  
+Research suggestions automatic searching now has option to choose research provider  
 
 #### Version 1.0.5.0, 27th November 2018 ####
 **First release to app store**  

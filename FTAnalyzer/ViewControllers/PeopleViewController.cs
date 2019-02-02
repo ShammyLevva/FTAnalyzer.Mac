@@ -1,10 +1,9 @@
 ﻿using System;
 using AppKit;
 using Foundation;
-using FTAnalyzer.ViewControllers;
 using FTAnalyzer.Utilities;
 
-namespace FTAnalyzer
+namespace FTAnalyzer.ViewControllers
 {
     public partial class PeopleViewController : NSSplitViewController
     {
