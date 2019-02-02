@@ -1389,18 +1389,18 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brG-JX-g67">
-                                <rect key="frame" x="553" y="0.0" width="419" height="579"/>
+                                <rect key="frame" x="553" y="0.0" width="419" height="571"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Oel-mK-XWn">
-                                    <rect key="frame" x="0.0" y="0.0" width="419" height="579"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="419" height="571"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" allowsDocumentBackgroundColorChange="YES" textCompletion="NO" id="Pcf-BW-p8C">
-                                            <rect key="frame" x="0.0" y="0.0" width="419" height="579"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="419" height="571"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="419" height="579"/>
+                                            <size key="minSize" width="419" height="571"/>
                                             <size key="maxSize" width="492" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -1416,7 +1416,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <box fixedFrame="YES" title="Relationship Types" translatesAutoresizingMaskIntoConstraints="NO" id="foo-pc-KgV">
-                                        <rect key="frame" x="-3" y="-4" width="390" height="114"/>
+                                        <rect key="frame" x="-3" y="-11" width="390" height="114"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <view key="contentView" id="8lV-V3-NjG">
                                             <rect key="frame" x="3" y="3" width="384" height="93"/>
@@ -1600,7 +1600,7 @@
                 </viewController>
                 <customObject id="QL4-e4-kJV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2279" y="-2405"/>
+            <point key="canvasLocation" x="2279" y="-2405.5"/>
         </scene>
         <!--Updates-->
         <scene sceneID="ugR-eP-V50">
@@ -1710,18 +1710,18 @@
                                 </scroller>
                             </scrollView>
                             <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viB-kp-vpV" userLabel="Stats Textbox">
-                                <rect key="frame" x="531" y="383" width="441" height="184"/>
+                                <rect key="frame" x="531" y="383" width="441" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="6Lz-LY-tPi">
-                                    <rect key="frame" x="0.0" y="0.0" width="441" height="184"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="441" height="175"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" allowsDocumentBackgroundColorChange="YES" textCompletion="NO" id="Wag-Il-i8h">
-                                            <rect key="frame" x="0.0" y="0.0" width="441" height="184"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="441" height="175"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="441" height="184"/>
+                                            <size key="minSize" width="441" height="175"/>
                                             <size key="maxSize" width="511" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
