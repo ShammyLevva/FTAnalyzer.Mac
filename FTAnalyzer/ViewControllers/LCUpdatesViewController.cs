@@ -116,7 +116,7 @@ namespace FTAnalyzer.ViewControllers
                 if (response == UIHelpers.Yes)
                 {
                     UpdateResultsTextbox.Value = "Started Processing Lost Cousins entries.\n\n";
-                    Progress<string> outputText = new Progress<string>(value => { UpdateResultsTextbox.Value += value; });
+                    Progress<string> outputText = new Progress<string>(AppendMessage);
                     int count = await Task.Run(() => ExportToLostCousins.ProcessList(LCUpdates, outputText));
                     string resultText = $"{DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm")}: uploaded {count} records";
                     await Analytics.TrackActionAsync(Analytics.LostCousinsAction, Analytics.UpdateLostCousins, resultText);
@@ -129,6 +129,25 @@ namespace FTAnalyzer.ViewControllers
                 UIHelpers.ShowMessage("You have no records to add to Lost Cousins at this time. Use the Research Suggestions to find more people on the census, or enter/update missing or incomplete census references.");
             LostCousinsUpdateButton.Enabled = true;
         }
+
+        public void AppendMessage(string message)
+        {
+            if (!NSThread.IsMain)
+            {
+                InvokeOnMainThread(() => AppendMessage(message));
+                return;
+            }
+            if (UpdateResultsTextbox.Value == null)
+                UpdateResultsTextbox.Value = message;
+            else
+                UpdateResultsTextbox.Value += message;
+            NSRange range = new NSRange
+            {
+                Location = UpdateResultsTextbox.Value.Length
+            };
+            UpdateResultsTextbox.ScrollRangeToVisible(range);
+        }
+
 
         void ClearLogin()
         {

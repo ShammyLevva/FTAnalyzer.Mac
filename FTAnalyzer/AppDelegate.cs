@@ -5,6 +5,7 @@ using System.Linq;
 using AppKit;
 using Foundation;
 using FTAnalyzer.Exports;
+using FTAnalyzer.Properties;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;
 

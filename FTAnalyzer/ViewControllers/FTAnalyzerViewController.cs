@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AppKit;
 using Foundation;
+using FTAnalyzer.Properties;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.ViewControllers
@@ -406,9 +407,9 @@ namespace FTAnalyzer.ViewControllers
         {
             Task.Run(() =>
             {
-                InvokeOnMainThread(() => progressController.ShowWindow(this));
                 progressController.ProgressText = "Loading Census Statistics";
                 progressController.ProgressBar = 0;
+                InvokeOnMainThread(() => progressController.ShowWindow(this));
                 lCReportsViewController.UpdateLostCousinsReport(progressController);
                 progressController.ProgressBar = 50;
                 progressController.ProgressText = "Loading Lost Cousins Statistics";
@@ -416,6 +417,8 @@ namespace FTAnalyzer.ViewControllers
                 progressController.ProgressBar = 100;
                 InvokeOnMainThread(progressController.Close);
             });
+            if (GeneralSettings.Default.SkipCensusReferences)
+                UIHelpers.ShowMessage("Option to skip Census reference is set. No data can be uploaded to Lost Cousins without a Census Reference.");
         }
     }
 }

@@ -1116,6 +1116,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="ScrollingTextOutlet" destination="RdZ-sC-kTA" id="a70-pL-TCq"/>
                         <outlet property="_familiesProgress" destination="0T4-Vy-e51" id="oW7-oS-sJ4"/>
                         <outlet property="_individualsProgress" destination="xBu-LQ-XyF" id="9qi-XB-pF5"/>
                         <outlet property="_relationshipsProgress" destination="5oa-cb-FmJ" id="U49-1p-onQ"/>
@@ -1809,6 +1810,7 @@
                     <connections>
                         <outlet property="ConfirmRootPerson" destination="wxS-1O-GLc" id="953-oc-bd1"/>
                         <outlet property="EmailAddressField" destination="qhZ-LK-kX3" id="GUw-pS-Yx7"/>
+                        <outlet property="LCScrollingTextOutlet" destination="6ud-7w-m7m" id="V78-9v-RCO"/>
                         <outlet property="LoginButtonOutlet" destination="CO8-jW-7JY" id="TRx-Pl-OJR"/>
                         <outlet property="LostCousinsUpdateButton" destination="mCU-d0-xRp" id="Ild-6g-TyQ"/>
                         <outlet property="PasswordField" destination="8At-Jt-Axc" id="GG5-mH-7Dk"/>

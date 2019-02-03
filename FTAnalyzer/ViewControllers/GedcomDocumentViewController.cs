@@ -88,6 +88,11 @@ namespace FTAnalyzer.ViewControllers
                 _statusTextView.Value = message;
             else
                 _statusTextView.Value += message;
+            NSRange range = new NSRange
+            {
+                Location = _statusTextView.Value.Length
+            };
+            _statusTextView.ScrollRangeToVisible(range);
         }
 
         void SetProgress(NSProgressIndicator progressBar, int percent)

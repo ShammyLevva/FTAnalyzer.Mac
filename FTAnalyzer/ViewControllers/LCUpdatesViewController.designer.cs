@@ -19,6 +19,9 @@ namespace FTAnalyzer.ViewControllers
 		AppKit.NSTextField EmailAddressField { get; set; }
 
 		[Outlet]
+		AppKit.NSScrollView LCScrollingTextOutlet { get; set; }
+
+		[Outlet]
 		AppKit.NSButton LoginButtonOutlet { get; set; }
 
 		[Outlet]
@@ -56,9 +59,9 @@ namespace FTAnalyzer.ViewControllers
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (UseKeychainOutlet != null) {
-				UseKeychainOutlet.Dispose ();
-				UseKeychainOutlet = null;
+			if (LCScrollingTextOutlet != null) {
+				LCScrollingTextOutlet.Dispose ();
+				LCScrollingTextOutlet = null;
 			}
 
 			if (ConfirmRootPerson != null) {
@@ -94,6 +97,11 @@ namespace FTAnalyzer.ViewControllers
 			if (UpdateResultsTextbox != null) {
 				UpdateResultsTextbox.Dispose ();
 				UpdateResultsTextbox = null;
+			}
+
+			if (UseKeychainOutlet != null) {
+				UseKeychainOutlet.Dispose ();
+				UseKeychainOutlet = null;
 			}
 		}
 	}
