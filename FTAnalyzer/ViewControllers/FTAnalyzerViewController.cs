@@ -208,6 +208,7 @@ namespace FTAnalyzer.ViewControllers
         {
             lCReportsViewController = ChildViewControllers[5].ChildViewControllers[0] as LCReportsViewController;
             lCUpdatesViewController = ChildViewControllers[5].ChildViewControllers[1] as LCUpdatesViewController;
+            ChildViewControllers[5].RemoveChildViewController(2); // hide Verification tab for now
             lCReportsViewController.LoadView();
             lCUpdatesViewController.LoadView();
         }
@@ -405,6 +406,7 @@ namespace FTAnalyzer.ViewControllers
 
         void UpdateLostCousinsReport(ProgressController progressController)
         {
+
             Task.Run(() =>
             {
                 progressController.ProgressText = "Loading Census Statistics";

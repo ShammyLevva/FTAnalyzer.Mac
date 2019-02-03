@@ -18,6 +18,7 @@ namespace FTAnalyzer.ViewControllers
         RelationshipTypesView RelationshipTypes;
         ProgressController ProgressController;
         LCReportsViewController LCReport;
+        bool WebsiteAvailable;
 
         public LCUpdatesViewController (IntPtr handle) : base (handle)
 		{
@@ -95,12 +96,11 @@ namespace FTAnalyzer.ViewControllers
                 userDefaults.SetString(email, "LostCousinsEmail");
                 userDefaults.Synchronize();
             }
-            bool websiteAvailable = ExportToLostCousins.CheckLostCousinsLogin(EmailAddressField.StringValue, PasswordField.StringValue);
-            LoginButtonOutlet.BezelColor = websiteAvailable ? Color.LightGreen : Color.Red;
-            LoginButtonOutlet.Enabled = !websiteAvailable;
-            LostCousinsUpdateButton.Enabled = websiteAvailable && ConfirmRootPerson.State == NSCellStateValue.On;
-            LostCousinsUpdateButton.Hidden = !websiteAvailable;
-            if (websiteAvailable)
+            WebsiteAvailable = ExportToLostCousins.CheckLostCousinsLogin(EmailAddressField.StringValue, PasswordField.StringValue);
+            //LoginButtonOutlet.BezelColor = websiteAvailable ? Color.LightGreen : Color.Red;
+            LoginButtonOutlet.Enabled = !WebsiteAvailable;
+            LostCousinsUpdateButton.Enabled = WebsiteAvailable && ConfirmRootPerson.State == NSCellStateValue.On;
+            if (WebsiteAvailable)
                 UIHelpers.ShowMessage("Lost Cousins login succeeded.");
             else
                 UIHelpers.ShowMessage("Unable to login to Lost Cousins website. Check email/password and try again.");
@@ -153,17 +153,17 @@ namespace FTAnalyzer.ViewControllers
         {
             if (!LostCousinsUpdateButton.Hidden) // if we can login clear cookies to reset session
                 ExportToLostCousins.EmptyCookieJar();
-            LoginButtonOutlet.BezelColor = Color.Red;
+            //LoginButtonOutlet.BezelColor = Color.Red;
             LoginButtonOutlet.Enabled = true;
-            LostCousinsUpdateButton.Hidden = true;
+            LostCousinsUpdateButton.Enabled = false;
         }
 
         partial void UseKeychainChecked(NSObject sender) => GetPasswordFromKeychain();
 
         partial void ConfirmRootPersonChecked(NSObject sender)
         {
-            LostCousinsUpdateButton.Enabled = ConfirmRootPerson.State == NSCellStateValue.On;
-            LostCousinsUpdateButton.BezelColor = ConfirmRootPerson.State == NSCellStateValue.On ? Color.LightGreen : Color.LightGray;
+            LostCousinsUpdateButton.Enabled = WebsiteAvailable && ConfirmRootPerson.State == NSCellStateValue.On;
+            //LostCousinsUpdateButton.BezelColor = ConfirmRootPerson.State == NSCellStateValue.On ? Color.LightGreen : Color.LightGray;
         }
 
         partial void ViewInvalidClicked(NSObject sender)
