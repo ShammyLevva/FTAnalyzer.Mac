@@ -13,7 +13,7 @@ namespace FTAnalyzer.ViewControllers
 	partial class LCReportsViewController
 	{
 		[Outlet]
-		RelationshipTypesView RelationshipTypesOutlet { get; set; }
+		FTAnalyzer.RelationshipTypesView RelationshipTypesOutlet { get; set; }
 
 		[Outlet]
 		AppKit.NSTextView ReportsTextBox { get; set; }
@@ -36,6 +36,9 @@ namespace FTAnalyzer.ViewControllers
 		[Action ("Ireland1911CensusClicked:")]
 		partial void Ireland1911CensusClicked (Foundation.NSObject sender);
 
+		[Action ("LostCousinsWebsiteClicked:")]
+		partial void LostCousinsWebsiteClicked (Foundation.NSObject sender);
+
 		[Action ("Scotland1881CensusClicked:")]
 		partial void Scotland1881CensusClicked (Foundation.NSObject sender);
 
@@ -44,17 +47,23 @@ namespace FTAnalyzer.ViewControllers
 
 		[Action ("US1940CensusClicked:")]
 		partial void US1940CensusClicked (Foundation.NSObject sender);
+
+		[Action ("VisitLostCousinsForumClicked:")]
+		partial void VisitLostCousinsForumClicked (Foundation.NSObject sender);
+
+		[Action ("VisitLostCousinsWebsiteClicked:")]
+		partial void VisitLostCousinsWebsiteClicked (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (ReportsTextBox != null) {
-				ReportsTextBox.Dispose ();
-				ReportsTextBox = null;
-			}
-
 			if (RelationshipTypesOutlet != null) {
 				RelationshipTypesOutlet.Dispose ();
 				RelationshipTypesOutlet = null;
+			}
+
+			if (ReportsTextBox != null) {
+				ReportsTextBox.Dispose ();
+				ReportsTextBox = null;
 			}
 
 			if (ShowAlreadyEnteredOutlet != null) {

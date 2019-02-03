@@ -21,6 +21,17 @@ namespace FTAnalyzer.ViewControllers
             ReportsTextBox.Value = "";
         }
 
+        partial void VisitLostCousinsForumClicked(NSObject sender)
+        {
+            SpecialMethods.VisitWebsite("http://forums.lc");
+        }
+
+        partial void VisitLostCousinsWebsiteClicked(NSObject sender)
+        {
+            SpecialMethods.VisitWebsite("http://www.lostcousins.com/?ref=LC585149");
+            Analytics.TrackAction(Analytics.LostCousinsAction, Analytics.LCWebLinkEvent);
+        }
+
         partial void EW1841CensusClicked(NSObject sender)
         {
             string reportTitle = "1841 England & Wales Census Records on file";

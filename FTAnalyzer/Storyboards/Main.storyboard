@@ -1595,12 +1595,35 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Se-iY-IGl">
+                                <rect key="frame" x="14" y="13" width="201" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Visit Lost Cousins Website" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FXm-H2-aSJ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="VisitLostCousinsWebsiteClicked:" target="X3L-w0-Ccz" id="JFe-Bf-l30"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MIz-xC-JeF">
+                                <rect key="frame" x="215" y="13" width="191" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Visit Lost Cousins Forum" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V6B-Zs-wtK">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="VisitLostCousinsForumClicked:" target="X3L-w0-Ccz" id="TPc-53-VMo"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="RelationshipTypesOutlet" destination="5go-DY-q7p" id="sYr-RU-ByV"/>
                         <outlet property="ReportsTextBox" destination="Pcf-BW-p8C" id="oEJ-De-5fc"/>
                         <outlet property="ShowAlreadyEnteredOutlet" destination="CMt-XO-G06" id="Fa6-x7-QCn"/>
+                        <outlet property="VIsitLostCousinsWebsiteClicked" destination="0Se-iY-IGl" id="JmE-hc-RdD"/>
                     </connections>
                 </viewController>
                 <customObject id="QL4-e4-kJV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
