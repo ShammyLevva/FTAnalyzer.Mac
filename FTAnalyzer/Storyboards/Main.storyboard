@@ -166,7 +166,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Format" id="GEO-Iw-cKr">
                                     <items>
-                                        <menuItem title="Paste" hidden="YES" enabled="NO" keyEquivalent="v" allowsKeyEquivalentWhenHidden="YES" id="FW2-lL-Qiw">
+                                        <menuItem title="Paste" enabled="NO" keyEquivalent="v" allowsKeyEquivalentWhenHidden="YES" id="FW2-lL-Qiw">
                                             <connections>
                                                 <action selector="paste:" target="Ady-hI-5gd" id="a0w-5x-r4a"/>
                                             </connections>
@@ -1417,7 +1417,290 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5go-DY-q7p" customClass="RelationshipTypesView">
+                            <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="THf-84-6gd">
+                                <rect key="frame" x="0.0" y="0.0" width="972" height="579"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSQ-P1-A7m">
+                                        <rect key="frame" x="553" y="0.0" width="419" height="571"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
+                                        <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Jmv-tr-lcX">
+                                            <rect key="frame" x="0.0" y="0.0" width="419" height="571"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" allowsDocumentBackgroundColorChange="YES" textCompletion="NO" spellingCorrection="YES" id="xVb-YN-OzX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="419" height="571"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <size key="minSize" width="419" height="571"/>
+                                                    <size key="maxSize" width="492" height="10000000"/>
+                                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </textView>
+                                            </subviews>
+                                        </clipView>
+                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="t1K-aE-Hce">
+                                            <rect key="frame" x="-100" y="-100" width="15" height="579"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OTD-Hp-Com" customClass="RelationTypes">
+                                        <rect key="frame" x="20" y="469" width="384" height="110"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <subviews>
+                                            <box fixedFrame="YES" title="Relationship Types" translatesAutoresizingMaskIntoConstraints="NO" id="D63-9X-TdH">
+                                                <rect key="frame" x="-3" y="-11" width="390" height="114"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <view key="contentView" id="7Zp-Vx-KRI">
+                                                    <rect key="frame" x="3" y="3" width="384" height="93"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oHH-ow-Xaz">
+                                                            <rect key="frame" x="18" y="68" width="59" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="check" title="Direct" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="U1i-f5-YkR">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="DirectChecked:" target="OTD-Hp-Com" id="uRk-5J-3b0"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xt1-FE-s3L">
+                                                            <rect key="frame" x="18" y="40" width="57" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="check" title="Blood" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2nF-Os-X8w">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="BloodChecked:" target="OTD-Hp-Com" id="KAo-EU-DAv"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zja-9m-DrP">
+                                                            <rect key="frame" x="18" y="13" width="164" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="check" title="Married to Direct/Blood" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EhF-iD-8fP">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="MarriedDBChecked:" target="OTD-Hp-Com" id="PVO-nv-5Iy"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FGY-0S-StI">
+                                                            <rect key="frame" x="113" y="68" width="144" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="check" title="Related by Marriage" bezelStyle="regularSquare" imagePosition="left" inset="2" id="iKJ-xA-luT">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="ByMarriageChecked:" target="OTD-Hp-Com" id="uU4-Wi-8cZ"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k1N-kL-zHQ">
+                                                            <rect key="frame" x="113" y="40" width="102" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="check" title="Descendants" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1e7-3k-aHY">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="DescendantsChecked:" target="OTD-Hp-Com" id="Ssc-4a-Nb9"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ygs-9p-Ae5">
+                                                            <rect key="frame" x="224" y="13" width="138" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="check" title="Linked by Marriage" bezelStyle="regularSquare" imagePosition="left" inset="2" id="NJm-f8-1Ah">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="LinkedChecked:" target="OTD-Hp-Com" id="Wut-zm-zqI"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aBK-8J-V5R">
+                                                            <rect key="frame" x="283" y="68" width="79" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="check" title="Unknown" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ttH-WT-0pb">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="UnknownChecked:" target="OTD-Hp-Com" id="LEk-rD-Kdc"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </view>
+                                                <font key="titleFont" metaFont="system"/>
+                                            </box>
+                                        </subviews>
+                                        <connections>
+                                            <outlet property="BloodOutlet" destination="xt1-FE-s3L" id="G0M-R6-T34"/>
+                                            <outlet property="DescendantsOutlet" destination="k1N-kL-zHQ" id="nYc-1M-MI0"/>
+                                            <outlet property="DirectOutlet" destination="oHH-ow-Xaz" id="0U5-xw-nmp"/>
+                                            <outlet property="LinkedOutlet" destination="ygs-9p-Ae5" id="mnF-Za-nCl"/>
+                                            <outlet property="MarriageOutlet" destination="FGY-0S-StI" id="6pN-dr-Yyw"/>
+                                            <outlet property="MarriedDBOutlet" destination="Zja-9m-DrP" id="B3N-y3-gbt"/>
+                                            <outlet property="UnknownOutlet" destination="aBK-8J-V5R" id="Uxw-uu-9uB"/>
+                                        </connections>
+                                    </customView>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UxG-f3-J07" userLabel="1881 England and Wales Census">
+                                        <rect key="frame" x="14" y="421" width="223" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="1881 England &amp; Wales Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="24T-lj-z1u">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="EW1881CensusClicked:" target="X3L-w0-Ccz" id="AaH-jf-Af8"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qpj-dN-RNu">
+                                        <rect key="frame" x="14" y="388" width="222" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="1841 England &amp; Wales Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rhq-ev-VLu">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="EW1841CensusClicked:" target="X3L-w0-Ccz" id="SXd-HP-BlF"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FUa-R7-Alk">
+                                        <rect key="frame" x="14" y="355" width="220" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="1911 England &amp; Wales Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wof-E6-qT7">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="EW1911CensusClicked:" target="X3L-w0-Ccz" id="yV6-Wk-Dri"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z5L-uP-BSg">
+                                        <rect key="frame" x="234" y="421" width="176" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="  1881 Scotland Census" bezelStyle="rounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wv7-ie-WdK">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="Scotland1881CensusClicked:" target="X3L-w0-Ccz" id="hPW-mz-3ng"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mys-9R-7iL">
+                                        <rect key="frame" x="234" y="388" width="176" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="  1911 Ireland Census" bezelStyle="rounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M9Q-BA-eZF">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="Ireland1911CensusClicked:" target="X3L-w0-Ccz" id="Lfc-WC-7nA"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZRA-2M-OpT">
+                                        <rect key="frame" x="234" y="355" width="176" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="  1880 Canada Census" bezelStyle="rounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="72R-KJ-1Kd">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="Canada1880CensusClicked:" target="X3L-w0-Ccz" id="Rxb-2Z-Gff"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4iQ-8T-Tyz">
+                                        <rect key="frame" x="410" y="388" width="141" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="1880 US Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="16M-i4-v2F">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="US1880CensusClicked:" target="X3L-w0-Ccz" id="YOX-3P-mCL"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aaa-Yc-fVP">
+                                        <rect key="frame" x="410" y="355" width="141" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="1940 US Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Shw-NW-yUL">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="US1940CensusClicked:" target="X3L-w0-Ccz" id="OZQ-9w-q8b"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sha-eG-ihP">
+                                        <rect key="frame" x="18" y="326" width="524" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="check" title="Show already entered to Lost Cousins (unticked = show those to yet to be entered)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yGO-CO-RGB">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ByZ-fT-Djv">
+                                        <rect key="frame" x="14" y="13" width="201" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="Visit Lost Cousins Website" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yed-hh-I52">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="VisitLostCousinsWebsiteClicked:" target="X3L-w0-Ccz" id="Gdh-IY-AlX"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="igf-qx-Zqr">
+                                        <rect key="frame" x="215" y="13" width="191" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="Visit Lost Cousins Forum" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oPC-2n-EOc">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="VisitLostCousinsForumClicked:" target="X3L-w0-Ccz" id="oLp-MG-VSr"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XJ6-h8-ogx">
+                                        <rect key="frame" x="15" y="286" width="266" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="Lost Cousins with no Country" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G7c-95-EAA">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="LostCousinsNoCountryClicked:" target="X3L-w0-Ccz" id="T9Q-vO-j6M"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obO-P6-fkT">
+                                        <rect key="frame" x="14" y="253" width="267" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="Lost Cousins with bad Census" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9MI-SY-fpf">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="LostCousinsBadCensusClicked:" target="X3L-w0-Ccz" id="yld-wr-00e"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MF8-nq-jAV">
+                                        <rect key="frame" x="280" y="286" width="266" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="Lost Cousins Duplicate Facts" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="64R-Wa-ktG">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="LostCousinsDuplicatesClicked:" target="X3L-w0-Ccz" id="6w5-FZ-bGa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5go-DY-q7p" customClass="RelationTypes">
                                 <rect key="frame" x="20" y="469" width="384" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
@@ -1435,6 +1718,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="DirectChecked:" target="5go-DY-q7p" id="h5H-om-xLA"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nAN-wr-Kvb">
                                                     <rect key="frame" x="18" y="40" width="57" height="18"/>
@@ -1443,6 +1729,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="BloodChecked:" target="5go-DY-q7p" id="JGI-XZ-mTr"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q35-49-Mhl">
                                                     <rect key="frame" x="18" y="13" width="164" height="18"/>
@@ -1451,6 +1740,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="MarriedDBChecked:" target="5go-DY-q7p" id="bEu-og-YA0"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y5L-bg-1LY">
                                                     <rect key="frame" x="113" y="68" width="144" height="18"/>
@@ -1459,6 +1751,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="ByMarriageChecked:" target="5go-DY-q7p" id="RHZ-kc-EIp"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rd8-dG-RYx">
                                                     <rect key="frame" x="113" y="40" width="102" height="18"/>
@@ -1467,6 +1762,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="DescendantsChecked:" target="5go-DY-q7p" id="1X6-pp-byL"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MvG-Kp-BXe">
                                                     <rect key="frame" x="224" y="13" width="138" height="18"/>
@@ -1475,6 +1773,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="LinkedChecked:" target="5go-DY-q7p" id="vsG-Hg-cBj"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BmU-R8-Y5I">
                                                     <rect key="frame" x="283" y="68" width="79" height="18"/>
@@ -1483,6 +1784,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="UnknownChecked:" target="5go-DY-q7p" id="jft-FX-C1O"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -1492,7 +1796,6 @@
                                 <connections>
                                     <outlet property="BloodOutlet" destination="nAN-wr-Kvb" id="tO4-fA-ndQ"/>
                                     <outlet property="DescendantsOutlet" destination="Rd8-dG-RYx" id="50K-C3-Bhm"/>
-                                    <outlet property="Direct" destination="eqO-Lw-0yh" id="l0d-pf-ahp"/>
                                     <outlet property="DirectOutlet" destination="eqO-Lw-0yh" id="rDp-d4-Bja"/>
                                     <outlet property="LinkedOutlet" destination="MvG-Kp-BXe" id="uFx-Ez-2lw"/>
                                     <outlet property="MarriageOutlet" destination="Y5L-bg-1LY" id="5J4-oD-hag"/>
@@ -1624,7 +1927,6 @@
                         <outlet property="RelationshipTypesOutlet" destination="5go-DY-q7p" id="sYr-RU-ByV"/>
                         <outlet property="ReportsTextBox" destination="Pcf-BW-p8C" id="oEJ-De-5fc"/>
                         <outlet property="ShowAlreadyEnteredOutlet" destination="CMt-XO-G06" id="Fa6-x7-QCn"/>
-                        <outlet property="VIsitLostCousinsWebsiteClicked" destination="0Se-iY-IGl" id="JmE-hc-RdD"/>
                     </connections>
                 </viewController>
                 <customObject id="QL4-e4-kJV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1678,18 +1980,18 @@
                                 </scroller>
                             </scrollView>
                             <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viB-kp-vpV" userLabel="Stats Textbox">
-                                <rect key="frame" x="531" y="383" width="441" height="175"/>
+                                <rect key="frame" x="531" y="371" width="441" height="187"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="6Lz-LY-tPi">
-                                    <rect key="frame" x="0.0" y="0.0" width="441" height="175"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="441" height="187"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" allowsDocumentBackgroundColorChange="YES" textCompletion="NO" id="Wag-Il-i8h">
-                                            <rect key="frame" x="0.0" y="0.0" width="441" height="175"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="441" height="187"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="441" height="175"/>
+                                            <size key="minSize" width="441" height="187"/>
                                             <size key="maxSize" width="511" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>

@@ -15,7 +15,7 @@ namespace FTAnalyzer.ViewControllers
 	{
         List<CensusIndividual> LCUpdates;
         List<CensusIndividual> LCInvalidReferences;
-        RelationshipTypesView RelationshipTypes;
+        RelationTypes RelationshipTypes;
         ProgressController ProgressController;
         LCReportsViewController LCReport;
         bool WebsiteAvailable;
@@ -45,7 +45,7 @@ namespace FTAnalyzer.ViewControllers
         }
 
         public void UpdateLostCousinsReport() => UpdateLostCousinsReport(RelationshipTypes, ProgressController, LCReport);
-        public void UpdateLostCousinsReport(RelationshipTypesView relationshipTypes, ProgressController progressController, LCReportsViewController lcReport)
+        public void UpdateLostCousinsReport(RelationTypes relationshipTypes, ProgressController progressController, LCReportsViewController lcReport)
         {
             RelationshipTypes = relationshipTypes;
             ProgressController = progressController;

@@ -207,7 +207,6 @@
     <Compile Include="ViewControllers\ResearchViewController.designer.cs">
       <DependentUpon>ResearchViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\Controls\RelationTypes.cs" />
     <Compile Include="ViewControllers\ColourCensusViewController.cs" />
     <Compile Include="ViewControllers\ColourCensusViewController.designer.cs">
       <DependentUpon>ColourCensusViewController.cs</DependentUpon>
@@ -241,9 +240,9 @@
     <Compile Include="ViewControllers\LCUpdatesViewController.designer.cs">
       <DependentUpon>LCUpdatesViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\RelationshipTypesView.cs" />
-    <Compile Include="Views\RelationshipTypesView.designer.cs">
-      <DependentUpon>RelationshipTypesView.cs</DependentUpon>
+    <Compile Include="Views\RelationTypes.cs" />
+    <Compile Include="Views\RelationTypes.designer.cs">
+      <DependentUpon>RelationTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\CensusViewController.cs" />
     <Compile Include="ViewControllers\CensusViewController.designer.cs">

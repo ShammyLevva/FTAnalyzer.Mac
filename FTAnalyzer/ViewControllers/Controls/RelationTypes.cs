@@ -7,30 +7,33 @@ namespace FTAnalyzer.ViewControllers
 {
     public class RelationTypes : NSViewController
     {
-        public bool Directs => true; // ckbDirects.Checked;
+        public bool Directs => true;
         public bool Blood => true; //ckbBlood.Checked;
         public bool Marriage => false; //ckbMarriage.Checked;
         public bool MarriedToDB => true; //{ get => ckbMarriageDB.Checked; set => ckbMarriageDB.Checked = value; }
         public bool Unknown => false; //ckbUnknown.Checked;
         public bool Descendant => true; //ckbDescendants.Checked;
+        public bool Linked => true;
 
         public int Status
         {
             get
             {
-                int result = Individual.DIRECT + Individual.DESCENDANT + Individual.MARRIEDTODB + Individual.BLOOD; //0;
-                //if (ckbUnknown.Checked)
-                //   result += Individual.UNKNOWN;
-                //if (ckbDirects.Checked)
-                //    result += Individual.DIRECT;
-                //if (ckbBlood.Checked)
-                //    result += Individual.BLOOD;
-                //if (ckbMarriage.Checked)
-                //    result += Individual.MARRIAGE;
-                //if (ckbMarriageDB.Checked)
-                //    result += Individual.MARRIEDTODB;
-                //if (ckbDescendants.Checked)
-                //result += Individual.DESCENDANT;
+                int result = 0;
+                if (Unknown)
+                   result += Individual.UNKNOWN;
+                if (Directs)
+                    result += Individual.DIRECT;
+                if (Blood)
+                    result += Individual.BLOOD;
+                if (Marriage)
+                    result += Individual.MARRIAGE;
+                if (MarriedToDB)
+                    result += Individual.MARRIEDTODB;
+                if (Descendant)
+                    result += Individual.DESCENDANT;
+                if (Linked)
+                    result += Individual.LINKED;
                 return result;
             }
         }

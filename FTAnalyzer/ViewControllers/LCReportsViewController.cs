@@ -105,7 +105,34 @@ namespace FTAnalyzer.ViewControllers
             });
         }
 
-        public RelationshipTypesView RelationshipTypes => RelationshipTypesOutlet;
+        partial void LostCousinsNoCountryClicked(NSObject sender)
+        {
+            Predicate<Individual> relationFilter = RelationshipTypes.BuildFilter<Individual>(x => x.RelationType);
+            People people = new People();
+            people.SetupLCNoCountry(relationFilter);
+            people.ShowWindow(this);
+            Analytics.TrackAction(Analytics.LostCousinsAction, Analytics.NoLCCountryEvent);
+        }
+
+        partial void LostCousinsBadCensusClicked(NSObject sender)
+        {
+            Predicate<Individual> relationFilter = RelationshipTypes.BuildFilter<Individual>(x => x.RelationType);
+            People people = new People();
+            people.SetupLCnoCensus(relationFilter);
+            people.ShowWindow(this);
+            Analytics.TrackAction(Analytics.LostCousinsAction, Analytics.NoLCCensusEvent);
+        }
+
+        partial void LostCousinsDuplicatesClicked(NSObject sender)
+        {
+            Predicate<Individual> relationFilter = RelationshipTypes.BuildFilter<Individual>(x => x.RelationType);
+            People people = new People();
+            people.SetupLCDuplicates(relationFilter);
+            people.ShowWindow(this);
+            Analytics.TrackAction(Analytics.LostCousinsAction, Analytics.LCDuplicatesEvent);
+        }
+
+        public RelationTypes RelationshipTypes => RelationshipTypesOutlet;
 
         void SetProgress(ProgressController progressController, int percent)
         {

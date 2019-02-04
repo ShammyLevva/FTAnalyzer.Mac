@@ -13,7 +13,7 @@ namespace FTAnalyzer.ViewControllers
 	partial class LCReportsViewController
 	{
 		[Outlet]
-		FTAnalyzer.RelationshipTypesView RelationshipTypesOutlet { get; set; }
+		FTAnalyzer.RelationTypes RelationshipTypesOutlet { get; set; }
 
 		[Outlet]
 		AppKit.NSTextView ReportsTextBox { get; set; }
@@ -35,6 +35,15 @@ namespace FTAnalyzer.ViewControllers
 
 		[Action ("Ireland1911CensusClicked:")]
 		partial void Ireland1911CensusClicked (Foundation.NSObject sender);
+
+		[Action ("LostCousinsBadCensusClicked:")]
+		partial void LostCousinsBadCensusClicked (Foundation.NSObject sender);
+
+		[Action ("LostCousinsDuplicatesClicked:")]
+		partial void LostCousinsDuplicatesClicked (Foundation.NSObject sender);
+
+		[Action ("LostCousinsNoCountryClicked:")]
+		partial void LostCousinsNoCountryClicked (Foundation.NSObject sender);
 
 		[Action ("LostCousinsWebsiteClicked:")]
 		partial void LostCousinsWebsiteClicked (Foundation.NSObject sender);

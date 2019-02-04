@@ -9,9 +9,9 @@ using System.CodeDom.Compiler;
 
 namespace FTAnalyzer
 {
-	[Register ("RelationshipTypesView")]
-	partial class RelationshipTypesView
-	{
+	[Register ("RelationTypes")]
+	partial class RelationTypes
+    {
 		[Outlet]
 		AppKit.NSButton BloodOutlet { get; set; }
 
@@ -32,6 +32,27 @@ namespace FTAnalyzer
 
 		[Outlet]
 		AppKit.NSButton UnknownOutlet { get; set; }
+
+		[Action ("BloodChecked:")]
+		partial void BloodChecked (Foundation.NSObject sender);
+
+		[Action ("ByMarriageChecked:")]
+		partial void ByMarriageChecked (Foundation.NSObject sender);
+
+		[Action ("DescendantsChecked:")]
+		partial void DescendantsChecked (Foundation.NSObject sender);
+
+		[Action ("DirectChecked:")]
+		partial void DirectChecked (Foundation.NSObject sender);
+
+		[Action ("LinkedChecked:")]
+		partial void LinkedChecked (Foundation.NSObject sender);
+
+		[Action ("MarriedDBChecked:")]
+		partial void MarriedDBChecked (Foundation.NSObject sender);
+
+		[Action ("UnknownChecked:")]
+		partial void UnknownChecked (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
