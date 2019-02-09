@@ -232,6 +232,42 @@ namespace FTAnalyzer.Utilities
             }
         }
 
+        public bool LostCousinsExists(CensusIndividual ind)
+        {
+            if (InstanceConnection.State != ConnectionState.Open)
+                InstanceConnection.Open();
+            bool result = false;
+            using (SqliteCommand cmd = new SqliteCommand("SELECT EXISTS(SELECT 1 FROM LostCousins where CensusYear=? and CensusCountry=? and CensusRef=? and IndID=?)", InstanceConnection))
+            {
+                SqliteParameter param = cmd.CreateParameter();
+                param.DbType = DbType.Int32;
+                cmd.Parameters.Add(param);
+                param = cmd.CreateParameter();
+                param.DbType = DbType.String;
+                cmd.Parameters.Add(param);
+                param = cmd.CreateParameter();
+                param.DbType = DbType.String;
+                cmd.Parameters.Add(param);
+                param = cmd.CreateParameter();
+                param.DbType = DbType.String;
+                cmd.Parameters.Add(param);
+                param = cmd.CreateParameter();
+                param.DbType = DbType.String;
+                cmd.Parameters.Add(param);
+                cmd.Prepare();
+                cmd.Parameters[0].Value = ind.CensusDate.BestYear;
+                cmd.Parameters[1].Value = ind.CensusCountry;
+                cmd.Parameters[2].Value = ind.CensusReference;
+                cmd.Parameters[3].Value = ind.IndividualID;
+                using (SqliteDataReader reader = cmd.ExecuteReader(CommandBehavior.SingleResult))
+                {
+                    if (reader.Read())
+                        result = reader[0].ToString() == "1";
+                }
+            }
+            return result;
+        }
+
         public void StoreLostCousinsFact(CensusIndividual ind, IProgress<string> outputText)
         {
             try
