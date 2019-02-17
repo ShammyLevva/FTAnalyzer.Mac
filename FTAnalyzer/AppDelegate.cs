@@ -28,6 +28,7 @@ namespace FTAnalyzer
             Window.MakeKeyAndOrderFront(Self);
             Window.Title = $"FTAnalyzer {Version} - Family Tree Analyzer";
             Window.Delegate = new MainWindowDelegate();
+            FamilyTree.Instance.Version = Version;
             DatabaseHelper.Instance.CheckDatabaseVersion(ProgramVersion);
             ResetDocument();
             CheckWebVersion();

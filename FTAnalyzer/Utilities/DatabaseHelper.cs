@@ -16,7 +16,7 @@ namespace FTAnalyzer.Utilities
     {
         AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
 
-                public string DatabaseFile { get; private set; }
+        public string DatabaseFile { get; private set; }
         public string CurrentFilename { get; private set; }
         public string DatabasePath { get; private set; }
         string EmptyFile;
@@ -127,7 +127,7 @@ namespace FTAnalyzer.Utilities
         public bool BackupDatabase(string saveDatabase, string comment)
         {
             //string directory = Application.UserAppDataRegistry.GetValue("Geocode Backup Directory", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)).ToString();
-            string FileName = $"FTAnalyzer-Geocodes-{DateTime.Now.ToString("yyyy-MM-dd")}-{App.Version}.zip";
+            string FileName = $"FTAnalyzer-Geocodes-{DateTime.Now.ToString("yyyy-MM-dd")}-{FamilyTree.Instance.Version}.zip";
             //saveDatabase.InitialDirectory = directory;
             //DialogResult result = saveDatabase.ShowDialog();
             //if (result == DialogResult.OK)
