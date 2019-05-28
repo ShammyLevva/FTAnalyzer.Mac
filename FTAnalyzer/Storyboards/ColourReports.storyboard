@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Window Controller-->
+        <scene sceneID="hLj-dg-fsa">
+            <objects>
+                <windowController storyboardIdentifier="ColourBMDWindow" id="G05-f3-SVk" sceneMemberID="viewController">
+                    <window key="window" identifier="ColourBMD" title="BMD Research Suggestions" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="V6r-c0-tba" userLabel="BMD Research Suggestion">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="275" y="353" width="974" height="333"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="G05-f3-SVk" id="ure-bn-8kU"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="HzA-Y8-reo" kind="relationship" relationship="window.shadowedContentViewController" id="8jB-Lc-eux"/>
+                    </connections>
+                </windowController>
+                <customObject id="Uwq-LR-t9c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1209" y="-399"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="14i-js-U3I">
+            <objects>
+                <viewController id="HzA-Y8-reo" sceneMemberID="viewController">
+                    <view key="view" id="hwj-bp-Vk6">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="UZU-xq-l34" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1209" y="82"/>
+        </scene>
         <!--Window Controller-->
         <scene sceneID="f4b-ME-0dT">
             <objects>

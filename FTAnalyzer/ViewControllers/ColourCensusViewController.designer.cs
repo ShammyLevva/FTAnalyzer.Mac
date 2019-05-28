@@ -12,7 +12,6 @@ namespace FTAnalyzer.ViewControllers
 	[Register ("ColourCensusViewController")]
 	partial class ColourCensusViewController
 	{
-		
 		void ReleaseDesignerOutlets ()
 		{
 		}

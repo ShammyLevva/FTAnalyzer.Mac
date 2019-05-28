@@ -255,12 +255,16 @@
     <Compile Include="ViewControllers\LCVerifyViewController.designer.cs">
       <DependentUpon>LCVerifyViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\ColourBMDViewController.cs" />
+    <Compile Include="ViewControllers\ColourBMDViewController.designer.cs">
+      <DependentUpon>ColourBMDViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />
     <InterfaceDefinition Include="Storyboards\Main.storyboard" />
     <InterfaceDefinition Include="Storyboards\People.storyboard" />
-    <InterfaceDefinition Include="Storyboards\ColourCensus.storyboard" />
+    <InterfaceDefinition Include="Storyboards\ColourReports.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\Kunstler.ttf">

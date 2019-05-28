@@ -48,6 +48,8 @@ namespace FTAnalyzer.ViewControllers
 
         partial void CanadianCensusClicked(NSObject sender) => DisplayColourCensus(Countries.CANADA, sender);
 
+        partial void ColourBMDClicked(NSObject sender) => DisplayColourBMD(sender);
+
         partial void SearchProviderChanged(NSObject sender)
         {
             var userDefaults = new NSUserDefaults();
@@ -69,6 +71,12 @@ namespace FTAnalyzer.ViewControllers
             ColourCensusWindow.ShowWindow(this);
 
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.ColourCensusEvent);
+        }
+
+        void DisplayColourBMD(NSObject sender)
+        {
+
+            Analytics.TrackAction(Analytics.MainFormAction, Analytics.ColourBMDEvent);
         }
     }
 }

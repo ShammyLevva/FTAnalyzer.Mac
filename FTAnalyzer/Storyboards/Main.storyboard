@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1232,6 +1232,7 @@
                                         <string>Find My Past</string>
                                         <string>FreeCEN</string>
                                         <string>Family Search</string>
+                                        <string>Scotlands People</string>
                                     </objectValues>
                                 </comboBoxCell>
                                 <connections>
@@ -1265,12 +1266,24 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1G-Uk-e9H">
+                                <rect key="frame" x="137" y="245" width="289" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="View Colour Birth/Marriage/Death/Report" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0yx-xF-zTm">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="ColourBMDClicked:" target="9G0-dd-9dE" id="ZAI-dZ-5kp"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="CanadianColourCensus" destination="mkk-MW-jXY" id="nSd-qp-3PD"/>
                         <outlet property="CensusRegionOutlet" destination="EBl-Vd-fgp" id="Kau-7K-gE8"/>
                         <outlet property="CensusSearchProviderOutlet" destination="a8Q-2o-gZW" id="I7X-ie-uQT"/>
+                        <outlet property="ColourBMD" destination="0yx-xF-zTm" id="DAK-p9-deo"/>
                         <outlet property="IrishColourCensus" destination="l8q-6h-UWy" id="5Lk-Bk-joB"/>
                         <outlet property="UKColourCensus" destination="LrN-fi-2fs" id="LVP-mR-6wU"/>
                         <outlet property="USColourCensus" destination="OU7-gh-vqs" id="gh4-CM-QAP"/>
@@ -1412,6 +1425,10 @@
                                         </textView>
                                     </subviews>
                                 </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="JEQ-eq-iHl">
+                                    <rect key="frame" x="-100" y="-100" width="419" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="bfw-oe-Ri2">
                                     <rect key="frame" x="-100" y="-100" width="15" height="579"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1724,6 +1741,10 @@
                                     <size key="offset" width="3" height="3"/>
                                     <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </shadow>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Gdv-en-U6t">
+                                    <rect key="frame" x="-100" y="-100" width="953" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="HKr-sj-AbH">
                                     <rect key="frame" x="955" y="2" width="15" height="359"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1747,6 +1768,10 @@
                                         </textView>
                                     </subviews>
                                 </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="jNr-yd-vFz">
+                                    <rect key="frame" x="-100" y="-100" width="441" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ry0-PN-wVu">
                                     <rect key="frame" x="-100" y="-100" width="15" height="194"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1877,11 +1902,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CensusSettingsIcon" width="28.327869415283203" height="28.327869415283203"/>
-        <image name="FileHandlingIcon" width="28.327869415283203" height="28.327869415283203"/>
-        <image name="GeneralSettingsIcon" width="28.327869415283203" height="28.327869415283203"/>
+        <image name="CensusSettingsIcon" width="24" height="24"/>
+        <image name="FileHandlingIcon" width="24" height="24"/>
+        <image name="GeneralSettingsIcon" width="24" height="24"/>
         <image name="HighResLogo" width="768" height="768"/>
-        <image name="NonGedcomDatesIcon" width="28.327869415283203" height="28.327869415283203"/>
+        <image name="NonGedcomDatesIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RwQ-dy-AGx"/>
