@@ -259,6 +259,7 @@
     <Compile Include="ViewControllers\ColourBMDViewController.designer.cs">
       <DependentUpon>ColourBMDViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSources\ColourBMDSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Facts.storyboard" />

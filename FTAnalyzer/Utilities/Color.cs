@@ -15,5 +15,14 @@ namespace FTAnalyzer.Utilities
         public static readonly NSColor MediumSeaGreen = NSColor.FromRgb(60, 129, 133);
         public static readonly NSColor LightGreen = NSColor.FromRgb(144, 238, 144);
         public static readonly NSColor LightGray = NSColor.FromRgb(211, 211, 211);
+        public static readonly NSColor OrangeRed = NSColor.FromRgb(255, 69, 0);
+        public static readonly NSColor Tomato = NSColor.FromRgb(255, 99, 71);
+        public static readonly NSColor Orange = NSColor.FromRgb(255, 165, 0);
+        public static readonly NSColor YellowGreen = NSColor.FromRgb(154, 205, 50);
+        public static readonly NSColor PaleGreen = NSColor.FromRgb(152, 251, 152);
+        public static readonly NSColor LightPink = NSColor.FromRgb(255, 182, 193);
+        public static readonly NSColor LightCoral = NSColor.FromRgb(240, 128, 128);
+        public static readonly NSColor Firebrick = NSColor.FromRgb(178, 34, 34);
+        public static readonly NSColor WhiteSmoke = NSColor.FromRgb(245, 245, 245);
     }
 }
