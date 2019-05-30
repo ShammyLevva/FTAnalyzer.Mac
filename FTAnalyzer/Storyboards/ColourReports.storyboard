@@ -20,25 +20,32 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="HzA-Y8-reo" kind="relationship" relationship="window.shadowedContentViewController" id="8jB-Lc-eux"/>
+                        <segue destination="gBT-f9-rOC" kind="relationship" relationship="window.shadowedContentViewController" id="3mI-Qw-tcR"/>
                     </connections>
                 </windowController>
                 <customObject id="Uwq-LR-t9c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1209" y="-399"/>
+            <point key="canvasLocation" x="1366" y="-376"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="14i-js-U3I">
+        <!--Tab View Controller-->
+        <scene sceneID="jik-ak-98n">
             <objects>
-                <viewController id="HzA-Y8-reo" sceneMemberID="viewController">
-                    <view key="view" id="hwj-bp-Vk6">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <tabViewController id="gBT-f9-rOC" sceneMemberID="viewController">
+                    <tabView key="tabView" type="noTabsNoBorder" id="h4m-wB-cmw">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="UZU-xq-l34" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="gBT-f9-rOC" id="mQU-0O-tYa"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="h4m-wB-cmw" id="UiC-w5-1NZ"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="hqN-8c-Xcz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1209" y="82"/>
+            <point key="canvasLocation" x="1322" y="138"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="f4b-ME-0dT">

@@ -53,12 +53,11 @@ namespace FTAnalyzer.DataSources
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
             var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
-            Console.WriteLine($"Index: {index}, Column: {tableColumn.Title}, Hidden: {tableColumn.Hidden}, Header: {tableColumn.HeaderCell.Title}");
             NSTableCellView cellView = GetFTAnalyzerGridCell(tableView, tableColumn, row);
+            SetTextField(cellView.TextField, tableColumn, row);
+            var textField = cellView.TextField;
             if (index >= ColourBMDViewController.BMDColumnsStart && index <= ColourBMDViewController.BMDColumnsEnd)
             {
-                SetTextField(cellView.TextField, tableColumn, row);
-                var textField = cellView.TextField;
                 switch (textField.IntValue)
                 {
                     case (int)BMDColour.EMPTY:

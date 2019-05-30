@@ -59,7 +59,7 @@ namespace FTAnalyzer.ViewControllers
 
         void DisplayColourCensus(string country, NSObject sender)
         {
-            var storyboard = NSStoryboard.FromName("ColourCensus", null);
+            var storyboard = NSStoryboard.FromName("ColourReports", null);
             var ColourCensusWindow = storyboard.InstantiateControllerWithIdentifier("ColourCensusWindow") as NSWindowController;
             RelationTypes relationTypes = new RelationTypes();
             List<IDisplayColourCensus> list = FamilyTree.Instance.ColourCensus(country, relationTypes, string.Empty, null, false, false);
@@ -75,6 +75,16 @@ namespace FTAnalyzer.ViewControllers
 
         void DisplayColourBMD(NSObject sender)
         {
+            var storyboard = NSStoryboard.FromName("ColourReports", null);
+            var colourBMDWindow = storyboard.InstantiateControllerWithIdentifier("ColourBMDWindow") as NSWindowController;
+            RelationTypes relationTypes = new RelationTypes();
+            List<IDisplayColourBMD> list = FamilyTree.Instance.ColourBMD(relationTypes, string.Empty, null);
+            ColourBMDViewController colourBMDViewController = new ColourBMDViewController(CensusRegionOutlet.StringValue, (int)CensusSearchProviderOutlet.SelectedIndex);
+            colourBMDViewController.RefreshDocumentView(new SortableBindingList<IDisplayColourBMD>(list));
+            colourBMDWindow.ContentViewController.AddChildViewController(colourBMDViewController);
+            colourBMDWindow.Window.Title = colourBMDViewController.Title;
+            colourBMDWindow.Window.SetFrame(new CoreGraphics.CGRect(350, 350, 1000, 475), true);
+            colourBMDWindow.ShowWindow(this);
 
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.ColourBMDEvent);
         }

@@ -49,7 +49,6 @@ namespace FTAnalyzer.DataSources
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
             var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
-            Console.WriteLine($"Index: {index}, Column: {tableColumn.Title}, Hidden: {tableColumn.Hidden}, Header: {tableColumn.HeaderCell.Title}");
             if ((index >= ColourCensusViewController.CensusColumnsStart && index < StartIndex) ||
                 (index > EndIndex && index <= ColourCensusViewController.CensusColumnsEnd)) // if we are asking for columns that aren't part of this country's Census return null
                 return null;

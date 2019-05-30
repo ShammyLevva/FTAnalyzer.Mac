@@ -1,6 +1,8 @@
 ﻿using System;
+using AppKit;
 using Foundation;
 using FTAnalyzer.DataSources;
+using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.ViewControllers
 {
@@ -28,6 +30,25 @@ namespace FTAnalyzer.ViewControllers
         }
 
         #endregion
+
+        public override void RefreshDocumentView(SortableBindingList<IDisplayColourBMD> list)
+        {
+            if (!NSThread.IsMain)
+            {
+                InvokeOnMainThread(() => RefreshDocumentView(list));
+                return;
+            }
+            CountText = $"Count: {list.Count}";
+            UpdateTooltip();
+            _tableView.AutosaveName = string.Empty; // don't autosave as screws up different countries
+            _tableView.AutosaveTableColumns = false;
+            _tableView.Source = new ColourBMDSource(BMDProvider, list);
+            _tableView.ReloadData();
+            _tableView.SelectionHighlightStyle = NSTableViewSelectionHighlightStyle.None;
+            Title = $"BMD Research Suggestions. {list.Count} records listed.";
+        }
+
+
 
         [Export("ViewDetailsSelector")]
         public override void ViewDetailsSelector()
