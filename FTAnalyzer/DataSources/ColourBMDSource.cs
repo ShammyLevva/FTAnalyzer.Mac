@@ -56,6 +56,7 @@ namespace FTAnalyzer.DataSources
             NSTableCellView cellView = GetFTAnalyzerGridCell(tableView, tableColumn, row);
             SetTextField(cellView.TextField, tableColumn, row);
             var textField = cellView.TextField;
+            textField.ToolTip = SearchTooltip;
             if (index >= ColourBMDViewController.BMDColumnsStart && index <= ColourBMDViewController.BMDColumnsEnd)
             {
                 switch (textField.IntValue)

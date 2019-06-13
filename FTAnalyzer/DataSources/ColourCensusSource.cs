@@ -110,6 +110,8 @@ namespace FTAnalyzer.DataSources
                         textField.TextColor = styles[(int)CensusColour.KNOWN_MISSING];
                         textField.ToolTip = "Known to be missing from the census.";
                         break;
+                    default:
+                        break;
                 }
             }
             return cellView;

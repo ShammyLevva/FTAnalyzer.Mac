@@ -96,6 +96,8 @@ namespace FTAnalyzer.ViewControllers
                         st = FamilyTree.SearchType.DEATH;
                         factDate = ind.DeathDate;
                         break;
+                    default:
+                        break;
                 }
                 try
                 { 

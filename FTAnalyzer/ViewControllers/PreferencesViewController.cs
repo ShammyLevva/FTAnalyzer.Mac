@@ -27,7 +27,7 @@ namespace FTAnalyzer.ViewControllers
                     AllowEmptyLocationsOutlet.Activated += AllowEmptyLocationsOutlet_Activated;
                     ShowDuplicateFactsOutlet.Activated += ShowDuplicateFactsOutlet_Activated;
                     //LooseBirthMinimumAgeOutlet.Activated += LooseBirthMinimumAgeOutlet_Activated;
-                    AliasinNameDisplayOutlet.Activated += AliasinNameDisplayOutlet_Activated; 
+                    AliasinNameDisplayOutlet.Activated += AliasinNameDisplayOutlet_Activated;
                     UseCountryFirstOutlet.Activated += UseCountryFirstOutlet_Activated;
                     ShowWorldEventsOutlet.Activated += ShowWorldEventsOutlet_Activated;
                     IgnoreUnknownFactTypeOutlet.Activated += IgnoreUnknownFactTypeOutlet_Activated;
@@ -49,6 +49,8 @@ namespace FTAnalyzer.ViewControllers
                     break;
                 case "Non Gedcom Date Preferences":
                     SetNonGedcomDateSettings();
+                    break;
+                default:
                     break;
             }
         }

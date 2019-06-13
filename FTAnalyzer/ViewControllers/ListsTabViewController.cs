@@ -115,6 +115,8 @@ namespace FTAnalyzer.ViewControllers
                         App.CurrentViewController = ChildViewControllers[2];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.LooseDeathsEvent);
                     break;
+                default:
+                    break;
             }
         }
 
@@ -148,7 +150,9 @@ namespace FTAnalyzer.ViewControllers
                         App.CurrentViewController = ChildViewControllers[4];
                     Analytics.TrackAction(Analytics.MainFormAction, Analytics.PlacesTabEvent);
                     break;
+                default:
+                    break;
             }
-        }    
+        }
     }
 }
