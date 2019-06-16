@@ -27,7 +27,7 @@ namespace FTAnalyzer.ViewControllers
             SetColumns();
             CensusProviderIndex = providerIndex;
             CensusRegion = censusRegion;
-            CensusProvider = FamilyTree.Instance.ProviderName(providerIndex);
+            CensusProvider = FamilyTree.ProviderName(providerIndex);
         }
 
         public override void RefreshDocumentView(SortableBindingList<IDisplayColourCensus> list)

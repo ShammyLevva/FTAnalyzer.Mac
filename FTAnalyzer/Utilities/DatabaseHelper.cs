@@ -373,7 +373,7 @@ namespace FTAnalyzer.Utilities
                 //restoring = false;
                 FamilyTree ft = FamilyTree.Instance;
                 if (ft.DataLoaded)
-                    return ft.LoadGeoLocationsFromDataBase(outputText);
+                    return FamilyTree.LoadGeoLocationsFromDataBase(outputText);
             }
             catch (Exception)
             {

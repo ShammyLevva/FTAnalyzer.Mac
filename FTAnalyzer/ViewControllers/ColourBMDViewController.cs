@@ -25,7 +25,7 @@ namespace FTAnalyzer.ViewControllers
         public ColourBMDViewController(string bmdRegion, int providerIndex) : base("BMD Research Suggestions", string.Empty)
         {
             BMDProviderIndex = providerIndex;
-            BMDProvider = FamilyTree.Instance.ProviderName(providerIndex);
+            BMDProvider = FamilyTree.ProviderName(providerIndex);
             BMDRegion = bmdRegion;
         }
 

@@ -26,7 +26,7 @@ namespace FTAnalyzer.ViewControllers
 
         public FactsViewController(string title, FactSource source) : base(title, string.Empty)
         {
-            facts = FamilyTree.Instance.GetSourceDisplayFacts(source);
+            facts = FamilyTree.GetSourceDisplayFacts(source);
             Title = $"{title}.Facts count: {facts.Count}";
             RefreshDocumentView();
         }

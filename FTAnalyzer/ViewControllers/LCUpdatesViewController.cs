@@ -50,13 +50,12 @@ namespace FTAnalyzer.ViewControllers
             RelationshipTypes = relationshipTypes;
             ProgressController = progressController;
             LCReport = lcReport;
-            IProgress<int> progress = new Progress<int>(percent => SetProgress(progressController, percent));
             InvokeOnMainThread(() =>
             {
                 Predicate<CensusIndividual> relationFilter = relationshipTypes.BuildFilter<CensusIndividual>(x => x.RelationType, true);
                 LCUpdates = new List<CensusIndividual>();
                 LCInvalidReferences = new List<CensusIndividual>();
-                string reportText = FamilyTree.Instance.LCOutput(LCUpdates, LCInvalidReferences, relationFilter, progress);
+                string reportText = FamilyTree.Instance.LCOutput(LCUpdates, LCInvalidReferences, relationFilter);
                 StatsTextbox.Value = reportText;
             });
         }

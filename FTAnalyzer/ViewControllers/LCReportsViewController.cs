@@ -95,11 +95,10 @@ namespace FTAnalyzer.ViewControllers
 
         public void UpdateLostCousinsReport(ProgressController progressController)
         {
-            IProgress<int> progress = new Progress<int>(percent => SetProgress(progressController, percent));
             InvokeOnMainThread(() =>
             {
                 Predicate<Individual> relationFilter = RelationshipTypesOutlet.BuildFilter<Individual>(x => x.RelationType);
-                string reportText = FamilyTree.Instance.UpdateLostCousinsReport(relationFilter, progress);
+                string reportText = FamilyTree.Instance.UpdateLostCousinsReport(relationFilter);
                 ReportsTextBox.Value = reportText;
                 var newtext = ReportsTextBox.String;
             });
