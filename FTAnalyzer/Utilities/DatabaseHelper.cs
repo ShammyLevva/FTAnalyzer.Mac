@@ -162,7 +162,7 @@ namespace FTAnalyzer.Utilities
         #endregion
 
         #region LostCousins
-        public int AddLostCousinsFacts()
+        public static int AddLostCousinsFacts()
         {
             int count = 0;
             if (InstanceConnection.State != ConnectionState.Open)
@@ -232,7 +232,7 @@ namespace FTAnalyzer.Utilities
             }
         }
 
-        public bool LostCousinsExists(CensusIndividual ind)
+        public static bool LostCousinsExists(CensusIndividual ind)
         {
             if (InstanceConnection.State != ConnectionState.Open)
                 InstanceConnection.Open();
@@ -268,7 +268,7 @@ namespace FTAnalyzer.Utilities
             return result;
         }
 
-        public void StoreLostCousinsFact(CensusIndividual ind, IProgress<string> outputText)
+        public static void StoreLostCousinsFact(CensusIndividual ind, IProgress<string> outputText)
         {
             try
             {
