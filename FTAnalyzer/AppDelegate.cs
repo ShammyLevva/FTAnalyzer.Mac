@@ -24,7 +24,7 @@ namespace FTAnalyzer
         public override void DidFinishLaunching(NSNotification notification)
         {
             // Insert code here to initialize your application
-            Window = NSApplication.SharedApplication.Windows[0];
+            Window = NSApplication.SharedApplication.DangerousWindows[0];
             Window.MakeKeyAndOrderFront(Self);
             Window.Title = $"FTAnalyzer {Version} - Family Tree Analyzer";
             Window.Delegate = new MainWindowDelegate();
@@ -93,7 +93,7 @@ namespace FTAnalyzer
 
         public void CloseAllSubWindows()
         {
-            foreach(NSWindow openWindow in NSApplication.SharedApplication.Windows)
+            foreach(NSWindow openWindow in NSApplication.SharedApplication.DangerousWindows)
             {
                 if (openWindow.Title.StartsWith("Facts", StringComparison.Ordinal))
                     openWindow.Close();
@@ -398,9 +398,9 @@ namespace FTAnalyzer
     {
         public override void WillClose(NSNotification notification)
         {
-            foreach (NSWindow window in NSApplication.SharedApplication.Windows)
+            foreach (NSWindow window in NSApplication.SharedApplication.DangerousWindows)
             {
-                if (window != NSApplication.SharedApplication.Windows[0])
+                if (window != NSApplication.SharedApplication.DangerousWindows[0])
                 {
                     window.Close();
                     window.Dispose();
