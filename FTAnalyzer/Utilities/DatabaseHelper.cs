@@ -1,14 +1,12 @@
 ﻿using AppKit;
-using Foundation;
 using Ionic.Zip;
-using Mono.Data.Sqlite;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Microsoft.Data.Sqlite;
 
 namespace FTAnalyzer.Utilities
 {
@@ -36,7 +34,7 @@ namespace FTAnalyzer.Utilities
             InstanceConnection = new SqliteConnection(connectionString);
         }
 
-        public static DatabaseHelper Instance => instance = instance ?? new DatabaseHelper();
+        public static DatabaseHelper Instance => instance ??= new DatabaseHelper();
 
         protected virtual void Dispose(bool disposing)
         {

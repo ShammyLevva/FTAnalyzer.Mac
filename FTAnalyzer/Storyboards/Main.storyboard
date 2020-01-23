@@ -1910,24 +1910,163 @@
         <scene sceneID="r13-AU-feC">
             <objects>
                 <viewController title="Treetops" id="jSw-kh-5Dz" userLabel="TreeTopsController" customClass="TreeTopsViewController" sceneMemberID="viewController">
-                    <customView key="view" id="OT7-cc-ACJ" userLabel="Treetops View">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <view key="view" id="Jn0-du-d9s" userLabel="Treetops View">
+                        <rect key="frame" x="0.0" y="0.0" width="843" height="649"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="slK-o2-afk">
-                                <rect key="frame" x="18" y="178" width="61" height="18"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsy-b9-ob1">
+                                <rect key="frame" x="405" y="612" width="58" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Surname" id="EEz-Lk-3SY">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p8Z-2d-KUD" customClass="RelationTypes">
+                                <rect key="frame" x="0.0" y="539" width="384" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="u9f-p3-fpt">
+                                <subviews>
+                                    <box fixedFrame="YES" title="Relationship Types" translatesAutoresizingMaskIntoConstraints="NO" id="jKT-A3-m6Y">
+                                        <rect key="frame" x="-3" y="-11" width="390" height="114"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <view key="contentView" id="RMe-Jm-nJL">
+                                            <rect key="frame" x="3" y="3" width="384" height="93"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PiX-jb-vHJ">
+                                                    <rect key="frame" x="18" y="68" width="59" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Direct" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6Oj-65-pNJ">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="DirectChecked:" target="p8Z-2d-KUD" id="Exn-i4-bQ0"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Heh-mK-UuO">
+                                                    <rect key="frame" x="18" y="40" width="57" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Blood" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3Id-mF-5xE">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="BloodChecked:" target="p8Z-2d-KUD" id="miw-fp-flr"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1hE-uY-hrC">
+                                                    <rect key="frame" x="18" y="13" width="164" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Married to Direct/Blood" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jRk-wQ-5m8">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="MarriedDBChecked:" target="p8Z-2d-KUD" id="BUV-qB-mh2"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uqr-SJ-4YB">
+                                                    <rect key="frame" x="113" y="68" width="144" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Related by Marriage" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ZcR-L9-Lft">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="ByMarriageChecked:" target="p8Z-2d-KUD" id="WCg-xL-x7k"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IZU-An-J46">
+                                                    <rect key="frame" x="113" y="40" width="102" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Descendants" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jfx-lo-dJy">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="DescendantsChecked:" target="p8Z-2d-KUD" id="9fA-1T-jo1"/>
+                                                    </connections>
+                                                </button>
+                                                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bUX-J2-Qo1">
+                                                    <rect key="frame" x="224" y="13" width="138" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Linked by Marriage" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Q4O-9r-XFS">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="LinkedChecked:" target="p8Z-2d-KUD" id="b9Q-G9-ueK"/>
+                                                    </connections>
+                                                </button>
+                                                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wAO-NB-vjF">
+                                                    <rect key="frame" x="283" y="68" width="79" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Unknown" bezelStyle="regularSquare" imagePosition="left" inset="2" id="oZe-hu-4c2">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="UnknownChecked:" target="p8Z-2d-KUD" id="0tp-X6-fUC"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </view>
+                                        <font key="titleFont" metaFont="system"/>
+                                    </box>
+                                </subviews>
+                                <connections>
+                                    <outlet property="BloodOutlet" destination="Heh-mK-UuO" id="j0s-HR-z0Z"/>
+                                    <outlet property="DescendantsOutlet" destination="IZU-An-J46" id="pbX-B9-JVy"/>
+                                    <outlet property="DirectOutlet" destination="PiX-jb-vHJ" id="Xdd-Le-Ucz"/>
+                                    <outlet property="LinkedOutlet" destination="bUX-J2-Qo1" id="hOJ-FB-hFE"/>
+                                    <outlet property="MarriageOutlet" destination="Uqr-SJ-4YB" id="gtf-YN-Gyd"/>
+                                    <outlet property="MarriedDBOutlet" destination="1hE-uY-hrC" id="JLF-G4-X4K"/>
+                                    <outlet property="UnknownOutlet" destination="wAO-NB-vjF" id="cxE-rc-lLY"/>
+                                </connections>
+                            </customView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DkC-UW-mbK">
+                                <rect key="frame" x="18" y="515" width="335" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Include Individuals that have only one parent known" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="IXI-of-pVu">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="OnlyOneParentChecked:" target="jSw-kh-5Dz" id="fQa-fc-Bjy"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lS9-nd-kmg">
+                                <rect key="frame" x="469" y="612" width="256" height="22"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="8Th-yt-Ps3">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOV-pw-3Jj" userLabel="Show People at top of tree">
+                                <rect key="frame" x="401" y="510" width="201" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Show People at top of tree" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="D8q-lq-lXa">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="ShowTreetopsClicked:" target="jSw-kh-5Dz" id="ntv-q7-vdj"/>
+                                </connections>
                             </button>
                         </subviews>
-                    </customView>
+                    </view>
+                    <connections>
+                        <outlet property="OnlyOneParentOutlet" destination="DkC-UW-mbK" id="lwW-u7-8Ml"/>
+                        <outlet property="TreetopsSurnameOutlet" destination="lS9-nd-kmg" id="ViM-EF-ts6"/>
+                    </connections>
                 </viewController>
                 <customObject id="VkP-qu-1ke" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1502" y="-1960.5"/>
+            <point key="canvasLocation" x="1568.5" y="-1962.5"/>
         </scene>
         <!--World Wars-->
         <scene sceneID="5Oj-fN-Sae">
