@@ -71,7 +71,7 @@ namespace FTAnalyzer.Utilities
                     EmptyFile = Path.Combine(ResourcePath, "Geocodes-Empty.s3db");
                     File.Copy(EmptyFile, DatabaseFile);
                 }
-                connectionString = $"Data Source={DatabaseFile};Version=3;";
+                connectionString = $"Data Source={DatabaseFile};";
             }
             catch(ArgumentNullException)
             {
