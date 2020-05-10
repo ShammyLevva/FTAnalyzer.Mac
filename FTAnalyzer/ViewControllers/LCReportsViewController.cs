@@ -143,9 +143,6 @@ namespace FTAnalyzer.ViewControllers
             progressController.ProgressBar = percent;
         }
 
-        public void Clear()
-        {
-            ReportsTextBox.Value = string.Empty;
-        }
+        public void Clear() => ReportsTextBox.Value = string.Empty;
     }
 }

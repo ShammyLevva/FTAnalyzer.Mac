@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
+        <deployment version="101100" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -896,7 +897,7 @@
         <!--MainTabController-->
         <scene sceneID="pXS-AW-A6S">
             <objects>
-                <tabViewController title="MainTabController" showSeguePresentationStyle="single" selectedTabViewItemIndex="6" id="kye-gt-91O" customClass="FTAnalyzerViewController" sceneMemberID="viewController">
+                <tabViewController title="MainTabController" showSeguePresentationStyle="single" selectedTabViewItemIndex="1" id="kye-gt-91O" customClass="FTAnalyzerViewController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Gedcom Stats" id="5KQ-md-UQl"/>
                         <tabViewItem label="Main Lists" id="nnU-Eq-ulZ"/>
@@ -1910,7 +1911,7 @@
             <objects>
                 <viewController title="Treetops" id="jSw-kh-5Dz" userLabel="TreeTopsController" customClass="TreeTopsViewController" sceneMemberID="viewController">
                     <view key="view" id="Jn0-du-d9s" userLabel="Treetops View">
-                        <rect key="frame" x="0.0" y="0.0" width="843" height="649"/>
+                        <rect key="frame" x="0.0" y="0.0" width="839" height="484"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsy-b9-ob1">
@@ -1923,7 +1924,7 @@
                                 </textFieldCell>
                             </textField>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p8Z-2d-KUD" customClass="RelationTypes">
-                                <rect key="frame" x="0.0" y="539" width="384" height="110"/>
+                                <rect key="frame" x="0.0" y="374" width="384" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <box fixedFrame="YES" title="Relationship Types" translatesAutoresizingMaskIntoConstraints="NO" id="jKT-A3-m6Y">
@@ -2026,7 +2027,7 @@
                                 </connections>
                             </customView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DkC-UW-mbK">
-                                <rect key="frame" x="18" y="515" width="335" height="18"/>
+                                <rect key="frame" x="18" y="350" width="335" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Include Individuals that have only one parent known" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="IXI-of-pVu">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2046,7 +2047,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOV-pw-3Jj" userLabel="Show People at top of tree">
-                                <rect key="frame" x="401" y="510" width="201" height="32"/>
+                                <rect key="frame" x="401" y="345" width="201" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Show People at top of tree" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="D8q-lq-lXa">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2056,6 +2057,11 @@
                                     <action selector="ShowTreetopsClicked:" target="jSw-kh-5Dz" id="ntv-q7-vdj"/>
                                 </connections>
                             </button>
+                            <tabView fixedFrame="YES" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="hva-l0-50B">
+                                <rect key="frame" x="0.0" y="0.0" width="839" height="332"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </tabView>
                         </subviews>
                     </view>
                     <connections>
@@ -2065,7 +2071,7 @@
                 </viewController>
                 <customObject id="VkP-qu-1ke" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1659" y="-1965"/>
+            <point key="canvasLocation" x="1656.5" y="-2048"/>
         </scene>
         <!--World Wars-->
         <scene sceneID="5Oj-fN-Sae">
@@ -2092,6 +2098,37 @@
                 <customObject id="QNt-JS-74O" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="534" y="-2716"/>
+        </scene>
+        <!--MainListsController-->
+        <scene sceneID="cWo-nh-28k">
+            <objects>
+                <tabViewController title="MainListsController" id="LQa-Dk-6T7" customClass="ListsTabViewController" sceneMemberID="viewController">
+                    <tabView key="tabView" type="noTabsNoBorder" id="fjD-J9-UUB">
+                        <rect key="frame" x="900" y="-960" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="LQa-Dk-6T7" id="mKc-MS-F1R"/>
+                            <outlet property="menu" destination="WR6-GA-mNe" id="Rbl-hS-YgL"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="SetRootPersonMenu" destination="WR6-GA-mNe" id="YvZ-Hl-okg"/>
+                        <outlet property="tabView" destination="fjD-J9-UUB" id="Xvz-Jl-PiK"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="ynx-Kf-2OJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu title="Update Root" id="OOx-v0-uXh">
+                    <items>
+                        <menuItem title="Set as Root Person" id="hA7-xY-4sR" userLabel="Set as Root Person">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="SetRootPersonClicked:" target="LQa-Dk-6T7" id="FA7-x0-4dD"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
+            </objects>
+            <point key="canvasLocation" x="-11" y="-822"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
