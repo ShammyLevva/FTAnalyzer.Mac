@@ -61,53 +61,53 @@ namespace FTAnalyzer.DataSources
             {
                 switch (textField.IntValue)
                 {
-                    case (int)CensusColour.NOT_ALIVE:
-                        textField.BackgroundColor = styles[(int)CensusColour.NOT_ALIVE];
-                        textField.TextColor = styles[(int)CensusColour.NOT_ALIVE];
+                    case (int)CensusColours.NOT_ALIVE:
+                        textField.BackgroundColor = styles[(int)CensusColours.NOT_ALIVE];
+                        textField.TextColor = styles[(int)CensusColours.NOT_ALIVE];
                         textField.ToolTip = "Not alive at time of census. {SearchTooltip}";
                         break;
-                    case (int)CensusColour.NO_CENSUS:
-                        textField.BackgroundColor = styles[(int)CensusColour.NO_CENSUS];
-                        textField.TextColor = styles[(int)CensusColour.NO_CENSUS];
+                    case (int)CensusColours.NO_CENSUS:
+                        textField.BackgroundColor = styles[(int)CensusColours.NO_CENSUS];
+                        textField.TextColor = styles[(int)CensusColours.NO_CENSUS];
                         textField.ToolTip = index == c1939index
                             ? CensusProvider.Equals("Find My Past")
                                 ? $"No National Register information entered. {SearchTooltip}"
                                 : $"No National Register information entered. No search on {CensusProvider} available."
                             : $"No census information entered. {SearchTooltip}";
                         break;
-                    case (int)CensusColour.CENSUS_PRESENT_LC_MISSING:
-                        textField.BackgroundColor = styles[(int)CensusColour.CENSUS_PRESENT_LC_MISSING];
-                        textField.TextColor = styles[(int)CensusColour.CENSUS_PRESENT_LC_MISSING];
+                    case (int)CensusColours.CENSUS_PRESENT_LC_MISSING:
+                        textField.BackgroundColor = styles[(int)CensusColours.CENSUS_PRESENT_LC_MISSING];
+                        textField.TextColor = styles[(int)CensusColours.CENSUS_PRESENT_LC_MISSING];
                         textField.ToolTip = "Census entered but no Lost Cousins flag set.";
                         break;
-                    case (int)CensusColour.CENSUS_PRESENT_NOT_LC_YEAR:
-                        textField.BackgroundColor = styles[(int)CensusColour.CENSUS_PRESENT_NOT_LC_YEAR];
-                        textField.TextColor = styles[(int)CensusColour.CENSUS_PRESENT_NOT_LC_YEAR];
+                    case (int)CensusColours.CENSUS_PRESENT_NOT_LC_YEAR:
+                        textField.BackgroundColor = styles[(int)CensusColours.CENSUS_PRESENT_NOT_LC_YEAR];
+                        textField.TextColor = styles[(int)CensusColours.CENSUS_PRESENT_NOT_LC_YEAR];
                         textField.ToolTip = "Census entered and not a Lost Cousins year.";
                         break;
-                    case (int)CensusColour.CENSUS_PRESENT_LC_PRESENT:
-                        textField.BackgroundColor = styles[(int)CensusColour.CENSUS_PRESENT_LC_PRESENT];
-                        textField.TextColor = styles[(int)CensusColour.CENSUS_PRESENT_LC_PRESENT];
+                    case (int)CensusColours.CENSUS_PRESENT_LC_PRESENT:
+                        textField.BackgroundColor = styles[(int)CensusColours.CENSUS_PRESENT_LC_PRESENT];
+                        textField.TextColor = styles[(int)CensusColours.CENSUS_PRESENT_LC_PRESENT];
                         textField.ToolTip = "Census entered and flagged as entered on Lost Cousins.";
                         break;
-                    case (int)CensusColour.LC_PRESENT_NO_CENSUS:
-                        textField.BackgroundColor = styles[(int)CensusColour.LC_PRESENT_NO_CENSUS];
-                        textField.TextColor = styles[(int)CensusColour.LC_PRESENT_NO_CENSUS];
+                    case (int)CensusColours.LC_PRESENT_NO_CENSUS:
+                        textField.BackgroundColor = styles[(int)CensusColours.LC_PRESENT_NO_CENSUS];
+                        textField.TextColor = styles[(int)CensusColours.LC_PRESENT_NO_CENSUS];
                         textField.ToolTip = "Lost Cousins flagged but no Census entered. {SearchTooltip}";
                         break;
-                    case (int)CensusColour.OVERSEAS_CENSUS:
-                        textField.BackgroundColor = styles[(int)CensusColour.OVERSEAS_CENSUS];
-                        textField.TextColor = styles[(int)CensusColour.OVERSEAS_CENSUS];
+                    case (int)CensusColours.OVERSEAS_CENSUS:
+                        textField.BackgroundColor = styles[(int)CensusColours.OVERSEAS_CENSUS];
+                        textField.TextColor = styles[(int)CensusColours.OVERSEAS_CENSUS];
                         textField.ToolTip = $"On Census outside {Country}.";
                         break;
-                    case (int)CensusColour.OUT_OF_COUNTRY:
-                        textField.BackgroundColor = styles[(int)CensusColour.OUT_OF_COUNTRY];
-                        textField.TextColor = styles[(int)CensusColour.OUT_OF_COUNTRY];
+                    case (int)CensusColours.OUT_OF_COUNTRY:
+                        textField.BackgroundColor = styles[(int)CensusColours.OUT_OF_COUNTRY];
+                        textField.TextColor = styles[(int)CensusColours.OUT_OF_COUNTRY];
                         textField.ToolTip = $"Likely outside {Country} on census date. {SearchTooltip}";
                         break;
-                    case (int)CensusColour.KNOWN_MISSING:
-                        textField.BackgroundColor = styles[(int)CensusColour.KNOWN_MISSING];
-                        textField.TextColor = styles[(int)CensusColour.KNOWN_MISSING];
+                    case (int)CensusColours.KNOWN_MISSING:
+                        textField.BackgroundColor = styles[(int)CensusColours.KNOWN_MISSING];
+                        textField.TextColor = styles[(int)CensusColours.KNOWN_MISSING];
                         textField.ToolTip = "Known to be missing from the census.";
                         break;
                     default:

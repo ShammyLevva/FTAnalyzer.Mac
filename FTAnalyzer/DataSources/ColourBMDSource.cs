@@ -61,75 +61,75 @@ namespace FTAnalyzer.DataSources
             {
                 switch (textField.IntValue)
                 {
-                    case (int)BMDColour.EMPTY:
-                        textField.BackgroundColor = styles[(int)BMDColour.EMPTY];
-                        textField.TextColor = styles[(int)BMDColour.EMPTY];
+                    case (int)BMDColours.EMPTY:
+                        textField.BackgroundColor = styles[(int)BMDColours.EMPTY];
+                        textField.TextColor = styles[(int)BMDColours.EMPTY];
                         if (index == ColourBMDViewController.BMDColumnsEnd || index == ColourBMDViewController.BMDColumnsEnd / -1)
                             textField.ToolTip = "Individual is probably still alive";
                         else
                             textField.ToolTip = string.Empty;
                         break;
-                    case (int)BMDColour.UNKNOWN_DATE:
-                        textField.BackgroundColor = styles[(int)BMDColour.UNKNOWN_DATE];
-                        textField.TextColor = styles[(int)BMDColour.UNKNOWN_DATE];
+                    case (int)BMDColours.UNKNOWN_DATE:
+                        textField.BackgroundColor = styles[(int)BMDColours.UNKNOWN_DATE];
+                        textField.TextColor = styles[(int)BMDColours.UNKNOWN_DATE];
                         textField.ToolTip = "Unknown date.";
                         break;
-                    case (int)BMDColour.OPEN_ENDED_DATE:
-                        textField.BackgroundColor = styles[(int)BMDColour.OPEN_ENDED_DATE];
-                        textField.TextColor = styles[(int)BMDColour.OPEN_ENDED_DATE];
+                    case (int)BMDColours.OPEN_ENDED_DATE:
+                        textField.BackgroundColor = styles[(int)BMDColours.OPEN_ENDED_DATE];
+                        textField.TextColor = styles[(int)BMDColours.OPEN_ENDED_DATE];
                         textField.ToolTip = "Date is open ended, BEFore or AFTer a date.";
                         break;
-                    case (int)BMDColour.VERY_WIDE_DATE:
-                        textField.BackgroundColor = styles[(int)BMDColour.VERY_WIDE_DATE];
-                        textField.TextColor = styles[(int)BMDColour.VERY_WIDE_DATE];
+                    case (int)BMDColours.VERY_WIDE_DATE:
+                        textField.BackgroundColor = styles[(int)BMDColours.VERY_WIDE_DATE];
+                        textField.TextColor = styles[(int)BMDColours.VERY_WIDE_DATE];
                         textField.ToolTip = "Date only accurate to more than ten year date range.";
                         break;
-                    case (int)BMDColour.WIDE_DATE:
-                        textField.BackgroundColor = styles[(int)BMDColour.WIDE_DATE];
-                        textField.TextColor = styles[(int)BMDColour.WIDE_DATE];
+                    case (int)BMDColours.WIDE_DATE:
+                        textField.BackgroundColor = styles[(int)BMDColours.WIDE_DATE];
+                        textField.TextColor = styles[(int)BMDColours.WIDE_DATE];
                         textField.ToolTip = "Date covers up to a ten year date range."; 
                         break;
-                    case (int)BMDColour.NARROW_DATE:
-                        textField.BackgroundColor = styles[(int)BMDColour.NARROW_DATE];
-                        textField.TextColor = styles[(int)BMDColour.NARROW_DATE];
+                    case (int)BMDColours.NARROW_DATE:
+                        textField.BackgroundColor = styles[(int)BMDColours.NARROW_DATE];
+                        textField.TextColor = styles[(int)BMDColours.NARROW_DATE];
                         textField.ToolTip = "Date accurate to within one to two year period.";
                         break;
-                    case (int)BMDColour.JUST_YEAR_DATE:
-                        textField.BackgroundColor = styles[(int)BMDColour.JUST_YEAR_DATE];
-                        textField.TextColor = styles[(int)BMDColour.JUST_YEAR_DATE];
+                    case (int)BMDColours.JUST_YEAR_DATE:
+                        textField.BackgroundColor = styles[(int)BMDColours.JUST_YEAR_DATE];
+                        textField.TextColor = styles[(int)BMDColours.JUST_YEAR_DATE];
                         textField.ToolTip = "Date accurate to within one year period, but longer than 3 months.";
                         break;
-                    case (int)BMDColour.APPROX_DATE:
-                        textField.BackgroundColor = styles[(int)BMDColour.APPROX_DATE];
-                        textField.TextColor = styles[(int)BMDColour.APPROX_DATE];
+                    case (int)BMDColours.APPROX_DATE:
+                        textField.BackgroundColor = styles[(int)BMDColours.APPROX_DATE];
+                        textField.TextColor = styles[(int)BMDColours.APPROX_DATE];
                         textField.ToolTip = "Date accurate to within 3 months (note may be date of registration not event date)";
                         break;
-                    case (int)BMDColour.EXACT_DATE:
-                        textField.BackgroundColor = styles[(int)BMDColour.EXACT_DATE];
-                        textField.TextColor = styles[(int)BMDColour.EXACT_DATE];
+                    case (int)BMDColours.EXACT_DATE:
+                        textField.BackgroundColor = styles[(int)BMDColours.EXACT_DATE];
+                        textField.TextColor = styles[(int)BMDColours.EXACT_DATE];
                         textField.ToolTip = "Exact Date.";
                         break;
-                    case (int)BMDColour.NO_SPOUSE:
-                        textField.BackgroundColor = styles[(int)BMDColour.NO_SPOUSE];
-                        textField.TextColor = styles[(int)BMDColour.NO_SPOUSE];
+                    case (int)BMDColours.NO_SPOUSE:
+                        textField.BackgroundColor = styles[(int)BMDColours.NO_SPOUSE];
+                        textField.TextColor = styles[(int)BMDColours.NO_SPOUSE];
                         textField.ToolTip = "Of marrying age but no spouse recorded";
                         break;
-                    case (int)BMDColour.NO_PARTNER:
-                        textField.BackgroundColor = styles[(int)BMDColour.NO_PARTNER];
-                        textField.TextColor = styles[(int)BMDColour.NO_PARTNER];
+                    case (int)BMDColours.NO_PARTNER:
+                        textField.BackgroundColor = styles[(int)BMDColours.NO_PARTNER];
+                        textField.TextColor = styles[(int)BMDColours.NO_PARTNER];
                         textField.ToolTip = "No partner but has shared fact or children";
                         break;
-                    case (int)BMDColour.NO_MARRIAGE:
-                        textField.BackgroundColor = styles[(int)BMDColour.NO_MARRIAGE];
-                        textField.TextColor = styles[(int)BMDColour.NO_MARRIAGE];
+                    case (int)BMDColours.NO_MARRIAGE:
+                        textField.BackgroundColor = styles[(int)BMDColours.NO_MARRIAGE];
+                        textField.TextColor = styles[(int)BMDColours.NO_MARRIAGE];
                         textField.ToolTip = "Has partner but no marriage fact";
                         break;
-                    case (int)BMDColour.ISLIVING:
-                        textField.BackgroundColor = styles[(int)BMDColour.ISLIVING];
-                        textField.TextColor = styles[(int)BMDColour.ISLIVING];
+                    case (int)BMDColours.ISLIVING:
+                        textField.BackgroundColor = styles[(int)BMDColours.ISLIVING];
+                        textField.TextColor = styles[(int)BMDColours.ISLIVING];
                         textField.ToolTip = "Is flagged as living";
                         break;
-                    case (int)BMDColour.OVER90:
+                    case (int)BMDColours.OVER90:
                         textField.ToolTip = "Individual may be still alive";
                         break;
                 }
