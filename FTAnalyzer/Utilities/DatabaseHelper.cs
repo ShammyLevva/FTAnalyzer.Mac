@@ -150,8 +150,63 @@ namespace FTAnalyzer.Utilities
             try
             {
                 Version v7_3_3_2 = new Version("7.3.3.2");
-                InstanceConnection.Close();
-            }
+                Version v7_4_0_0 = new Version("7.4.0.0");
+                Version v8_0_0_0 = new Version("8.0.0.0");
+                if (InstanceConnection.State != ConnectionState.Open)
+                    InstanceConnection.Open();
+                if (dbVersion < v7_3_3_2)
+                {
+                    try
+                    {
+                        using (SqliteCommand cmd = new SqliteCommand("SELECT count(*) FROM LostCousins", InstanceConnection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch (SqliteException)
+                    {
+                        using (SqliteCommand cmd = new SqliteCommand("create table IF NOT EXISTS LostCousins (CensusYear INTEGER(4), CensusCountry STRING (20), CensusRef STRING(25), IndID STRING(10), FullName String(80), constraint pkLostCousins primary key (CensusYear, CensusCountry, CensusRef, IndID))", InstanceConnection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    using (SqliteCommand cmd = new SqliteCommand("update versions set Database = '7.3.3.2'", InstanceConnection))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                if (dbVersion < v7_4_0_0)
+                {
+
+                    using (SqliteCommand cmd = new SqliteCommand("drop table versions", InstanceConnection))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    using (SqliteCommand cmd = new SqliteCommand("CREATE TABLE IF NOT EXISTS Versions(Platform VARCHAR(10) PRIMARY KEY, [Database] VARCHAR(10));", InstanceConnection))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    using (SqliteCommand cmd = new SqliteCommand("insert into Versions(platform, database) values('PC', '7.4.0.0')", InstanceConnection))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    using (SqliteCommand cmd = new SqliteCommand("insert into Versions(platform, database) values('Mac', '1.2.0.42')", InstanceConnection))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                if (dbVersion < v8_0_0_0)
+                {
+                    using (SqliteCommand cmd = new SqliteCommand("CREATE TABLE IF NOT EXISTS CustomFacts (FactType STRING(60) PRIMARY KEY, [Ignore] BOOLEAN)", InstanceConnection))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    using (SqliteCommand cmd = new SqliteCommand("update Versions set database = '8.0.0.0' where platform = 'PC'", InstanceConnection))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                }
             catch (Exception ex)
             {
                 UIHelpers.ShowMessage($"Error upgrading database. Error is :{ex.Message}", "FTAnalyzer");
@@ -341,6 +396,50 @@ namespace FTAnalyzer.Utilities
             }
             InstanceConnection.Close();
         }
+        #endregion
+
+        #region Custom Facts
+
+        public static bool IgnoreCustomFact(string factType)
+        {
+            if (InstanceConnection.State != ConnectionState.Open)
+                InstanceConnection.Open();
+            bool result = false;
+            using (SqliteCommand cmd = new SqliteCommand("SELECT EXISTS(SELECT ignore FROM CustomFacts where FactType=?)", InstanceConnection))
+            {
+                SqliteParameter param = cmd.CreateParameter();
+                param.DbType = DbType.String;
+                cmd.Parameters.Add(param);
+                param = cmd.CreateParameter();
+                cmd.Prepare();
+                cmd.Parameters[0].Value = factType;
+                using (SqliteDataReader reader = cmd.ExecuteReader(CommandBehavior.SingleResult))
+                {
+                    if (reader.Read())
+                        result = reader[0].ToString() == "1";
+                }
+            }
+            return result;
+        }
+
+        public static void IgnoreCustomFact(string factType, bool ignore)
+        {
+            using (SqliteCommand cmd = new SqliteCommand("insert or replace into CustomFacts(FactType,Ignore) values(?,?)", InstanceConnection))
+            {
+                SqliteParameter param = cmd.CreateParameter();
+                param.DbType = DbType.String;
+                cmd.Parameters.Add(param);
+                param = cmd.CreateParameter();
+                param.DbType = DbType.Boolean;
+                cmd.Parameters.Add(param);
+                param = cmd.CreateParameter();
+                cmd.Prepare();
+                cmd.Parameters[0].Value = factType;
+                cmd.Parameters[1].Value = ignore;
+                int rowsaffected = cmd.ExecuteNonQuery();
+            }
+        }
+
         #endregion
 
         #region BackupRestore
