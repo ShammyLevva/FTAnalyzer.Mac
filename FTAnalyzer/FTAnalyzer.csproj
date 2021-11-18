@@ -111,10 +111,10 @@
       <HintPath>..\packages\DotNetZip.1.16.0\lib\netstandard2.0\DotNetZip.dll</HintPath>
     </Reference>
     <Reference Include="SQLitePCLRaw.provider.e_sqlite3">
-      <HintPath>..\packages\SQLitePCLRaw.provider.e_sqlite3.2.0.6\lib\netstandard2.0\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+      <HintPath>..\packages\SQLitePCLRaw.provider.e_sqlite3.2.0.7\lib\netstandard2.0\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
     </Reference>
     <Reference Include="SQLitePCLRaw.batteries_v2">
-      <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.6\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll</HintPath>
+      <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.7\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -269,7 +269,10 @@
     </Compile>
     <Compile Include="DataSources\Census.cs" />
     <Compile Include="DataSources\CensusSource.cs" />
-    <Compile Include="Utilities\DatabaseHelper.cs" />
+    <Compile Include="Utilities\DatabaseHelper.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInPackage>true</IncludeInPackage>
+    </Compile>
     <Compile Include="ViewControllers\LCVerifyViewController.cs" />
     <Compile Include="ViewControllers\LCVerifyViewController.designer.cs">
       <DependentUpon>LCVerifyViewController.cs</DependentUpon>
