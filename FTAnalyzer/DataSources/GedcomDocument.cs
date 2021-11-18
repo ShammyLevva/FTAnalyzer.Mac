@@ -13,8 +13,6 @@ namespace FTAnalyzer
     {
         AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
 
-        readonly FamilyTree _familyTree = FamilyTree.Instance;
-
         [Export("canConcurrentlyReadDocumentsOfType:")]
         public static new bool CanConcurrentlyReadDocumentsOfType(string fileType) => true;
 
@@ -26,6 +24,7 @@ namespace FTAnalyzer
             {
                 if (App.Document != null)
                     App.ResetDocument();
+                FamilyTree _familyTree = FamilyTree.Instance;
                 var outputText = App.DocumentViewController.Messages;
                 var sourcesProgress = App.DocumentViewController.Sources;
                 var individualsProgress = App.DocumentViewController.Individuals;
