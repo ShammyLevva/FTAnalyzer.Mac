@@ -743,9 +743,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1TB-pP-GfQ">
-                                <rect key="frame" x="20" y="20" width="257" height="17"/>
+                                <rect key="frame" x="20" y="20" width="273" height="22"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="(*) This option requires a GEDCOM reload" id="SWV-pr-9oR">
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" title="(*) This option requires a GEDCOM reload" id="SWV-pr-9oR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1957,7 +1957,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1hE-uY-hrC">
-                                                    <rect key="frame" x="18" y="14" width="164" height="18"/>
+                                                    <rect key="frame" x="18" y="14" width="180" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Married to Direct/Blood" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jRk-wQ-5m8">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2026,17 +2026,6 @@
                                     <outlet property="UnknownOutlet" destination="wAO-NB-vjF" id="cxE-rc-lLY"/>
                                 </connections>
                             </customView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DkC-UW-mbK">
-                                <rect key="frame" x="18" y="350" width="335" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Include Individuals that have only one parent known" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="IXI-of-pVu">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="OnlyOneParentChecked:" target="jSw-kh-5Dz" id="fQa-fc-Bjy"/>
-                                </connections>
-                            </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lS9-nd-kmg">
                                 <rect key="frame" x="469" y="612" width="256" height="22"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -2062,6 +2051,17 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <font key="font" metaFont="system"/>
                             </tabView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DkC-UW-mbK">
+                                <rect key="frame" x="18" y="349" width="335" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Include Individuals that have only one parent known" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="IXI-of-pVu">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="OnlyOneParentChecked:" target="jSw-kh-5Dz" id="fQa-fc-Bjy"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
