@@ -12,6 +12,7 @@ namespace FTAnalyzer
     public class GedcomDocument : NSDocument
     {
         AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
+
         readonly FamilyTree _familyTree = FamilyTree.Instance;
 
         [Export("canConcurrentlyReadDocumentsOfType:")]
