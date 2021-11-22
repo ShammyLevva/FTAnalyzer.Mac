@@ -31,6 +31,8 @@ namespace FTAnalyzer.Utilities
             ResourcePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location), @"../Resources");
             CurrentFilename = Path.Combine(DatabasePath, "FTA-RestoreTemp.s3db");
             CheckDatabaseConnection();
+            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
+            SQLitePCL.raw.FreezeProvider();
             InstanceConnection = new SqliteConnection(connectionString);
         }
 
