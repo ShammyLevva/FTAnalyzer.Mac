@@ -6,14 +6,12 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Microsoft.Data.Sqlite;
+using Mono.Data.Sqlite;
 
 namespace FTAnalyzer.Utilities
 {
     public class DatabaseHelper : IDisposable
     {
-        AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
-
         public string DatabaseFile { get; private set; }
         public string CurrentFilename { get; private set; }
         public string DatabasePath { get; private set; }
@@ -31,8 +29,8 @@ namespace FTAnalyzer.Utilities
             ResourcePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location), @"../Resources");
             CurrentFilename = Path.Combine(DatabasePath, "FTA-RestoreTemp.s3db");
             CheckDatabaseConnection();
-            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
-            SQLitePCL.raw.FreezeProvider();
+//            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
+//            SQLitePCL.raw.FreezeProvider();
             InstanceConnection = new SqliteConnection(connectionString);
         }
 
