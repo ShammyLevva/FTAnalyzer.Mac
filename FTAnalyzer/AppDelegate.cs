@@ -93,7 +93,7 @@ namespace FTAnalyzer
 
         public void CloseAllSubWindows()
         {
-            foreach(NSWindow openWindow in NSApplication.SharedApplication.DangerousWindows)
+            foreach (NSWindow openWindow in (IEnumerable<NSWindow>) NSApplication.SharedApplication.DangerousWindows)
             {
                 if (openWindow.Title.StartsWith("Facts", StringComparison.Ordinal))
                     openWindow.Close();
@@ -398,7 +398,7 @@ namespace FTAnalyzer
     {
         public override void WillClose(NSNotification notification)
         {
-            foreach (NSWindow window in NSApplication.SharedApplication.DangerousWindows)
+            foreach (NSWindow window in (IEnumerable<NSWindow>) NSApplication.SharedApplication.DangerousWindows)
             {
                 if (window != NSApplication.SharedApplication.DangerousWindows[0])
                 {

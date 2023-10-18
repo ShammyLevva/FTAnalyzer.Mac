@@ -14,7 +14,7 @@ namespace FTAnalyzer
         AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
 
         [Export("canConcurrentlyReadDocumentsOfType:")]
-        public static new bool CanConcurrentlyReadDocumentsOfType(string fileType) => true;
+        public static new bool CanConcurrentlyReadDocumentsOfType(string fileType) => false;
 
         public override bool ReadFromUrl(NSUrl url, string typeName, out NSError outError)
         {
