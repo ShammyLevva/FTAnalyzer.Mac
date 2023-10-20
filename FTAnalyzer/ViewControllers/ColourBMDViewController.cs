@@ -66,6 +66,7 @@ namespace FTAnalyzer.ViewControllers
                 IDisplayColourBMD person = source.GetRowObject(row) as IDisplayColourBMD;
                 FamilyTree.SearchType st = FamilyTree.SearchType.BIRTH;
                 FactDate factDate = null;
+                FactLocation factLocation = null;
                 var ft = FamilyTree.Instance; 
                 Individual ind = ft.GetIndividual(person.IndividualID);
                 Individual spouse = null;
@@ -75,33 +76,39 @@ namespace FTAnalyzer.ViewControllers
                     case 6:
                         st = FamilyTree.SearchType.BIRTH;
                         factDate = ind.BirthDate;
+                        factLocation = ind.BirthLocation;
                         break;
                     case 7:
                         st = FamilyTree.SearchType.MARRIAGE;
                         spouse = ind.FirstSpouse;
                         factDate = ind.FirstMarriageDate;
+                        factLocation = ind.FirstMarriageLocation;
                         break;
                     case 8:
                         st = FamilyTree.SearchType.MARRIAGE;
                         spouse = ind.SecondSpouse;
                         factDate = ind.SecondMarriageDate;
+                        factLocation = ind.SecondMarriageLocation;
                         break;
                     case 9:
                         st = FamilyTree.SearchType.MARRIAGE;
                         spouse = ind.ThirdSpouse;
                         factDate = ind.ThirdMarriageDate;
+                        factLocation = ind.ThirdMarriageLocation;
                         break;
                     case 10:
+                        //KI: should this have fourth marriage location?
                     case 11:
                         st = FamilyTree.SearchType.DEATH;
                         factDate = ind.DeathDate;
+                        factLocation = ind.DeathLocation;
                         break;
                     default:
                         break;
                 }
                 try
                 { 
-                    ft.SearchBMD(st, ind, factDate, BMDProviderIndex, BMDRegion, spouse);
+                    ft.SearchBMD(st, ind, factDate, factLocation, BMDProviderIndex, BMDRegion, spouse);
                 }
                 catch (CensusSearchException ex)
                 {
