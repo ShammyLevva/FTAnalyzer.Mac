@@ -1,5 +1,4 @@
-﻿using AppKit;
-using Ionic.Zip;
+﻿using Ionic.Zip;
 using System;
 using System.Collections.Concurrent;
 using System.Data;

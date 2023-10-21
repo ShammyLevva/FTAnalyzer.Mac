@@ -6,7 +6,6 @@
 //
 using AppKit;
 using Foundation;
-using System.CodeDom.Compiler;
 
 namespace FTAnalyzer.ViewControllers
 {

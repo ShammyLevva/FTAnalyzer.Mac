@@ -6,6 +6,7 @@
     <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>FTAnalyzer</RootNamespace>
     <AssemblyName>FTAnalyzer</AssemblyName>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>

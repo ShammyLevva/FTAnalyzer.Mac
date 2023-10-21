@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
-using AppKit;
-using FTAnalyzer.DataSources;
 
 namespace FTAnalyzer.Utilities
 {
