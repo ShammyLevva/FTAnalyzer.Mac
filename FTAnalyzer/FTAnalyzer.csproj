@@ -1,28 +1,30 @@
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
+    <Nullable>enable</Nullable>	
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>FTAnalyzer</AssemblyName>
+    <RootNamespace>FTAnalyzer</RootNamespace>			
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <ProjectGuid>{EE106C3A-38A4-4962-A747-8D5D17AE3039}</ProjectGuid>
     <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <OutputType>Exe</OutputType>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>FTAnalyzer</RootNamespace>
-    <AssemblyName>FTAnalyzer</AssemblyName>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
     <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
     <ReleaseVersion>2.0.0</ReleaseVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-    <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
   </PropertyGroup>
+  
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>__UNIFIED__;__MACOS__;DEBUG;</DefineConstants>
+	<WarningLevel>7</WarningLevel>
+	<DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>__UNIFIED__;__MACOS__;DEBUG;</DefineConstants>
-    <WarningLevel>4</WarningLevel>
     <IncludeMonoRuntime>false</IncludeMonoRuntime>
     <UseSGen>false</UseSGen>
     <HttpClientHandler>NSUrlSessionHandler</HttpClientHandler>
@@ -40,11 +42,12 @@
     <LangVersion>Latest</LangVersion>
     <CodeSignProvision>Automatic</CodeSignProvision>
   </PropertyGroup>
+  
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DefineConstants></DefineConstants>
+    <WarningLevel>7</WarningLevel>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants></DefineConstants>
-    <WarningLevel>4</WarningLevel>
     <IncludeMonoRuntime>false</IncludeMonoRuntime>
     <UseSGen>false</UseSGen>
     <HttpClientHandler>NSUrlSessionHandler</HttpClientHandler>
@@ -62,6 +65,7 @@
     <MonoBundlingExtraArgs>--linkplatform</MonoBundlingExtraArgs>
     <LangVersion>Latest</LangVersion>
   </PropertyGroup>
+  
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
