@@ -52,7 +52,7 @@ namespace FTAnalyzer.ViewControllers
             LCReport = lcReport;
             InvokeOnMainThread(() =>
             {
-                Predicate<CensusIndividual> relationFilter = relationshipTypes.BuildFilter<CensusIndividual>(x => x.RelationType, true);
+                Predicate<CensusIndividual> relationFilter = relationshipTypes.BuildFilter<CensusIndividual>(x => x.RelationType); //KI: removed 2nd argument "true"
                 LCUpdates = new List<CensusIndividual>();
                 LCInvalidReferences = new List<CensusIndividual>();
                 string reportText = FamilyTree.Instance.LCOutput(LCUpdates, LCInvalidReferences, relationFilter);
@@ -86,7 +86,7 @@ namespace FTAnalyzer.ViewControllers
 
         public void Clear() => StatsTextbox.Value = string.Empty;
 
-        partial void LoginButtonClicked(NSObject sender)
+        async partial void LoginButtonClicked(NSObject sender)
         {
             if (!string.IsNullOrEmpty(EmailAddressField.StringValue))
             {
@@ -95,7 +95,7 @@ namespace FTAnalyzer.ViewControllers
                 userDefaults.SetString(email, "LostCousinsEmail");
                 userDefaults.Synchronize();
             }
-            WebsiteAvailable = ExportToLostCousins.CheckLostCousinsLogin(EmailAddressField.StringValue, PasswordField.StringValue);
+            WebsiteAvailable = await MainClass.LCClient.LostCousinsLoginAsync(EmailAddressField.StringValue, PasswordField.StringValue);
             //LoginButtonOutlet.BezelColor = websiteAvailable ? Color.LightGreen : Color.Red;
             LoginButtonOutlet.Enabled = !WebsiteAvailable;
             LostCousinsUpdateButton.Enabled = WebsiteAvailable && ConfirmRootPerson.State == NSCellStateValue.On;
@@ -116,7 +116,7 @@ namespace FTAnalyzer.ViewControllers
                 {
                     UpdateResultsTextbox.Value = "Started Processing Lost Cousins entries.\n\n";
                     Progress<string> outputText = new Progress<string>(AppendMessage);
-                    int count = await Task.Run(() => ExportToLostCousins.ProcessList(LCUpdates, outputText));
+                    int count = await Task.Run(() => ExportToLostCousins.ProcessListAsync(LCUpdates, outputText));
                     string resultText = $"{DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm")}: uploaded {count} records";
                     await Analytics.TrackActionAsync(Analytics.LostCousinsAction, Analytics.UpdateLostCousins, resultText);
                     SpecialMethods.VisitWebsite("https://www.lostcousins.com/pages/members/ancestors/");
@@ -151,7 +151,7 @@ namespace FTAnalyzer.ViewControllers
         void ClearLogin()
         {
             if (!LostCousinsUpdateButton.Hidden) // if we can login clear cookies to reset session
-                ExportToLostCousins.EmptyCookieJar();
+            MainClass.LCClient.EmptyCookieJar();
             //LoginButtonOutlet.BezelColor = Color.Red;
             LoginButtonOutlet.Enabled = true;
             LostCousinsUpdateButton.Enabled = false;

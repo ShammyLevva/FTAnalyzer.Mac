@@ -62,9 +62,9 @@ namespace FTAnalyzer.ViewControllers
             var storyboard = NSStoryboard.FromName("ColourReports", null);
             var ColourCensusWindow = storyboard.InstantiateControllerWithIdentifier("ColourCensusWindow") as NSWindowController;
             RelationTypes relationTypes = new RelationTypes();
-            List<IDisplayColourCensus> list = FamilyTree.Instance.ColourCensus(country, relationTypes, string.Empty, null, false, false);
+            //KI: for compilation List<IDisplayColourCensus> list = FamilyTree.Instance.ColourCensus(country, relationTypes, string.Empty, null, false, false);
             ColourCensusViewController colourCensusViewController = new ColourCensusViewController(country, (int)CensusSearchProviderOutlet.SelectedIndex, CensusRegionOutlet.StringValue);
-            colourCensusViewController.RefreshDocumentView(new SortableBindingList<IDisplayColourCensus>(list));
+            //KI: for compilation colourCensusViewController.RefreshDocumentView(new SortableBindingList<IDisplayColourCensus>(list));
             ColourCensusWindow.ContentViewController.AddChildViewController(colourCensusViewController);
             ColourCensusWindow.Window.Title = colourCensusViewController.Title;
             ColourCensusWindow.Window.SetFrame(new CoreGraphics.CGRect(350, 350, 1000, 475), true);
@@ -78,9 +78,9 @@ namespace FTAnalyzer.ViewControllers
             var storyboard = NSStoryboard.FromName("ColourReports", null);
             var colourBMDWindow = storyboard.InstantiateControllerWithIdentifier("ColourBMDWindow") as NSWindowController;
             RelationTypes relationTypes = new RelationTypes();
-            List<IDisplayColourBMD> list = FamilyTree.Instance.ColourBMD(relationTypes, string.Empty, null);
+            //KI: for compilation List<IDisplayColourBMD> list = FamilyTree.Instance.ColourBMD(relationTypes, string.Empty, null);
             ColourBMDViewController colourBMDViewController = new ColourBMDViewController(CensusRegionOutlet.StringValue, (int)CensusSearchProviderOutlet.SelectedIndex);
-            colourBMDViewController.RefreshDocumentView(new SortableBindingList<IDisplayColourBMD>(list));
+            //KI: for compilation colourBMDViewController.RefreshDocumentView(new SortableBindingList<IDisplayColourBMD>(list));
             colourBMDWindow.ContentViewController.AddChildViewController(colourBMDViewController);
             colourBMDWindow.Window.Title = colourBMDViewController.Title;
             colourBMDWindow.Window.SetFrame(new CoreGraphics.CGRect(350, 350, 1000, 475), true);

@@ -108,7 +108,7 @@ namespace FTAnalyzer.ViewControllers
                 }
                 try
                 { 
-                    ft.SearchBMD(st, ind, factDate, factLocation, BMDProviderIndex, BMDRegion, spouse);
+                    FamilyTree.SearchBMD(st, ind, factDate, factLocation, BMDProviderIndex, BMDRegion, spouse);
                 }
                 catch (CensusSearchException ex)
                 {

@@ -125,7 +125,7 @@ namespace FTAnalyzer.ViewControllers
                     try
                     {
                         var ft = FamilyTree.Instance;
-                        ft.SearchCensus(censusCountry, censusYear, ft.GetIndividual(person.IndividualID), CensusProviderIndex, CensusRegion);
+                        FamilyTree.SearchCensus(censusCountry, censusYear, ft.GetIndividual(person.IndividualID), CensusProviderIndex, CensusRegion);
                     }
                     catch (CensusSearchException ex)
                     {

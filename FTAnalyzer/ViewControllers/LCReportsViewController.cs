@@ -100,7 +100,7 @@ namespace FTAnalyzer.ViewControllers
                 Predicate<Individual> relationFilter = RelationshipTypesOutlet.BuildFilter<Individual>(x => x.RelationType);
                 string reportText = FamilyTree.Instance.UpdateLostCousinsReport(relationFilter);
                 ReportsTextBox.Value = reportText;
-                var newtext = ReportsTextBox.String;
+                var newtext = ReportsTextBox.ToString();//KI: Seems like this should be .ToString()
             });
         }
 
