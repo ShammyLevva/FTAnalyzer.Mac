@@ -12,7 +12,7 @@ namespace FTAnalyzer.ViewControllers
 	partial class LCReportsViewController
 	{
 		[Outlet]
-		FTAnalyzer.ViewControllers.RelationTypes RelationshipTypesOutlet { get; set; } //KI: Added .ViewControllers.
+		FTAnalyzer.RelationTypes RelationshipTypesOutlet { get; set; }
 
 		[Outlet]
 		AppKit.NSTextView ReportsTextBox { get; set; }
