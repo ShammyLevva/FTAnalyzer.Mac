@@ -415,7 +415,7 @@ namespace FTAnalyzer.ViewControllers
                 lCReportsViewController.UpdateLostCousinsReport(progressController);
                 progressController.ProgressBar = 50;
                 progressController.ProgressText = "Loading Lost Cousins Statistics";
-                lCUpdatesViewController.UpdateLostCousinsReport(lCReportsViewController.RelationshipTypes, progressController, lCReportsViewController);
+                //KI lCUpdatesViewController.UpdateLostCousinsReport(lCReportsViewController.RelationshipTypes, progressController, lCReportsViewController);
                 progressController.ProgressBar = 100;
                 InvokeOnMainThread(progressController.Close);
             });
