@@ -232,6 +232,26 @@ namespace FTAnalyzer
             }
         }
 
+        partial void ExportCustomFacts(NSObject sender)
+        {
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                DataTable dt = convertor.ToDataTable(new List<IDisplayCustomFact>(FamilyTree.Instance.AllCustomFacts));
+                ExportToExcel.Export(dt, "Custom Facts");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportCustomFactEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Custom Facts: {e.Message}");
+            }
+        }
+
         partial void ExportDataErrors(NSObject sender)
         {
             try

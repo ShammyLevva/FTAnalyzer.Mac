@@ -10,7 +10,10 @@ namespace FTAnalyzer
 {
 	partial class AppDelegate
 	{
-		[Outlet]
+        [Outlet]
+        AppKit.NSMenuItem ExportCustomFactsMenu { get; set; }
+
+        [Outlet]
 		AppKit.NSMenuItem ExportDataErrorsMenu { get; set; }
 
 		[Outlet]
@@ -42,6 +45,9 @@ namespace FTAnalyzer
 
 		[Outlet]
 		AppKit.NSMenuItem PrintMenu { get; set; }
+
+        [Action("ExportCustomFacts:")]
+        partial void ExportCustomFacts(Foundation.NSObject sender);
 
 		[Action ("ExportDataErrors:")]
 		partial void ExportDataErrors (Foundation.NSObject sender);
@@ -96,6 +102,12 @@ namespace FTAnalyzer
 		
 		void ReleaseDesignerOutlets ()
 		{
+            if (ExportCustomFactsMenu != null)
+            {
+                ExportCustomFactsMenu.Dispose();
+                ExportCustomFactsMenu = null;
+            }
+
 			if (ExportDataErrorsMenu != null) {
 				ExportDataErrorsMenu.Dispose ();
 				ExportDataErrorsMenu = null;
