@@ -3,6 +3,7 @@ using AppKit;
 using Foundation;
 using FTAnalyzer.DataSources;
 using FTAnalyzer.Utilities;
+using System.Diagnostics;
 
 namespace FTAnalyzer.ViewControllers
 {
@@ -74,7 +75,7 @@ namespace FTAnalyzer.ViewControllers
                 // cbFilter.Items[5] = "Outside UK (Dark Grey)";
             }
             else
-                Console.WriteLine("We have a problem.");
+                Debug.WriteLine("We have a problem.");
 
             for (int index = CensusColumnsStart; index <= CensusColumnsEnd; index++)
             {

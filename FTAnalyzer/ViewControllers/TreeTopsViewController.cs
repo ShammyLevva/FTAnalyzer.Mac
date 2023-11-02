@@ -1,6 +1,7 @@
 ﻿using System;
 using AppKit;
 using Foundation;
+using System.Diagnostics;
 
 namespace FTAnalyzer.ViewControllers
 {
@@ -18,7 +19,7 @@ namespace FTAnalyzer.ViewControllers
         
         partial void ShowTreetopsClicked(NSObject sender)
         {
-            Console.WriteLine("Button Clicked");
+            Debug.WriteLine("Button Clicked");
         }
     }
 }

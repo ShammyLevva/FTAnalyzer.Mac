@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Mono.Data.Sqlite;
+using System.Diagnostics;
 
 namespace FTAnalyzer.Utilities
 {
@@ -115,7 +116,7 @@ namespace FTAnalyzer.Utilities
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error in GetDatabaseVersion " + e.Message);
+                Debug.WriteLine("Error in GetDatabaseVersion " + e.Message);
             }
             Version dbVersion = db == null ? new Version("0.0.0.0") : new Version(db);
             return dbVersion;
@@ -280,7 +281,7 @@ namespace FTAnalyzer.Utilities
                 updateCmd.Parameters[4].Value = reader["IndID"];
                 int rowsaffected = updateCmd.ExecuteNonQuery();
                 if (rowsaffected != 1)
-                    Console.WriteLine("Problem updating");
+                    Debug.WriteLine("Problem updating");
             }
         }
 

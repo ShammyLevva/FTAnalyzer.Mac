@@ -7,6 +7,7 @@ using Foundation;
 using FTAnalyzer.Exports;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;
+using System.Diagnostics;
 
 namespace FTAnalyzer
 {
@@ -130,7 +131,7 @@ namespace FTAnalyzer
                 await Analytics.CheckProgramUsageAsync();
             }
             catch (Exception e) 
-                { Console.WriteLine(e.Message); }
+                { Debug.WriteLine(e.Message); }
         }
 
         partial void ExportIndividuals(NSObject sender)
