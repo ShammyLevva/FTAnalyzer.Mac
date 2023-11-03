@@ -104,7 +104,7 @@ namespace FTAnalyzer
             }
         }
 
-        public string Version
+        public static string Version
         {
             get
             {
