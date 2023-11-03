@@ -371,13 +371,13 @@ namespace FTAnalyzer
         partial void ViewOnlineManual(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.OnlineManualEvent);
-            SpecialMethods.VisitWebsite("http://www.ftanalyzer.com");
+            SpecialMethods.VisitWebsite("https://www.ftanalyzer.com");
         }
 
         partial void ViewOnlineGuides(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.OnlineGuideEvent);
-            SpecialMethods.VisitWebsite("http://www.ftanalyzer.com/guides");
+            SpecialMethods.VisitWebsite("https://www.ftanalyzer.com/guides");
         }
 
         partial void ReportIssue(NSObject sender)
@@ -402,13 +402,13 @@ namespace FTAnalyzer
         partial void VisitPrivacyPolicy(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.PrivacyEvent);
-            SpecialMethods.VisitWebsite("http://www.ftanalyzer.com/privacy");
+            SpecialMethods.VisitWebsite("https://www.ftanalyzer.com/privacy");
         }
 
         partial void VisitWhatsNew(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.WhatsNewEvent);
-            SpecialMethods.VisitWebsite("http://mac.ftanalyzer.com/Whats%20New%20in%20this%20Release");
+            SpecialMethods.VisitWebsite("https://mac.ftanalyzer.com/Whats%20New%20in%20this%20Release");
         }
 
         void NoDocumentLoaded() => UIHelpers.ShowMessage("No document currently loaded.");

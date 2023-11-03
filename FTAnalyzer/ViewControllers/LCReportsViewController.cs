@@ -23,12 +23,12 @@ namespace FTAnalyzer.ViewControllers
 
         partial void VisitLostCousinsForumClicked(NSObject sender)
         {
-            SpecialMethods.VisitWebsite("http://forums.lc");
+            SpecialMethods.VisitWebsite("https://forums.lc");
         }
 
         partial void VisitLostCousinsWebsiteClicked(NSObject sender)
         {
-            SpecialMethods.VisitWebsite("http://www.lostcousins.com/?ref=LC585149");
+            SpecialMethods.VisitWebsite("https://www.lostcousins.com/?ref=LC585149");
             Analytics.TrackAction(Analytics.LostCousinsAction, Analytics.LCWebLinkEvent);
         }
 
