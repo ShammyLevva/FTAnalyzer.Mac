@@ -34,7 +34,7 @@ namespace FTAnalyzer.DataSources
             //CensusSettingsUI.CompactCensusRefChanged += new EventHandler(RefreshCensusReferences);
         }
 
-        List<CensusIndividual> FilterDuplicateIndividuals(List<CensusIndividual> individuals)
+        static List<CensusIndividual> FilterDuplicateIndividuals(List<CensusIndividual> individuals)
         {
             List<CensusIndividual> result = individuals.Filter(i => i.FamilyMembersCount > 1).ToList();
             HashSet<string> ids = new(result.Select(i => i.IndividualID));
