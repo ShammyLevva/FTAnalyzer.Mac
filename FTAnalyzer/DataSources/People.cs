@@ -57,7 +57,7 @@ namespace FTAnalyzer
 
         public void SetupLCDuplicates(Predicate<Individual> relationFilter)
         {
-            bool lcFacts(Individual i) => i.DuplicateLCFacts > 0;
+            static bool lcFacts(Individual i) => i.DuplicateLCFacts > 0;
             Predicate<Individual> filter = FilterUtils.AndFilter<Individual>(relationFilter, lcFacts);
             List<Individual> individuals = FamilyTree.Instance.AllIndividuals.Filter(filter).ToList();
             SetIndividuals(individuals, "Lost Cousins with Duplicate Facts");
