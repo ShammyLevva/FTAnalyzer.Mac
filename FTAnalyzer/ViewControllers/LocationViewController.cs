@@ -26,7 +26,7 @@ namespace FTAnalyzer.ViewControllers
                 var location = source.GetRowObject(_tableView.SelectedRow) as FactLocation;
                 if (location != null)
                 {
-                    People people = new People();
+                    People people = new();
                     switch (_tableView.Identifier)
                     {
                         case "Countries":

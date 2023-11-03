@@ -33,7 +33,7 @@ namespace FTAnalyzer.ViewControllers
         {
             _tableView = new GridTableView(Title, Self);
             AddTableColumns(_tableView);
-            NSProcessInfo info = new NSProcessInfo();
+            NSProcessInfo info = new();
             if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
                 _tableView.UsesAutomaticRowHeights = true; // only available in OSX 13 and above.AddTableColumns(_tableView);
             var scrollView = new NSScrollView
@@ -70,7 +70,7 @@ namespace FTAnalyzer.ViewControllers
             _tableView.ReloadData();
         }
 
-        internal CGSize GetViewSize() => new CGSize(_tableView.Frame.Width, _tableView.Frame.Height + _tableView.HeaderView.Frame.Height);
+        internal CGSize GetViewSize() => new(_tableView.Frame.Width, _tableView.Frame.Height + _tableView.HeaderView.Frame.Height);
 
         internal void AddTableColumns(NSTableView view)
         {
@@ -162,7 +162,7 @@ namespace FTAnalyzer.ViewControllers
                 if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
                     string occupation = cell.TextField.StringValue;
-                    People people = new People();
+                    People people = new();
                     people.SetWorkers(occupation, FamilyTree.Instance.AllWorkers(occupation));
                     RaiseOccupationRowClicked(people);
                     return;

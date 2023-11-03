@@ -82,7 +82,7 @@ namespace FTAnalyzer.ViewControllers
 
         void LostCousinsCensus(CensusDate censusDate, string reportTitle)
         {
-            Census census = new Census(censusDate, true);
+            Census census = new(censusDate, true);
             Predicate<CensusIndividual> relationFilter = RelationshipTypesOutlet.BuildFilter<CensusIndividual>(x => x.RelationType);
             Predicate<Individual> individualRelationFilter = RelationshipTypesOutlet.BuildFilter<Individual>(x => x.RelationType);
             census.SetupLCCensus(relationFilter, ShowAlreadyEnteredOutlet.State == NSCellStateValue.On, individualRelationFilter);

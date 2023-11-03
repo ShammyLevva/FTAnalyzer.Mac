@@ -88,7 +88,7 @@ namespace FTAnalyzer.ViewControllers
                 _statusTextView.Value = message;
             else
                 _statusTextView.Value += message;
-            NSRange range = new NSRange
+            NSRange range = new()
             {
                 Location = _statusTextView.Value.Length
             };

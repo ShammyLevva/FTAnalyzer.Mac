@@ -121,7 +121,7 @@ namespace FTAnalyzer.DataSources
 
         public DataTable GetDataTable()
         {
-            DataTable dataTable = new DataTable(typeof(T).Name);
+            DataTable dataTable = new(typeof(T).Name);
             foreach (string fieldName in _fieldNames)
                 dataTable.Columns.Add(fieldName);
             foreach (T item in _bindingList)

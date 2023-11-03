@@ -115,7 +115,7 @@ namespace FTAnalyzer.ViewControllers
                 if (response == UIHelpers.Yes)
                 {
                     UpdateResultsTextbox.Value = "Started Processing Lost Cousins entries.\n\n";
-                    Progress<string> outputText = new Progress<string>(AppendMessage);
+                    Progress<string> outputText = new(AppendMessage);
                     int count = await Task.Run(() => ExportToLostCousins.ProcessListAsync(LCUpdates, outputText));
                     string resultText = $"{DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm")}: uploaded {count} records";
                     await Analytics.TrackActionAsync(Analytics.LostCousinsAction, Analytics.UpdateLostCousins, resultText);
@@ -140,7 +140,7 @@ namespace FTAnalyzer.ViewControllers
                 UpdateResultsTextbox.Value = message;
             else
                 UpdateResultsTextbox.Value += message;
-            NSRange range = new NSRange
+            NSRange range = new()
             {
                 Location = UpdateResultsTextbox.Value.Length
             };
@@ -167,7 +167,7 @@ namespace FTAnalyzer.ViewControllers
 
         partial void ViewInvalidClicked(NSObject sender)
         {
-            Census census = new Census(CensusDate.ANYCENSUS, true);
+            Census census = new(CensusDate.ANYCENSUS, true);
             census.SetupLCupdateList(LCInvalidReferences);
             census.ShowWindow($"Incompatible Census References in Records to upload to Lost Cousins Website");
             Analytics.TrackAction(Analytics.LostCousinsAction, Analytics.PreviewLostCousins);
@@ -175,7 +175,7 @@ namespace FTAnalyzer.ViewControllers
 
         partial void ViewPotentialClicked(NSObject sender)
         {
-            Census census = new Census(CensusDate.ANYCENSUS, true);
+            Census census = new(CensusDate.ANYCENSUS, true);
             census.SetupLCupdateList(LCUpdates);
             census.ShowWindow($"Potential Records to upload to Lost Cousins Website");
             Analytics.TrackAction(Analytics.LostCousinsAction, Analytics.PreviewLostCousins);

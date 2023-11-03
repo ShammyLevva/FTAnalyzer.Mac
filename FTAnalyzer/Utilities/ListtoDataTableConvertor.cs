@@ -8,7 +8,7 @@ namespace FTAnalyzer.Utilities
     {
         public DataTable ToDataTable<T>(List<T> items)
         {
-            DataTable dataTable = new DataTable(typeof(T).Name);
+            DataTable dataTable = new(typeof(T).Name);
             //Get all the properties
             PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
             foreach (PropertyInfo prop in Props)

@@ -43,7 +43,7 @@ namespace FTAnalyzer
         public Predicate<T> BuildFilter<T>(Func<T, int> relationType, bool excludeUnknown = false)
         {
 
-            List<Predicate<T>> relationFilters = new List<Predicate<T>>();
+            List<Predicate<T>> relationFilters = new();
             InvokeOnMainThread(() =>
             {
                 if (Blood)
@@ -66,7 +66,7 @@ namespace FTAnalyzer
 
         public Predicate<Family> BuildFamilyFilter<Family>(Func<Family, IEnumerable<int>> relationTypes)
         {
-            List<Predicate<Family>> relationFilters = new List<Predicate<Family>>();
+            List<Predicate<Family>> relationFilters = new();
             if (Blood)
                 relationFilters.Add(FilterUtils.FamilyRelationFilter(relationTypes, Individual.BLOOD));
             if (Directs)

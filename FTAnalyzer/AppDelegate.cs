@@ -143,7 +143,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<IExportIndividual>(FamilyTree.Instance.AllIndividuals));
                 ExportToExcel.Export(dt, "Individuals");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportIndEvent);
@@ -162,7 +162,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<IDisplayFamily>(FamilyTree.Instance.AllDisplayFamilies));
                 ExportToExcel.Export(dt, "Families");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportFamEvent);
@@ -182,7 +182,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<ExportFact>(FamilyTree.Instance.AllExportFacts));
                 ExportToExcel.Export(dt, "Facts");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportFactsEvent);
@@ -202,7 +202,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<IDisplayLocation>(FamilyTree.Instance.AllDisplayPlaces));
                 ExportToExcel.Export(dt, "Locations");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLocationsEvent);
@@ -222,7 +222,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<IDisplaySource>(FamilyTree.Instance.AllSources));
                 ExportToExcel.Export(dt, "Sources");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportSourcesEvent);
@@ -242,7 +242,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<IDisplayCustomFact>(FamilyTree.Instance.AllCustomFacts));
                 ExportToExcel.Export(dt, "Custom Facts");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportCustomFactEvent);
@@ -262,7 +262,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<IDisplayDataError>(FamilyTree.Instance.AllDataErrors));
                 ExportToExcel.Export(dt, "DataErrors");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportDataErrorsEvent);
@@ -282,7 +282,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 List<IDisplayLooseBirth> list = FamilyTree.Instance.LooseBirths().ToList();
                 list.Sort(new LooseBirthComparer());
                 DataTable dt = convertor.ToDataTable(list);
@@ -304,7 +304,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 List<IDisplayLooseDeath> list = FamilyTree.Instance.LooseDeaths().ToList();
                 list.Sort(new LooseDeathComparer());
                 DataTable dt = convertor.ToDataTable(list);

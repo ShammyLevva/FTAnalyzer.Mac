@@ -37,7 +37,7 @@ namespace FTAnalyzer.ViewControllers
         {
             _printView = new GridTableView("PrintView", Self);
             AddTableColumns(_printView);
-            NSProcessInfo info = new NSProcessInfo();
+            NSProcessInfo info = new();
             if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
                 _printView.UsesAutomaticRowHeights = true; // only available in OSX 13 and above.
             var scrollView = new NSScrollView

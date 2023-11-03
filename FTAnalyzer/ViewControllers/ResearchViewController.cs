@@ -61,10 +61,10 @@ namespace FTAnalyzer.ViewControllers
         {
             var storyboard = NSStoryboard.FromName("ColourReports", null);
             var ColourCensusWindow = storyboard.InstantiateControllerWithIdentifier("ColourCensusWindow") as NSWindowController;
-            RelationTypes relationTypes = new RelationTypes();
+            RelationTypes relationTypes = new();
             Predicate<Individual> relTypeFilter = relationTypes.BuildFilter<Individual>(x => x.RelationType);
             List<IDisplayColourCensus> list = FamilyTree.Instance.ColourCensus(country, relTypeFilter, string.Empty, null, false, false);
-            ColourCensusViewController colourCensusViewController = new ColourCensusViewController(country, (int)CensusSearchProviderOutlet.SelectedIndex, CensusRegionOutlet.StringValue);
+            ColourCensusViewController colourCensusViewController = new(country, (int)CensusSearchProviderOutlet.SelectedIndex, CensusRegionOutlet.StringValue);
             colourCensusViewController.RefreshDocumentView(new SortableBindingList<IDisplayColourCensus>(list));
             ColourCensusWindow.ContentViewController.AddChildViewController(colourCensusViewController);
             ColourCensusWindow.Window.Title = colourCensusViewController.Title;
@@ -81,7 +81,7 @@ namespace FTAnalyzer.ViewControllers
             RelationTypes relationTypes = new RelationTypes();
             Predicate<Individual> relTypeFilter = relationTypes.BuildFilter<Individual>(x => x.RelationType);
             List<IDisplayColourBMD> list = FamilyTree.Instance.ColourBMD(relTypeFilter, string.Empty, null);
-            ColourBMDViewController colourBMDViewController = new ColourBMDViewController(CensusRegionOutlet.StringValue, (int)CensusSearchProviderOutlet.SelectedIndex);
+            ColourBMDViewController colourBMDViewController = new(CensusRegionOutlet.StringValue, (int)CensusSearchProviderOutlet.SelectedIndex);
             colourBMDViewController.RefreshDocumentView(new SortableBindingList<IDisplayColourBMD>(list));
             colourBMDWindow.ContentViewController.AddChildViewController(colourBMDViewController);
             colourBMDWindow.Window.Title = colourBMDViewController.Title;

@@ -26,7 +26,7 @@ namespace FTAnalyzer
         public void SetWorkers(string job, SortableBindingList<Individual> workers)
         {
             peopleWindow.Window.Title = "Individuals whose occupation was " + (job.Length == 0 ? "not entered" : job);
-            SortableBindingList<IDisplayIndividual> dsInd = new SortableBindingList<IDisplayIndividual>();
+            SortableBindingList<IDisplayIndividual> dsInd = new();
             foreach (Individual i in workers)
                 dsInd.Add(i);
             peopleView.LoadIndividuals(dsInd);
@@ -47,13 +47,13 @@ namespace FTAnalyzer
             peopleWindow.Window.Title = "Individuals & Families with connection to " + loc.ToString();
             level = Math.Min(loc.Level, level); // if location level isn't as detailed as level on tab use location level
             IEnumerable<Individual> listInd = FamilyTree.Instance.GetIndividualsAtLocation(loc, level);
-            SortableBindingList<IDisplayIndividual> dsInd = new SortableBindingList<IDisplayIndividual>();
+            SortableBindingList<IDisplayIndividual> dsInd = new();
             foreach (Individual i in listInd)
                 dsInd.Add(i);
             peopleView.LoadIndividuals(dsInd);
 
             IEnumerable<Family> listFam = FamilyTree.Instance.GetFamiliesAtLocation(loc, level);
-            SortableBindingList<IDisplayFamily> dsFam = new SortableBindingList<IDisplayFamily>();
+            SortableBindingList<IDisplayFamily> dsFam = new();
             foreach (Family f in listFam)
                 dsFam.Add(f);
             peopleView.LoadFamilies(dsFam);
@@ -71,8 +71,8 @@ namespace FTAnalyzer
         public void SetupLCnoCensus(Predicate<Individual> relationFilter)
         {
             List<Individual> listtoCheck = FamilyTree.Instance.AllIndividuals.Filter(relationFilter).ToList();
-            List<Individual> individuals = new List<Individual>();
-            Predicate<Individual> lcFacts = new Predicate<Individual>(i => i.HasLostCousinsFactWithNoCensusFact);
+            List<Individual> individuals = new();
+            Predicate<Individual> lcFacts = new(i => i.HasLostCousinsFactWithNoCensusFact);
             IEnumerable<Individual> censusMissing = listtoCheck.Filter(lcFacts);
             individuals.AddRange(censusMissing);
             individuals = individuals.Distinct().ToList();
