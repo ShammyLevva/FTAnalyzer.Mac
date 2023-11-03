@@ -1,9 +1,6 @@
 ﻿using Ionic.Zip;
-using System;
 using System.Collections.Concurrent;
 using System.Data;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using Mono.Data.Sqlite;
 using System.Diagnostics;

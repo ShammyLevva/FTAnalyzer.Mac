@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AppKit;
-using FTAnalyzer.Utilities;
+﻿using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;
 using static FTAnalyzer.ColourValues;
 

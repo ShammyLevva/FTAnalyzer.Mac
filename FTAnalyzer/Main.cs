@@ -1,5 +1,4 @@
-﻿using AppKit;
-using FTAnalyzer.Exports;
+﻿using FTAnalyzer.Exports;
 
 namespace FTAnalyzer
 {

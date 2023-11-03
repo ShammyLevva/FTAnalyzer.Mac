@@ -1,9 +1,5 @@
-﻿using System;
-using System.Data;
-using System.Linq;
+﻿using System.Data;
 using System.Reflection;
-using AppKit;
-using Foundation;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.DataSources

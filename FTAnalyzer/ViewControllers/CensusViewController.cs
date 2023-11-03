@@ -1,6 +1,3 @@
-using System;
-using AppKit;
-using Foundation;
 using FTAnalyzer.DataSources;
 using FTAnalyzer.Utilities;
 

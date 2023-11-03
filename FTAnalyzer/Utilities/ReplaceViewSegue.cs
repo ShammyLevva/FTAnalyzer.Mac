@@ -1,8 +1,4 @@
-﻿using System;
-using AppKit;
-using Foundation;
-
-namespace FTAnalyzer.Utilities
+﻿namespace FTAnalyzer.Utilities
 {
     [Register("ReplaceViewSeque")]
     public class ReplaceViewSeque : NSStoryboardSegue

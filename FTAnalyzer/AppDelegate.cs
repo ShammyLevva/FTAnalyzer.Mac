@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using AppKit;
-using Foundation;
 using FTAnalyzer.Exports;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;

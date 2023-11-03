@@ -1,6 +1,4 @@
-﻿using AppKit;
-using Foundation;
-using FTAnalyzer.DataSources;
+﻿using FTAnalyzer.DataSources;
 
 namespace FTAnalyzer.ViewControllers
 {

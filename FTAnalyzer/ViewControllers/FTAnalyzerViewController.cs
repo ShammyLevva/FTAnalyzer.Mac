@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using AppKit;
-using Foundation;
-using FTAnalyzer.Properties;
+﻿using FTAnalyzer.Properties;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.ViewControllers

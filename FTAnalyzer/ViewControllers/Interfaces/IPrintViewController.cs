@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AppKit;
-using Foundation;
-
-namespace FTAnalyzer
+﻿namespace FTAnalyzer
 {
     public interface IPrintViewController
     {

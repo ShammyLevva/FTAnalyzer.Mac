@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
-using AppKit;
-using Foundation;
 using FTAnalyzer.DataSources;
 using FTAnalyzer.Exports;
 using FTAnalyzer.Utilities;

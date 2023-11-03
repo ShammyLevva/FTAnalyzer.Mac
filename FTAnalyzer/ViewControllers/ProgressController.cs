@@ -1,7 +1,4 @@
-﻿using System;
-using AppKit;
-
-namespace FTAnalyzer.ViewControllers
+﻿namespace FTAnalyzer.ViewControllers
 {
 	public partial class ProgressController : NSWindowController
 	{

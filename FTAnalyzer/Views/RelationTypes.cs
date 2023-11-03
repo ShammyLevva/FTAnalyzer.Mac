@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using AppKit;
-using Foundation;
 using FTAnalyzer.Filters;
 
 namespace FTAnalyzer

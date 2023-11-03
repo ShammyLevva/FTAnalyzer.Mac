@@ -1,7 +1,4 @@
-﻿using System;
-using AppKit;
-using Foundation;
-using FTAnalyzer.DataSources;
+﻿using FTAnalyzer.DataSources;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.ViewControllers

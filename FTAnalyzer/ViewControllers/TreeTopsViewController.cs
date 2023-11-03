@@ -1,7 +1,4 @@
-﻿using System;
-using AppKit;
-using Foundation;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace FTAnalyzer.ViewControllers
 {

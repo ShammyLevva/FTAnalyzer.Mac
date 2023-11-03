@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AppKit;
-using CoreAnimation;
-using CoreGraphics;
-using Foundation;
+﻿using CoreAnimation;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.Views;
 

@@ -1,8 +1,4 @@
-﻿using System;
-using AppKit;
-using Foundation;
-
-namespace FTAnalyzer.ViewControllers
+﻿namespace FTAnalyzer.ViewControllers
 {
     public partial class GedcomDocumentViewController : NSViewController
     {

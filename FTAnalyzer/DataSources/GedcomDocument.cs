@@ -1,9 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
-using AppKit;
-using Foundation;
-using FTAnalyzer.Utilities;
+﻿using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;
 
 namespace FTAnalyzer

@@ -1,6 +1,4 @@
-﻿using AppKit;
-
-namespace FTAnalyzer
+﻿namespace FTAnalyzer
 {
     public static class UIHelpers
     {

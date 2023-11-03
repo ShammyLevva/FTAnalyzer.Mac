@@ -1,7 +1,4 @@
-﻿using AppKit;
-using CoreAnimation;
-using CoreGraphics;
-using Foundation;
+﻿using CoreAnimation;
 
 namespace FTAnalyzer.Views
 {

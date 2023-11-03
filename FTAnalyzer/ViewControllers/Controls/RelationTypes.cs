@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AppKit;
-using FTAnalyzer.Filters;
+﻿using FTAnalyzer.Filters;
 
 namespace FTAnalyzer.ViewControllers
 {
