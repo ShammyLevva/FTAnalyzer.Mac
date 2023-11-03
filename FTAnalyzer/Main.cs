@@ -5,8 +5,8 @@ namespace FTAnalyzer
 {
     static class MainClass
     {
-        public static HttpClient Client = new();
-        public static LostCousinsClient LCClient = new();
+        public static readonly HttpClient Client = new();
+        public static readonly LostCousinsClient LCClient = new();
         static void Main(string[] args)
         {
             NSApplication.Init();
