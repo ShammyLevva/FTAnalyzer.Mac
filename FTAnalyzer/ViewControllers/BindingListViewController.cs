@@ -74,7 +74,7 @@ namespace FTAnalyzer.ViewControllers
             {
                 float width = 40;
                 string columnTitle = property.Name;
-                ColumnDetail[] columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
+                ColumnDetail[]? columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
                 if (columnDetail?.Length == 1)
                 {
                     columnTitle = columnDetail[0].ColumnName;
@@ -103,7 +103,7 @@ namespace FTAnalyzer.ViewControllers
                 if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
                     string indID = cell.TextField.StringValue;
-                    Individual ind = FamilyTree.Instance.GetIndividual(indID);
+                    Individual? ind = FamilyTree.Instance.GetIndividual(indID);
                     return ind;
                 }
             }
@@ -124,7 +124,7 @@ namespace FTAnalyzer.ViewControllers
                 if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
                     string indID = cell.TextField.StringValue;
-                    Individual ind = FamilyTree.Instance.GetIndividual(indID);
+                    Individual? ind = FamilyTree.Instance.GetIndividual(indID);
                     RaiseFactRowClicked(ind);
                     return;
                 }
@@ -135,7 +135,7 @@ namespace FTAnalyzer.ViewControllers
                 if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
                     string familyID = cell.TextField.StringValue;
-                    Family family = FamilyTree.Instance.GetFamily(familyID);
+                    Family? family = FamilyTree.Instance.GetFamily(familyID);
                     RaiseFactRowClicked(family);
                     return;
                 }
@@ -146,7 +146,7 @@ namespace FTAnalyzer.ViewControllers
                 if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
                     string sourceID = cell.TextField.StringValue;
-                    FactSource source = FamilyTree.Instance.GetSource(sourceID);
+                    FactSource? source = FamilyTree.Instance.GetSource(sourceID);
                     RaiseFactRowClicked(source);
                     return;
                 }
@@ -171,12 +171,12 @@ namespace FTAnalyzer.ViewControllers
                 {
                     if (error.IsFamily == "Yes")
                     {
-                        Family family = FamilyTree.Instance.GetFamily(error.Reference);
+                        Family? family = FamilyTree.Instance.GetFamily(error.Reference);
                         RaiseDataErrorRowClicked(null, family);
                     }
                     else
                     {
-                        Individual ind = FamilyTree.Instance.GetIndividual(error.Reference);
+                        Individual? ind = FamilyTree.Instance.GetIndividual(error.Reference);
                         RaiseDataErrorRowClicked(ind, null);
                     }
                 }

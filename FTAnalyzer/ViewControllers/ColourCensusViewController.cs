@@ -76,7 +76,7 @@ namespace FTAnalyzer.ViewControllers
 
             for (int index = CensusColumnsStart; index <= CensusColumnsEnd; index++)
             {
-                NSTableColumn column = _tableView.TableColumns().GetValue(index) as NSTableColumn;
+                NSTableColumn? column = _tableView.TableColumns().GetValue(index) as NSTableColumn;
                 if (index >= startColumnIndex && index <= endColumnIndex)
                 {
                     column.Hidden = false;
@@ -103,7 +103,7 @@ namespace FTAnalyzer.ViewControllers
             if (row >= 0 && columnIndex >= startColumnIndex && columnIndex <= endColumnIndex)
             {
                 var source = _tableView.Source as ColourCensusSource;
-                IDisplayColourCensus person = source.GetRowObject(row) as IDisplayColourCensus;
+                IDisplayColourCensus? person = source.GetRowObject(row) as IDisplayColourCensus;
                 int censusYear;
                 if (Country == Countries.UNITED_STATES)
                     censusYear = 1790 + (columnIndex - startColumnIndex) * 10;

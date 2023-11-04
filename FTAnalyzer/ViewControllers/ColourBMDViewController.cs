@@ -59,14 +59,14 @@ namespace FTAnalyzer.ViewControllers
             int columnIndex = (int)_tableView.ClickedColumn;
             if (row >= 0 && columnIndex >= ColourBMDViewController.BMDColumnsStart && columnIndex <= ColourBMDViewController.BMDColumnsEnd)
             {
-                ColourBMDSource source = _tableView.Source as ColourBMDSource;
-                IDisplayColourBMD person = source.GetRowObject(row) as IDisplayColourBMD;
+                ColourBMDSource? source = _tableView.Source as ColourBMDSource;
+                IDisplayColourBMD? person = source.GetRowObject(row) as IDisplayColourBMD;
                 FamilyTree.SearchType st = FamilyTree.SearchType.BIRTH;
-                FactDate factDate = null;
-                FactLocation factLocation = null;
+                FactDate? factDate = null;
+                FactLocation? factLocation = null;
                 var ft = FamilyTree.Instance; 
-                Individual ind = ft.GetIndividual(person.IndividualID);
-                Individual spouse = null;
+                Individual? ind = ft.GetIndividual(person.IndividualID);
+                Individual? spouse = null;
                 switch (columnIndex)
                 {
                     case 5:

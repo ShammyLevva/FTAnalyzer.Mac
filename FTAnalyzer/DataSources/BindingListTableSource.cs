@@ -36,7 +36,7 @@ namespace FTAnalyzer.DataSources
             var property = _properties[index];
             NSTextAlignment alignment = NSTextAlignment.Left;
             var width = tableColumn.Width;
-            ColumnDetail[] x = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
+            ColumnDetail[]? x = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
             if (x?.Length == 1)
             {
                 alignment = x[0].Alignment;

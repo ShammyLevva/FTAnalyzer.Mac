@@ -59,7 +59,7 @@ namespace FTAnalyzer.ViewControllers
             {
                 float width = 100;
                 string columnTitle = property.Name;
-                ColumnDetail[] columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
+                ColumnDetail[]? columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
                 if (columnDetail?.Length == 1)
                    columnTitle = columnDetail[0].ColumnName;
                 var tableColumn = new NSTableColumn

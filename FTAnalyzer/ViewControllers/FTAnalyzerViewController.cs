@@ -41,7 +41,7 @@ namespace FTAnalyzer.ViewControllers
         {
             if (App.Document == null)
                 return; // don't bother if we've not loaded a document yet
-            NSViewController viewController = null;
+            NSViewController? viewController = null;
             switch (item.Label)
             {
                 case "Gedcom Stats":
@@ -104,7 +104,7 @@ namespace FTAnalyzer.ViewControllers
 
         void SetupViewControllers()
         {
-            GedcomDocumentViewController documentViewController = null;
+            GedcomDocumentViewController? documentViewController = null;
 
             //Make sure the loading tab is seleceted.
             SelectedTabViewItemIndex = 0;

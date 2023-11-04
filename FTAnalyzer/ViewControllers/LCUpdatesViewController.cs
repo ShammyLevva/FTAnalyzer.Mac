@@ -59,8 +59,8 @@ namespace FTAnalyzer.ViewControllers
         {
             if (UseKeychainOutlet.State == NSCellStateValue.On)
             {
-                var code = SecKeyChain.FindInternetPassword("lostcousins.com", EmailAddressField.StringValue, out byte[] password);
-                var code2 = SecKeyChain.FindInternetPassword("www.lostcousins.com", EmailAddressField.StringValue, out byte[] password2);
+                var code = SecKeyChain.FindInternetPassword("lostcousins.com", EmailAddressField.StringValue, out byte[]? password);
+                var code2 = SecKeyChain.FindInternetPassword("www.lostcousins.com", EmailAddressField.StringValue, out byte[]? password2);
                 if (code == SecStatusCode.Success)
                 {
                     var passwordString = Encoding.UTF8.GetString(password);

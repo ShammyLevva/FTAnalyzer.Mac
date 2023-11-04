@@ -100,7 +100,7 @@ namespace FTAnalyzer.Utilities
 
         static Version GetDatabaseVersion()
         {
-            string db = null;
+            string? db = null;
             try
             {
                 if (InstanceConnection.State != ConnectionState.Open)
@@ -223,14 +223,14 @@ namespace FTAnalyzer.Utilities
                 {
                     while (reader.Read())
                     {
-                        string indID = reader["IndID"].ToString();
-                        string fullName = reader["FullName"].ToString();
-                        Individual ind = FamilyTree.Instance.GetIndividual(indID);
+                        string? indID = reader["IndID"].ToString();
+                        string? fullName = reader["FullName"].ToString();
+                        Individual? ind = FamilyTree.Instance.GetIndividual(indID);
                         if (ind?.Name == fullName) // only load if individual exists in this tree.
                         {
-                            string CensusYear = reader["CensusYear"].ToString();
-                            string CensusCountry = reader["CensusCountry"].ToString();
-                            string CensusRef = reader["CensusRef"].ToString();
+                            string? CensusYear = reader["CensusYear"].ToString();
+                            string? CensusCountry = reader["CensusCountry"].ToString();
+                            string? CensusRef = reader["CensusRef"].ToString();
                             if (!ind.IsLostCousinsEntered(CensusDate.GetLostCousinsCensusYear(new FactDate(CensusYear), true)))
                             {
                                 FactLocation location = FactLocation.GetLocation(CensusCountry);
@@ -360,7 +360,7 @@ namespace FTAnalyzer.Utilities
                         {
                             FactLocation location = FactLocation.GetLocation(ind.CensusCountry);
                             Fact f = new(ind.CensusRef, Fact.LC_FTA, ind.CensusDate, location, string.Empty, true, true);
-                            Individual person = FamilyTree.Instance.GetIndividual(ind.IndividualID); // get the individual not the census indvidual
+                            Individual? person = FamilyTree.Instance.GetIndividual(ind.IndividualID); // get the individual not the census indvidual
                             person?.AddFact(f);
                         }
                     }
