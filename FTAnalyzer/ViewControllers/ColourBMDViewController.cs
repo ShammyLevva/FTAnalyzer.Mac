@@ -5,8 +5,8 @@ namespace FTAnalyzer.ViewControllers
 {
     public partial class ColourBMDViewController : BindingListViewController<IDisplayColourBMD>
     {
-        public readonly static int BMDColumnsStart = 5;
-        public readonly static int BMDColumnsEnd = 11;
+        public static readonly int BMDColumnsStart = 5;
+        public static readonly int BMDColumnsEnd = 11;
         int BMDProviderIndex { get; }
         string BMDProvider { get; }
         string BMDRegion { get; }
