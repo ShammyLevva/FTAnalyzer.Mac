@@ -1,5 +1,4 @@
-﻿using System.Net;
-using FTAnalyzer.Exports;
+﻿using FTAnalyzer.Exports;
 
 namespace FTAnalyzer
 {
