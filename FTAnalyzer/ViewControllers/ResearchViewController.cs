@@ -7,7 +7,7 @@ namespace FTAnalyzer.ViewControllers
     {
         AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
 
-        public ResearchViewController (IntPtr handle) : base (handle)
+        public ResearchViewController(IntPtr handle) : base(handle)
         {
         }
 

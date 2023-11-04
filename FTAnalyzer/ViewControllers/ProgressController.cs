@@ -1,13 +1,13 @@
 ﻿namespace FTAnalyzer.ViewControllers
 {
-	public partial class ProgressController : NSWindowController
-	{
+    public partial class ProgressController : NSWindowController
+    {
         public NSViewController Presentor { get; set; }
         ProgressViewController viewController;
 
-		public ProgressController (IntPtr handle) : base (handle)
-		{
- 		}
+        public ProgressController(IntPtr handle) : base(handle)
+        {
+        }
 
         public override void WindowDidLoad()
         {

@@ -1,12 +1,12 @@
 ﻿namespace FTAnalyzer.ViewControllers
 {
     public partial class ProgressViewController : NSViewController
-	{
+    {
         internal IProgress<string> ProgressString;
         internal IProgress<int> ProgressValue;
 
-		public ProgressViewController (IntPtr handle) : base (handle)
-		{
+        public ProgressViewController(IntPtr handle) : base(handle)
+        {
             ProgressString = new Progress<string>(AppendMessage);
             ProgressValue = new Progress<int>(percent => SetProgress(ProgressBar, percent));
         }

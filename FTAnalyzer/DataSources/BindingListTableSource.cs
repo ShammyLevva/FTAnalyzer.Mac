@@ -10,7 +10,7 @@ namespace FTAnalyzer.DataSources
         internal readonly SortableBindingList<T> _bindingList;
         internal readonly PropertyInfo[] _properties;
         internal readonly string[] _fieldNames;
- 
+
         public BindingListTableSource(SortableBindingList<T> bindingList)
         {
             _bindingList = bindingList;
@@ -23,7 +23,7 @@ namespace FTAnalyzer.DataSources
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
             NSTableCellView cellview = GetFTAnalyzerGridCell(tableView, tableColumn, row);
-            if(cellview != null)
+            if (cellview != null)
                 SetCellView(cellview, tableColumn, row);
             return cellview;
         }
@@ -56,7 +56,7 @@ namespace FTAnalyzer.DataSources
                     AutoresizesSubviews = true,
                     TranslatesAutoresizingMaskIntoConstraints = false,
                     AllowsDefaultTighteningForTruncation = true,
-               };
+                };
                 if (tableView.AutosaveName == "PrintView")
                     textField.Font = NSFont.SystemFontOfSize(8);
                 cellView = new NSTableCellView

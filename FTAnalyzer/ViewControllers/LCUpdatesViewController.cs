@@ -7,7 +7,7 @@ using Security;
 namespace FTAnalyzer.ViewControllers
 {
     public partial class LCUpdatesViewController : NSViewController
-	{
+    {
         List<CensusIndividual> LCUpdates;
         List<CensusIndividual> LCInvalidReferences;
         RelationTypes RelationshipTypes;
@@ -15,9 +15,9 @@ namespace FTAnalyzer.ViewControllers
         LCReportsViewController LCReport;
         bool WebsiteAvailable;
 
-        public LCUpdatesViewController (IntPtr handle) : base (handle)
-		{
-		}
+        public LCUpdatesViewController(IntPtr handle) : base(handle)
+        {
+        }
 
         public override void ViewDidLoad()
         {
@@ -146,7 +146,7 @@ namespace FTAnalyzer.ViewControllers
         void ClearLogin()
         {
             if (!LostCousinsUpdateButton.Hidden) // if we can login clear cookies to reset session
-            MainClass.LCClient.EmptyCookieJar();
+                MainClass.LCClient.EmptyCookieJar();
             //LoginButtonOutlet.BezelColor = Color.Red;
             LoginButtonOutlet.Enabled = true;
             LostCousinsUpdateButton.Enabled = false;

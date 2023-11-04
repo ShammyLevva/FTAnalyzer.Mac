@@ -18,7 +18,7 @@ namespace FTAnalyzer.Utilities
         static string connectionString;
         static SqliteConnection InstanceConnection { get; set; }
         Version ProgramVersion { get; set; }
- 
+
         #region Constructor/Destructor
         DatabaseHelper()
         {
@@ -26,8 +26,8 @@ namespace FTAnalyzer.Utilities
             ResourcePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location), @"../Resources");
             CurrentFilename = Path.Combine(DatabasePath, "FTA-RestoreTemp.s3db");
             CheckDatabaseConnection();
-//            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
-//            SQLitePCL.raw.FreezeProvider();
+            //            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
+            //            SQLitePCL.raw.FreezeProvider();
             InstanceConnection = new(connectionString);
         }
 
@@ -70,7 +70,7 @@ namespace FTAnalyzer.Utilities
                 }
                 connectionString = $"Data Source={DatabaseFile};";
             }
-            catch(ArgumentNullException)
+            catch (ArgumentNullException)
             {
                 UIHelpers.ShowMessage($"Couldn't find Empty Database in Resources Directory at {EmptyFile}");
             }
@@ -203,7 +203,7 @@ namespace FTAnalyzer.Utilities
                         cmd.ExecuteNonQuery();
                     }
                 }
-                }
+            }
             catch (Exception ex)
             {
                 UIHelpers.ShowMessage($"Error upgrading database. Error is :{ex.Message}", "FTAnalyzer");

@@ -18,7 +18,7 @@ namespace FTAnalyzer.ViewControllers
             {
                 int result = 0;
                 if (Unknown)
-                   result += Individual.UNKNOWN;
+                    result += Individual.UNKNOWN;
                 if (Directs)
                     result += Individual.DIRECT;
                 if (Blood)

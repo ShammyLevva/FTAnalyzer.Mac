@@ -7,6 +7,6 @@
         NSSortDescriptor[] SortDescriptors { get; }
         Type GetGenericType();
         Dictionary<string, float> ColumnWidths();
-        Dictionary<string, bool>  ColumnVisibility();
+        Dictionary<string, bool> ColumnVisibility();
     }
 }

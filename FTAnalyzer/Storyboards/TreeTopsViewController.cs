@@ -2,10 +2,10 @@
 
 namespace FTAnalyzer.Storyboards
 {
-	public partial class TreeTopsViewController : NSViewController
-	{
-		public TreeTopsViewController (IntPtr handle) : base (handle)
-		{
-		}
-	}
+    public partial class TreeTopsViewController : NSViewController
+    {
+        public TreeTopsViewController(IntPtr handle) : base(handle)
+        {
+        }
+    }
 }

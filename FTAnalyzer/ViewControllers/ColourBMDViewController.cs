@@ -14,8 +14,8 @@ namespace FTAnalyzer.ViewControllers
         #region Constructors
 
         // Called when created from unmanaged code
-        public ColourBMDViewController(IntPtr handle) : base(string.Empty,string.Empty)
-        { 
+        public ColourBMDViewController(IntPtr handle) : base(string.Empty, string.Empty)
+        {
         }
 
         // Call to load from the XIB/NIB file
@@ -64,7 +64,7 @@ namespace FTAnalyzer.ViewControllers
                 FamilyTree.SearchType st = FamilyTree.SearchType.BIRTH;
                 FactDate? factDate = null;
                 FactLocation? factLocation = null;
-                var ft = FamilyTree.Instance; 
+                var ft = FamilyTree.Instance;
                 Individual? ind = ft.GetIndividual(person.IndividualID);
                 Individual? spouse = null;
                 switch (columnIndex)
@@ -94,7 +94,7 @@ namespace FTAnalyzer.ViewControllers
                         factLocation = ind.ThirdMarriageLocation;
                         break;
                     case 10:
-                        //KI: should this have fourth marriage location?
+                    //KI: should this have fourth marriage location?
                     case 11:
                         st = FamilyTree.SearchType.DEATH;
                         factDate = ind.DeathDate;
@@ -104,7 +104,7 @@ namespace FTAnalyzer.ViewControllers
                         break;
                 }
                 try
-                { 
+                {
                     FamilyTree.SearchBMD(st, ind, factDate, factLocation, BMDProviderIndex, BMDRegion, spouse);
                 }
                 catch (CensusSearchException ex)

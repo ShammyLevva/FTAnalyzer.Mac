@@ -11,7 +11,7 @@ namespace FTAnalyzer
     {
         bool _documentOpening;
         public GedcomDocument Document { get; set; }
-        public GedcomDocumentViewController DocumentViewController { get; set;  }
+        public GedcomDocumentViewController DocumentViewController { get; set; }
         NSWindow Window { get; set; }
         public NSViewController CurrentViewController { get; set; }
         public NSWindow CurrentWindow { get; set; }
@@ -88,7 +88,7 @@ namespace FTAnalyzer
 
         public void CloseAllSubWindows()
         {
-            foreach (NSWindow openWindow in (IEnumerable<NSWindow>) NSApplication.SharedApplication.DangerousWindows)
+            foreach (NSWindow openWindow in (IEnumerable<NSWindow>)NSApplication.SharedApplication.DangerousWindows)
             {
                 if (openWindow.Title.StartsWith("Facts", StringComparison.Ordinal))
                     openWindow.Close();
@@ -125,8 +125,8 @@ namespace FTAnalyzer
             {
                 await Analytics.CheckProgramUsageAsync();
             }
-            catch (Exception e) 
-                { Debug.WriteLine(e.Message); }
+            catch (Exception e)
+            { Debug.WriteLine(e.Message); }
         }
 
         partial void ExportIndividuals(NSObject sender)
@@ -142,7 +142,8 @@ namespace FTAnalyzer
                 DataTable dt = convertor.ToDataTable(new List<IExportIndividual>(FamilyTree.Instance.AllIndividuals));
                 ExportToExcel.Export(dt, "Individuals");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportIndEvent);
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 UIHelpers.ShowMessage($"Problem exporting Individuals: {e.Message}");
             }
@@ -314,7 +315,7 @@ namespace FTAnalyzer
 
         partial void ExportDNAGedcom(NSObject sender)
         {
-            if(Document != null)
+            if (Document != null)
                 DNA_GEDCOM.Export();
             else
                 NoDocumentLoaded();
@@ -332,15 +333,15 @@ namespace FTAnalyzer
             {
                 if (CurrentViewController is IPrintViewController)
                     Document.PrintDocument(CurrentViewController as IPrintViewController);
-                else if(CurrentViewController is GedcomDocumentViewController)
+                else if (CurrentViewController is GedcomDocumentViewController)
                 {
                     ((GedcomDocumentViewController)CurrentViewController).Print(sender);
                 }
                 else
                     UIHelpers.ShowMessage("Sorry Printing Not currently available for this view");
 
-            } 
-            else if(keyViewController is PeopleViewController)
+            }
+            else if (keyViewController is PeopleViewController)
             {
                 ((PeopleViewController)keyViewController).Print(sender);
             }
@@ -413,7 +414,7 @@ namespace FTAnalyzer
     {
         public override void WillClose(NSNotification notification)
         {
-            foreach (NSWindow window in (IEnumerable<NSWindow>) NSApplication.SharedApplication.DangerousWindows)
+            foreach (NSWindow window in (IEnumerable<NSWindow>)NSApplication.SharedApplication.DangerousWindows)
             {
                 if (window != NSApplication.SharedApplication.DangerousWindows[0])
                 {

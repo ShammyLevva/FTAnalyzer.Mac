@@ -122,7 +122,7 @@ namespace FTAnalyzer.ViewControllers
         {
             MainListsLoaded = false; // forces refresh on LoadMainLists
             LoadMainLists(ProgressController);
-            if(ErrorsAndFixesLoaded)
+            if (ErrorsAndFixesLoaded)
             {
                 ErrorsAndFixesLoaded = false;
                 LoadErrorsAndFixes(ProgressController);
@@ -249,7 +249,7 @@ namespace FTAnalyzer.ViewControllers
         {
             InvokeOnMainThread(() =>
             {
-                if(people != null)
+                if (people != null)
                     people.ShowWindow(App);
                 //Analytics.TrackAction(Analytics.Peo, Analytics.);
             });
@@ -264,7 +264,7 @@ namespace FTAnalyzer.ViewControllers
                     App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family));
                     Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsFamiliesEvent);
                 }
-                else if(individual != null && family == null)
+                else if (individual != null && family == null)
                 {
                     App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
                     Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
@@ -276,7 +276,7 @@ namespace FTAnalyzer.ViewControllers
         {
             InvokeOnMainThread(() =>
             {
-                if(people != null)
+                if (people != null)
                     people.ShowWindow(App);
                 //Analytics.TrackAction(Analytics.Peo, Analytics.);
             });

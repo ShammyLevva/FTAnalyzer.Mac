@@ -3,16 +3,16 @@ using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.ViewControllers
 {
-    public partial class FactsViewController<T>: BindingListViewController<T>, IPrintViewController where T : IColumnComparer<T>
-	{
+    public partial class FactsViewController<T> : BindingListViewController<T>, IPrintViewController where T : IColumnComparer<T>
+    {
         readonly SortableBindingList<IDisplayFact> facts;
 
-        public FactsViewController(string title, Individual individual) : base (title, string.Empty)
-		{
+        public FactsViewController(string title, Individual individual) : base(title, string.Empty)
+        {
             facts = new SortableBindingList<IDisplayFact>();
             AddIndividualsFacts(individual);
             RefreshDocumentView();
-		}
+        }
 
         public FactsViewController(string title, Family family) : base(title, string.Empty)
         {

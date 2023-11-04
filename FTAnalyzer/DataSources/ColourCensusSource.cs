@@ -52,7 +52,7 @@ namespace FTAnalyzer.DataSources
             NSTableCellView cellView = GetFTAnalyzerGridCell(tableView, tableColumn, row);
             SetTextField(cellView.TextField, tableColumn, row);
             var textField = cellView.TextField;
-            
+
             var c1939index = Array.IndexOf(_fieldNames, "C1939");
             if (index >= StartIndex && index <= EndIndex)
             {

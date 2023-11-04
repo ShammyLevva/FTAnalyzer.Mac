@@ -4,9 +4,9 @@ using FTAnalyzer.Utilities;
 namespace FTAnalyzer.ViewControllers
 {
     public partial class CensusViewController : BindingListViewController<IDisplayCensus>
-	{
-        public CensusViewController (IntPtr handle) : base (string.Empty, string.Empty)
-		{
+    {
+        public CensusViewController(IntPtr handle) : base(string.Empty, string.Empty)
+        {
         }
 
         public override void RefreshDocumentView(SortableBindingList<IDisplayCensus> list)

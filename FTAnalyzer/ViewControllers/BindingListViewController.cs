@@ -13,7 +13,7 @@ namespace FTAnalyzer.ViewControllers
         internal string CountText { get; set; }
         public NSTableViewSource TableSource => _tableView.Source;
         public NSSortDescriptor[] SortDescriptors => _tableView.SortDescriptors;
-      
+
         public BindingListViewController(string title, string tooltip)
         {
             Title = title;
@@ -85,7 +85,7 @@ namespace FTAnalyzer.ViewControllers
                     Identifier = property.Name,
                     MinWidth = width,
                     Width = width,
-                    SortDescriptorPrototype = new NSSortDescriptor(property.Name, true), 
+                    SortDescriptorPrototype = new NSSortDescriptor(property.Name, true),
                     Editable = false,
                     Hidden = false,
                     Title = columnTitle,
@@ -212,7 +212,7 @@ namespace FTAnalyzer.ViewControllers
             return widths;
         }
 
-                protected NSTableColumn GetColumnID(string identifier)
+        protected NSTableColumn GetColumnID(string identifier)
         {
             int count = 0;
             foreach (NSTableColumn column in _tableView.TableColumns())

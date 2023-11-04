@@ -16,7 +16,7 @@
             Sources = new Progress<int>(percent => SetProgress(_sourcesProgress, percent));
             Individuals = new Progress<int>(percent => SetProgress(_individualsProgress, percent));
             Families = new Progress<int>(percent => SetProgress(_familiesProgress, percent));
-        	Relationships = new Progress<int>(percent => SetProgress(_relationshipsProgress, percent));
+            Relationships = new Progress<int>(percent => SetProgress(_relationshipsProgress, percent));
         }
 
         public override void ViewDidLoad()

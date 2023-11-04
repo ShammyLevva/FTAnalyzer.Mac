@@ -5,8 +5,8 @@ namespace FTAnalyzer.ViewControllers
 {
     public partial class PreferencesViewController : NSViewController
     {
-        public PreferencesViewController (IntPtr handle) : base (handle) { }
-    
+        public PreferencesViewController(IntPtr handle) : base(handle) { }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -14,7 +14,7 @@ namespace FTAnalyzer.ViewControllers
             {
                 case "File Handling Preferences":
                     LoadWithFiltersOutlet.Activated += LoadWithFiltersOutlet_Activated;
-                    RetryFailedLinesOutlet.Activated +=     RetryFailedLinesOutlet_Activated;
+                    RetryFailedLinesOutlet.Activated += RetryFailedLinesOutlet_Activated;
                     ConvertDiacriticsOutlet.Activated += ConvertDicriticsOutlet_Activated;
                     SetFileHandlingSettings();
                     break;
@@ -170,7 +170,7 @@ namespace FTAnalyzer.ViewControllers
             SkipFixingLocationsOutlet.State = GeneralSettings.Default.SkipFixingLocations ? NSCellStateValue.On : NSCellStateValue.Off;
         }
 
-            void UseBaptismDatesOutlet_Activated(object? sender, EventArgs e)
+        void UseBaptismDatesOutlet_Activated(object? sender, EventArgs e)
         {
             GeneralSettings.Default.UseBaptismDates = UseBaptismDatesOutlet.State == NSCellStateValue.On;
             GeneralSettings.Default.Save();

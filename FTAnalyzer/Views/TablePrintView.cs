@@ -11,7 +11,7 @@ namespace FTAnalyzer
         public TablePrintView(NSTableView tableView)
         {
             _tableView = tableView;
-            AutoresizesSubviews = true; 
+            AutoresizesSubviews = true;
             WantsLayer = true;
             Layer = NewLayer();
             Bounds = new CGRect(0, 0, 0, 0);
@@ -42,7 +42,7 @@ namespace FTAnalyzer
 
         public void PreparePrintView()
         {
-            ViewSizes(); 
+            ViewSizes();
             //_tableView.ReloadData();
             SetFrameSizes();
             ViewSizes();
@@ -76,7 +76,7 @@ namespace FTAnalyzer
 
         void ResizeColumns()
         {
-            foreach(NSTableColumn col in _tableView.TableColumns())
+            foreach (NSTableColumn col in _tableView.TableColumns())
             {
                 col.Width = 123; // TODO: Set width as whatever user has set width of column on table adjusted by scaling of screen font vs printing font.
             }
