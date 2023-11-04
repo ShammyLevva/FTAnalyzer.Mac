@@ -25,13 +25,13 @@
         public override void Perform()
         {
             // Cast the source and destination controllers
-            var destination = DestinationController as NSViewController;
+            NSViewController? destination = DestinationController as NSViewController;
 
             // Is there a source?
             if (!(SourceController is NSViewController source))
             {
                 // No, get the current key window
-                var window = NSApplication.SharedApplication.KeyWindow;
+                NSWindow window = NSApplication.SharedApplication.KeyWindow;
                 window.ContentViewController = destination; // Swap the controllers
                 window.ContentViewController?.RemoveFromParentViewController(); // Release memory
             }

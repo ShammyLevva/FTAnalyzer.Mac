@@ -30,12 +30,12 @@ namespace FTAnalyzer.DataSources
 
         internal NSTableCellView GetFTAnalyzerGridCell(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
-            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
+            int index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
             if (index < 0 || index > _properties.Length)
                 return null;
-            var property = _properties[index];
+            PropertyInfo property = _properties[index];
             NSTextAlignment alignment = NSTextAlignment.Left;
-            var width = tableColumn.Width;
+            nfloat width = tableColumn.Width;
             ColumnDetail[]? x = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
             if (x?.Length == 1)
             {
@@ -44,7 +44,7 @@ namespace FTAnalyzer.DataSources
             }
             if (!(tableView.MakeView(CellIdentifier, this) is NSTableCellView cellView))
             {
-                var textField = new NSTextField
+                NSTextField textField = new NSTextField
                 {
                     BackgroundColor = NSColor.Clear,
                     LineBreakMode = NSLineBreakMode.TruncatingTail,
@@ -67,7 +67,7 @@ namespace FTAnalyzer.DataSources
                     AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable
                 };
                 cellView.AddSubview(textField);
-                var views = new NSMutableDictionary
+                NSMutableDictionary views = new NSMutableDictionary
                 {
                     { new NSString("textField"), textField }
                 };
@@ -80,12 +80,12 @@ namespace FTAnalyzer.DataSources
 
         void SetCellView(NSTableCellView cellView, NSTableColumn tableColumn, nint row)
         {
-            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
+            int index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
             // Set cell view content based on the column selected
             if (row >= 0)
             {
-                var item = _bindingList[(int)row];
-                var propertyValue = _properties[index].GetValue(item);
+                T item = _bindingList[(int)row];
+                object? propertyValue = _properties[index].GetValue(item);
                 cellView.TextField.StringValue = propertyValue == null ? string.Empty : propertyValue.ToString();
             }
             else
@@ -98,7 +98,7 @@ namespace FTAnalyzer.DataSources
         {
             if (_bindingList.Any()) // only sort if array contains something
             {
-                var comparer = _bindingList.First().GetComparer(key, ascending);
+                IComparer<T> comparer = _bindingList.First().GetComparer(key, ascending);
                 if (comparer != null)
                     _bindingList.Sort(comparer);
             }
@@ -122,7 +122,7 @@ namespace FTAnalyzer.DataSources
                 dataTable.Columns.Add(fieldName);
             foreach (T item in _bindingList)
             {
-                var values = new object[dataTable.Columns.Count];
+                object[] values = new object[dataTable.Columns.Count];
                 for (int i = 0; i < _properties.Length; i++)
                 {
                     values[i] = _properties[i].GetValue(item, null);
