@@ -14,7 +14,7 @@ namespace FTAnalyzer
         {
             var storyboard = NSStoryboard.FromName("People", null);
             peopleWindow = storyboard.InstantiateControllerWithIdentifier("PeopleWindow") as NSWindowController;
-            peopleWindow.Window.SetFrame(new CoreGraphics.CGRect(300, 300, 800, 500), true);
+            peopleWindow.Window.SetFrame(new CGRect(300, 300, 800, 500), true);
             peopleView = peopleWindow.ContentViewController as PeopleViewController;
         }
 

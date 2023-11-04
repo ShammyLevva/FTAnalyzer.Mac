@@ -82,7 +82,7 @@ namespace FTAnalyzer
             var factsWindow = storyboard.InstantiateControllerWithIdentifier("FactsWindow") as NSWindowController;
             factsWindow.ContentViewController.AddChildViewController(factsViewController);
             factsWindow.Window.Title = factsViewController.Title;
-            factsWindow.Window.SetFrame(new CoreGraphics.CGRect(350, 350, 800, 500), true);
+            factsWindow.Window.SetFrame(new CGRect(350, 350, 800, 500), true);
             factsWindow.ShowWindow(this);
         }
 

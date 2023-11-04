@@ -26,7 +26,7 @@ namespace FTAnalyzer.ViewControllers
             _individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
             _familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
             SplitView.AutosaveName = "SplitView";
-            SplitView.ResizeSubviewsWithOldSize(new CoreGraphics.CGSize(800, 250));
+            SplitView.ResizeSubviewsWithOldSize(new CGSize(800, 250));
         }
 
         public void LoadIndividuals(SortableBindingList<IDisplayIndividual> list)
@@ -118,13 +118,13 @@ namespace FTAnalyzer.ViewControllers
                 };
                 var indPrintVC = new TablePrintingViewController(_individualsViewController);
                 var famPrintVC = new TablePrintingViewController(_familiesViewController);
-                indPrintVC.View.SetFrameOrigin(new CoreGraphics.CGPoint(0, famPrintVC.TotalHeight));
+                indPrintVC.View.SetFrameOrigin(new CGPoint(0, famPrintVC.TotalHeight));
                 printView.AddSubview(indPrintVC.View);
                 printView.AddSubview(famPrintVC.View);
 
                 var width = Math.Max(indPrintVC.TotalWidth, famPrintVC.TotalWidth);
                 var height = indPrintVC.TotalHeight + famPrintVC.TotalHeight;
-                printView.SetFrameSize(new CoreGraphics.CGSize(width, height));
+                printView.SetFrameSize(new CGSize(width, height));
 
                 var printOperation = NSPrintOperation.FromView(printView, printInfo);
                 printOperation.ShowsPrintPanel = true;

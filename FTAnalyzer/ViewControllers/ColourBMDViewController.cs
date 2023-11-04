@@ -57,7 +57,7 @@ namespace FTAnalyzer.ViewControllers
             }
             nint row = _tableView.ClickedRow;
             int columnIndex = (int)_tableView.ClickedColumn;
-            if (row >= 0 && columnIndex >= ColourBMDViewController.BMDColumnsStart && columnIndex <= ColourBMDViewController.BMDColumnsEnd)
+            if (row >= 0 && columnIndex >= BMDColumnsStart && columnIndex <= BMDColumnsEnd)
             {
                 ColourBMDSource? source = _tableView.Source as ColourBMDSource;
                 IDisplayColourBMD? person = source.GetRowObject(row) as IDisplayColourBMD;

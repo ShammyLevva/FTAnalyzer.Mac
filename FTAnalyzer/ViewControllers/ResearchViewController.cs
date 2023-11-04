@@ -62,7 +62,7 @@ namespace FTAnalyzer.ViewControllers
             colourCensusViewController.RefreshDocumentView(new SortableBindingList<IDisplayColourCensus>(list));
             ColourCensusWindow.ContentViewController.AddChildViewController(colourCensusViewController);
             ColourCensusWindow.Window.Title = colourCensusViewController.Title;
-            ColourCensusWindow.Window.SetFrame(new CoreGraphics.CGRect(350, 350, 1000, 475), true);
+            ColourCensusWindow.Window.SetFrame(new CGRect(350, 350, 1000, 475), true);
             ColourCensusWindow.ShowWindow(this);
 
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.ColourCensusEvent);
@@ -79,7 +79,7 @@ namespace FTAnalyzer.ViewControllers
             colourBMDViewController.RefreshDocumentView(new SortableBindingList<IDisplayColourBMD>(list));
             colourBMDWindow.ContentViewController.AddChildViewController(colourBMDViewController);
             colourBMDWindow.Window.Title = colourBMDViewController.Title;
-            colourBMDWindow.Window.SetFrame(new CoreGraphics.CGRect(350, 350, 1000, 475), true);
+            colourBMDWindow.Window.SetFrame(new CGRect(350, 350, 1000, 475), true);
             colourBMDWindow.ShowWindow(this);
 
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.ColourBMDEvent);

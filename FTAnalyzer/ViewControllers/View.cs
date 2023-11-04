@@ -1,6 +1,6 @@
 ﻿namespace FTAnalyzer.ViewControllers
 {
-    public partial class View : AppKit.NSView
+    public partial class View : NSView
     {
         #region Constructors
 

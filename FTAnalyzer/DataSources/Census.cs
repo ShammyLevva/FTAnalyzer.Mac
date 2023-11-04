@@ -26,7 +26,7 @@ namespace FTAnalyzer.DataSources
             _censusDone = censusDone;
             var storyboard = NSStoryboard.FromName("ColourCensus", null);
             censusWindow = storyboard.InstantiateControllerWithIdentifier("ColourCensusWindow") as NSWindowController;
-            censusWindow.Window.SetFrame(new CoreGraphics.CGRect(300, 300, 800, 500), true);
+            censusWindow.Window.SetFrame(new CGRect(300, 300, 800, 500), true);
             //string defaultProvider = (string)Application.UserAppDataRegistry.GetValue("Default Search Provider");
             //if (defaultProvider == null)
             //    defaultProvider = "FamilySearch";
