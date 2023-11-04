@@ -72,7 +72,7 @@ namespace FTAnalyzer.ViewControllers
         {
             var storyboard = NSStoryboard.FromName("ColourReports", null);
             var colourBMDWindow = storyboard.InstantiateControllerWithIdentifier("ColourBMDWindow") as NSWindowController;
-            RelationTypes relationTypes = new RelationTypes();
+            RelationTypes relationTypes = new();
             Predicate<Individual> relTypeFilter = relationTypes.BuildFilter<Individual>(x => x.RelationType);
             List<IDisplayColourBMD> list = FamilyTree.Instance.ColourBMD(relTypeFilter, string.Empty, null);
             ColourBMDViewController colourBMDViewController = new(CensusRegionOutlet.StringValue, (int)CensusSearchProviderOutlet.SelectedIndex);

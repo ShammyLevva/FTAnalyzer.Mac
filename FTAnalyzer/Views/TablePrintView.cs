@@ -48,7 +48,7 @@ namespace FTAnalyzer
             ViewSizes();
         }
 
-        static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
+        static CALayer NewLayer() => new() { Bounds = new CGRect(0, 0, 0, 0) };
 
         //public override void ViewWillDraw()
         //{

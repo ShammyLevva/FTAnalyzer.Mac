@@ -49,7 +49,7 @@ namespace FTAnalyzer.ViewControllers
             return scrollView;
         }
 
-        static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
+        static CALayer NewLayer() => new() { Bounds = new CGRect(0, 0, 0, 0) };
 
         internal void AddTableColumns(NSTableView view)
         {
