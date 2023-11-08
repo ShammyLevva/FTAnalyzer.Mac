@@ -98,6 +98,40 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Reports" id="81N-cH-2Bh">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Reports" id="ovJ-kA-O7L">
+                                    <items>
+                                        <menuItem title="Parent Age" id="Hb0-el-1aw">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Older Parents" id="2Od-os-QW9">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Possible Census Facts" id="nWq-tl-Fqd">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Cousins Count" id="5AQ-3c-a9G">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="How Many Directs" id="zp7-dP-hCT">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Birthday Effect" id="Q6o-Df-z7I">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Possibly Missing Child" id="18A-Tf-XlE">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Aged Over 99" id="nfM-yk-64S">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Single Parents" id="Z44-Eo-1om">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Export" id="eiF-za-1TK">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Export" id="IhQ-ne-Cbh">
