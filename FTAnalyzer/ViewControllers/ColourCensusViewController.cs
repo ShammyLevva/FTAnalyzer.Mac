@@ -7,8 +7,9 @@ namespace FTAnalyzer.ViewControllers
     public partial class ColourCensusViewController : BindingListViewController<IDisplayColourCensus>
     {
         public string Country { get; }
+        //KI: Surely these shouldn't be hard coded.
         public static int CensusColumnsStart => 5; // GetColumnIndex("C1841"); zero based index
-        public static int CensusColumnsEnd => 49; //  GetColumnIndex("V1925");
+        public static int CensusColumnsEnd => 51; //  GetColumnIndex("V1925");
         int startColumnIndex;
         int endColumnIndex;
         int CensusProviderIndex { get; }
