@@ -22,6 +22,7 @@ namespace FTAnalyzer.ViewControllers
             _tableView.AutosaveTableColumns = false;
             _tableView.Source = new CensusSource(list);
             _tableView.ReloadData();
+            //TODO: Does this need to be changed to .Regular (not sure where this is used) (KI)
             _tableView.SelectionHighlightStyle = NSTableViewSelectionHighlightStyle.None;
         }
 

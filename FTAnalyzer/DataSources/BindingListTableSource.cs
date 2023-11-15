@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Drawing;
 using System.Reflection;
 using FTAnalyzer.Utilities;
 
@@ -44,6 +45,7 @@ namespace FTAnalyzer.DataSources
             }
             if (!(tableView.MakeView(CellIdentifier, this) is NSTableCellView cellView))
             {
+                tableView.IntercellSpacing = new SizeF(0, 0); //KI: Reduces spacing round textfield to make coloured boxes pretty
                 NSTextField textField = new NSTextField
                 {
                     BackgroundColor = NSColor.Clear,
@@ -57,6 +59,13 @@ namespace FTAnalyzer.DataSources
                     TranslatesAutoresizingMaskIntoConstraints = false,
                     AllowsDefaultTighteningForTruncation = true,
                 };
+                //KI: Put border round coloured boxes so they look pretty when the row is highlighted (and coloured blue by the system)
+                //KI: This is a hack. "C1", etc. must be census column
+                if (tableColumn.Identifier.StartsWith("C1") || tableColumn.Identifier.StartsWith("US1") || tableColumn.Identifier.StartsWith("Can1") || tableColumn.Identifier.StartsWith("Ire1") || tableColumn.Identifier.StartsWith("V1"))
+                    textField.Bordered = true;
+                //KI: This is a hack. "Birth", etc. must be BMD column
+                if (tableColumn.Identifier == "Birth" || tableColumn.Identifier == "BaptChri" || tableColumn.Identifier == "Marriage1" || tableColumn.Identifier == "Marriage2" || tableColumn.Identifier == "Marriage3" || tableColumn.Identifier == "Death" || tableColumn.Identifier == "CremBuri")
+                    textField.Bordered = true;
                 if (tableView.AutosaveName == "PrintView")
                     textField.Font = NSFont.SystemFontOfSize(8);
                 cellView = new NSTableCellView

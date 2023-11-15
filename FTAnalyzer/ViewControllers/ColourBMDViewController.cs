@@ -41,7 +41,8 @@ namespace FTAnalyzer.ViewControllers
             _tableView.AutosaveTableColumns = false;
             _tableView.Source = new ColourBMDSource(BMDProvider, list);
             _tableView.ReloadData();
-            _tableView.SelectionHighlightStyle = NSTableViewSelectionHighlightStyle.None;
+            //KI: Allow the user to hightlight the row so they can read across it easily
+            _tableView.SelectionHighlightStyle = NSTableViewSelectionHighlightStyle.Regular;
             Title = $"BMD Research Suggestions. {list.Count} records listed.";
         }
 

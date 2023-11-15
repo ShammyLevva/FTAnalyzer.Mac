@@ -7,7 +7,7 @@ namespace FTAnalyzer.ViewControllers
     public partial class ColourCensusViewController : BindingListViewController<IDisplayColourCensus>
     {
         public string Country { get; }
-        //KI: Surely these shouldn't be hard coded.
+        //TODO: Surely these shouldn't be hard coded. (KI)
         public static int CensusColumnsStart => 5; // GetColumnIndex("C1841"); zero based index
         public static int CensusColumnsEnd => 51; //  GetColumnIndex("V1925");
         int startColumnIndex;
@@ -42,7 +42,8 @@ namespace FTAnalyzer.ViewControllers
             _tableView.AutosaveTableColumns = false;
             _tableView.Source = new ColourCensusSource(Country, startColumnIndex, endColumnIndex, CensusProvider, list);
             _tableView.ReloadData();
-            _tableView.SelectionHighlightStyle = NSTableViewSelectionHighlightStyle.None;
+            //KI: Allow the user to hightlight the row so they can read across it easily
+            _tableView.SelectionHighlightStyle = NSTableViewSelectionHighlightStyle.Regular;
             Title = $"Census Research Suggestions for {Country}. {list.Count} records listed.";
         }
 
