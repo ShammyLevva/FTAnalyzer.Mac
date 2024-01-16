@@ -1,16 +1,15 @@
-﻿using System;
-using AppKit;
-using Foundation;
-using FTAnalyzer.DataSources;
+﻿using FTAnalyzer.DataSources;
 using FTAnalyzer.Utilities;
+using System.Diagnostics;
 
 namespace FTAnalyzer.ViewControllers
 {
     public partial class ColourCensusViewController : BindingListViewController<IDisplayColourCensus>
     {
         public string Country { get; }
+        //TODO: Surely these shouldn't be hard coded. (KI)
         public static int CensusColumnsStart => 5; // GetColumnIndex("C1841"); zero based index
-        public static int CensusColumnsEnd => 49; //  GetColumnIndex("V1925");
+        public static int CensusColumnsEnd => 51; //  GetColumnIndex("V1925");
         int startColumnIndex;
         int endColumnIndex;
         int CensusProviderIndex { get; }
@@ -43,7 +42,8 @@ namespace FTAnalyzer.ViewControllers
             _tableView.AutosaveTableColumns = false;
             _tableView.Source = new ColourCensusSource(Country, startColumnIndex, endColumnIndex, CensusProvider, list);
             _tableView.ReloadData();
-            _tableView.SelectionHighlightStyle = NSTableViewSelectionHighlightStyle.None;
+            //KI: Allow the user to hightlight the row so they can read across it easily
+            _tableView.SelectionHighlightStyle = NSTableViewSelectionHighlightStyle.Regular;
             Title = $"Census Research Suggestions for {Country}. {list.Count} records listed.";
         }
 
@@ -74,11 +74,11 @@ namespace FTAnalyzer.ViewControllers
                 // cbFilter.Items[5] = "Outside UK (Dark Grey)";
             }
             else
-                Console.WriteLine("We have a problem.");
+                Debug.WriteLine("We have a problem.");
 
             for (int index = CensusColumnsStart; index <= CensusColumnsEnd; index++)
             {
-                NSTableColumn column = _tableView.TableColumns().GetValue(index) as NSTableColumn;
+                NSTableColumn? column = _tableView.TableColumns().GetValue(index) as NSTableColumn;
                 if (index >= startColumnIndex && index <= endColumnIndex)
                 {
                     column.Hidden = false;
@@ -105,7 +105,7 @@ namespace FTAnalyzer.ViewControllers
             if (row >= 0 && columnIndex >= startColumnIndex && columnIndex <= endColumnIndex)
             {
                 var source = _tableView.Source as ColourCensusSource;
-                IDisplayColourCensus person = source.GetRowObject(row) as IDisplayColourCensus;
+                IDisplayColourCensus? person = source.GetRowObject(row) as IDisplayColourCensus;
                 int censusYear;
                 if (Country == Countries.UNITED_STATES)
                     censusYear = 1790 + (columnIndex - startColumnIndex) * 10;
@@ -125,7 +125,7 @@ namespace FTAnalyzer.ViewControllers
                     try
                     {
                         var ft = FamilyTree.Instance;
-                        ft.SearchCensus(censusCountry, censusYear, ft.GetIndividual(person.IndividualID), CensusProviderIndex, CensusRegion);
+                        FamilyTree.SearchCensus(censusCountry, censusYear, ft.GetIndividual(person.IndividualID), CensusProviderIndex, CensusRegion);
                     }
                     catch (CensusSearchException ex)
                     {

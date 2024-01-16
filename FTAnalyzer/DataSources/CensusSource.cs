@@ -1,6 +1,4 @@
-﻿using System;
-using AppKit;
-using FTAnalyzer.Utilities;
+﻿using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.DataSources
 {

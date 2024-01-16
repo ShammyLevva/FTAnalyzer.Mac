@@ -1,7 +1,4 @@
-﻿using System;
-using AppKit;
-using Foundation;
-using FTAnalyzer.Utilities;
+﻿using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.ViewControllers
 {
@@ -11,25 +8,25 @@ namespace FTAnalyzer.ViewControllers
         BindingListViewController<IDisplayFamily> _familiesViewController;
         AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
 
-        public PeopleViewController(IntPtr handle) : base(handle) 
+        public PeopleViewController(IntPtr handle) : base(handle)
         {
             _individualsViewController = new BindingListViewController<IDisplayIndividual>("Individuals", "Double click to show a list of facts for the selected individual.");
             _familiesViewController = new BindingListViewController<IDisplayFamily>("Families", "Double click to show a list of facts for the selected family.");
         }
-        
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            foreach(NSSplitViewItem item in SplitViewItems)
+            foreach (NSSplitViewItem item in SplitViewItems)
                 RemoveSplitViewItem(item); // we need to remove any old items to re-add the updated controllers
             IndividualView.ViewController = _individualsViewController;
             FamilyView.ViewController = _familiesViewController;
-            InsertSplitViewItem(IndividualView,0);
+            InsertSplitViewItem(IndividualView, 0);
             InsertSplitViewItem(FamilyView, 1);
             _individualsViewController.IndividualFactRowClicked += IndividualsFactRowClicked;
             _familiesViewController.FamilyFactRowClicked += FamiliesFactRowClicked;
             SplitView.AutosaveName = "SplitView";
-            SplitView.ResizeSubviewsWithOldSize(new CoreGraphics.CGSize(800, 250));
+            SplitView.ResizeSubviewsWithOldSize(new CGSize(800, 250));
         }
 
         public void LoadIndividuals(SortableBindingList<IDisplayIndividual> list)
@@ -42,7 +39,7 @@ namespace FTAnalyzer.ViewControllers
             HideIndividuals(false);
             _individualsViewController.RefreshDocumentView(list);
             SortIndividuals();
-         }
+        }
 
         public void LoadFamilies(SortableBindingList<IDisplayFamily> list)
         {
@@ -62,7 +59,7 @@ namespace FTAnalyzer.ViewControllers
 
         public void SortIndividuals()
         {
-            NSSortDescriptor[] descriptors = 
+            NSSortDescriptor[] descriptors =
             {
                 new NSSortDescriptor("Surname", true),
                 new NSSortDescriptor("Forename", true)
@@ -121,13 +118,13 @@ namespace FTAnalyzer.ViewControllers
                 };
                 var indPrintVC = new TablePrintingViewController(_individualsViewController);
                 var famPrintVC = new TablePrintingViewController(_familiesViewController);
-                indPrintVC.View.SetFrameOrigin(new CoreGraphics.CGPoint(0, famPrintVC.TotalHeight));
+                indPrintVC.View.SetFrameOrigin(new CGPoint(0, famPrintVC.TotalHeight));
                 printView.AddSubview(indPrintVC.View);
                 printView.AddSubview(famPrintVC.View);
 
-                 var width = Math.Max(indPrintVC.TotalWidth, famPrintVC.TotalWidth);
+                var width = Math.Max(indPrintVC.TotalWidth, famPrintVC.TotalWidth);
                 var height = indPrintVC.TotalHeight + famPrintVC.TotalHeight;
-                printView.SetFrameSize(new CoreGraphics.CGSize(width, height));
+                printView.SetFrameSize(new CGSize(width, height));
 
                 var printOperation = NSPrintOperation.FromView(printView, printInfo);
                 printOperation.ShowsPrintPanel = true;

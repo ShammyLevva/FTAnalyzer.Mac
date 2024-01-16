@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AppKit;
-using CoreAnimation;
-using CoreGraphics;
-using Foundation;
+﻿using CoreAnimation;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.Views;
 
@@ -37,7 +32,7 @@ namespace FTAnalyzer.ViewControllers
         {
             _printView = new GridTableView("PrintView", Self);
             AddTableColumns(_printView);
-            NSProcessInfo info = new NSProcessInfo();
+            NSProcessInfo info = new();
             if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
                 _printView.UsesAutomaticRowHeights = true; // only available in OSX 13 and above.
             var scrollView = new NSScrollView
@@ -54,7 +49,7 @@ namespace FTAnalyzer.ViewControllers
             return scrollView;
         }
 
-        static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
+        static CALayer NewLayer() => new() { Bounds = new CGRect(0, 0, 0, 0) };
 
         internal void AddTableColumns(NSTableView view)
         {
@@ -64,9 +59,9 @@ namespace FTAnalyzer.ViewControllers
             {
                 float width = 100;
                 string columnTitle = property.Name;
-                ColumnDetail[] columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
+                ColumnDetail[]? columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
                 if (columnDetail?.Length == 1)
-                   columnTitle = columnDetail[0].ColumnName;
+                    columnTitle = columnDetail[0].ColumnName;
                 var tableColumn = new NSTableColumn
                 {
                     Identifier = property.Name,

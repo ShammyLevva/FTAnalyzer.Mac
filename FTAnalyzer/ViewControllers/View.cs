@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Foundation;
-using AppKit;
-
-namespace FTAnalyzer.ViewControllers
+﻿namespace FTAnalyzer.ViewControllers
 {
-    public partial class View : AppKit.NSView
+    public partial class View : NSView
     {
         #region Constructors
 

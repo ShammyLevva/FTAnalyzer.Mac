@@ -1,7 +1,4 @@
-﻿using AppKit;
-using CoreAnimation;
-using CoreGraphics;
-using Foundation;
+﻿using CoreAnimation;
 
 namespace FTAnalyzer
 {
@@ -14,7 +11,7 @@ namespace FTAnalyzer
         public TablePrintView(NSTableView tableView)
         {
             _tableView = tableView;
-            AutoresizesSubviews = true; 
+            AutoresizesSubviews = true;
             WantsLayer = true;
             Layer = NewLayer();
             Bounds = new CGRect(0, 0, 0, 0);
@@ -45,13 +42,13 @@ namespace FTAnalyzer
 
         public void PreparePrintView()
         {
-            ViewSizes(); 
+            ViewSizes();
             //_tableView.ReloadData();
             SetFrameSizes();
             ViewSizes();
         }
 
-        static CALayer NewLayer() => new CALayer { Bounds = new CGRect(0, 0, 0, 0) };
+        static CALayer NewLayer() => new() { Bounds = new CGRect(0, 0, 0, 0) };
 
         //public override void ViewWillDraw()
         //{
@@ -79,7 +76,7 @@ namespace FTAnalyzer
 
         void ResizeColumns()
         {
-            foreach(NSTableColumn col in _tableView.TableColumns())
+            foreach (NSTableColumn col in _tableView.TableColumns())
             {
                 col.Width = 123; // TODO: Set width as whatever user has set width of column on table adjusted by scaling of screen font vs printing font.
             }

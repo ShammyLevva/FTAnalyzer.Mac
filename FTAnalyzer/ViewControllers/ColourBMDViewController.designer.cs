@@ -1,6 +1,4 @@
-﻿using Foundation;
-
-namespace FTAnalyzer.ViewControllers
+﻿namespace FTAnalyzer.ViewControllers
 {
     [Register("ColourBMDViewController")]
     public partial class ColourBMDViewController

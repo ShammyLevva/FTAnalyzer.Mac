@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AppKit;
-using FTAnalyzer.Utilities;
+﻿using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;
 using static FTAnalyzer.ColourValues;
 
@@ -55,7 +52,7 @@ namespace FTAnalyzer.DataSources
             NSTableCellView cellView = GetFTAnalyzerGridCell(tableView, tableColumn, row);
             SetTextField(cellView.TextField, tableColumn, row);
             var textField = cellView.TextField;
-            
+
             var c1939index = Array.IndexOf(_fieldNames, "C1939");
             if (index >= StartIndex && index <= EndIndex)
             {
@@ -109,6 +106,11 @@ namespace FTAnalyzer.DataSources
                         textField.BackgroundColor = styles[(int)CensusColours.KNOWN_MISSING];
                         textField.TextColor = styles[(int)CensusColours.KNOWN_MISSING];
                         textField.ToolTip = "Known to be missing from the census.";
+                        break;
+                    case (int)CensusColours.DIED_DURING_CENSUS:
+                        textField.BackgroundColor = styles[(int)CensusColours.DIED_DURING_CENSUS];
+                        textField.TextColor = styles[(int)CensusColours.DIED_DURING_CENSUS];
+                        textField.ToolTip = "Died within range of dates census was taken";
                         break;
                     default:
                         break;

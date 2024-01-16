@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AppKit;
-using FTAnalyzer.Utilities;
+﻿using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;
 using static FTAnalyzer.ColourValues;
 
@@ -87,7 +84,7 @@ namespace FTAnalyzer.DataSources
                     case (int)BMDColours.WIDE_DATE:
                         textField.BackgroundColor = styles[(int)BMDColours.WIDE_DATE];
                         textField.TextColor = styles[(int)BMDColours.WIDE_DATE];
-                        textField.ToolTip = "Date covers up to a ten year date range."; 
+                        textField.ToolTip = "Date covers up to a ten year date range.";
                         break;
                     case (int)BMDColours.NARROW_DATE:
                         textField.BackgroundColor = styles[(int)BMDColours.NARROW_DATE];

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AppKit;
-using CoreAnimation;
-using CoreGraphics;
-using Foundation;
+﻿using CoreAnimation;
 using FTAnalyzer.DataSources;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.Views;
@@ -18,7 +13,7 @@ namespace FTAnalyzer.ViewControllers
         internal string CountText { get; set; }
         public NSTableViewSource TableSource => _tableView.Source;
         public NSSortDescriptor[] SortDescriptors => _tableView.SortDescriptors;
-      
+
         public BindingListViewController(string title, string tooltip)
         {
             Title = title;
@@ -33,7 +28,7 @@ namespace FTAnalyzer.ViewControllers
         {
             _tableView = new GridTableView(Title, Self);
             AddTableColumns(_tableView);
-            NSProcessInfo info = new NSProcessInfo();
+            NSProcessInfo info = new();
             if (info.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 13, 0)))
                 _tableView.UsesAutomaticRowHeights = true; // only available in OSX 13 and above.AddTableColumns(_tableView);
             var scrollView = new NSScrollView
@@ -70,7 +65,7 @@ namespace FTAnalyzer.ViewControllers
             _tableView.ReloadData();
         }
 
-        internal CGSize GetViewSize() => new CGSize(_tableView.Frame.Width, _tableView.Frame.Height + _tableView.HeaderView.Frame.Height);
+        internal CGSize GetViewSize() => new(_tableView.Frame.Width, _tableView.Frame.Height + _tableView.HeaderView.Frame.Height);
 
         internal void AddTableColumns(NSTableView view)
         {
@@ -79,7 +74,7 @@ namespace FTAnalyzer.ViewControllers
             {
                 float width = 40;
                 string columnTitle = property.Name;
-                ColumnDetail[] columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
+                ColumnDetail[]? columnDetail = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
                 if (columnDetail?.Length == 1)
                 {
                     columnTitle = columnDetail[0].ColumnName;
@@ -90,7 +85,7 @@ namespace FTAnalyzer.ViewControllers
                     Identifier = property.Name,
                     MinWidth = width,
                     Width = width,
-                    SortDescriptorPrototype = new NSSortDescriptor(property.Name, true), 
+                    SortDescriptorPrototype = new NSSortDescriptor(property.Name, true),
                     Editable = false,
                     Hidden = false,
                     Title = columnTitle,
@@ -108,7 +103,7 @@ namespace FTAnalyzer.ViewControllers
                 if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
                     string indID = cell.TextField.StringValue;
-                    Individual ind = FamilyTree.Instance.GetIndividual(indID);
+                    Individual? ind = FamilyTree.Instance.GetIndividual(indID);
                     return ind;
                 }
             }
@@ -129,7 +124,7 @@ namespace FTAnalyzer.ViewControllers
                 if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
                     string indID = cell.TextField.StringValue;
-                    Individual ind = FamilyTree.Instance.GetIndividual(indID);
+                    Individual? ind = FamilyTree.Instance.GetIndividual(indID);
                     RaiseFactRowClicked(ind);
                     return;
                 }
@@ -140,7 +135,7 @@ namespace FTAnalyzer.ViewControllers
                 if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
                     string familyID = cell.TextField.StringValue;
-                    Family family = FamilyTree.Instance.GetFamily(familyID);
+                    Family? family = FamilyTree.Instance.GetFamily(familyID);
                     RaiseFactRowClicked(family);
                     return;
                 }
@@ -151,7 +146,7 @@ namespace FTAnalyzer.ViewControllers
                 if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
                     string sourceID = cell.TextField.StringValue;
-                    FactSource source = FamilyTree.Instance.GetSource(sourceID);
+                    FactSource? source = FamilyTree.Instance.GetSource(sourceID);
                     RaiseFactRowClicked(source);
                     return;
                 }
@@ -162,7 +157,7 @@ namespace FTAnalyzer.ViewControllers
                 if (_tableView.Source.GetViewForItem(_tableView, column, _tableView.SelectedRow) is NSTableCellView cell)
                 {
                     string occupation = cell.TextField.StringValue;
-                    People people = new People();
+                    People people = new();
                     people.SetWorkers(occupation, FamilyTree.Instance.AllWorkers(occupation));
                     RaiseOccupationRowClicked(people);
                     return;
@@ -176,12 +171,12 @@ namespace FTAnalyzer.ViewControllers
                 {
                     if (error.IsFamily == "Yes")
                     {
-                        Family family = FamilyTree.Instance.GetFamily(error.Reference);
+                        Family? family = FamilyTree.Instance.GetFamily(error.Reference);
                         RaiseDataErrorRowClicked(null, family);
                     }
                     else
                     {
-                        Individual ind = FamilyTree.Instance.GetIndividual(error.Reference);
+                        Individual? ind = FamilyTree.Instance.GetIndividual(error.Reference);
                         RaiseDataErrorRowClicked(ind, null);
                     }
                 }
@@ -217,7 +212,7 @@ namespace FTAnalyzer.ViewControllers
             return widths;
         }
 
-                protected NSTableColumn GetColumnID(string identifier)
+        protected NSTableColumn GetColumnID(string identifier)
         {
             int count = 0;
             foreach (NSTableColumn column in _tableView.TableColumns())

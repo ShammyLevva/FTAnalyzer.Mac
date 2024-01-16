@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using AppKit;
-using Foundation;
 using FTAnalyzer.Exports;
-using FTAnalyzer.Properties;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;
+using System.Diagnostics;
 
 namespace FTAnalyzer
 {
@@ -16,7 +11,7 @@ namespace FTAnalyzer
     {
         bool _documentOpening;
         public GedcomDocument Document { get; set; }
-        public GedcomDocumentViewController DocumentViewController { get; set;  }
+        public GedcomDocumentViewController DocumentViewController { get; set; }
         NSWindow Window { get; set; }
         public NSViewController CurrentViewController { get; set; }
         public NSWindow CurrentWindow { get; set; }
@@ -87,13 +82,13 @@ namespace FTAnalyzer
             var factsWindow = storyboard.InstantiateControllerWithIdentifier("FactsWindow") as NSWindowController;
             factsWindow.ContentViewController.AddChildViewController(factsViewController);
             factsWindow.Window.Title = factsViewController.Title;
-            factsWindow.Window.SetFrame(new CoreGraphics.CGRect(350, 350, 800, 500), true);
+            factsWindow.Window.SetFrame(new CGRect(350, 350, 800, 500), true);
             factsWindow.ShowWindow(this);
         }
 
         public void CloseAllSubWindows()
         {
-            foreach(NSWindow openWindow in NSApplication.SharedApplication.DangerousWindows)
+            foreach (NSWindow openWindow in (IEnumerable<NSWindow>)NSApplication.SharedApplication.DangerousWindows)
             {
                 if (openWindow.Title.StartsWith("Facts", StringComparison.Ordinal))
                     openWindow.Close();
@@ -104,7 +99,7 @@ namespace FTAnalyzer
             }
         }
 
-        public string Version
+        public static string Version
         {
             get
             {
@@ -130,8 +125,8 @@ namespace FTAnalyzer
             {
                 await Analytics.CheckProgramUsageAsync();
             }
-            catch (Exception e) 
-                { Console.WriteLine(e.Message); }
+            catch (Exception e)
+            { Debug.WriteLine(e.Message); }
         }
 
         partial void ExportIndividuals(NSObject sender)
@@ -143,11 +138,12 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<IExportIndividual>(FamilyTree.Instance.AllIndividuals));
                 ExportToExcel.Export(dt, "Individuals");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportIndEvent);
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 UIHelpers.ShowMessage($"Problem exporting Individuals: {e.Message}");
             }
@@ -162,7 +158,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<IDisplayFamily>(FamilyTree.Instance.AllDisplayFamilies));
                 ExportToExcel.Export(dt, "Families");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportFamEvent);
@@ -182,7 +178,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<ExportFact>(FamilyTree.Instance.AllExportFacts));
                 ExportToExcel.Export(dt, "Facts");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportFactsEvent);
@@ -202,7 +198,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<IDisplayLocation>(FamilyTree.Instance.AllDisplayPlaces));
                 ExportToExcel.Export(dt, "Locations");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportLocationsEvent);
@@ -222,7 +218,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<IDisplaySource>(FamilyTree.Instance.AllSources));
                 ExportToExcel.Export(dt, "Sources");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportSourcesEvent);
@@ -230,6 +226,26 @@ namespace FTAnalyzer
             catch (Exception e)
             {
                 UIHelpers.ShowMessage($"Problem exporting Sources: {e.Message}");
+            }
+        }
+
+        partial void ExportCustomFacts(NSObject sender)
+        {
+            try
+            {
+                if (Document == null)
+                {
+                    NoDocumentLoaded();
+                    return;
+                }
+                ListtoDataTableConvertor convertor = new();
+                DataTable dt = convertor.ToDataTable(new List<IDisplayCustomFact>(FamilyTree.Instance.AllCustomFacts));
+                ExportToExcel.Export(dt, "Custom Facts");
+                Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportCustomFactEvent);
+            }
+            catch (Exception e)
+            {
+                UIHelpers.ShowMessage($"Problem exporting Custom Facts: {e.Message}");
             }
         }
 
@@ -242,7 +258,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 DataTable dt = convertor.ToDataTable(new List<IDisplayDataError>(FamilyTree.Instance.AllDataErrors));
                 ExportToExcel.Export(dt, "DataErrors");
                 Analytics.TrackAction(Analytics.ExportAction, Analytics.ExportDataErrorsEvent);
@@ -262,7 +278,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 List<IDisplayLooseBirth> list = FamilyTree.Instance.LooseBirths().ToList();
                 list.Sort(new LooseBirthComparer());
                 DataTable dt = convertor.ToDataTable(list);
@@ -284,7 +300,7 @@ namespace FTAnalyzer
                     NoDocumentLoaded();
                     return;
                 }
-                ListtoDataTableConvertor convertor = new ListtoDataTableConvertor();
+                ListtoDataTableConvertor convertor = new();
                 List<IDisplayLooseDeath> list = FamilyTree.Instance.LooseDeaths().ToList();
                 list.Sort(new LooseDeathComparer());
                 DataTable dt = convertor.ToDataTable(list);
@@ -299,7 +315,7 @@ namespace FTAnalyzer
 
         partial void ExportDNAGedcom(NSObject sender)
         {
-            if(Document != null)
+            if (Document != null)
                 DNA_GEDCOM.Export();
             else
                 NoDocumentLoaded();
@@ -317,15 +333,15 @@ namespace FTAnalyzer
             {
                 if (CurrentViewController is IPrintViewController)
                     Document.PrintDocument(CurrentViewController as IPrintViewController);
-                else if(CurrentViewController is GedcomDocumentViewController)
+                else if (CurrentViewController is GedcomDocumentViewController)
                 {
                     ((GedcomDocumentViewController)CurrentViewController).Print(sender);
                 }
                 else
                     UIHelpers.ShowMessage("Sorry Printing Not currently available for this view");
 
-            } 
-            else if(keyViewController is PeopleViewController)
+            }
+            else if (keyViewController is PeopleViewController)
             {
                 ((PeopleViewController)keyViewController).Print(sender);
             }
@@ -351,13 +367,13 @@ namespace FTAnalyzer
         partial void ViewOnlineManual(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.OnlineManualEvent);
-            SpecialMethods.VisitWebsite("http://www.ftanalyzer.com");
+            SpecialMethods.VisitWebsite("https://www.ftanalyzer.com");
         }
 
         partial void ViewOnlineGuides(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.OnlineGuideEvent);
-            SpecialMethods.VisitWebsite("http://www.ftanalyzer.com/guides");
+            SpecialMethods.VisitWebsite("https://www.ftanalyzer.com/guides");
         }
 
         partial void ReportIssue(NSObject sender)
@@ -382,13 +398,13 @@ namespace FTAnalyzer
         partial void VisitPrivacyPolicy(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.PrivacyEvent);
-            SpecialMethods.VisitWebsite("http://www.ftanalyzer.com/privacy");
+            SpecialMethods.VisitWebsite("https://www.ftanalyzer.com/privacy");
         }
 
         partial void VisitWhatsNew(NSObject sender)
         {
             Analytics.TrackAction(Analytics.MainFormAction, Analytics.WhatsNewEvent);
-            SpecialMethods.VisitWebsite("http://mac.ftanalyzer.com/Whats%20New%20in%20this%20Release");
+            SpecialMethods.VisitWebsite("https://mac.ftanalyzer.com/Whats%20New%20in%20this%20Release");
         }
 
         void NoDocumentLoaded() => UIHelpers.ShowMessage("No document currently loaded.");
@@ -398,7 +414,7 @@ namespace FTAnalyzer
     {
         public override void WillClose(NSNotification notification)
         {
-            foreach (NSWindow window in NSApplication.SharedApplication.DangerousWindows)
+            foreach (NSWindow window in (IEnumerable<NSWindow>)NSApplication.SharedApplication.DangerousWindows)
             {
                 if (window != NSApplication.SharedApplication.DangerousWindows[0])
                 {

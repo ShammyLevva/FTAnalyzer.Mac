@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AppKit;
-using FTAnalyzer.Filters;
+﻿using FTAnalyzer.Filters;
 using FTAnalyzer.Utilities;
 using FTAnalyzer.ViewControllers;
 
@@ -30,7 +26,7 @@ namespace FTAnalyzer.DataSources
             _censusDone = censusDone;
             var storyboard = NSStoryboard.FromName("ColourCensus", null);
             censusWindow = storyboard.InstantiateControllerWithIdentifier("ColourCensusWindow") as NSWindowController;
-            censusWindow.Window.SetFrame(new CoreGraphics.CGRect(300, 300, 800, 500), true);
+            censusWindow.Window.SetFrame(new CGRect(300, 300, 800, 500), true);
             //string defaultProvider = (string)Application.UserAppDataRegistry.GetValue("Default Search Provider");
             //if (defaultProvider == null)
             //    defaultProvider = "FamilySearch";
@@ -38,10 +34,10 @@ namespace FTAnalyzer.DataSources
             //CensusSettingsUI.CompactCensusRefChanged += new EventHandler(RefreshCensusReferences);
         }
 
-        List<CensusIndividual> FilterDuplicateIndividuals(List<CensusIndividual> individuals)
+        static List<CensusIndividual> FilterDuplicateIndividuals(List<CensusIndividual> individuals)
         {
             List<CensusIndividual> result = individuals.Filter(i => i.FamilyMembersCount > 1).ToList();
-            HashSet<string> ids = new HashSet<string>(result.Select(i => i.IndividualID));
+            HashSet<string> ids = new(result.Select(i => i.IndividualID));
             foreach (CensusIndividual i in individuals.Filter(i => i.FamilyMembersCount == 1))
                 if (!ids.Contains(i.IndividualID))
                 {

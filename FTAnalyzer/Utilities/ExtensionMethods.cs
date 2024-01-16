@@ -1,8 +1,4 @@
-﻿using System;
-using AppKit;
-using Foundation;
-
-namespace FTAnalyzer.Utilities
+﻿namespace FTAnalyzer.Utilities
 {
     public static partial class ExtensionMethods
     {

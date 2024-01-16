@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using AppKit;
-using Foundation;
-using FTAnalyzer.Properties;
+﻿using FTAnalyzer.Properties;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.ViewControllers
@@ -45,7 +41,7 @@ namespace FTAnalyzer.ViewControllers
         {
             if (App.Document == null)
                 return; // don't bother if we've not loaded a document yet
-            NSViewController viewController = null;
+            NSViewController? viewController = null;
             switch (item.Label)
             {
                 case "Gedcom Stats":
@@ -108,7 +104,7 @@ namespace FTAnalyzer.ViewControllers
 
         void SetupViewControllers()
         {
-            GedcomDocumentViewController documentViewController = null;
+            GedcomDocumentViewController? documentViewController = null;
 
             //Make sure the loading tab is seleceted.
             SelectedTabViewItemIndex = 0;
@@ -126,7 +122,7 @@ namespace FTAnalyzer.ViewControllers
         {
             MainListsLoaded = false; // forces refresh on LoadMainLists
             LoadMainLists(ProgressController);
-            if(ErrorsAndFixesLoaded)
+            if (ErrorsAndFixesLoaded)
             {
                 ErrorsAndFixesLoaded = false;
                 LoadErrorsAndFixes(ProgressController);
@@ -253,7 +249,7 @@ namespace FTAnalyzer.ViewControllers
         {
             InvokeOnMainThread(() =>
             {
-                if(people != null)
+                if (people != null)
                     people.ShowWindow(App);
                 //Analytics.TrackAction(Analytics.Peo, Analytics.);
             });
@@ -268,7 +264,7 @@ namespace FTAnalyzer.ViewControllers
                     App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {family.FamilyRef}", family));
                     Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsFamiliesEvent);
                 }
-                else if(individual != null && family == null)
+                else if (individual != null && family == null)
                 {
                     App.ShowFacts(new FactsViewController<IDisplayFact>($"Facts Report for {individual.IndividualID}: {individual.Name}", individual));
                     Analytics.TrackAction(Analytics.FactsFormAction, Analytics.FactsIndividualsEvent);
@@ -280,7 +276,7 @@ namespace FTAnalyzer.ViewControllers
         {
             InvokeOnMainThread(() =>
             {
-                if(people != null)
+                if (people != null)
                     people.ShowWindow(App);
                 //Analytics.TrackAction(Analytics.Peo, Analytics.);
             });
@@ -415,7 +411,7 @@ namespace FTAnalyzer.ViewControllers
                 lCReportsViewController.UpdateLostCousinsReport(progressController);
                 progressController.ProgressBar = 50;
                 progressController.ProgressText = "Loading Lost Cousins Statistics";
-                lCUpdatesViewController.UpdateLostCousinsReport(lCReportsViewController.RelationshipTypes, progressController, lCReportsViewController);
+                //KI lCUpdatesViewController.UpdateLostCousinsReport(lCReportsViewController.RelationshipTypes, progressController, lCReportsViewController);
                 progressController.ProgressBar = 100;
                 InvokeOnMainThread(progressController.Close);
             });

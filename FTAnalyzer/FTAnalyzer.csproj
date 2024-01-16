@@ -1,302 +1,114 @@
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <ProjectGuid>{EE106C3A-38A4-4962-A747-8D5D17AE3039}</ProjectGuid>
-    <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFramework>net6.0-macos</TargetFramework>
     <OutputType>Exe</OutputType>
-    <RootNamespace>FTAnalyzer</RootNamespace>
-    <AssemblyName>FTAnalyzer</AssemblyName>
-    <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
-    <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
-    <ReleaseVersion>2.0.0</ReleaseVersion>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-    <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <SupportedOSPlatformVersion>10.14</SupportedOSPlatformVersion>
+    <NeutralLanguage>en-GB</NeutralLanguage>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>__UNIFIED__;__MACOS__;DEBUG;</DefineConstants>
-    <WarningLevel>4</WarningLevel>
-    <IncludeMonoRuntime>false</IncludeMonoRuntime>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
     <UseSGen>false</UseSGen>
-    <HttpClientHandler>NSUrlSessionHandler</HttpClientHandler>
-    <LinkMode>None</LinkMode>
-    <XamMacArch>x86_64</XamMacArch>
-    <PlatformTarget>x64</PlatformTarget>
-    <EnableCodeSigning>true</EnableCodeSigning>
-    <CodeSigningKey>Developer ID Application: Alexander Bisset (6VNT57GLU7)</CodeSigningKey>
-    <EnablePackageSigning>true</EnablePackageSigning>
-    <PackageSigningKey>3rd Party Mac Developer Installer: Alexander Bisset (6VNT57GLU7)</PackageSigningKey>
-    <AOTMode>Core</AOTMode>
-    <CodeSignEntitlements>Entitlements.plist</CodeSignEntitlements>
-    <CodeSignResourceRules></CodeSignResourceRules>
-    <MonoBundlingExtraArgs>--linkplatform</MonoBundlingExtraArgs>
-    <LangVersion>Latest</LangVersion>
-    <CodeSignProvision>Automatic</CodeSignProvision>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <DefineConstants></DefineConstants>
-    <WarningLevel>4</WarningLevel>
-    <IncludeMonoRuntime>false</IncludeMonoRuntime>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
     <UseSGen>false</UseSGen>
-    <HttpClientHandler>NSUrlSessionHandler</HttpClientHandler>
-    <LinkMode>Full</LinkMode>
-    <XamMacArch></XamMacArch>
-    <PlatformTarget>x64</PlatformTarget>
-    <AOTMode>None</AOTMode>
-    <EnableCodeSigning>true</EnableCodeSigning>
-    <CodeSigningKey>Developer ID Application: Alexander Bisset (6VNT57GLU7)</CodeSigningKey>
-    <CodeSignProvision>Automatic</CodeSignProvision>
-    <EnablePackageSigning>true</EnablePackageSigning>
-    <PackageSigningKey>3rd Party Mac Developer Installer: Alexander Bisset (6VNT57GLU7)</PackageSigningKey>
-    <I18n>west</I18n>
-    <CodeSignEntitlements>Entitlements.plist</CodeSignEntitlements>
-    <MonoBundlingExtraArgs>--linkplatform</MonoBundlingExtraArgs>
-    <LangVersion>Latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="Xamarin.Mac" />
-    <Reference Include="System.Xml" />
-    <Reference Include="I18N" />
-    <Reference Include="I18N.West" />
-    <Reference Include="System.Security.Permissions">
-      <HintPath>..\packages\System.Security.Permissions.6.0.0\lib\netstandard2.0\System.Security.Permissions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Principal.Windows">
-      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.11.38\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Services" />
-    <Reference Include="GoogleAnalyticsTracker.Core">
-      <HintPath>..\packages\GoogleAnalyticsTracker.Core.7.0.0\lib\netstandard2.0\GoogleAnalyticsTracker.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="GoogleAnalyticsTracker.Simple">
-      <HintPath>..\packages\GoogleAnalyticsTracker.Simple.7.0.0\lib\netstandard2.0\GoogleAnalyticsTracker.Simple.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Security.AccessControl">
-      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\netstandard2.0\System.Security.AccessControl.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Buffers">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\netstandard2.0\System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Memory">
-      <HintPath>..\packages\System.Memory.4.5.4\lib\netstandard2.0\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetZip">
-      <HintPath>..\packages\DotNetZip.1.16.0\lib\netstandard2.0\DotNetZip.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Data.Sqlite" />
-    <Reference Include="SQLitePCLRaw.core">
-      <HintPath>..\packages\SQLitePCLRaw.core.2.0.7\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.provider.e_sqlite3">
-      <HintPath>..\packages\SQLitePCLRaw.provider.e_sqlite3.2.0.7\lib\netstandard2.0\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.batteries_v2">
-      <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.7\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll</HintPath>
-    </Reference>
+    <ImageAsset Update="Assets.xcassets\FileHandlingIcon.imageset\FileHandling%402x.png">
+      <Link>Assets.xcassets\FileHandlingIcon.imageset\FileHandling%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\FileHandlingIcon.imageset\FileHandling%403x.png">
+      <Link>Assets.xcassets\FileHandlingIcon.imageset\FileHandling%403x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\FileHandlingIcon.imageset\FileHandling%401x.png">
+      <Link>Assets.xcassets\FileHandlingIcon.imageset\FileHandling%401x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\20%403x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\20%403x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\128%402x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\128%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\256%402x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\256%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\83.5%402x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\83.5%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\16%402x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\16%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\32%402x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\32%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\20%402x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\20%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\60%403x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\60%403x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\29%402x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\29%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\512%402x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\512%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\29%403x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\29%403x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\60%402x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\60%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\40%402x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\40%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\76%402x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\76%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\40%403x.png">
+      <Link>Assets.xcassets\AppIcon.appiconset\40%403x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\NonGedcomDatesIcon.imageset\Calendar-icon%401x.png">
+      <Link>Assets.xcassets\NonGedcomDatesIcon.imageset\Calendar-icon%401x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\NonGedcomDatesIcon.imageset\Calendar-icon%403x.png">
+      <Link>Assets.xcassets\NonGedcomDatesIcon.imageset\Calendar-icon%403x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\NonGedcomDatesIcon.imageset\Calendar-icon%402x.png">
+      <Link>Assets.xcassets\NonGedcomDatesIcon.imageset\Calendar-icon%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%401x.png">
+      <Link>Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%401x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%403x.png">
+      <Link>Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%403x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%402x.png">
+      <Link>Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\CensusSettingsIcon.imageset\CensusSettings%402x.png">
+      <Link>Assets.xcassets\CensusSettingsIcon.imageset\CensusSettings%402x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\CensusSettingsIcon.imageset\CensusSettings%403x.png">
+      <Link>Assets.xcassets\CensusSettingsIcon.imageset\CensusSettings%403x.png</Link>
+    </ImageAsset>
+    <ImageAsset Update="Assets.xcassets\CensusSettingsIcon.imageset\CensusSettings%401x.png">
+      <Link>Assets.xcassets\CensusSettingsIcon.imageset\CensusSettings%401x.png</Link>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\16.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\16%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\20.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\20%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\20%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\29.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\29%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\29%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\32.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\32%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\60%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\60%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\76.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\76%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\83.5%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\128.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\128%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\256.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\256%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\512.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\512%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024.png" />
-    <ImageAsset Include="Assets.xcassets\GeneralSettingsIcon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\FileHandlingIcon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\NonGedcomDatesIcon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\NonGedcomDatesIcon.imageset\Calendar-icon%401x.png" />
-    <ImageAsset Include="Assets.xcassets\NonGedcomDatesIcon.imageset\Calendar-icon%402x.png" />
-    <ImageAsset Include="Assets.xcassets\NonGedcomDatesIcon.imageset\Calendar-icon%403x.png" />
-    <ImageAsset Include="Assets.xcassets\FileHandlingIcon.imageset\FileHandling%401x.png" />
-    <ImageAsset Include="Assets.xcassets\FileHandlingIcon.imageset\FileHandling%402x.png" />
-    <ImageAsset Include="Assets.xcassets\FileHandlingIcon.imageset\FileHandling%403x.png" />
-    <ImageAsset Include="Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%401x.png" />
-    <ImageAsset Include="Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%402x.png" />
-    <ImageAsset Include="Assets.xcassets\GeneralSettingsIcon.imageset\GeneralSettings%403x.png" />
-    <ImageAsset Include="Assets.xcassets\CensusSettingsIcon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\CensusSettingsIcon.imageset\CensusSettings%401x.png" />
-    <ImageAsset Include="Assets.xcassets\CensusSettingsIcon.imageset\CensusSettings%402x.png" />
-    <ImageAsset Include="Assets.xcassets\CensusSettingsIcon.imageset\CensusSettings%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\Fonts\" />
-    <Folder Include="ViewControllers\" />
-    <Folder Include="DataSources\" />
-    <Folder Include="Storyboards\" />
-    <Folder Include="ViewControllers\Controls\" />
-    <Folder Include="Assets.xcassets\GeneralSettingsIcon.imageset\" />
-    <Folder Include="Assets.xcassets\FileHandlingIcon.imageset\" />
-    <Folder Include="Assets.xcassets\NonGedcomDatesIcon.imageset\" />
-    <Folder Include="Assets.xcassets\CensusSettingsIcon.imageset\" />
-    <Folder Include="ViewControllers\Interfaces\" />
-    <Folder Include="Views\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Info.plist" />
-    <None Include="Entitlements.plist" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <Compile Include="Main.cs" />
-    <Compile Include="AppDelegate.cs" />
-    <Compile Include="AppDelegate.designer.cs">
-     <DependentUpon>AppDelegate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="ViewControllers\GedcomDocumentViewController.cs" />
-    <Compile Include="ViewControllers\GedcomDocumentViewController.designer.cs">
-      <DependentUpon>GedcomDocumentViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\BindingListViewController.cs" />
-    <Compile Include="DataSources\BindingListTableSource.cs" />
-    <Compile Include="Utilities\UIHelpers.cs" />
-    <Compile Include="ViewControllers\FactsViewController.cs" />
-    <Compile Include="ViewControllers\FactsViewController.designer.cs">
-      <DependentUpon>FactsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\FTAnalyzerViewController.cs" />
-    <Compile Include="ViewControllers\FTAnalyzerViewController.designer.cs">
-	<DependentUpon>FTAnalyzerViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\ProgressController.cs" />
-    <Compile Include="ViewControllers\ProgressController.designer.cs">
-      <DependentUpon>ProgressController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\ProgressViewController.cs" />
-    <Compile Include="ViewControllers\ProgressViewController.designer.cs">
-      <DependentUpon>ProgressViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\ListsTabViewController.cs" />
-    <Compile Include="ViewControllers\ListsTabViewController.designer.cs">
-      <DependentUpon>ListsTabViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataSources\GedcomDocument.cs" />
-    <Compile Include="DataSources\People.cs" />
-    <Compile Include="ViewControllers\PeopleViewController.cs" />
-    <Compile Include="ViewControllers\PeopleViewController.designer.cs">
-      <DependentUpon>PeopleViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\LocationViewController.cs" />
-    <Compile Include="ViewControllers\ResearchViewController.cs" />
-    <Compile Include="ViewControllers\ResearchViewController.designer.cs">
-      <DependentUpon>ResearchViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\ColourCensusViewController.cs" />
-    <Compile Include="ViewControllers\ColourCensusViewController.designer.cs">
-      <DependentUpon>ColourCensusViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataSources\ColourCensusSource.cs" />
-    <Compile Include="Utilities\Color.cs" />
-    <Compile Include="Utilities\ReplaceViewSegue.cs" />
-    <Compile Include="ViewControllers\PreferencesViewController.cs" />
-    <Compile Include="ViewControllers\PreferencesViewController.designer.cs">
-      <DependentUpon>PreferencesViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\Interfaces\IPrintViewController.cs" />
-    <Compile Include="Views\TablePrintView.cs" />
-    <Compile Include="ViewControllers\TablePrintingViewController.cs" />
-    <Compile Include="Utilities\ExtensionMethods.cs" />
-    <Compile Include="ViewControllers\FactsWindowViewController.cs" />
-    <Compile Include="ViewControllers\FactsWindowViewController.designer.cs">
-      <DependentUpon>FactsWindowViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TextPrintView.cs" />
-    <Compile Include="Views\TextPrintView.designer.cs">
-      <DependentUpon>TextPrintView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Utilities\ListtoDataTableConvertor.cs" />
-    <Compile Include="Views\GridTableView.cs" />
-    <Compile Include="ViewControllers\LCReportsViewController.cs" />
-    <Compile Include="ViewControllers\LCReportsViewController.designer.cs">
-      <DependentUpon>LCReportsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\LCUpdatesViewController.cs" />
-    <Compile Include="ViewControllers\LCUpdatesViewController.designer.cs">
-      <DependentUpon>LCUpdatesViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\RelationTypes.cs" />
-    <Compile Include="Views\RelationTypes.designer.cs">
-      <DependentUpon>RelationTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\CensusViewController.cs" />
-    <Compile Include="ViewControllers\CensusViewController.designer.cs">
-      <DependentUpon>CensusViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataSources\Census.cs" />
-    <Compile Include="DataSources\CensusSource.cs" />
-    <Compile Include="Utilities\DatabaseHelper.cs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <IncludeInPackage>true</IncludeInPackage>
-    </Compile>
-    <Compile Include="ViewControllers\LCVerifyViewController.cs" />
-    <Compile Include="ViewControllers\LCVerifyViewController.designer.cs">
-      <DependentUpon>LCVerifyViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\ColourBMDViewController.cs" />
-    <Compile Include="ViewControllers\ColourBMDViewController.designer.cs">
-      <DependentUpon>ColourBMDViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataSources\ColourBMDSource.cs" />
-    <Compile Include="ViewControllers\TreeTopsViewController.cs" />
-    <Compile Include="ViewControllers\TreeTopsViewController.designer.cs">
-      <DependentUpon>TreeTopsViewController.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <InterfaceDefinition Include="Storyboards\Facts.storyboard" />
-    <InterfaceDefinition Include="Storyboards\Main.storyboard" />
-    <InterfaceDefinition Include="Storyboards\People.storyboard" />
-    <InterfaceDefinition Include="Storyboards\ColourReports.storyboard" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Fonts\Kunstler.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
+    <PackageReference Include="DotNetZip" Version="1.16.0" />
+    <PackageReference Include="GoogleAnalyticsTracker.Simple" Version="7.0.1" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.54" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Buffers" Version="4.5.1" />
+    <PackageReference Include="System.Memory" Version="4.5.5" />
+    <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+    <PackageReference Include="Mono.Data.Sqlite" Version="1.0.61" />
   </ItemGroup>
   <Import Project="..\..\Shared.Mac-iOS\Shared.Mac-iOS.projitems" Label="Shared" Condition="Exists('..\..\Shared.Mac-iOS\Shared.Mac-iOS.projitems')" />
   <Import Project="..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems" Label="Shared" Condition="Exists('..\..\FTAnalyzer.Shared\FTAnalyzer.Shared\FTAnalyzer.Shared.projitems')" />
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

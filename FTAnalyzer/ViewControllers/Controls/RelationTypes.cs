@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AppKit;
-using FTAnalyzer.Filters;
+﻿using FTAnalyzer.Filters;
 
 namespace FTAnalyzer.ViewControllers
 {
@@ -21,7 +18,7 @@ namespace FTAnalyzer.ViewControllers
             {
                 int result = 0;
                 if (Unknown)
-                   result += Individual.UNKNOWN;
+                    result += Individual.UNKNOWN;
                 if (Directs)
                     result += Individual.DIRECT;
                 if (Blood)
@@ -39,7 +36,7 @@ namespace FTAnalyzer.ViewControllers
         }
         public Predicate<T> BuildFilter<T>(Func<T, int> relationType)
         {
-            List<Predicate<T>> relationFilters = new List<Predicate<T>>();
+            List<Predicate<T>> relationFilters = new();
             if (Blood)
                 relationFilters.Add(FilterUtils.IntFilter(relationType, Individual.BLOOD));
             if (Directs)
@@ -57,7 +54,7 @@ namespace FTAnalyzer.ViewControllers
 
         public Predicate<Family> BuildFamilyFilter<Family>(Func<Family, IEnumerable<int>> relationTypes)
         {
-            List<Predicate<Family>> relationFilters = new List<Predicate<Family>>();
+            List<Predicate<Family>> relationFilters = new();
             if (Blood)
                 relationFilters.Add(FilterUtils.FamilyRelationFilter(relationTypes, Individual.BLOOD));
             if (Directs)

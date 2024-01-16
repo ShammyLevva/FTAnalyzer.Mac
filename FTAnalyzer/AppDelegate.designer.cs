@@ -4,14 +4,15 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using Foundation;
-using System.CodeDom.Compiler;
 
 namespace FTAnalyzer
 {
 	partial class AppDelegate
 	{
-		[Outlet]
+        [Outlet]
+        AppKit.NSMenuItem ExportCustomFactsMenu { get; set; }
+
+        [Outlet]
 		AppKit.NSMenuItem ExportDataErrorsMenu { get; set; }
 
 		[Outlet]
@@ -43,6 +44,9 @@ namespace FTAnalyzer
 
 		[Outlet]
 		AppKit.NSMenuItem PrintMenu { get; set; }
+
+        [Action("ExportCustomFacts:")]
+        partial void ExportCustomFacts(Foundation.NSObject sender);
 
 		[Action ("ExportDataErrors:")]
 		partial void ExportDataErrors (Foundation.NSObject sender);
@@ -97,6 +101,12 @@ namespace FTAnalyzer
 		
 		void ReleaseDesignerOutlets ()
 		{
+            if (ExportCustomFactsMenu != null)
+            {
+                ExportCustomFactsMenu.Dispose();
+                ExportCustomFactsMenu = null;
+            }
+
 			if (ExportDataErrorsMenu != null) {
 				ExportDataErrorsMenu.Dispose ();
 				ExportDataErrorsMenu = null;

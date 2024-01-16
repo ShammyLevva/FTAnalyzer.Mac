@@ -1,9 +1,6 @@
-﻿using System;
-using System.Data;
-using System.Linq;
+﻿using System.Data;
+using System.Drawing;
 using System.Reflection;
-using AppKit;
-using Foundation;
 using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.DataSources
@@ -14,7 +11,7 @@ namespace FTAnalyzer.DataSources
         internal readonly SortableBindingList<T> _bindingList;
         internal readonly PropertyInfo[] _properties;
         internal readonly string[] _fieldNames;
- 
+
         public BindingListTableSource(SortableBindingList<T> bindingList)
         {
             _bindingList = bindingList;
@@ -27,20 +24,20 @@ namespace FTAnalyzer.DataSources
         public override NSView GetViewForItem(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
             NSTableCellView cellview = GetFTAnalyzerGridCell(tableView, tableColumn, row);
-            if(cellview != null)
+            if (cellview != null)
                 SetCellView(cellview, tableColumn, row);
             return cellview;
         }
 
         internal NSTableCellView GetFTAnalyzerGridCell(NSTableView tableView, NSTableColumn tableColumn, nint row)
         {
-            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
+            int index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
             if (index < 0 || index > _properties.Length)
                 return null;
-            var property = _properties[index];
+            PropertyInfo property = _properties[index];
             NSTextAlignment alignment = NSTextAlignment.Left;
-            var width = tableColumn.Width;
-            ColumnDetail[] x = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
+            nfloat width = tableColumn.Width;
+            ColumnDetail[]? x = property.GetCustomAttributes(typeof(ColumnDetail), false) as ColumnDetail[];
             if (x?.Length == 1)
             {
                 alignment = x[0].Alignment;
@@ -48,7 +45,8 @@ namespace FTAnalyzer.DataSources
             }
             if (!(tableView.MakeView(CellIdentifier, this) is NSTableCellView cellView))
             {
-                var textField = new NSTextField
+                tableView.IntercellSpacing = new SizeF(0, 0); //KI: Reduces spacing round textfield to make coloured boxes pretty
+                NSTextField textField = new NSTextField
                 {
                     BackgroundColor = NSColor.Clear,
                     LineBreakMode = NSLineBreakMode.TruncatingTail,
@@ -60,7 +58,14 @@ namespace FTAnalyzer.DataSources
                     AutoresizesSubviews = true,
                     TranslatesAutoresizingMaskIntoConstraints = false,
                     AllowsDefaultTighteningForTruncation = true,
-               };
+                };
+                //KI: Put border round coloured boxes so they look pretty when the row is highlighted (and coloured blue by the system)
+                //KI: This is a hack. "C1", etc. must be census column
+                if (tableColumn.Identifier.StartsWith("C1") || tableColumn.Identifier.StartsWith("US1") || tableColumn.Identifier.StartsWith("Can1") || tableColumn.Identifier.StartsWith("Ire1") || tableColumn.Identifier.StartsWith("V1"))
+                    textField.Bordered = true;
+                //KI: This is a hack. "Birth", etc. must be BMD column
+                if (tableColumn.Identifier == "Birth" || tableColumn.Identifier == "BaptChri" || tableColumn.Identifier == "Marriage1" || tableColumn.Identifier == "Marriage2" || tableColumn.Identifier == "Marriage3" || tableColumn.Identifier == "Death" || tableColumn.Identifier == "CremBuri")
+                    textField.Bordered = true;
                 if (tableView.AutosaveName == "PrintView")
                     textField.Font = NSFont.SystemFontOfSize(8);
                 cellView = new NSTableCellView
@@ -71,7 +76,7 @@ namespace FTAnalyzer.DataSources
                     AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable
                 };
                 cellView.AddSubview(textField);
-                var views = new NSMutableDictionary
+                NSMutableDictionary views = new NSMutableDictionary
                 {
                     { new NSString("textField"), textField }
                 };
@@ -84,12 +89,12 @@ namespace FTAnalyzer.DataSources
 
         void SetCellView(NSTableCellView cellView, NSTableColumn tableColumn, nint row)
         {
-            var index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
+            int index = Array.IndexOf(_fieldNames, tableColumn.Identifier);
             // Set cell view content based on the column selected
             if (row >= 0)
             {
-                var item = _bindingList[(int)row];
-                var propertyValue = _properties[index].GetValue(item);
+                T item = _bindingList[(int)row];
+                object? propertyValue = _properties[index].GetValue(item);
                 cellView.TextField.StringValue = propertyValue == null ? string.Empty : propertyValue.ToString();
             }
             else
@@ -102,7 +107,7 @@ namespace FTAnalyzer.DataSources
         {
             if (_bindingList.Any()) // only sort if array contains something
             {
-                var comparer = _bindingList.First().GetComparer(key, ascending);
+                IComparer<T> comparer = _bindingList.First().GetComparer(key, ascending);
                 if (comparer != null)
                     _bindingList.Sort(comparer);
             }
@@ -121,12 +126,12 @@ namespace FTAnalyzer.DataSources
 
         public DataTable GetDataTable()
         {
-            DataTable dataTable = new DataTable(typeof(T).Name);
+            DataTable dataTable = new(typeof(T).Name);
             foreach (string fieldName in _fieldNames)
                 dataTable.Columns.Add(fieldName);
             foreach (T item in _bindingList)
             {
-                var values = new object[dataTable.Columns.Count];
+                object[] values = new object[dataTable.Columns.Count];
                 for (int i = 0; i < _properties.Length; i++)
                 {
                     values[i] = _properties[i].GetValue(item, null);

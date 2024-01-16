@@ -1,14 +1,11 @@
-﻿using System;
-using AppKit;
-using Foundation;
-using FTAnalyzer.Utilities;
+﻿using FTAnalyzer.Utilities;
 
 namespace FTAnalyzer.ViewControllers
 {
     public partial class ListsTabViewController : NSTabViewController
     {
         AppDelegate App => (AppDelegate)NSApplication.SharedApplication.Delegate;
-       
+
         public ListsTabViewController(IntPtr handle) : base(handle)
         {
         }
@@ -39,7 +36,7 @@ namespace FTAnalyzer.ViewControllers
         [Export("tabView:didSelectTabViewItem:")]
         public override void DidSelect(NSTabView tabView, NSTabViewItem item)
         {
-            if(SetRootPersonMenuItem != null)
+            if (SetRootPersonMenuItem != null)
                 SetRootPersonMenuItem.Enabled = false;
             if (App.Document == null)
                 return; // don't bother if we've not loaded a document yet
@@ -63,7 +60,7 @@ namespace FTAnalyzer.ViewControllers
             switch (label)
             {
                 case "Individuals":
-                    if(ChildViewControllers.Length > 0)
+                    if (ChildViewControllers.Length > 0)
                         App.CurrentViewController = ChildViewControllers[0];
                     if (SetRootPersonMenuItem != null)
                         SetRootPersonMenuItem.Enabled = true; // only enable on Individuals tab

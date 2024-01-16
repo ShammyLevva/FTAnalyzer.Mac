@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AppKit;
-using Foundation;
-
-namespace FTAnalyzer
+﻿namespace FTAnalyzer
 {
     public interface IPrintViewController
     {
@@ -12,6 +7,6 @@ namespace FTAnalyzer
         NSSortDescriptor[] SortDescriptors { get; }
         Type GetGenericType();
         Dictionary<string, float> ColumnWidths();
-        Dictionary<string, bool>  ColumnVisibility();
+        Dictionary<string, bool> ColumnVisibility();
     }
 }

@@ -1,12 +1,9 @@
-﻿using AppKit;
-using Ionic.Zip;
-using System;
+﻿using Ionic.Zip;
 using System.Collections.Concurrent;
 using System.Data;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using Mono.Data.Sqlite;
+using System.Diagnostics;
 
 namespace FTAnalyzer.Utilities
 {
@@ -21,7 +18,7 @@ namespace FTAnalyzer.Utilities
         static string connectionString;
         static SqliteConnection InstanceConnection { get; set; }
         Version ProgramVersion { get; set; }
- 
+
         #region Constructor/Destructor
         DatabaseHelper()
         {
@@ -29,12 +26,12 @@ namespace FTAnalyzer.Utilities
             ResourcePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location), @"../Resources");
             CurrentFilename = Path.Combine(DatabasePath, "FTA-RestoreTemp.s3db");
             CheckDatabaseConnection();
-//            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
-//            SQLitePCL.raw.FreezeProvider();
-            InstanceConnection = new SqliteConnection(connectionString);
+            //            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
+            //            SQLitePCL.raw.FreezeProvider();
+            InstanceConnection = new(connectionString);
         }
 
-        public static DatabaseHelper Instance => instance ??= new DatabaseHelper();
+        public static DatabaseHelper Instance => instance ??= new();
 
         protected virtual void Dispose(bool disposing)
         {
@@ -73,7 +70,7 @@ namespace FTAnalyzer.Utilities
                 }
                 connectionString = $"Data Source={DatabaseFile};";
             }
-            catch(ArgumentNullException)
+            catch (ArgumentNullException)
             {
                 UIHelpers.ShowMessage($"Couldn't find Empty Database in Resources Directory at {EmptyFile}");
             }
@@ -103,12 +100,12 @@ namespace FTAnalyzer.Utilities
 
         static Version GetDatabaseVersion()
         {
-            string db = null;
+            string? db = null;
             try
             {
                 if (InstanceConnection.State != ConnectionState.Open)
                     InstanceConnection.Open();
-                using (SqliteCommand cmd = new SqliteCommand("select Database from versions where platform='Mac'", InstanceConnection))
+                using (SqliteCommand cmd = new("select Database from versions where platform='Mac'", InstanceConnection))
                 {
                     db = (string)cmd.ExecuteScalar();
                 }
@@ -116,9 +113,9 @@ namespace FTAnalyzer.Utilities
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error in GetDatabaseVersion " + e.Message);
+                Debug.WriteLine("Error in GetDatabaseVersion " + e.Message);
             }
-            Version dbVersion = db == null ? new Version("0.0.0.0") : new Version(db);
+            Version dbVersion = db == null ? new("0.0.0.0") : new(db);
             return dbVersion;
         }
 
@@ -133,7 +130,7 @@ namespace FTAnalyzer.Utilities
                 StartBackupRestoreDatabase();
                 if (File.Exists(FileName))
                     File.Delete(FileName);
-                ZipFile zip = new ZipFile(FileName);
+                ZipFile zip = new(FileName);
                 zip.AddFile(DatabaseFile, string.Empty);
                 zip.Comment = comment + " on " + DateTime.Now.ToString("dd MMM yyyy HH:mm");
                 zip.Save();
@@ -149,28 +146,28 @@ namespace FTAnalyzer.Utilities
         {
             try
             {
-                Version v7_3_3_2 = new Version("7.3.3.2");
-                Version v7_4_0_0 = new Version("7.4.0.0");
-                Version v8_0_0_0 = new Version("8.0.0.0");
+                Version v7_3_3_2 = new("7.3.3.2");
+                Version v7_4_0_0 = new("7.4.0.0");
+                Version v8_0_0_0 = new("8.0.0.0");
                 if (InstanceConnection.State != ConnectionState.Open)
                     InstanceConnection.Open();
                 if (dbVersion < v7_3_3_2)
                 {
                     try
                     {
-                        using (SqliteCommand cmd = new SqliteCommand("SELECT count(*) FROM LostCousins", InstanceConnection))
+                        using (SqliteCommand cmd = new("SELECT count(*) FROM LostCousins", InstanceConnection))
                         {
                             cmd.ExecuteNonQuery();
                         }
                     }
                     catch (SqliteException)
                     {
-                        using (SqliteCommand cmd = new SqliteCommand("create table IF NOT EXISTS LostCousins (CensusYear INTEGER(4), CensusCountry STRING (20), CensusRef STRING(25), IndID STRING(10), FullName String(80), constraint pkLostCousins primary key (CensusYear, CensusCountry, CensusRef, IndID))", InstanceConnection))
+                        using (SqliteCommand cmd = new("create table IF NOT EXISTS LostCousins (CensusYear INTEGER(4), CensusCountry STRING (20), CensusRef STRING(25), IndID STRING(10), FullName String(80), constraint pkLostCousins primary key (CensusYear, CensusCountry, CensusRef, IndID))", InstanceConnection))
                         {
                             cmd.ExecuteNonQuery();
                         }
                     }
-                    using (SqliteCommand cmd = new SqliteCommand("update versions set Database = '7.3.3.2'", InstanceConnection))
+                    using (SqliteCommand cmd = new("update versions set Database = '7.3.3.2'", InstanceConnection))
                     {
                         cmd.ExecuteNonQuery();
                     }
@@ -178,35 +175,35 @@ namespace FTAnalyzer.Utilities
                 if (dbVersion < v7_4_0_0)
                 {
 
-                    using (SqliteCommand cmd = new SqliteCommand("drop table versions", InstanceConnection))
+                    using (SqliteCommand cmd = new("drop table versions", InstanceConnection))
                     {
                         cmd.ExecuteNonQuery();
                     }
-                    using (SqliteCommand cmd = new SqliteCommand("CREATE TABLE IF NOT EXISTS Versions(Platform VARCHAR(10) PRIMARY KEY, [Database] VARCHAR(10));", InstanceConnection))
+                    using (SqliteCommand cmd = new("CREATE TABLE IF NOT EXISTS Versions(Platform VARCHAR(10) PRIMARY KEY, [Database] VARCHAR(10));", InstanceConnection))
                     {
                         cmd.ExecuteNonQuery();
                     }
-                    using (SqliteCommand cmd = new SqliteCommand("insert into Versions(platform, database) values('PC', '7.4.0.0')", InstanceConnection))
+                    using (SqliteCommand cmd = new("insert into Versions(platform, database) values('PC', '7.4.0.0')", InstanceConnection))
                     {
                         cmd.ExecuteNonQuery();
                     }
-                    using (SqliteCommand cmd = new SqliteCommand("insert into Versions(platform, database) values('Mac', '1.2.0.42')", InstanceConnection))
+                    using (SqliteCommand cmd = new("insert into Versions(platform, database) values('Mac', '1.2.0.42')", InstanceConnection))
                     {
                         cmd.ExecuteNonQuery();
                     }
                 }
                 if (dbVersion < v8_0_0_0)
                 {
-                    using (SqliteCommand cmd = new SqliteCommand("CREATE TABLE IF NOT EXISTS CustomFacts (FactType STRING(60) PRIMARY KEY, [Ignore] BOOLEAN)", InstanceConnection))
+                    using (SqliteCommand cmd = new("CREATE TABLE IF NOT EXISTS CustomFacts (FactType STRING(60) PRIMARY KEY, [Ignore] BOOLEAN)", InstanceConnection))
                     {
                         cmd.ExecuteNonQuery();
                     }
-                    using (SqliteCommand cmd = new SqliteCommand("update Versions set database = '8.0.0.0' where platform = 'PC'", InstanceConnection))
+                    using (SqliteCommand cmd = new("update Versions set database = '8.0.0.0' where platform = 'PC'", InstanceConnection))
                     {
                         cmd.ExecuteNonQuery();
                     }
                 }
-                }
+            }
             catch (Exception ex)
             {
                 UIHelpers.ShowMessage($"Error upgrading database. Error is :{ex.Message}", "FTAnalyzer");
@@ -220,24 +217,24 @@ namespace FTAnalyzer.Utilities
             int count = 0;
             if (InstanceConnection.State != ConnectionState.Open)
                 InstanceConnection.Open();
-            using (SqliteCommand cmd = new SqliteCommand("select CensusYear, CensusCountry, CensusRef, IndID, FullName from LostCousins", InstanceConnection))
+            using (SqliteCommand cmd = new("select CensusYear, CensusCountry, CensusRef, IndID, FullName from LostCousins", InstanceConnection))
             {
                 using (SqliteDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        string indID = reader["IndID"].ToString();
-                        string fullName = reader["FullName"].ToString();
-                        Individual ind = FamilyTree.Instance.GetIndividual(indID);
+                        string? indID = reader["IndID"].ToString();
+                        string? fullName = reader["FullName"].ToString();
+                        Individual? ind = FamilyTree.Instance.GetIndividual(indID);
                         if (ind?.Name == fullName) // only load if individual exists in this tree.
                         {
-                            string CensusYear = reader["CensusYear"].ToString();
-                            string CensusCountry = reader["CensusCountry"].ToString();
-                            string CensusRef = reader["CensusRef"].ToString();
+                            string? CensusYear = reader["CensusYear"].ToString();
+                            string? CensusCountry = reader["CensusCountry"].ToString();
+                            string? CensusRef = reader["CensusRef"].ToString();
                             if (!ind.IsLostCousinsEntered(CensusDate.GetLostCousinsCensusYear(new FactDate(CensusYear), true)))
                             {
                                 FactLocation location = FactLocation.GetLocation(CensusCountry);
-                                Fact f = new Fact(CensusRef, Fact.LOSTCOUSINS, new FactDate(CensusYear), location, string.Empty, true, true);
+                                Fact f = new(CensusRef, Fact.LOSTCOUSINS, new FactDate(CensusYear), location, string.Empty, true, true);
                                 ind?.AddFact(f);
                             }
                             count++;
@@ -255,7 +252,7 @@ namespace FTAnalyzer.Utilities
 
         void UpdateFullName(SqliteDataReader reader, string name)
         {
-            using (SqliteCommand updateCmd = new SqliteCommand("update LostCousins set FullName=? Where CensusYear=? and CensusCountry=? and CensusRef=? and IndID=?", InstanceConnection))
+            using (SqliteCommand updateCmd = new("update LostCousins set FullName=? Where CensusYear=? and CensusCountry=? and CensusRef=? and IndID=?", InstanceConnection))
             {
                 SqliteParameter param = updateCmd.CreateParameter();
                 param.DbType = DbType.String;
@@ -281,7 +278,7 @@ namespace FTAnalyzer.Utilities
                 updateCmd.Parameters[4].Value = reader["IndID"];
                 int rowsaffected = updateCmd.ExecuteNonQuery();
                 if (rowsaffected != 1)
-                    Console.WriteLine("Problem updating");
+                    Debug.WriteLine("Problem updating");
             }
         }
 
@@ -290,7 +287,7 @@ namespace FTAnalyzer.Utilities
             if (InstanceConnection.State != ConnectionState.Open)
                 InstanceConnection.Open();
             bool result = false;
-            using (SqliteCommand cmd = new SqliteCommand("SELECT EXISTS(SELECT 1 FROM LostCousins where CensusYear=? and CensusCountry=? and CensusRef=? and IndID=?)", InstanceConnection))
+            using (SqliteCommand cmd = new("SELECT EXISTS(SELECT 1 FROM LostCousins where CensusYear=? and CensusCountry=? and CensusRef=? and IndID=?)", InstanceConnection))
             {
                 SqliteParameter param = cmd.CreateParameter();
                 param.DbType = DbType.Int32;
@@ -329,7 +326,7 @@ namespace FTAnalyzer.Utilities
                     InstanceConnection.Open();
                 SqliteParameter param;
 
-                using (SqliteCommand cmd = new SqliteCommand("insert into LostCousins (CensusYear, CensusCountry, CensusRef, IndID, FullName) values(?,?,?,?,?)", InstanceConnection))
+                using (SqliteCommand cmd = new("insert into LostCousins (CensusYear, CensusCountry, CensusRef, IndID, FullName) values(?,?,?,?,?)", InstanceConnection))
                 {
                     param = cmd.CreateParameter();
                     param.DbType = DbType.Int32;
@@ -362,8 +359,8 @@ namespace FTAnalyzer.Utilities
                         else
                         {
                             FactLocation location = FactLocation.GetLocation(ind.CensusCountry);
-                            Fact f = new Fact(ind.CensusRef, Fact.LC_FTA, ind.CensusDate, location, string.Empty, true, true);
-                            Individual person = FamilyTree.Instance.GetIndividual(ind.IndividualID); // get the individual not the census indvidual
+                            Fact f = new(ind.CensusRef, Fact.LC_FTA, ind.CensusDate, location, string.Empty, true, true);
+                            Individual? person = FamilyTree.Instance.GetIndividual(ind.IndividualID); // get the individual not the census indvidual
                             person?.AddFact(f);
                         }
                     }
@@ -382,7 +379,7 @@ namespace FTAnalyzer.Utilities
         {
             if (InstanceConnection.State != ConnectionState.Open)
                 InstanceConnection.Open();
-            using (SqliteCommand cmd = new SqliteCommand("select location from geocode where foundlocation='' and geocodestatus in (3, 8, 9)", InstanceConnection))
+            using (SqliteCommand cmd = new("select location from geocode where foundlocation='' and geocodestatus in (3, 8, 9)", InstanceConnection))
             {
                 using (SqliteDataReader reader = cmd.ExecuteReader())
                 {
@@ -405,7 +402,7 @@ namespace FTAnalyzer.Utilities
             if (InstanceConnection.State != ConnectionState.Open)
                 InstanceConnection.Open();
             bool result = false;
-            using (SqliteCommand cmd = new SqliteCommand("SELECT EXISTS(SELECT ignore FROM CustomFacts where FactType=?)", InstanceConnection))
+            using (SqliteCommand cmd = new("SELECT EXISTS(SELECT ignore FROM CustomFacts where FactType=?)", InstanceConnection))
             {
                 SqliteParameter param = cmd.CreateParameter();
                 param.DbType = DbType.String;
@@ -424,7 +421,7 @@ namespace FTAnalyzer.Utilities
 
         public static void IgnoreCustomFact(string factType, bool ignore)
         {
-            using (SqliteCommand cmd = new SqliteCommand("insert or replace into CustomFacts(FactType,Ignore) values(?,?)", InstanceConnection))
+            using (SqliteCommand cmd = new("insert or replace into CustomFacts(FactType,Ignore) values(?,?)", InstanceConnection))
             {
                 SqliteParameter param = cmd.CreateParameter();
                 param.DbType = DbType.String;

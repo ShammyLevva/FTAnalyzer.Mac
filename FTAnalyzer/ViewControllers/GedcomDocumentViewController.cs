@@ -1,8 +1,4 @@
-﻿using System;
-using AppKit;
-using Foundation;
-
-namespace FTAnalyzer.ViewControllers
+﻿namespace FTAnalyzer.ViewControllers
 {
     public partial class GedcomDocumentViewController : NSViewController
     {
@@ -20,7 +16,7 @@ namespace FTAnalyzer.ViewControllers
             Sources = new Progress<int>(percent => SetProgress(_sourcesProgress, percent));
             Individuals = new Progress<int>(percent => SetProgress(_individualsProgress, percent));
             Families = new Progress<int>(percent => SetProgress(_familiesProgress, percent));
-        	Relationships = new Progress<int>(percent => SetProgress(_relationshipsProgress, percent));
+            Relationships = new Progress<int>(percent => SetProgress(_relationshipsProgress, percent));
         }
 
         public override void ViewDidLoad()
@@ -88,7 +84,7 @@ namespace FTAnalyzer.ViewControllers
                 _statusTextView.Value = message;
             else
                 _statusTextView.Value += message;
-            NSRange range = new NSRange
+            NSRange range = new()
             {
                 Location = _statusTextView.Value.Length
             };

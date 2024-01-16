@@ -1,7 +1,4 @@
-﻿using System;
-using AppKit;
-
-namespace FTAnalyzer.Utilities
+﻿namespace FTAnalyzer.Utilities
 {
     public static class Color
     {
